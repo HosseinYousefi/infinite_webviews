@@ -1,0 +1,24 @@
+android_sdk_config:
+  add_gradle_deps: true
+  add_gradle_sources: true
+
+output:
+  bindings_type: dart_only
+  dart:
+    path: lib/generated.dart
+    structure: single_file
+
+enable_experiment:
+  - interface_implementation
+
+classes:
+  - 'com.example.webview_demo.NativeViewFactory'
+  - 'com.example.webview_demo.NativeViewFactoryWrapper'
+  - 'com.example.webview_demo.MainActivity'
+  - 'io.flutter.plugin.platform.PlatformView'
+  - 'io.flutter.embedding.engine.plugins.FlutterPlugin'
+  - 'io.flutter.embedding.engine.FlutterEngine'
+  - 'io.flutter.plugin.platform.PlatformViewsController'
+  - 'io.flutter.plugin.platform.PlatformViewRegistry'
+  - 'android.view.View'
+  - 'android.webkit.WebView'
