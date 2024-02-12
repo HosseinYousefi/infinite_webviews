@@ -322,6 +322,1577 @@ final class $PlatformViewType extends jni.JObjType<PlatformView> {
   }
 }
 
+/// from: io.flutter.embedding.engine.systemchannels.PlatformViewsChannel
+///
+/// System channel that sends 2-way communication between Flutter and Android to facilitate embedding
+/// of Android Views within a Flutter application.
+///
+/// Register a PlatformViewsHandler to implement the Android side of this channel.
+class PlatformViewsChannel extends jni.JObject {
+  @override
+  late final jni.JObjType<PlatformViewsChannel> $type = type;
+
+  PlatformViewsChannel.fromRef(
+    jni.JObjectPtr ref,
+  ) : super.fromRef(ref);
+
+  static final _class = jni.Jni.findJClass(
+      r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel");
+
+  /// The type which includes information such as the signature of this class.
+  static const type = $PlatformViewsChannelType();
+  static final _id_invokeViewFocused = jni.Jni.accessors
+      .getMethodIDOf(_class.reference, r"invokeViewFocused", r"(I)V");
+
+  /// from: public void invokeViewFocused(int viewId)
+  void invokeViewFocused(
+    int viewId,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_invokeViewFocused,
+        jni.JniCallType.voidType,
+        [jni.JValueInt(viewId)]).check();
+  }
+
+  static final _id_new0 = jni.Jni.accessors.getMethodIDOf(_class.reference,
+      r"<init>", r"(Lio/flutter/embedding/engine/dart/DartExecutor;)V");
+
+  /// from: public void <init>(io.flutter.embedding.engine.dart.DartExecutor dartExecutor)
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Constructs a {@code PlatformViewsChannel} that connects Android to the Dart code running in
+  /// {@code dartExecutor}.
+  ///
+  /// The given {@code dartExecutor} is permitted to be idle or executing code.
+  ///
+  /// See DartExecutor.
+  factory PlatformViewsChannel(
+    jni.JObject dartExecutor,
+  ) {
+    return PlatformViewsChannel.fromRef(jni.Jni.accessors.newObjectWithArgs(
+        _class.reference, _id_new0, [dartExecutor.reference]).object);
+  }
+
+  static final _id_setPlatformViewsHandler = jni.Jni.accessors.getMethodIDOf(
+      _class.reference,
+      r"setPlatformViewsHandler",
+      r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewsHandler;)V");
+
+  /// from: public void setPlatformViewsHandler(io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewsHandler handler)
+  ///
+  /// Sets the PlatformViewsHandler which receives all events and requests that are parsed
+  /// from the underlying platform views channel.
+  void setPlatformViewsHandler(
+    PlatformViewsChannel_PlatformViewsHandler handler,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_setPlatformViewsHandler,
+        jni.JniCallType.voidType,
+        [handler.reference]).check();
+  }
+}
+
+final class $PlatformViewsChannelType
+    extends jni.JObjType<PlatformViewsChannel> {
+  const $PlatformViewsChannelType();
+
+  @override
+  String get signature =>
+      r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel;";
+
+  @override
+  PlatformViewsChannel fromRef(jni.JObjectPtr ref) =>
+      PlatformViewsChannel.fromRef(ref);
+
+  @override
+  jni.JObjType get superType => const jni.JObjectType();
+
+  @override
+  final superCount = 1;
+
+  @override
+  int get hashCode => ($PlatformViewsChannelType).hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($PlatformViewsChannelType) &&
+        other is $PlatformViewsChannelType;
+  }
+}
+
+/// from: io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewTouch
+///
+/// The state of a touch event in Flutter within a platform view.
+class PlatformViewsChannel_PlatformViewTouch extends jni.JObject {
+  @override
+  late final jni.JObjType<PlatformViewsChannel_PlatformViewTouch> $type = type;
+
+  PlatformViewsChannel_PlatformViewTouch.fromRef(
+    jni.JObjectPtr ref,
+  ) : super.fromRef(ref);
+
+  static final _class = jni.Jni.findJClass(
+      r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewTouch");
+
+  /// The type which includes information such as the signature of this class.
+  static const type = $PlatformViewsChannel_PlatformViewTouchType();
+  static final _id_viewId = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"viewId",
+    r"I",
+  );
+
+  /// from: public final int viewId
+  ///
+  /// The ID of the platform view as seen by the Flutter side.
+  int get viewId => jni.Jni.accessors
+      .getField(reference, _id_viewId, jni.JniCallType.intType)
+      .integer;
+
+  static final _id_downTime = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"downTime",
+    r"Ljava/lang/Number;",
+  );
+
+  /// from: public final java.lang.Number downTime
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// The amount of time that the touch has been pressed.
+  jni.JNumber get downTime => const jni.JNumberType().fromRef(jni.Jni.accessors
+      .getField(reference, _id_downTime, jni.JniCallType.objectType)
+      .object);
+
+  static final _id_eventTime = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"eventTime",
+    r"Ljava/lang/Number;",
+  );
+
+  /// from: public final java.lang.Number eventTime
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// TODO(mattcarroll): javadoc
+  jni.JNumber get eventTime => const jni.JNumberType().fromRef(jni.Jni.accessors
+      .getField(reference, _id_eventTime, jni.JniCallType.objectType)
+      .object);
+
+  static final _id_action = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"action",
+    r"I",
+  );
+
+  /// from: public final int action
+  int get action => jni.Jni.accessors
+      .getField(reference, _id_action, jni.JniCallType.intType)
+      .integer;
+
+  static final _id_pointerCount = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"pointerCount",
+    r"I",
+  );
+
+  /// from: public final int pointerCount
+  ///
+  /// The number of pointers (e.g, fingers) involved in the touch event.
+  int get pointerCount => jni.Jni.accessors
+      .getField(reference, _id_pointerCount, jni.JniCallType.intType)
+      .integer;
+
+  static final _id_rawPointerPropertiesList = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"rawPointerPropertiesList",
+    r"Ljava/lang/Object;",
+  );
+
+  /// from: public final java.lang.Object rawPointerPropertiesList
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Properties for each pointer, encoded in a raw format.
+  jni.JObject get rawPointerPropertiesList =>
+      const jni.JObjectType().fromRef(jni.Jni.accessors
+          .getField(reference, _id_rawPointerPropertiesList,
+              jni.JniCallType.objectType)
+          .object);
+
+  static final _id_rawPointerCoords = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"rawPointerCoords",
+    r"Ljava/lang/Object;",
+  );
+
+  /// from: public final java.lang.Object rawPointerCoords
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Coordinates for each pointer, encoded in a raw format.
+  jni.JObject get rawPointerCoords =>
+      const jni.JObjectType().fromRef(jni.Jni.accessors
+          .getField(reference, _id_rawPointerCoords, jni.JniCallType.objectType)
+          .object);
+
+  static final _id_metaState = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"metaState",
+    r"I",
+  );
+
+  /// from: public final int metaState
+  ///
+  /// TODO(mattcarroll): javadoc
+  int get metaState => jni.Jni.accessors
+      .getField(reference, _id_metaState, jni.JniCallType.intType)
+      .integer;
+
+  static final _id_buttonState = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"buttonState",
+    r"I",
+  );
+
+  /// from: public final int buttonState
+  ///
+  /// TODO(mattcarroll): javadoc
+  int get buttonState => jni.Jni.accessors
+      .getField(reference, _id_buttonState, jni.JniCallType.intType)
+      .integer;
+
+  static final _id_xPrecision = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"xPrecision",
+    r"F",
+  );
+
+  /// from: public final float xPrecision
+  ///
+  /// Coordinate precision along the x-axis.
+  double get xPrecision => jni.Jni.accessors
+      .getField(reference, _id_xPrecision, jni.JniCallType.floatType)
+      .float;
+
+  static final _id_yPrecision = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"yPrecision",
+    r"F",
+  );
+
+  /// from: public final float yPrecision
+  ///
+  /// Coordinate precision along the y-axis.
+  double get yPrecision => jni.Jni.accessors
+      .getField(reference, _id_yPrecision, jni.JniCallType.floatType)
+      .float;
+
+  static final _id_deviceId = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"deviceId",
+    r"I",
+  );
+
+  /// from: public final int deviceId
+  ///
+  /// TODO(mattcarroll): javadoc
+  int get deviceId => jni.Jni.accessors
+      .getField(reference, _id_deviceId, jni.JniCallType.intType)
+      .integer;
+
+  static final _id_edgeFlags = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"edgeFlags",
+    r"I",
+  );
+
+  /// from: public final int edgeFlags
+  ///
+  /// TODO(mattcarroll): javadoc
+  int get edgeFlags => jni.Jni.accessors
+      .getField(reference, _id_edgeFlags, jni.JniCallType.intType)
+      .integer;
+
+  static final _id_source = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"source",
+    r"I",
+  );
+
+  /// from: public final int source
+  ///
+  /// TODO(mattcarroll): javadoc
+  int get source => jni.Jni.accessors
+      .getField(reference, _id_source, jni.JniCallType.intType)
+      .integer;
+
+  static final _id_flags = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"flags",
+    r"I",
+  );
+
+  /// from: public final int flags
+  ///
+  /// TODO(mattcarroll): javadoc
+  int get flags => jni.Jni.accessors
+      .getField(reference, _id_flags, jni.JniCallType.intType)
+      .integer;
+
+  static final _id_motionEventId = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"motionEventId",
+    r"J",
+  );
+
+  /// from: public final long motionEventId
+  ///
+  /// TODO(iskakaushik): javadoc
+  int get motionEventId => jni.Jni.accessors
+      .getField(reference, _id_motionEventId, jni.JniCallType.longType)
+      .long;
+
+  static final _id_new0 = jni.Jni.accessors.getMethodIDOf(
+      _class.reference,
+      r"<init>",
+      r"(ILjava/lang/Number;Ljava/lang/Number;IILjava/lang/Object;Ljava/lang/Object;IIFFIIIIJ)V");
+
+  /// from: public void <init>(int viewId, java.lang.Number downTime, java.lang.Number eventTime, int action, int pointerCount, java.lang.Object rawPointerPropertiesList, java.lang.Object rawPointerCoords, int metaState, int buttonState, float xPrecision, float yPrecision, int deviceId, int edgeFlags, int source, int flags, long motionEventId)
+  /// The returned object must be released after use, by calling the [release] method.
+  factory PlatformViewsChannel_PlatformViewTouch(
+    int viewId,
+    jni.JNumber downTime,
+    jni.JNumber eventTime,
+    int action,
+    int pointerCount,
+    jni.JObject rawPointerPropertiesList,
+    jni.JObject rawPointerCoords,
+    int metaState,
+    int buttonState,
+    double xPrecision,
+    double yPrecision,
+    int deviceId,
+    int edgeFlags,
+    int source,
+    int flags,
+    int motionEventId,
+  ) {
+    return PlatformViewsChannel_PlatformViewTouch.fromRef(
+        jni.Jni.accessors.newObjectWithArgs(_class.reference, _id_new0, [
+      jni.JValueInt(viewId),
+      downTime.reference,
+      eventTime.reference,
+      jni.JValueInt(action),
+      jni.JValueInt(pointerCount),
+      rawPointerPropertiesList.reference,
+      rawPointerCoords.reference,
+      jni.JValueInt(metaState),
+      jni.JValueInt(buttonState),
+      jni.JValueFloat(xPrecision),
+      jni.JValueFloat(yPrecision),
+      jni.JValueInt(deviceId),
+      jni.JValueInt(edgeFlags),
+      jni.JValueInt(source),
+      jni.JValueInt(flags),
+      motionEventId
+    ]).object);
+  }
+}
+
+final class $PlatformViewsChannel_PlatformViewTouchType
+    extends jni.JObjType<PlatformViewsChannel_PlatformViewTouch> {
+  const $PlatformViewsChannel_PlatformViewTouchType();
+
+  @override
+  String get signature =>
+      r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewTouch;";
+
+  @override
+  PlatformViewsChannel_PlatformViewTouch fromRef(jni.JObjectPtr ref) =>
+      PlatformViewsChannel_PlatformViewTouch.fromRef(ref);
+
+  @override
+  jni.JObjType get superType => const jni.JObjectType();
+
+  @override
+  final superCount = 1;
+
+  @override
+  int get hashCode => ($PlatformViewsChannel_PlatformViewTouchType).hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($PlatformViewsChannel_PlatformViewTouchType) &&
+        other is $PlatformViewsChannel_PlatformViewTouchType;
+  }
+}
+
+/// from: io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewBufferResized
+///
+/// Allows to notify when a platform view buffer has been resized.
+class PlatformViewsChannel_PlatformViewBufferResized extends jni.JObject {
+  @override
+  late final jni.JObjType<PlatformViewsChannel_PlatformViewBufferResized>
+      $type = type;
+
+  PlatformViewsChannel_PlatformViewBufferResized.fromRef(
+    jni.JObjectPtr ref,
+  ) : super.fromRef(ref);
+
+  static final _class = jni.Jni.findJClass(
+      r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewBufferResized");
+
+  /// The type which includes information such as the signature of this class.
+  static const type = $PlatformViewsChannel_PlatformViewBufferResizedType();
+  static final _id_run = jni.Jni.accessors.getMethodIDOf(
+      _class.reference,
+      r"run",
+      r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewBufferSize;)V");
+
+  /// from: public abstract void run(io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewBufferSize bufferSize)
+  void run(
+    PlatformViewsChannel_PlatformViewBufferSize bufferSize,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(reference, _id_run,
+        jni.JniCallType.voidType, [bufferSize.reference]).check();
+  }
+
+  /// Maps a specific port to the implemented interface.
+  static final Map<int, $PlatformViewsChannel_PlatformViewBufferResizedImpl>
+      _$impls = {};
+  ReceivePort? _$p;
+
+  static jni.JObjectPtr _$invoke(
+    int port,
+    jni.JObjectPtr descriptor,
+    jni.JObjectPtr args,
+  ) {
+    return _$invokeMethod(
+      port,
+      $MethodInvocation.fromAddresses(
+        0,
+        descriptor.address,
+        args.address,
+      ),
+    );
+  }
+
+  static final ffi.Pointer<
+          ffi.NativeFunction<
+              jni.JObjectPtr Function(
+                  ffi.Uint64, jni.JObjectPtr, jni.JObjectPtr)>>
+      _$invokePointer = ffi.Pointer.fromFunction(_$invoke);
+
+  static ffi.Pointer<ffi.Void> _$invokeMethod(
+    int $p,
+    $MethodInvocation $i,
+  ) {
+    try {
+      final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
+      final $a = $i.args;
+      if ($d ==
+          r"run(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewBufferSize;)V") {
+        _$impls[$p]!.run(
+          $a[0].castTo(const $PlatformViewsChannel_PlatformViewBufferSizeType(),
+              releaseOriginal: true),
+        );
+        return jni.nullptr;
+      }
+    } catch (e) {
+      return ProtectedJniExtensions.newDartException(e.toString());
+    }
+    return jni.nullptr;
+  }
+
+  factory PlatformViewsChannel_PlatformViewBufferResized.implement(
+    $PlatformViewsChannel_PlatformViewBufferResizedImpl $impl,
+  ) {
+    final $p = ReceivePort();
+    final $x = PlatformViewsChannel_PlatformViewBufferResized.fromRef(
+      ProtectedJniExtensions.newPortProxy(
+        r"io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewBufferResized",
+        $p,
+        _$invokePointer,
+      ),
+    ).._$p = $p;
+    final $a = $p.sendPort.nativePort;
+    _$impls[$a] = $impl;
+    $p.listen(($m) {
+      if ($m == null) {
+        _$impls.remove($p.sendPort.nativePort);
+        $p.close();
+        return;
+      }
+      final $i = $MethodInvocation.fromMessage($m as List<dynamic>);
+      final $r = _$invokeMethod($p.sendPort.nativePort, $i);
+      ProtectedJniExtensions.returnResult($i.result, $r);
+    });
+    return $x;
+  }
+}
+
+abstract class $PlatformViewsChannel_PlatformViewBufferResizedImpl {
+  factory $PlatformViewsChannel_PlatformViewBufferResizedImpl({
+    required void Function(
+            PlatformViewsChannel_PlatformViewBufferSize bufferSize)
+        run,
+  }) = _$PlatformViewsChannel_PlatformViewBufferResizedImpl;
+
+  void run(PlatformViewsChannel_PlatformViewBufferSize bufferSize);
+}
+
+class _$PlatformViewsChannel_PlatformViewBufferResizedImpl
+    implements $PlatformViewsChannel_PlatformViewBufferResizedImpl {
+  _$PlatformViewsChannel_PlatformViewBufferResizedImpl({
+    required void Function(
+            PlatformViewsChannel_PlatformViewBufferSize bufferSize)
+        run,
+  }) : _run = run;
+
+  final void Function(PlatformViewsChannel_PlatformViewBufferSize bufferSize)
+      _run;
+
+  void run(PlatformViewsChannel_PlatformViewBufferSize bufferSize) {
+    return _run(bufferSize);
+  }
+}
+
+final class $PlatformViewsChannel_PlatformViewBufferResizedType
+    extends jni.JObjType<PlatformViewsChannel_PlatformViewBufferResized> {
+  const $PlatformViewsChannel_PlatformViewBufferResizedType();
+
+  @override
+  String get signature =>
+      r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewBufferResized;";
+
+  @override
+  PlatformViewsChannel_PlatformViewBufferResized fromRef(jni.JObjectPtr ref) =>
+      PlatformViewsChannel_PlatformViewBufferResized.fromRef(ref);
+
+  @override
+  jni.JObjType get superType => const jni.JObjectType();
+
+  @override
+  final superCount = 1;
+
+  @override
+  int get hashCode =>
+      ($PlatformViewsChannel_PlatformViewBufferResizedType).hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other.runtimeType ==
+            ($PlatformViewsChannel_PlatformViewBufferResizedType) &&
+        other is $PlatformViewsChannel_PlatformViewBufferResizedType;
+  }
+}
+
+/// from: io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewBufferSize
+///
+/// The platform view buffer size.
+class PlatformViewsChannel_PlatformViewBufferSize extends jni.JObject {
+  @override
+  late final jni.JObjType<PlatformViewsChannel_PlatformViewBufferSize> $type =
+      type;
+
+  PlatformViewsChannel_PlatformViewBufferSize.fromRef(
+    jni.JObjectPtr ref,
+  ) : super.fromRef(ref);
+
+  static final _class = jni.Jni.findJClass(
+      r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewBufferSize");
+
+  /// The type which includes information such as the signature of this class.
+  static const type = $PlatformViewsChannel_PlatformViewBufferSizeType();
+  static final _id_width = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"width",
+    r"I",
+  );
+
+  /// from: public final int width
+  ///
+  /// The width of the screen buffer.
+  int get width => jni.Jni.accessors
+      .getField(reference, _id_width, jni.JniCallType.intType)
+      .integer;
+
+  static final _id_height = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"height",
+    r"I",
+  );
+
+  /// from: public final int height
+  ///
+  /// The height of the screen buffer.
+  int get height => jni.Jni.accessors
+      .getField(reference, _id_height, jni.JniCallType.intType)
+      .integer;
+
+  static final _id_new0 =
+      jni.Jni.accessors.getMethodIDOf(_class.reference, r"<init>", r"(II)V");
+
+  /// from: public void <init>(int width, int height)
+  /// The returned object must be released after use, by calling the [release] method.
+  factory PlatformViewsChannel_PlatformViewBufferSize(
+    int width,
+    int height,
+  ) {
+    return PlatformViewsChannel_PlatformViewBufferSize.fromRef(jni.Jni.accessors
+        .newObjectWithArgs(_class.reference, _id_new0,
+            [jni.JValueInt(width), jni.JValueInt(height)]).object);
+  }
+}
+
+final class $PlatformViewsChannel_PlatformViewBufferSizeType
+    extends jni.JObjType<PlatformViewsChannel_PlatformViewBufferSize> {
+  const $PlatformViewsChannel_PlatformViewBufferSizeType();
+
+  @override
+  String get signature =>
+      r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewBufferSize;";
+
+  @override
+  PlatformViewsChannel_PlatformViewBufferSize fromRef(jni.JObjectPtr ref) =>
+      PlatformViewsChannel_PlatformViewBufferSize.fromRef(ref);
+
+  @override
+  jni.JObjType get superType => const jni.JObjectType();
+
+  @override
+  final superCount = 1;
+
+  @override
+  int get hashCode =>
+      ($PlatformViewsChannel_PlatformViewBufferSizeType).hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other.runtimeType ==
+            ($PlatformViewsChannel_PlatformViewBufferSizeType) &&
+        other is $PlatformViewsChannel_PlatformViewBufferSizeType;
+  }
+}
+
+/// from: io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewResizeRequest
+///
+/// Request sent from Flutter to resize a platform view.
+class PlatformViewsChannel_PlatformViewResizeRequest extends jni.JObject {
+  @override
+  late final jni.JObjType<PlatformViewsChannel_PlatformViewResizeRequest>
+      $type = type;
+
+  PlatformViewsChannel_PlatformViewResizeRequest.fromRef(
+    jni.JObjectPtr ref,
+  ) : super.fromRef(ref);
+
+  static final _class = jni.Jni.findJClass(
+      r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewResizeRequest");
+
+  /// The type which includes information such as the signature of this class.
+  static const type = $PlatformViewsChannel_PlatformViewResizeRequestType();
+  static final _id_viewId = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"viewId",
+    r"I",
+  );
+
+  /// from: public final int viewId
+  ///
+  /// The ID of the platform view as seen by the Flutter side.
+  int get viewId => jni.Jni.accessors
+      .getField(reference, _id_viewId, jni.JniCallType.intType)
+      .integer;
+
+  static final _id_newLogicalWidth = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"newLogicalWidth",
+    r"D",
+  );
+
+  /// from: public final double newLogicalWidth
+  ///
+  /// The new density independent width to display the platform view.
+  double get newLogicalWidth => jni.Jni.accessors
+      .getField(reference, _id_newLogicalWidth, jni.JniCallType.doubleType)
+      .doubleFloat;
+
+  static final _id_newLogicalHeight = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"newLogicalHeight",
+    r"D",
+  );
+
+  /// from: public final double newLogicalHeight
+  ///
+  /// The new density independent height to display the platform view.
+  double get newLogicalHeight => jni.Jni.accessors
+      .getField(reference, _id_newLogicalHeight, jni.JniCallType.doubleType)
+      .doubleFloat;
+
+  static final _id_new0 =
+      jni.Jni.accessors.getMethodIDOf(_class.reference, r"<init>", r"(IDD)V");
+
+  /// from: public void <init>(int viewId, double newLogicalWidth, double newLogicalHeight)
+  /// The returned object must be released after use, by calling the [release] method.
+  factory PlatformViewsChannel_PlatformViewResizeRequest(
+    int viewId,
+    double newLogicalWidth,
+    double newLogicalHeight,
+  ) {
+    return PlatformViewsChannel_PlatformViewResizeRequest.fromRef(
+        jni.Jni.accessors.newObjectWithArgs(_class.reference, _id_new0,
+            [jni.JValueInt(viewId), newLogicalWidth, newLogicalHeight]).object);
+  }
+}
+
+final class $PlatformViewsChannel_PlatformViewResizeRequestType
+    extends jni.JObjType<PlatformViewsChannel_PlatformViewResizeRequest> {
+  const $PlatformViewsChannel_PlatformViewResizeRequestType();
+
+  @override
+  String get signature =>
+      r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewResizeRequest;";
+
+  @override
+  PlatformViewsChannel_PlatformViewResizeRequest fromRef(jni.JObjectPtr ref) =>
+      PlatformViewsChannel_PlatformViewResizeRequest.fromRef(ref);
+
+  @override
+  jni.JObjType get superType => const jni.JObjectType();
+
+  @override
+  final superCount = 1;
+
+  @override
+  int get hashCode =>
+      ($PlatformViewsChannel_PlatformViewResizeRequestType).hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other.runtimeType ==
+            ($PlatformViewsChannel_PlatformViewResizeRequestType) &&
+        other is $PlatformViewsChannel_PlatformViewResizeRequestType;
+  }
+}
+
+/// from: io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewCreationRequest
+///
+/// Request sent from Flutter to create a new platform view.
+class PlatformViewsChannel_PlatformViewCreationRequest extends jni.JObject {
+  @override
+  late final jni.JObjType<PlatformViewsChannel_PlatformViewCreationRequest>
+      $type = type;
+
+  PlatformViewsChannel_PlatformViewCreationRequest.fromRef(
+    jni.JObjectPtr ref,
+  ) : super.fromRef(ref);
+
+  static final _class = jni.Jni.findJClass(
+      r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest");
+
+  /// The type which includes information such as the signature of this class.
+  static const type = $PlatformViewsChannel_PlatformViewCreationRequestType();
+  static final _id_viewId = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"viewId",
+    r"I",
+  );
+
+  /// from: public final int viewId
+  ///
+  /// The ID of the platform view as seen by the Flutter side.
+  int get viewId => jni.Jni.accessors
+      .getField(reference, _id_viewId, jni.JniCallType.intType)
+      .integer;
+
+  static final _id_viewType = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"viewType",
+    r"Ljava/lang/String;",
+  );
+
+  /// from: public final java.lang.String viewType
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// The type of Android {@code View} to create for this platform view.
+  jni.JString get viewType => const jni.JStringType().fromRef(jni.Jni.accessors
+      .getField(reference, _id_viewType, jni.JniCallType.objectType)
+      .object);
+
+  static final _id_logicalWidth = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"logicalWidth",
+    r"D",
+  );
+
+  /// from: public final double logicalWidth
+  ///
+  /// The density independent width to display the platform view.
+  double get logicalWidth => jni.Jni.accessors
+      .getField(reference, _id_logicalWidth, jni.JniCallType.doubleType)
+      .doubleFloat;
+
+  static final _id_logicalHeight = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"logicalHeight",
+    r"D",
+  );
+
+  /// from: public final double logicalHeight
+  ///
+  /// The density independent height to display the platform view.
+  double get logicalHeight => jni.Jni.accessors
+      .getField(reference, _id_logicalHeight, jni.JniCallType.doubleType)
+      .doubleFloat;
+
+  static final _id_logicalTop = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"logicalTop",
+    r"D",
+  );
+
+  /// from: public final double logicalTop
+  ///
+  /// The density independent top position to display the platform view.
+  double get logicalTop => jni.Jni.accessors
+      .getField(reference, _id_logicalTop, jni.JniCallType.doubleType)
+      .doubleFloat;
+
+  static final _id_logicalLeft = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"logicalLeft",
+    r"D",
+  );
+
+  /// from: public final double logicalLeft
+  ///
+  /// The density independent left position to display the platform view.
+  double get logicalLeft => jni.Jni.accessors
+      .getField(reference, _id_logicalLeft, jni.JniCallType.doubleType)
+      .doubleFloat;
+
+  static final _id_direction = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"direction",
+    r"I",
+  );
+
+  /// from: public final int direction
+  ///
+  /// The layout direction of the new platform view.
+  ///
+  /// See android.view.View\#LAYOUT_DIRECTION_LTR and android.view.View\#LAYOUT_DIRECTION_RTL
+  int get direction => jni.Jni.accessors
+      .getField(reference, _id_direction, jni.JniCallType.intType)
+      .integer;
+
+  static final _id_displayMode = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"displayMode",
+    r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest$RequestedDisplayMode;",
+  );
+
+  /// from: public final io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest.RequestedDisplayMode displayMode
+  /// The returned object must be released after use, by calling the [release] method.
+  PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode
+      get displayMode =>
+          const $PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayModeType()
+              .fromRef(jni.Jni.accessors
+                  .getField(
+                      reference, _id_displayMode, jni.JniCallType.objectType)
+                  .object);
+
+  static final _id_params = jni.Jni.accessors.getFieldIDOf(
+    _class.reference,
+    r"params",
+    r"Ljava/nio/ByteBuffer;",
+  );
+
+  /// from: public final java.nio.ByteBuffer params
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Custom parameters that are unique to the desired platform view.
+  jni.JByteBuffer get params =>
+      const jni.JByteBufferType().fromRef(jni.Jni.accessors
+          .getField(reference, _id_params, jni.JniCallType.objectType)
+          .object);
+
+  static final _id_new0 = jni.Jni.accessors.getMethodIDOf(_class.reference,
+      r"<init>", r"(ILjava/lang/String;DDDDILjava/nio/ByteBuffer;)V");
+
+  /// from: public void <init>(int viewId, java.lang.String viewType, double logicalTop, double logicalLeft, double logicalWidth, double logicalHeight, int direction, java.nio.ByteBuffer params)
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Creates a request to construct a platform view.
+  factory PlatformViewsChannel_PlatformViewCreationRequest(
+    int viewId,
+    jni.JString viewType,
+    double logicalTop,
+    double logicalLeft,
+    double logicalWidth,
+    double logicalHeight,
+    int direction,
+    jni.JByteBuffer params,
+  ) {
+    return PlatformViewsChannel_PlatformViewCreationRequest.fromRef(
+        jni.Jni.accessors.newObjectWithArgs(_class.reference, _id_new0, [
+      jni.JValueInt(viewId),
+      viewType.reference,
+      logicalTop,
+      logicalLeft,
+      logicalWidth,
+      logicalHeight,
+      jni.JValueInt(direction),
+      params.reference
+    ]).object);
+  }
+
+  static final _id_new1 = jni.Jni.accessors.getMethodIDOf(
+      _class.reference,
+      r"<init>",
+      r"(ILjava/lang/String;DDDDILio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest$RequestedDisplayMode;Ljava/nio/ByteBuffer;)V");
+
+  /// from: public void <init>(int viewId, java.lang.String viewType, double logicalTop, double logicalLeft, double logicalWidth, double logicalHeight, int direction, io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest.RequestedDisplayMode displayMode, java.nio.ByteBuffer params)
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Creates a request to construct a platform view with the given display mode.
+  factory PlatformViewsChannel_PlatformViewCreationRequest.new1(
+    int viewId,
+    jni.JString viewType,
+    double logicalTop,
+    double logicalLeft,
+    double logicalWidth,
+    double logicalHeight,
+    int direction,
+    PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode
+        displayMode,
+    jni.JByteBuffer params,
+  ) {
+    return PlatformViewsChannel_PlatformViewCreationRequest.fromRef(
+        jni.Jni.accessors.newObjectWithArgs(_class.reference, _id_new1, [
+      jni.JValueInt(viewId),
+      viewType.reference,
+      logicalTop,
+      logicalLeft,
+      logicalWidth,
+      logicalHeight,
+      jni.JValueInt(direction),
+      displayMode.reference,
+      params.reference
+    ]).object);
+  }
+}
+
+final class $PlatformViewsChannel_PlatformViewCreationRequestType
+    extends jni.JObjType<PlatformViewsChannel_PlatformViewCreationRequest> {
+  const $PlatformViewsChannel_PlatformViewCreationRequestType();
+
+  @override
+  String get signature =>
+      r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest;";
+
+  @override
+  PlatformViewsChannel_PlatformViewCreationRequest fromRef(
+          jni.JObjectPtr ref) =>
+      PlatformViewsChannel_PlatformViewCreationRequest.fromRef(ref);
+
+  @override
+  jni.JObjType get superType => const jni.JObjectType();
+
+  @override
+  final superCount = 1;
+
+  @override
+  int get hashCode =>
+      ($PlatformViewsChannel_PlatformViewCreationRequestType).hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other.runtimeType ==
+            ($PlatformViewsChannel_PlatformViewCreationRequestType) &&
+        other is $PlatformViewsChannel_PlatformViewCreationRequestType;
+  }
+}
+
+/// from: io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewCreationRequest$RequestedDisplayMode
+///
+/// Platform view display modes that can be requested at creation time.
+class PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode
+    extends jni.JObject {
+  @override
+  late final jni.JObjType<
+          PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode>
+      $type = type;
+
+  PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode.fromRef(
+    jni.JObjectPtr ref,
+  ) : super.fromRef(ref);
+
+  static final _class = jni.Jni.findJClass(
+      r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest$RequestedDisplayMode");
+
+  /// The type which includes information such as the signature of this class.
+  static const type =
+      $PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayModeType();
+  static final _id_values = jni.Jni.accessors.getStaticMethodIDOf(
+      _class.reference,
+      r"values",
+      r"()[Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest$RequestedDisplayMode;");
+
+  /// from: static public io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest.RequestedDisplayMode[] values()
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JArray<
+          PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode>
+      values() {
+    return const jni.JArrayType(
+            $PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayModeType())
+        .fromRef(jni.Jni.accessors.callStaticMethodWithArgs(_class.reference,
+            _id_values, jni.JniCallType.objectType, []).object);
+  }
+
+  static final _id_valueOf = jni.Jni.accessors.getStaticMethodIDOf(
+      _class.reference,
+      r"valueOf",
+      r"(Ljava/lang/String;)Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest$RequestedDisplayMode;");
+
+  /// from: static public io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest.RequestedDisplayMode valueOf(java.lang.String name)
+  /// The returned object must be released after use, by calling the [release] method.
+  static PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode
+      valueOf(
+    jni.JString name,
+  ) {
+    return const $PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayModeType()
+        .fromRef(jni.Jni.accessors.callStaticMethodWithArgs(_class.reference,
+            _id_valueOf, jni.JniCallType.objectType, [name.reference]).object);
+  }
+}
+
+final class $PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayModeType
+    extends jni.JObjType<
+        PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode> {
+  const $PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayModeType();
+
+  @override
+  String get signature =>
+      r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest$RequestedDisplayMode;";
+
+  @override
+  PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode fromRef(
+          jni.JObjectPtr ref) =>
+      PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode
+          .fromRef(ref);
+
+  @override
+  jni.JObjType get superType => const jni.JObjectType();
+
+  @override
+  final superCount = 1;
+
+  @override
+  int get hashCode =>
+      ($PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayModeType)
+          .hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other.runtimeType ==
+            ($PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayModeType) &&
+        other
+            is $PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayModeType;
+  }
+}
+
+/// from: io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewsHandler
+///
+/// Handler that receives platform view messages sent from Flutter to Android through a given
+/// PlatformViewsChannel.
+///
+/// To register a {@code PlatformViewsHandler} with a PlatformViewsChannel, see PlatformViewsChannel\#setPlatformViewsHandler(PlatformViewsHandler).
+class PlatformViewsChannel_PlatformViewsHandler extends jni.JObject {
+  @override
+  late final jni.JObjType<PlatformViewsChannel_PlatformViewsHandler> $type =
+      type;
+
+  PlatformViewsChannel_PlatformViewsHandler.fromRef(
+    jni.JObjectPtr ref,
+  ) : super.fromRef(ref);
+
+  static final _class = jni.Jni.findJClass(
+      r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewsHandler");
+
+  /// The type which includes information such as the signature of this class.
+  static const type = $PlatformViewsChannel_PlatformViewsHandlerType();
+
+  /// from: static public final long NON_TEXTURE_FALLBACK
+  static const NON_TEXTURE_FALLBACK = -2;
+
+  static final _id_createForPlatformViewLayer = jni.Jni.accessors.getMethodIDOf(
+      _class.reference,
+      r"createForPlatformViewLayer",
+      r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest;)V");
+
+  /// from: public abstract void createForPlatformViewLayer(io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest request)
+  ///
+  /// The Flutter application would like to display a new Android {@code View}, i.e., platform
+  /// view.
+  ///
+  /// The Android View is added to the view hierarchy. This view is rendered in the Flutter
+  /// framework by a PlatformViewLayer.
+  ///@param request The metadata sent from the framework.
+  void createForPlatformViewLayer(
+    PlatformViewsChannel_PlatformViewCreationRequest request,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_createForPlatformViewLayer,
+        jni.JniCallType.voidType,
+        [request.reference]).check();
+  }
+
+  static final _id_createForTextureLayer = jni.Jni.accessors.getMethodIDOf(
+      _class.reference,
+      r"createForTextureLayer",
+      r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest;)J");
+
+  /// from: public abstract long createForTextureLayer(io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest request)
+  ///
+  /// The Flutter application would like to display a new Android {@code View}, i.e., platform
+  /// view.
+  ///
+  /// The Android View is added to the view hierarchy. This view is rendered in the Flutter
+  /// framework by a TextureLayer.
+  ///@param request The metadata sent from the framework.
+  ///@return The texture ID.
+  int createForTextureLayer(
+    PlatformViewsChannel_PlatformViewCreationRequest request,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_createForTextureLayer,
+        jni.JniCallType.longType,
+        [request.reference]).long;
+  }
+
+  static final _id_dispose =
+      jni.Jni.accessors.getMethodIDOf(_class.reference, r"dispose", r"(I)V");
+
+  /// from: public abstract void dispose(int viewId)
+  ///
+  /// The Flutter application would like to dispose of an existing Android {@code View}.
+  void dispose(
+    int viewId,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(reference, _id_dispose,
+        jni.JniCallType.voidType, [jni.JValueInt(viewId)]).check();
+  }
+
+  static final _id_resize = jni.Jni.accessors.getMethodIDOf(
+      _class.reference,
+      r"resize",
+      r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewResizeRequest;Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewBufferResized;)V");
+
+  /// from: public abstract void resize(io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewResizeRequest request, io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewBufferResized onComplete)
+  ///
+  /// The Flutter application would like to resize an existing Android {@code View}.
+  ///@param request The request to resize the platform view.
+  ///@param onComplete Once the resize is completed, this is the handler to notify the size of the
+  ///     platform view buffer.
+  void resize(
+    PlatformViewsChannel_PlatformViewResizeRequest request,
+    PlatformViewsChannel_PlatformViewBufferResized onComplete,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_resize,
+        jni.JniCallType.voidType,
+        [request.reference, onComplete.reference]).check();
+  }
+
+  static final _id_offset =
+      jni.Jni.accessors.getMethodIDOf(_class.reference, r"offset", r"(IDD)V");
+
+  /// from: public abstract void offset(int viewId, double top, double left)
+  ///
+  /// The Flutter application would like to change the offset of an existing Android {@code View}.
+  void offset(
+    int viewId,
+    double top,
+    double left,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(reference, _id_offset,
+        jni.JniCallType.voidType, [jni.JValueInt(viewId), top, left]).check();
+  }
+
+  static final _id_onTouch = jni.Jni.accessors.getMethodIDOf(
+      _class.reference,
+      r"onTouch",
+      r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewTouch;)V");
+
+  /// from: public abstract void onTouch(io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewTouch touch)
+  ///
+  /// The user touched a platform view within Flutter.
+  ///
+  /// Touch data is reported in {@code touch}.
+  void onTouch(
+    PlatformViewsChannel_PlatformViewTouch touch,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onTouch,
+        jni.JniCallType.voidType, [touch.reference]).check();
+  }
+
+  static final _id_setDirection = jni.Jni.accessors
+      .getMethodIDOf(_class.reference, r"setDirection", r"(II)V");
+
+  /// from: public abstract void setDirection(int viewId, int direction)
+  ///
+  /// The Flutter application would like to change the layout direction of an existing Android
+  /// {@code View}, i.e., platform view.
+  void setDirection(
+    int viewId,
+    int direction,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_setDirection,
+        jni.JniCallType.voidType,
+        [jni.JValueInt(viewId), jni.JValueInt(direction)]).check();
+  }
+
+  static final _id_clearFocus =
+      jni.Jni.accessors.getMethodIDOf(_class.reference, r"clearFocus", r"(I)V");
+
+  /// from: public abstract void clearFocus(int viewId)
+  ///
+  /// Clears the focus from the platform view with a give id if it is currently focused.
+  void clearFocus(
+    int viewId,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(reference, _id_clearFocus,
+        jni.JniCallType.voidType, [jni.JValueInt(viewId)]).check();
+  }
+
+  static final _id_synchronizeToNativeViewHierarchy = jni.Jni.accessors
+      .getMethodIDOf(
+          _class.reference, r"synchronizeToNativeViewHierarchy", r"(Z)V");
+
+  /// from: public abstract void synchronizeToNativeViewHierarchy(boolean yes)
+  ///
+  /// Whether the render surface of {@code FlutterView} should be converted to a {@code
+  /// FlutterImageView} when a {@code PlatformView} is added.
+  ///
+  /// This is done to syncronize the rendering of the PlatformView and the FlutterView. Defaults
+  /// to true.
+  void synchronizeToNativeViewHierarchy(
+    bool yes,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_synchronizeToNativeViewHierarchy,
+        jni.JniCallType.voidType,
+        [yes ? 1 : 0]).check();
+  }
+
+  /// Maps a specific port to the implemented interface.
+  static final Map<int, $PlatformViewsChannel_PlatformViewsHandlerImpl>
+      _$impls = {};
+  ReceivePort? _$p;
+
+  static jni.JObjectPtr _$invoke(
+    int port,
+    jni.JObjectPtr descriptor,
+    jni.JObjectPtr args,
+  ) {
+    return _$invokeMethod(
+      port,
+      $MethodInvocation.fromAddresses(
+        0,
+        descriptor.address,
+        args.address,
+      ),
+    );
+  }
+
+  static final ffi.Pointer<
+          ffi.NativeFunction<
+              jni.JObjectPtr Function(
+                  ffi.Uint64, jni.JObjectPtr, jni.JObjectPtr)>>
+      _$invokePointer = ffi.Pointer.fromFunction(_$invoke);
+
+  static ffi.Pointer<ffi.Void> _$invokeMethod(
+    int $p,
+    $MethodInvocation $i,
+  ) {
+    try {
+      final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
+      final $a = $i.args;
+      if ($d ==
+          r"createForPlatformViewLayer(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest;)V") {
+        _$impls[$p]!.createForPlatformViewLayer(
+          $a[0].castTo(
+              const $PlatformViewsChannel_PlatformViewCreationRequestType(),
+              releaseOriginal: true),
+        );
+        return jni.nullptr;
+      }
+      if ($d ==
+          r"createForTextureLayer(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest;)J") {
+        final $r = _$impls[$p]!.createForTextureLayer(
+          $a[0].castTo(
+              const $PlatformViewsChannel_PlatformViewCreationRequestType(),
+              releaseOriginal: true),
+        );
+        return jni.JLong($r).toPointer();
+      }
+      if ($d == r"dispose(I)V") {
+        _$impls[$p]!.dispose(
+          $a[0]
+              .castTo(const jni.JIntegerType(), releaseOriginal: true)
+              .intValue(releaseOriginal: true),
+        );
+        return jni.nullptr;
+      }
+      if ($d ==
+          r"resize(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewResizeRequest;Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewBufferResized;)V") {
+        _$impls[$p]!.resize(
+          $a[0].castTo(
+              const $PlatformViewsChannel_PlatformViewResizeRequestType(),
+              releaseOriginal: true),
+          $a[1].castTo(
+              const $PlatformViewsChannel_PlatformViewBufferResizedType(),
+              releaseOriginal: true),
+        );
+        return jni.nullptr;
+      }
+      if ($d == r"offset(IDD)V") {
+        _$impls[$p]!.offset(
+          $a[0]
+              .castTo(const jni.JIntegerType(), releaseOriginal: true)
+              .intValue(releaseOriginal: true),
+          $a[1]
+              .castTo(const jni.JDoubleType(), releaseOriginal: true)
+              .doubleValue(releaseOriginal: true),
+          $a[2]
+              .castTo(const jni.JDoubleType(), releaseOriginal: true)
+              .doubleValue(releaseOriginal: true),
+        );
+        return jni.nullptr;
+      }
+      if ($d ==
+          r"onTouch(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewTouch;)V") {
+        _$impls[$p]!.onTouch(
+          $a[0].castTo(const $PlatformViewsChannel_PlatformViewTouchType(),
+              releaseOriginal: true),
+        );
+        return jni.nullptr;
+      }
+      if ($d == r"setDirection(II)V") {
+        _$impls[$p]!.setDirection(
+          $a[0]
+              .castTo(const jni.JIntegerType(), releaseOriginal: true)
+              .intValue(releaseOriginal: true),
+          $a[1]
+              .castTo(const jni.JIntegerType(), releaseOriginal: true)
+              .intValue(releaseOriginal: true),
+        );
+        return jni.nullptr;
+      }
+      if ($d == r"clearFocus(I)V") {
+        _$impls[$p]!.clearFocus(
+          $a[0]
+              .castTo(const jni.JIntegerType(), releaseOriginal: true)
+              .intValue(releaseOriginal: true),
+        );
+        return jni.nullptr;
+      }
+      if ($d == r"synchronizeToNativeViewHierarchy(Z)V") {
+        _$impls[$p]!.synchronizeToNativeViewHierarchy(
+          $a[0]
+              .castTo(const jni.JBooleanType(), releaseOriginal: true)
+              .booleanValue(releaseOriginal: true),
+        );
+        return jni.nullptr;
+      }
+    } catch (e) {
+      return ProtectedJniExtensions.newDartException(e.toString());
+    }
+    return jni.nullptr;
+  }
+
+  factory PlatformViewsChannel_PlatformViewsHandler.implement(
+    $PlatformViewsChannel_PlatformViewsHandlerImpl $impl,
+  ) {
+    final $p = ReceivePort();
+    final $x = PlatformViewsChannel_PlatformViewsHandler.fromRef(
+      ProtectedJniExtensions.newPortProxy(
+        r"io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewsHandler",
+        $p,
+        _$invokePointer,
+      ),
+    ).._$p = $p;
+    final $a = $p.sendPort.nativePort;
+    _$impls[$a] = $impl;
+    $p.listen(($m) {
+      if ($m == null) {
+        _$impls.remove($p.sendPort.nativePort);
+        $p.close();
+        return;
+      }
+      final $i = $MethodInvocation.fromMessage($m as List<dynamic>);
+      final $r = _$invokeMethod($p.sendPort.nativePort, $i);
+      ProtectedJniExtensions.returnResult($i.result, $r);
+    });
+    return $x;
+  }
+}
+
+abstract class $PlatformViewsChannel_PlatformViewsHandlerImpl {
+  factory $PlatformViewsChannel_PlatformViewsHandlerImpl({
+    required void Function(
+            PlatformViewsChannel_PlatformViewCreationRequest request)
+        createForPlatformViewLayer,
+    required int Function(
+            PlatformViewsChannel_PlatformViewCreationRequest request)
+        createForTextureLayer,
+    required void Function(int viewId) dispose,
+    required void Function(
+            PlatformViewsChannel_PlatformViewResizeRequest request,
+            PlatformViewsChannel_PlatformViewBufferResized onComplete)
+        resize,
+    required void Function(int viewId, double top, double left) offset,
+    required void Function(PlatformViewsChannel_PlatformViewTouch touch)
+        onTouch,
+    required void Function(int viewId, int direction) setDirection,
+    required void Function(int viewId) clearFocus,
+    required void Function(bool yes) synchronizeToNativeViewHierarchy,
+  }) = _$PlatformViewsChannel_PlatformViewsHandlerImpl;
+
+  void createForPlatformViewLayer(
+      PlatformViewsChannel_PlatformViewCreationRequest request);
+  int createForTextureLayer(
+      PlatformViewsChannel_PlatformViewCreationRequest request);
+  void dispose(int viewId);
+  void resize(PlatformViewsChannel_PlatformViewResizeRequest request,
+      PlatformViewsChannel_PlatformViewBufferResized onComplete);
+  void offset(int viewId, double top, double left);
+  void onTouch(PlatformViewsChannel_PlatformViewTouch touch);
+  void setDirection(int viewId, int direction);
+  void clearFocus(int viewId);
+  void synchronizeToNativeViewHierarchy(bool yes);
+}
+
+class _$PlatformViewsChannel_PlatformViewsHandlerImpl
+    implements $PlatformViewsChannel_PlatformViewsHandlerImpl {
+  _$PlatformViewsChannel_PlatformViewsHandlerImpl({
+    required void Function(
+            PlatformViewsChannel_PlatformViewCreationRequest request)
+        createForPlatformViewLayer,
+    required int Function(
+            PlatformViewsChannel_PlatformViewCreationRequest request)
+        createForTextureLayer,
+    required void Function(int viewId) dispose,
+    required void Function(
+            PlatformViewsChannel_PlatformViewResizeRequest request,
+            PlatformViewsChannel_PlatformViewBufferResized onComplete)
+        resize,
+    required void Function(int viewId, double top, double left) offset,
+    required void Function(PlatformViewsChannel_PlatformViewTouch touch)
+        onTouch,
+    required void Function(int viewId, int direction) setDirection,
+    required void Function(int viewId) clearFocus,
+    required void Function(bool yes) synchronizeToNativeViewHierarchy,
+  })  : _createForPlatformViewLayer = createForPlatformViewLayer,
+        _createForTextureLayer = createForTextureLayer,
+        _dispose = dispose,
+        _resize = resize,
+        _offset = offset,
+        _onTouch = onTouch,
+        _setDirection = setDirection,
+        _clearFocus = clearFocus,
+        _synchronizeToNativeViewHierarchy = synchronizeToNativeViewHierarchy;
+
+  final void Function(PlatformViewsChannel_PlatformViewCreationRequest request)
+      _createForPlatformViewLayer;
+  final int Function(PlatformViewsChannel_PlatformViewCreationRequest request)
+      _createForTextureLayer;
+  final void Function(int viewId) _dispose;
+  final void Function(PlatformViewsChannel_PlatformViewResizeRequest request,
+      PlatformViewsChannel_PlatformViewBufferResized onComplete) _resize;
+  final void Function(int viewId, double top, double left) _offset;
+  final void Function(PlatformViewsChannel_PlatformViewTouch touch) _onTouch;
+  final void Function(int viewId, int direction) _setDirection;
+  final void Function(int viewId) _clearFocus;
+  final void Function(bool yes) _synchronizeToNativeViewHierarchy;
+
+  void createForPlatformViewLayer(
+      PlatformViewsChannel_PlatformViewCreationRequest request) {
+    return _createForPlatformViewLayer(request);
+  }
+
+  int createForTextureLayer(
+      PlatformViewsChannel_PlatformViewCreationRequest request) {
+    return _createForTextureLayer(request);
+  }
+
+  void dispose(int viewId) {
+    return _dispose(viewId);
+  }
+
+  void resize(PlatformViewsChannel_PlatformViewResizeRequest request,
+      PlatformViewsChannel_PlatformViewBufferResized onComplete) {
+    return _resize(request, onComplete);
+  }
+
+  void offset(int viewId, double top, double left) {
+    return _offset(viewId, top, left);
+  }
+
+  void onTouch(PlatformViewsChannel_PlatformViewTouch touch) {
+    return _onTouch(touch);
+  }
+
+  void setDirection(int viewId, int direction) {
+    return _setDirection(viewId, direction);
+  }
+
+  void clearFocus(int viewId) {
+    return _clearFocus(viewId);
+  }
+
+  void synchronizeToNativeViewHierarchy(bool yes) {
+    return _synchronizeToNativeViewHierarchy(yes);
+  }
+}
+
+final class $PlatformViewsChannel_PlatformViewsHandlerType
+    extends jni.JObjType<PlatformViewsChannel_PlatformViewsHandler> {
+  const $PlatformViewsChannel_PlatformViewsHandlerType();
+
+  @override
+  String get signature =>
+      r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewsHandler;";
+
+  @override
+  PlatformViewsChannel_PlatformViewsHandler fromRef(jni.JObjectPtr ref) =>
+      PlatformViewsChannel_PlatformViewsHandler.fromRef(ref);
+
+  @override
+  jni.JObjType get superType => const jni.JObjectType();
+
+  @override
+  final superCount = 1;
+
+  @override
+  int get hashCode => ($PlatformViewsChannel_PlatformViewsHandlerType).hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other.runtimeType ==
+            ($PlatformViewsChannel_PlatformViewsHandlerType) &&
+        other is $PlatformViewsChannel_PlatformViewsHandlerType;
+  }
+}
+
 /// from: io.flutter.embedding.engine.plugins.FlutterPlugin
 ///
 /// Interface to be implemented by all Flutter plugins.
@@ -1507,6 +3078,22 @@ class FlutterEngine extends jni.JObject {
         jni.JniCallType.objectType, []).object);
   }
 
+  static final _id_getProcessTextChannel = jni.Jni.accessors.getMethodIDOf(
+      _class.reference,
+      r"getProcessTextChannel",
+      r"()Lio/flutter/embedding/engine/systemchannels/ProcessTextChannel;");
+
+  /// from: public io.flutter.embedding.engine.systemchannels.ProcessTextChannel getProcessTextChannel()
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// System channel that sends text processing requests from Flutter to Android.
+  jni.JObject getProcessTextChannel() {
+    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_getProcessTextChannel,
+        jni.JniCallType.objectType, []).object);
+  }
+
   static final _id_getRestorationChannel = jni.Jni.accessors.getMethodIDOf(
       _class.reference,
       r"getRestorationChannel",
@@ -1966,7 +3553,7 @@ class PlatformViewsController extends jni.JObject {
   /// from: public io.flutter.plugin.platform.PlatformView createPlatformView(io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest request, boolean wrapContext)
   /// The returned object must be released after use, by calling the [release] method.
   PlatformView createPlatformView(
-    jni.JObject request,
+    PlatformViewsChannel_PlatformViewCreationRequest request,
     bool wrapContext,
   ) {
     return const $PlatformViewType().fromRef(jni.Jni.accessors
@@ -1984,7 +3571,7 @@ class PlatformViewsController extends jni.JObject {
   /// from: public long configureForTextureLayerComposition(io.flutter.plugin.platform.PlatformView platformView, io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest request)
   int configureForTextureLayerComposition(
     PlatformView platformView,
-    jni.JObject request,
+    PlatformViewsChannel_PlatformViewCreationRequest request,
   ) {
     return jni.Jni.accessors.callMethodWithArgs(
         reference,
@@ -2002,7 +3589,7 @@ class PlatformViewsController extends jni.JObject {
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject toMotionEvent(
     double density,
-    jni.JObject touch,
+    PlatformViewsChannel_PlatformViewTouch touch,
     bool usingVirtualDiplay,
   ) {
     return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
@@ -2907,24 +4494,24 @@ class MainActivity_Companion extends jni.JObject {
   /// The type which includes information such as the signature of this class.
   static const type = $MainActivity_CompanionType();
   static final _id_getTheView = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getTheView", r"()Landroid/view/View;");
+      .getMethodIDOf(_class.reference, r"getTheView", r"()Ljava/util/HashMap;");
 
-  /// from: public final android.view.View getTheView()
+  /// from: public final java.util.HashMap getTheView()
   /// The returned object must be released after use, by calling the [release] method.
-  View getTheView() {
-    return const $ViewType().fromRef(jni.Jni.accessors.callMethodWithArgs(
+  jni.JObject getTheView() {
+    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
         reference, _id_getTheView, jni.JniCallType.objectType, []).object);
   }
 
   static final _id_setTheView = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"setTheView", r"(Landroid/view/View;)V");
+      _class.reference, r"setTheView", r"(Ljava/util/HashMap;)V");
 
-  /// from: public final void setTheView(android.view.View view)
+  /// from: public final void setTheView(java.util.HashMap hashMap)
   void setTheView(
-    View view,
+    jni.JObject hashMap,
   ) {
     return jni.Jni.accessors.callMethodWithArgs(reference, _id_setTheView,
-        jni.JniCallType.voidType, [view.reference]).check();
+        jni.JniCallType.voidType, [hashMap.reference]).check();
   }
 
   static final _id_new0 = jni.Jni.accessors.getMethodIDOf(_class.reference,
@@ -3000,18 +4587,19 @@ class MainActivity extends jni.JObject {
   static final _id_theView = jni.Jni.accessors.getStaticFieldIDOf(
     _class.reference,
     r"theView",
-    r"Landroid/view/View;",
+    r"Ljava/util/HashMap;",
   );
 
-  /// from: static public android.view.View theView
+  /// from: static public java.util.HashMap theView
   /// The returned object must be released after use, by calling the [release] method.
-  static View get theView => const $ViewType().fromRef(jni.Jni.accessors
+  static jni.JObject get theView => const jni.JObjectType().fromRef(jni
+      .Jni.accessors
       .getStaticField(_class.reference, _id_theView, jni.JniCallType.objectType)
       .object);
 
-  /// from: static public android.view.View theView
+  /// from: static public java.util.HashMap theView
   /// The returned object must be released after use, by calling the [release] method.
-  static set theView(View value) => jni.Jni.env
+  static set theView(jni.JObject value) => jni.Jni.env
       .SetStaticObjectField(_class.reference, _id_theView, value.reference);
 
   static final _id_new0 =
@@ -3041,26 +4629,25 @@ class MainActivity extends jni.JObject {
   }
 
   static final _id_getTheView = jni.Jni.accessors.getStaticMethodIDOf(
-      _class.reference, r"getTheView", r"()Landroid/view/View;");
+      _class.reference, r"getTheView", r"()Ljava/util/HashMap;");
 
-  /// from: static public final android.view.View getTheView()
+  /// from: static public final java.util.HashMap getTheView()
   /// The returned object must be released after use, by calling the [release] method.
-  static View getTheView() {
-    return const $ViewType().fromRef(jni.Jni.accessors.callStaticMethodWithArgs(
-        _class.reference,
-        _id_getTheView,
-        jni.JniCallType.objectType, []).object);
+  static jni.JObject getTheView() {
+    return const jni.JObjectType().fromRef(jni.Jni.accessors
+        .callStaticMethodWithArgs(_class.reference, _id_getTheView,
+            jni.JniCallType.objectType, []).object);
   }
 
   static final _id_setTheView = jni.Jni.accessors.getStaticMethodIDOf(
-      _class.reference, r"setTheView", r"(Landroid/view/View;)V");
+      _class.reference, r"setTheView", r"(Ljava/util/HashMap;)V");
 
-  /// from: static public final void setTheView(android.view.View view)
+  /// from: static public final void setTheView(java.util.HashMap hashMap)
   static void setTheView(
-    View view,
+    jni.JObject hashMap,
   ) {
     return jni.Jni.accessors.callStaticMethodWithArgs(_class.reference,
-        _id_setTheView, jni.JniCallType.voidType, [view.reference]).check();
+        _id_setTheView, jni.JniCallType.voidType, [hashMap.reference]).check();
   }
 }
 
@@ -5524,6 +7111,21 @@ class View_OnLongClickListener extends jni.JObject {
         jni.JniCallType.booleanType, [view.reference]).boolean;
   }
 
+  static final _id_onLongClickUseDefaultHapticFeedback = jni.Jni.accessors
+      .getMethodIDOf(_class.reference, r"onLongClickUseDefaultHapticFeedback",
+          r"(Landroid/view/View;)Z");
+
+  /// from: public boolean onLongClickUseDefaultHapticFeedback(android.view.View view)
+  bool onLongClickUseDefaultHapticFeedback(
+    View view,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_onLongClickUseDefaultHapticFeedback,
+        jni.JniCallType.booleanType,
+        [view.reference]).boolean;
+  }
+
   /// Maps a specific port to the implemented interface.
   static final Map<int, $View_OnLongClickListenerImpl> _$impls = {};
   ReceivePort? _$p;
@@ -5558,6 +7160,12 @@ class View_OnLongClickListener extends jni.JObject {
       final $a = $i.args;
       if ($d == r"onLongClick(Landroid/view/View;)Z") {
         final $r = _$impls[$p]!.onLongClick(
+          $a[0].castTo(const $ViewType(), releaseOriginal: true),
+        );
+        return jni.JBoolean($r).toPointer();
+      }
+      if ($d == r"onLongClickUseDefaultHapticFeedback(Landroid/view/View;)Z") {
+        final $r = _$impls[$p]!.onLongClickUseDefaultHapticFeedback(
           $a[0].castTo(const $ViewType(), releaseOriginal: true),
         );
         return jni.JBoolean($r).toPointer();
@@ -5598,20 +7206,30 @@ class View_OnLongClickListener extends jni.JObject {
 abstract class $View_OnLongClickListenerImpl {
   factory $View_OnLongClickListenerImpl({
     required bool Function(View view) onLongClick,
+    required bool Function(View view) onLongClickUseDefaultHapticFeedback,
   }) = _$View_OnLongClickListenerImpl;
 
   bool onLongClick(View view);
+  bool onLongClickUseDefaultHapticFeedback(View view);
 }
 
 class _$View_OnLongClickListenerImpl implements $View_OnLongClickListenerImpl {
   _$View_OnLongClickListenerImpl({
     required bool Function(View view) onLongClick,
-  }) : _onLongClick = onLongClick;
+    required bool Function(View view) onLongClickUseDefaultHapticFeedback,
+  })  : _onLongClick = onLongClick,
+        _onLongClickUseDefaultHapticFeedback =
+            onLongClickUseDefaultHapticFeedback;
 
   final bool Function(View view) _onLongClick;
+  final bool Function(View view) _onLongClickUseDefaultHapticFeedback;
 
   bool onLongClick(View view) {
     return _onLongClick(view);
+  }
+
+  bool onLongClickUseDefaultHapticFeedback(View view) {
+    return _onLongClickUseDefaultHapticFeedback(view);
   }
 }
 
@@ -6275,6 +7893,15 @@ class View extends jni.JObject {
 
   /// The type which includes information such as the signature of this class.
   static const type = $ViewType();
+
+  /// from: static public final int ACCESSIBILITY_DATA_SENSITIVE_AUTO
+  static const ACCESSIBILITY_DATA_SENSITIVE_AUTO = 0;
+
+  /// from: static public final int ACCESSIBILITY_DATA_SENSITIVE_NO
+  static const ACCESSIBILITY_DATA_SENSITIVE_NO = 2;
+
+  /// from: static public final int ACCESSIBILITY_DATA_SENSITIVE_YES
+  static const ACCESSIBILITY_DATA_SENSITIVE_YES = 1;
 
   /// from: static public final int ACCESSIBILITY_LIVE_REGION_ASSERTIVE
   static const ACCESSIBILITY_LIVE_REGION_ASSERTIVE = 2;
@@ -9368,6 +10995,181 @@ class View extends jni.JObject {
             jni.JniCallType.objectType, []).object);
   }
 
+  static final _id_setHandwritingBoundsOffsets = jni.Jni.accessors
+      .getMethodIDOf(
+          _class.reference, r"setHandwritingBoundsOffsets", r"(FFFF)V");
+
+  /// from: public void setHandwritingBoundsOffsets(float f, float f1, float f2, float f3)
+  void setHandwritingBoundsOffsets(
+    double f,
+    double f1,
+    double f2,
+    double f3,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(
+        reference, _id_setHandwritingBoundsOffsets, jni.JniCallType.voidType, [
+      jni.JValueFloat(f),
+      jni.JValueFloat(f1),
+      jni.JValueFloat(f2),
+      jni.JValueFloat(f3)
+    ]).check();
+  }
+
+  static final _id_getHandwritingBoundsOffsetLeft = jni.Jni.accessors
+      .getMethodIDOf(
+          _class.reference, r"getHandwritingBoundsOffsetLeft", r"()F");
+
+  /// from: public float getHandwritingBoundsOffsetLeft()
+  double getHandwritingBoundsOffsetLeft() {
+    return jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_getHandwritingBoundsOffsetLeft,
+        jni.JniCallType.floatType, []).float;
+  }
+
+  static final _id_getHandwritingBoundsOffsetTop = jni.Jni.accessors
+      .getMethodIDOf(
+          _class.reference, r"getHandwritingBoundsOffsetTop", r"()F");
+
+  /// from: public float getHandwritingBoundsOffsetTop()
+  double getHandwritingBoundsOffsetTop() {
+    return jni.Jni.accessors.callMethodWithArgs(reference,
+        _id_getHandwritingBoundsOffsetTop, jni.JniCallType.floatType, []).float;
+  }
+
+  static final _id_getHandwritingBoundsOffsetRight = jni.Jni.accessors
+      .getMethodIDOf(
+          _class.reference, r"getHandwritingBoundsOffsetRight", r"()F");
+
+  /// from: public float getHandwritingBoundsOffsetRight()
+  double getHandwritingBoundsOffsetRight() {
+    return jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_getHandwritingBoundsOffsetRight,
+        jni.JniCallType.floatType, []).float;
+  }
+
+  static final _id_getHandwritingBoundsOffsetBottom = jni.Jni.accessors
+      .getMethodIDOf(
+          _class.reference, r"getHandwritingBoundsOffsetBottom", r"()F");
+
+  /// from: public float getHandwritingBoundsOffsetBottom()
+  double getHandwritingBoundsOffsetBottom() {
+    return jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_getHandwritingBoundsOffsetBottom,
+        jni.JniCallType.floatType, []).float;
+  }
+
+  static final _id_setHandwritingDelegatorCallback = jni.Jni.accessors
+      .getMethodIDOf(_class.reference, r"setHandwritingDelegatorCallback",
+          r"(Ljava/lang/Runnable;)V");
+
+  /// from: public void setHandwritingDelegatorCallback(java.lang.Runnable runnable)
+  void setHandwritingDelegatorCallback(
+    jni.JObject runnable,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_setHandwritingDelegatorCallback,
+        jni.JniCallType.voidType,
+        [runnable.reference]).check();
+  }
+
+  static final _id_getHandwritingDelegatorCallback = jni.Jni.accessors
+      .getMethodIDOf(_class.reference, r"getHandwritingDelegatorCallback",
+          r"()Ljava/lang/Runnable;");
+
+  /// from: public java.lang.Runnable getHandwritingDelegatorCallback()
+  /// The returned object must be released after use, by calling the [release] method.
+  jni.JObject getHandwritingDelegatorCallback() {
+    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_getHandwritingDelegatorCallback,
+        jni.JniCallType.objectType, []).object);
+  }
+
+  static final _id_setAllowedHandwritingDelegatePackage = jni.Jni.accessors
+      .getMethodIDOf(_class.reference, r"setAllowedHandwritingDelegatePackage",
+          r"(Ljava/lang/String;)V");
+
+  /// from: public void setAllowedHandwritingDelegatePackage(java.lang.String string)
+  void setAllowedHandwritingDelegatePackage(
+    jni.JString string,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_setAllowedHandwritingDelegatePackage,
+        jni.JniCallType.voidType,
+        [string.reference]).check();
+  }
+
+  static final _id_getAllowedHandwritingDelegatePackageName = jni.Jni.accessors
+      .getMethodIDOf(_class.reference,
+          r"getAllowedHandwritingDelegatePackageName", r"()Ljava/lang/String;");
+
+  /// from: public java.lang.String getAllowedHandwritingDelegatePackageName()
+  /// The returned object must be released after use, by calling the [release] method.
+  jni.JString getAllowedHandwritingDelegatePackageName() {
+    return const jni.JStringType().fromRef(jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_getAllowedHandwritingDelegatePackageName,
+        jni.JniCallType.objectType, []).object);
+  }
+
+  static final _id_setIsHandwritingDelegate = jni.Jni.accessors
+      .getMethodIDOf(_class.reference, r"setIsHandwritingDelegate", r"(Z)V");
+
+  /// from: public void setIsHandwritingDelegate(boolean z)
+  void setIsHandwritingDelegate(
+    bool z,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_setIsHandwritingDelegate,
+        jni.JniCallType.voidType,
+        [z ? 1 : 0]).check();
+  }
+
+  static final _id_isHandwritingDelegate = jni.Jni.accessors
+      .getMethodIDOf(_class.reference, r"isHandwritingDelegate", r"()Z");
+
+  /// from: public boolean isHandwritingDelegate()
+  bool isHandwritingDelegate() {
+    return jni.Jni.accessors.callMethodWithArgs(reference,
+        _id_isHandwritingDelegate, jni.JniCallType.booleanType, []).boolean;
+  }
+
+  static final _id_setAllowedHandwritingDelegatorPackage = jni.Jni.accessors
+      .getMethodIDOf(_class.reference, r"setAllowedHandwritingDelegatorPackage",
+          r"(Ljava/lang/String;)V");
+
+  /// from: public void setAllowedHandwritingDelegatorPackage(java.lang.String string)
+  void setAllowedHandwritingDelegatorPackage(
+    jni.JString string,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_setAllowedHandwritingDelegatorPackage,
+        jni.JniCallType.voidType,
+        [string.reference]).check();
+  }
+
+  static final _id_getAllowedHandwritingDelegatorPackageName = jni.Jni.accessors
+      .getMethodIDOf(
+          _class.reference,
+          r"getAllowedHandwritingDelegatorPackageName",
+          r"()Ljava/lang/String;");
+
+  /// from: public java.lang.String getAllowedHandwritingDelegatorPackageName()
+  /// The returned object must be released after use, by calling the [release] method.
+  jni.JString getAllowedHandwritingDelegatorPackageName() {
+    return const jni.JStringType().fromRef(jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_getAllowedHandwritingDelegatorPackageName,
+        jni.JniCallType.objectType, []).object);
+  }
+
   static final _id_getLocationInSurface = jni.Jni.accessors
       .getMethodIDOf(_class.reference, r"getLocationInSurface", r"([I)V");
 
@@ -10338,6 +12140,32 @@ class View extends jni.JObject {
         _id_addChildrenForAccessibility,
         jni.JniCallType.voidType,
         [arrayList.reference]).check();
+  }
+
+  static final _id_isAccessibilityDataSensitive = jni.Jni.accessors
+      .getMethodIDOf(_class.reference, r"isAccessibilityDataSensitive", r"()Z");
+
+  /// from: public boolean isAccessibilityDataSensitive()
+  bool isAccessibilityDataSensitive() {
+    return jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_isAccessibilityDataSensitive,
+        jni.JniCallType.booleanType, []).boolean;
+  }
+
+  static final _id_setAccessibilityDataSensitive = jni.Jni.accessors
+      .getMethodIDOf(
+          _class.reference, r"setAccessibilityDataSensitive", r"(I)V");
+
+  /// from: public void setAccessibilityDataSensitive(int i)
+  void setAccessibilityDataSensitive(
+    int i,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(
+        reference,
+        _id_setAccessibilityDataSensitive,
+        jni.JniCallType.voidType,
+        [jni.JValueInt(i)]).check();
   }
 
   static final _id_setTransitionVisibility = jni.Jni.accessors
@@ -15378,6 +17206,26 @@ class View extends jni.JObject {
         _id_removeOnUnhandledKeyEventListener,
         jni.JniCallType.voidType,
         [onUnhandledKeyEventListener.reference]).check();
+  }
+
+  static final _id_setIsCredential = jni.Jni.accessors
+      .getMethodIDOf(_class.reference, r"setIsCredential", r"(Z)V");
+
+  /// from: public void setIsCredential(boolean z)
+  void setIsCredential(
+    bool z,
+  ) {
+    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setIsCredential,
+        jni.JniCallType.voidType, [z ? 1 : 0]).check();
+  }
+
+  static final _id_isCredential = jni.Jni.accessors
+      .getMethodIDOf(_class.reference, r"isCredential", r"()Z");
+
+  /// from: public boolean isCredential()
+  bool isCredential() {
+    return jni.Jni.accessors.callMethodWithArgs(
+        reference, _id_isCredential, jni.JniCallType.booleanType, []).boolean;
   }
 
   static final _id_setAutoHandwritingEnabled = jni.Jni.accessors

@@ -1,15 +1,16 @@
 import 'dart:ui';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:jni/jni.dart';
 import 'package:webview_demo/generated.dart';
-
-import 'native_view_example.dart';
+import 'package:webview_demo/generated.dart' as gen;
 
 const viewTypeId = '<platform-view-type>';
 
 void main() {
-  Jni.initDLApi();
-
   runApp(const MyApp());
 }
 
@@ -29,18 +30,31 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomeWidget extends StatefulWidget {
+class HomeWidget extends StatelessWidget {
   const HomeWidget({
     super.key,
   });
 
   @override
-  State<HomeWidget> createState() => _HomeWidgetState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.amber,
+      body: ListView.builder(
+        itemBuilder: (context, index) => CounterWebView(
+          index,
+          key: ValueKey(index),
+        ),
+      ),
+    );
+  }
 }
 
-Future<void> updateView(int counter) async {
+Future<void> updateView(int which, int counter) async {
   await PlatformIsolate.run(() {
-    MainActivity.theView.castTo(WebView.type).loadData(
+    MainActivity.theView
+        .castTo(JMap.type(JInteger.type, gen.View.type))[which.toJInteger()]!
+        .castTo(WebView.type)
+        .loadData(
           '<h1>$counter</h1>'.toJString(),
           ''.toJString(),
           ''.toJString(),
@@ -48,27 +62,76 @@ Future<void> updateView(int counter) async {
   });
 }
 
-class _HomeWidgetState extends State<HomeWidget> {
-  int counter = 0;
+class CounterWebView extends StatefulWidget {
+  final int index;
+
+  const CounterWebView(
+    this.index, {
+    super.key,
+  });
+
+  @override
+  State<CounterWebView> createState() => _CounterWebViewState();
+}
+
+class _CounterWebViewState extends State<CounterWebView> {
+  late int counter = widget.index;
+  late final int viewId;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          ++counter;
-          updateView(counter);
-        },
-        child: const Icon(Icons.plus_one),
-      ),
-      backgroundColor: Colors.amber,
-      body: const Center(
-        child: SizedBox(
-          height: 300,
-          width: 300,
-          child: NativeViewExample(),
+    return Stack(
+      children: [
+        Center(
+          child: SizedBox(
+              height: 300,
+              width: 300,
+              child: PlatformViewLink(
+                viewType: viewTypeId,
+                surfaceFactory: (context, controller) {
+                  return AndroidViewSurface(
+                    controller: controller as AndroidViewController,
+                    gestureRecognizers: const <Factory<
+                        OneSequenceGestureRecognizer>>{},
+                    hitTestBehavior: PlatformViewHitTestBehavior.opaque,
+                  );
+                },
+                onCreatePlatformView: (params) {
+                  return PlatformViewsService.initSurfaceAndroidView(
+                    id: params.id,
+                    viewType: viewTypeId,
+                    layoutDirection: TextDirection.ltr,
+                    creationParams: {},
+                    creationParamsCodec: const StandardMessageCodec(),
+                    onFocus: () {
+                      params.onFocusChanged(true);
+                    },
+                  )
+                    ..addOnPlatformViewCreatedListener(
+                        params.onPlatformViewCreated)
+                    ..addOnPlatformViewCreatedListener((id) {
+                      viewId = id;
+                      updateView(viewId, counter);
+                    })
+                    ..create();
+                },
+              )),
         ),
-      ),
+        Center(
+          child: FloatingActionButton(
+            onPressed: () async {
+              ++counter;
+              await updateView(viewId, counter);
+            },
+            child: const Icon(Icons.plus_one),
+          ),
+        ),
+      ],
     );
   }
 }
