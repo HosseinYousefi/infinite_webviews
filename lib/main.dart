@@ -1,14 +1,17 @@
+import 'dart:async';
+import 'dart:ffi';
 import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:jni/internal_helpers_for_jnigen.dart';
 import 'package:jni/jni.dart';
 import 'package:webview_demo/generated.dart';
 import 'package:webview_demo/generated.dart' as gen;
 
-const viewTypeId = '<platform-view-type>';
+const viewTypeId = 'plugins.flutter.io/webview';
 
 void main() {
   runApp(const MyApp());
@@ -49,19 +52,6 @@ class HomeWidget extends StatelessWidget {
   }
 }
 
-Future<void> updateView(int which, int counter) async {
-  await PlatformIsolate.run(() {
-    MainActivity.theView
-        .castTo(JMap.type(JInteger.type, gen.View.type))[which.toJInteger()]!
-        .castTo(WebView.type)
-        .loadData(
-          '<h1>$counter</h1>'.toJString(),
-          ''.toJString(),
-          ''.toJString(),
-        );
-  });
-}
-
 class CounterWebView extends StatefulWidget {
   final int index;
 
@@ -75,12 +65,33 @@ class CounterWebView extends StatefulWidget {
 }
 
 class _CounterWebViewState extends State<CounterWebView> {
-  late int counter = widget.index;
   late final int viewId;
+  int address = -1;
+  int counter = 0;
+
+  static Future<void> updateView(int counter, int address) async {
+    await PlatformIsolate.run(() {
+      final webView = WebView.fromRef(Pointer<Void>.fromAddress(address));
+      webView.loadData(
+          '<h1>$counter</h1>'.toJString(), ''.toJString(), ''.toJString());
+      webView.setAsReleased();
+    });
+  }
 
   @override
   void initState() {
     super.initState();
+    counter = widget.index;
+  }
+
+  @override
+  void dispose() {
+    if (address != -1) {
+      PlatformIsolate.run(() {
+        JObject.fromRef(Pointer<Void>.fromAddress(address)).release();
+      });
+    }
+    super.dispose();
   }
 
   @override
@@ -112,12 +123,21 @@ class _CounterWebViewState extends State<CounterWebView> {
                       params.onFocusChanged(true);
                     },
                   )
-                    ..addOnPlatformViewCreatedListener(
-                        params.onPlatformViewCreated)
                     ..addOnPlatformViewCreatedListener((id) {
                       viewId = id;
-                      updateView(viewId, counter);
+                      final methodChannel = MethodChannel('WebView/$id');
+                      methodChannel.setMethodCallHandler((call) async {
+                        print(call);
+                        if (call.method == 'address') {
+                          print('address got called');
+                          address = call.arguments as int;
+                          updateView(counter, address);
+                          return;
+                        }
+                      });
                     })
+                    ..addOnPlatformViewCreatedListener(
+                        params.onPlatformViewCreated)
                     ..create();
                 },
               )),
@@ -126,7 +146,9 @@ class _CounterWebViewState extends State<CounterWebView> {
           child: FloatingActionButton(
             onPressed: () async {
               ++counter;
-              await updateView(viewId, counter);
+              if (address != -1) {
+                await updateView(counter, address);
+              }
             },
             child: const Icon(Icons.plus_one),
           ),
