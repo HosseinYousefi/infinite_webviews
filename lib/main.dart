@@ -1,15 +1,9 @@
 import 'dart:async';
-import 'dart:ffi';
 import 'dart:ui';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:jni/internal_helpers_for_jnigen.dart';
 import 'package:jni/jni.dart';
-import 'package:webview_demo/generated.dart';
-import 'package:webview_demo/generated.dart' as gen;
+import 'generated.dart';
 
 const viewTypeId = 'plugins.flutter.io/webview';
 
@@ -65,95 +59,70 @@ class CounterWebView extends StatefulWidget {
 }
 
 class _CounterWebViewState extends State<CounterWebView> {
-  late final int viewId;
-  int address = -1;
+  late final Future<WebView> webView;
   int counter = 0;
-
-  static Future<void> updateView(int counter, int address) async {
-    await PlatformIsolate.run(() {
-      final webView = WebView.fromRef(Pointer<Void>.fromAddress(address));
-      webView.loadData(
-          '<h1>$counter</h1>'.toJString(), ''.toJString(), ''.toJString());
-      webView.setAsReleased();
-    });
-  }
 
   @override
   void initState() {
     super.initState();
+    webView = runOnPlatformThread(() =>
+        WebView(JObject.fromReference(Jni.getCachedApplicationContext())));
     counter = widget.index;
+  }
+
+  static Future<void> updateView(WebView webView, int counter) async {
+    await runOnPlatformThread(() {
+      webView.loadData(
+          '<h1>$counter</h1>'.toJString(), ''.toJString(), ''.toJString());
+    });
+  }
+
+  static Future<void> disposeWebView(WebView webView) {
+    return runOnPlatformThread(() {
+      webView.release();
+    });
   }
 
   @override
   void dispose() {
-    if (address != -1) {
-      PlatformIsolate.run(() {
-        JObject.fromRef(Pointer<Void>.fromAddress(address)).release();
-      });
-    }
+    (() async => disposeWebView(await webView))();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Center(
-          child: SizedBox(
-              height: 300,
-              width: 300,
-              child: PlatformViewLink(
-                viewType: viewTypeId,
-                surfaceFactory: (context, controller) {
-                  return AndroidViewSurface(
-                    controller: controller as AndroidViewController,
-                    gestureRecognizers: const <Factory<
-                        OneSequenceGestureRecognizer>>{},
-                    hitTestBehavior: PlatformViewHitTestBehavior.opaque,
-                  );
-                },
-                onCreatePlatformView: (params) {
-                  return PlatformViewsService.initSurfaceAndroidView(
-                    id: params.id,
-                    viewType: viewTypeId,
-                    layoutDirection: TextDirection.ltr,
-                    creationParams: {},
-                    creationParamsCodec: const StandardMessageCodec(),
-                    onFocus: () {
-                      params.onFocusChanged(true);
-                    },
-                  )
-                    ..addOnPlatformViewCreatedListener((id) {
-                      viewId = id;
-                      final methodChannel = MethodChannel('WebView/$id');
-                      methodChannel.setMethodCallHandler((call) async {
-                        print(call);
-                        if (call.method == 'address') {
-                          print('address got called');
-                          address = call.arguments as int;
-                          updateView(counter, address);
-                          return;
-                        }
-                      });
-                    })
-                    ..addOnPlatformViewCreatedListener(
-                        params.onPlatformViewCreated)
-                    ..create();
-                },
-              )),
-        ),
-        Center(
-          child: FloatingActionButton(
-            onPressed: () async {
-              ++counter;
-              if (address != -1) {
-                await updateView(counter, address);
-              }
-            },
-            child: const Icon(Icons.plus_one),
-          ),
-        ),
-      ],
+    return Center(
+      child: SizedBox(
+        height: 300,
+        width: 300,
+        child: FutureBuilder(
+            future: webView,
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) return const Text('...');
+              final view = snapshot.data!;
+              updateView(view, counter);
+              return Stack(
+                children: [
+                  Center(
+                    child: AndroidView(
+                      viewType: viewTypeId,
+                      creationParams: view.reference.pointer.address,
+                      creationParamsCodec: const StandardMessageCodec(),
+                    ),
+                  ),
+                  Center(
+                    child: FloatingActionButton(
+                      onPressed: () async {
+                        ++counter;
+                        await updateView(view, counter);
+                      },
+                      child: const Icon(Icons.plus_one),
+                    ),
+                  ),
+                ],
+              );
+            }),
+      ),
     );
   }
 }

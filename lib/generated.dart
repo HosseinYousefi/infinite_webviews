@@ -4,6 +4,7 @@
 // ignore_for_file: camel_case_extensions
 // ignore_for_file: camel_case_types
 // ignore_for_file: constant_identifier_names
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: file_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: no_leading_underscores_for_local_identifiers
@@ -21,6 +22,434 @@ import "dart:ffi" as ffi;
 import "package:jni/internal_helpers_for_jnigen.dart";
 import "package:jni/jni.dart" as jni;
 
+/// from: com.example.webview_demo.NativeViewFactory
+class NativeViewFactory extends jni.JObject {
+  @override
+  late final jni.JObjType<NativeViewFactory> $type = type;
+
+  NativeViewFactory.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
+
+  static final _class =
+      jni.JClass.forName(r"com/example/webview_demo/NativeViewFactory");
+
+  /// The type which includes information such as the signature of this class.
+  static const type = $NativeViewFactoryType();
+  static final _id_create = _class.instanceMethodId(
+    r"create",
+    r"(Landroid/content/Context;ILjava/lang/Object;)Lio/flutter/plugin/platform/PlatformView;",
+  );
+
+  /// from: public abstract io.flutter.plugin.platform.PlatformView create(android.content.Context context, int i, java.lang.Object object)
+  /// The returned object must be released after use, by calling the [release] method.
+  PlatformView create(
+    jni.JObject context,
+    int i,
+    jni.JObject object,
+  ) {
+    return _id_create(this, const $PlatformViewType(), [
+      context.reference.pointer,
+      jni.JValueInt(i),
+      object.reference.pointer
+    ]);
+  }
+
+  /// Maps a specific port to the implemented interface.
+  static final Map<int, $NativeViewFactoryImpl> _$impls = {};
+  ReceivePort? _$p;
+
+  static jni.JObjectPtr _$invoke(
+    int port,
+    jni.JObjectPtr descriptor,
+    jni.JObjectPtr args,
+  ) {
+    return _$invokeMethod(
+      port,
+      $MethodInvocation.fromAddresses(
+        0,
+        descriptor.address,
+        args.address,
+      ),
+    );
+  }
+
+  static final ffi.Pointer<
+          ffi.NativeFunction<
+              jni.JObjectPtr Function(
+                  ffi.Uint64, jni.JObjectPtr, jni.JObjectPtr)>>
+      _$invokePointer = ffi.Pointer.fromFunction(_$invoke);
+
+  static ffi.Pointer<ffi.Void> _$invokeMethod(
+    int $p,
+    $MethodInvocation $i,
+  ) {
+    try {
+      final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
+      final $a = $i.args;
+      if ($d ==
+          r"create(Landroid/content/Context;ILjava/lang/Object;)Lio/flutter/plugin/platform/PlatformView;") {
+        final $r = _$impls[$p]!.create(
+          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[1]
+              .castTo(const jni.JIntegerType(), releaseOriginal: true)
+              .intValue(releaseOriginal: true),
+          $a[2].castTo(const jni.JObjectType(), releaseOriginal: true),
+        );
+        return ($r as jni.JObject)
+            .castTo(const jni.JObjectType())
+            .reference
+            .toPointer();
+      }
+    } catch (e) {
+      return ProtectedJniExtensions.newDartException(e.toString());
+    }
+    return jni.nullptr;
+  }
+
+  factory NativeViewFactory.implement(
+    $NativeViewFactoryImpl $impl,
+  ) {
+    final $p = ReceivePort();
+    final $x = NativeViewFactory.fromReference(
+      ProtectedJniExtensions.newPortProxy(
+        r"com.example.webview_demo.NativeViewFactory",
+        $p,
+        _$invokePointer,
+      ),
+    ).._$p = $p;
+    final $a = $p.sendPort.nativePort;
+    _$impls[$a] = $impl;
+    $p.listen(($m) {
+      if ($m == null) {
+        _$impls.remove($p.sendPort.nativePort);
+        $p.close();
+        return;
+      }
+      final $i = $MethodInvocation.fromMessage($m as List<dynamic>);
+      final $r = _$invokeMethod($p.sendPort.nativePort, $i);
+      ProtectedJniExtensions.returnResult($i.result, $r);
+    });
+    return $x;
+  }
+}
+
+abstract interface class $NativeViewFactoryImpl {
+  factory $NativeViewFactoryImpl({
+    required PlatformView Function(
+            jni.JObject context, int i, jni.JObject object)
+        create,
+  }) = _$NativeViewFactoryImpl;
+
+  PlatformView create(jni.JObject context, int i, jni.JObject object);
+}
+
+class _$NativeViewFactoryImpl implements $NativeViewFactoryImpl {
+  _$NativeViewFactoryImpl({
+    required PlatformView Function(
+            jni.JObject context, int i, jni.JObject object)
+        create,
+  }) : _create = create;
+
+  final PlatformView Function(jni.JObject context, int i, jni.JObject object)
+      _create;
+
+  PlatformView create(jni.JObject context, int i, jni.JObject object) {
+    return _create(context, i, object);
+  }
+}
+
+final class $NativeViewFactoryType extends jni.JObjType<NativeViewFactory> {
+  const $NativeViewFactoryType();
+
+  @override
+  String get signature => r"Lcom/example/webview_demo/NativeViewFactory;";
+
+  @override
+  NativeViewFactory fromReference(jni.JReference reference) =>
+      NativeViewFactory.fromReference(reference);
+
+  @override
+  jni.JObjType get superType => const jni.JObjectType();
+
+  @override
+  final superCount = 1;
+
+  @override
+  int get hashCode => ($NativeViewFactoryType).hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($NativeViewFactoryType) &&
+        other is $NativeViewFactoryType;
+  }
+}
+
+/// from: com.example.webview_demo.NativeViewFactoryWrapper
+class NativeViewFactoryWrapper extends jni.JObject {
+  @override
+  late final jni.JObjType<NativeViewFactoryWrapper> $type = type;
+
+  NativeViewFactoryWrapper.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
+
+  static final _class =
+      jni.JClass.forName(r"com/example/webview_demo/NativeViewFactoryWrapper");
+
+  /// The type which includes information such as the signature of this class.
+  static const type = $NativeViewFactoryWrapperType();
+  static final _id_new0 = _class.constructorId(
+    r"(Lcom/example/webview_demo/NativeViewFactory;)V",
+  );
+
+  /// from: public void <init>(com.example.webview_demo.NativeViewFactory nativeViewFactory)
+  /// The returned object must be released after use, by calling the [release] method.
+  factory NativeViewFactoryWrapper(
+    NativeViewFactory nativeViewFactory,
+  ) {
+    return NativeViewFactoryWrapper.fromReference(
+        _id_new0(_class, referenceType, [nativeViewFactory.reference.pointer]));
+  }
+
+  static final _id_create = _class.instanceMethodId(
+    r"create",
+    r"(Landroid/content/Context;ILjava/lang/Object;)Lio/flutter/plugin/platform/PlatformView;",
+  );
+
+  /// from: public io.flutter.plugin.platform.PlatformView create(android.content.Context context, int i, java.lang.Object object)
+  /// The returned object must be released after use, by calling the [release] method.
+  PlatformView create(
+    jni.JObject context,
+    int i,
+    jni.JObject object,
+  ) {
+    return _id_create(this, const $PlatformViewType(), [
+      context.reference.pointer,
+      jni.JValueInt(i),
+      object.reference.pointer
+    ]);
+  }
+}
+
+final class $NativeViewFactoryWrapperType
+    extends jni.JObjType<NativeViewFactoryWrapper> {
+  const $NativeViewFactoryWrapperType();
+
+  @override
+  String get signature =>
+      r"Lcom/example/webview_demo/NativeViewFactoryWrapper;";
+
+  @override
+  NativeViewFactoryWrapper fromReference(jni.JReference reference) =>
+      NativeViewFactoryWrapper.fromReference(reference);
+
+  @override
+  jni.JObjType get superType => const jni.JObjectType();
+
+  @override
+  final superCount = 1;
+
+  @override
+  int get hashCode => ($NativeViewFactoryWrapperType).hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($NativeViewFactoryWrapperType) &&
+        other is $NativeViewFactoryWrapperType;
+  }
+}
+
+/// from: com.example.webview_demo.MainActivity$Companion
+class MainActivity_Companion extends jni.JObject {
+  @override
+  late final jni.JObjType<MainActivity_Companion> $type = type;
+
+  MainActivity_Companion.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
+
+  static final _class =
+      jni.JClass.forName(r"com/example/webview_demo/MainActivity$Companion");
+
+  /// The type which includes information such as the signature of this class.
+  static const type = $MainActivity_CompanionType();
+  static final _id_getTheView = _class.instanceMethodId(
+    r"getTheView",
+    r"()Ljava/util/HashMap;",
+  );
+
+  /// from: public final java.util.HashMap getTheView()
+  /// The returned object must be released after use, by calling the [release] method.
+  jni.JObject getTheView() {
+    return _id_getTheView(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_setTheView = _class.instanceMethodId(
+    r"setTheView",
+    r"(Ljava/util/HashMap;)V",
+  );
+
+  /// from: public final void setTheView(java.util.HashMap hashMap)
+  void setTheView(
+    jni.JObject hashMap,
+  ) {
+    _id_setTheView(this, const jni.jvoidType(), [hashMap.reference.pointer]);
+  }
+
+  static final _id_new0 = _class.constructorId(
+    r"(Lkotlin/jvm/internal/DefaultConstructorMarker;)V",
+  );
+
+  /// from: public void <init>(kotlin.jvm.internal.DefaultConstructorMarker defaultConstructorMarker)
+  /// The returned object must be released after use, by calling the [release] method.
+  factory MainActivity_Companion(
+    jni.JObject defaultConstructorMarker,
+  ) {
+    return MainActivity_Companion.fromReference(_id_new0(
+        _class, referenceType, [defaultConstructorMarker.reference.pointer]));
+  }
+}
+
+final class $MainActivity_CompanionType
+    extends jni.JObjType<MainActivity_Companion> {
+  const $MainActivity_CompanionType();
+
+  @override
+  String get signature => r"Lcom/example/webview_demo/MainActivity$Companion;";
+
+  @override
+  MainActivity_Companion fromReference(jni.JReference reference) =>
+      MainActivity_Companion.fromReference(reference);
+
+  @override
+  jni.JObjType get superType => const jni.JObjectType();
+
+  @override
+  final superCount = 1;
+
+  @override
+  int get hashCode => ($MainActivity_CompanionType).hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($MainActivity_CompanionType) &&
+        other is $MainActivity_CompanionType;
+  }
+}
+
+/// from: com.example.webview_demo.MainActivity
+class MainActivity extends jni.JObject {
+  @override
+  late final jni.JObjType<MainActivity> $type = type;
+
+  MainActivity.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
+
+  static final _class =
+      jni.JClass.forName(r"com/example/webview_demo/MainActivity");
+
+  /// The type which includes information such as the signature of this class.
+  static const type = $MainActivityType();
+  static final _id_Companion = _class.staticFieldId(
+    r"Companion",
+    r"Lcom/example/webview_demo/MainActivity$Companion;",
+  );
+
+  /// from: static public final com.example.webview_demo.MainActivity$Companion Companion
+  /// The returned object must be released after use, by calling the [release] method.
+  static MainActivity_Companion get Companion =>
+      _id_Companion.get(_class, const $MainActivity_CompanionType());
+
+  static final _id_theView = _class.staticFieldId(
+    r"theView",
+    r"Ljava/util/HashMap;",
+  );
+
+  /// from: static public java.util.HashMap theView
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JObject get theView =>
+      _id_theView.get(_class, const jni.JObjectType());
+
+  /// from: static public java.util.HashMap theView
+  /// The returned object must be released after use, by calling the [release] method.
+  static set theView(jni.JObject value) =>
+      _id_theView.set(_class, const jni.JObjectType(), value);
+
+  static final _id_new0 = _class.constructorId(
+    r"()V",
+  );
+
+  /// from: public void <init>()
+  /// The returned object must be released after use, by calling the [release] method.
+  factory MainActivity() {
+    return MainActivity.fromReference(_id_new0(_class, referenceType, []));
+  }
+
+  static final _id_configureFlutterEngine = _class.instanceMethodId(
+    r"configureFlutterEngine",
+    r"(Lio/flutter/embedding/engine/FlutterEngine;)V",
+  );
+
+  /// from: public void configureFlutterEngine(io.flutter.embedding.engine.FlutterEngine flutterEngine)
+  void configureFlutterEngine(
+    FlutterEngine flutterEngine,
+  ) {
+    _id_configureFlutterEngine(
+        this, const jni.jvoidType(), [flutterEngine.reference.pointer]);
+  }
+
+  static final _id_getTheView = _class.staticMethodId(
+    r"getTheView",
+    r"()Ljava/util/HashMap;",
+  );
+
+  /// from: static public final java.util.HashMap getTheView()
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JObject getTheView() {
+    return _id_getTheView(_class, const jni.JObjectType(), []);
+  }
+
+  static final _id_setTheView = _class.staticMethodId(
+    r"setTheView",
+    r"(Ljava/util/HashMap;)V",
+  );
+
+  /// from: static public final void setTheView(java.util.HashMap hashMap)
+  static void setTheView(
+    jni.JObject hashMap,
+  ) {
+    _id_setTheView(_class, const jni.jvoidType(), [hashMap.reference.pointer]);
+  }
+}
+
+final class $MainActivityType extends jni.JObjType<MainActivity> {
+  const $MainActivityType();
+
+  @override
+  String get signature => r"Lcom/example/webview_demo/MainActivity;";
+
+  @override
+  MainActivity fromReference(jni.JReference reference) =>
+      MainActivity.fromReference(reference);
+
+  @override
+  jni.JObjType get superType => const jni.JObjectType();
+
+  @override
+  final superCount = 1;
+
+  @override
+  int get hashCode => ($MainActivityType).hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($MainActivityType) &&
+        other is $MainActivityType;
+  }
+}
+
 /// from: io.flutter.plugin.platform.PlatformView
 ///
 /// A handle to an Android view to be embedded in the Flutter hierarchy.
@@ -28,29 +457,32 @@ class PlatformView extends jni.JObject {
   @override
   late final jni.JObjType<PlatformView> $type = type;
 
-  PlatformView.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  PlatformView.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"io/flutter/plugin/platform/PlatformView");
+      jni.JClass.forName(r"io/flutter/plugin/platform/PlatformView");
 
   /// The type which includes information such as the signature of this class.
   static const type = $PlatformViewType();
-  static final _id_getView = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getView", r"()Landroid/view/View;");
+  static final _id_getView = _class.instanceMethodId(
+    r"getView",
+    r"()Landroid/view/View;",
+  );
 
   /// from: public abstract android.view.View getView()
   /// The returned object must be released after use, by calling the [release] method.
   ///
   /// Returns the Android view to be embedded in the Flutter hierarchy.
   View getView() {
-    return const $ViewType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getView, jni.JniCallType.objectType, []).object);
+    return _id_getView(this, const $ViewType(), []);
   }
 
-  static final _id_onFlutterViewAttached = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onFlutterViewAttached", r"(Landroid/view/View;)V");
+  static final _id_onFlutterViewAttached = _class.instanceMethodId(
+    r"onFlutterViewAttached",
+    r"(Landroid/view/View;)V",
+  );
 
   /// from: default public void onFlutterViewAttached(android.view.View flutterView)
   ///
@@ -69,15 +501,14 @@ class PlatformView extends jni.JObject {
   void onFlutterViewAttached(
     View flutterView,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onFlutterViewAttached,
-        jni.JniCallType.voidType,
-        [flutterView.reference]).check();
+    _id_onFlutterViewAttached(
+        this, const jni.jvoidType(), [flutterView.reference.pointer]);
   }
 
-  static final _id_onFlutterViewDetached = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onFlutterViewDetached", r"()V");
+  static final _id_onFlutterViewDetached = _class.instanceMethodId(
+    r"onFlutterViewDetached",
+    r"()V",
+  );
 
   /// from: default public void onFlutterViewDetached()
   ///
@@ -91,12 +522,13 @@ class PlatformView extends jni.JObject {
   /// This platform view must release any references related to the Android View that was
   /// provided in \#onFlutterViewAttached(View).
   void onFlutterViewDetached() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_onFlutterViewDetached, jni.JniCallType.voidType, []).check();
+    _id_onFlutterViewDetached(this, const jni.jvoidType(), []);
   }
 
-  static final _id_dispose =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"dispose", r"()V");
+  static final _id_dispose = _class.instanceMethodId(
+    r"dispose",
+    r"()V",
+  );
 
   /// from: public abstract void dispose()
   ///
@@ -109,12 +541,13 @@ class PlatformView extends jni.JObject {
   ///
   /// References related to the Android View attached in \#onFlutterViewAttached(View) must be released in {@code dispose()} to avoid memory leaks.
   void dispose() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_dispose, jni.JniCallType.voidType, []).check();
+    _id_dispose(this, const jni.jvoidType(), []);
   }
 
-  static final _id_onInputConnectionLocked = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onInputConnectionLocked", r"()V");
+  static final _id_onInputConnectionLocked = _class.instanceMethodId(
+    r"onInputConnectionLocked",
+    r"()V",
+  );
 
   /// from: default public void onInputConnectionLocked()
   ///
@@ -123,12 +556,13 @@ class PlatformView extends jni.JObject {
   /// This hook only exists for rare cases where the plugin relies on the state of the input
   /// connection. This probably doesn't need to be implemented.
   void onInputConnectionLocked() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_onInputConnectionLocked, jni.JniCallType.voidType, []).check();
+    _id_onInputConnectionLocked(this, const jni.jvoidType(), []);
   }
 
-  static final _id_onInputConnectionUnlocked = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onInputConnectionUnlocked", r"()V");
+  static final _id_onInputConnectionUnlocked = _class.instanceMethodId(
+    r"onInputConnectionUnlocked",
+    r"()V",
+  );
 
   /// from: default public void onInputConnectionUnlocked()
   ///
@@ -137,8 +571,7 @@ class PlatformView extends jni.JObject {
   /// This hook only exists for rare cases where the plugin relies on the state of the input
   /// connection. This probably doesn't need to be implemented.
   void onInputConnectionUnlocked() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_onInputConnectionUnlocked, jni.JniCallType.voidType, []).check();
+    _id_onInputConnectionUnlocked(this, const jni.jvoidType(), []);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -175,7 +608,10 @@ class PlatformView extends jni.JObject {
       final $a = $i.args;
       if ($d == r"getView()Landroid/view/View;") {
         final $r = _$impls[$p]!.getView();
-        return ($r as jni.JObject).castTo(const jni.JObjectType()).toPointer();
+        return ($r as jni.JObject)
+            .castTo(const jni.JObjectType())
+            .reference
+            .toPointer();
       }
       if ($d == r"onFlutterViewAttached(Landroid/view/View;)V") {
         _$impls[$p]!.onFlutterViewAttached(
@@ -209,7 +645,7 @@ class PlatformView extends jni.JObject {
     $PlatformViewImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = PlatformView.fromRef(
+    final $x = PlatformView.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"io.flutter.plugin.platform.PlatformView",
         $p,
@@ -232,7 +668,7 @@ class PlatformView extends jni.JObject {
   }
 }
 
-abstract class $PlatformViewImpl {
+abstract interface class $PlatformViewImpl {
   factory $PlatformViewImpl({
     required View Function() getView,
     required void Function(View flutterView) onFlutterViewAttached,
@@ -304,7 +740,8 @@ final class $PlatformViewType extends jni.JObjType<PlatformView> {
   String get signature => r"Lio/flutter/plugin/platform/PlatformView;";
 
   @override
-  PlatformView fromRef(jni.JObjectPtr ref) => PlatformView.fromRef(ref);
+  PlatformView fromReference(jni.JReference reference) =>
+      PlatformView.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -322,410 +759,6 @@ final class $PlatformViewType extends jni.JObjType<PlatformView> {
   }
 }
 
-/// from: io.flutter.embedding.engine.systemchannels.PlatformViewsChannel
-///
-/// System channel that sends 2-way communication between Flutter and Android to facilitate embedding
-/// of Android Views within a Flutter application.
-///
-/// Register a PlatformViewsHandler to implement the Android side of this channel.
-class PlatformViewsChannel extends jni.JObject {
-  @override
-  late final jni.JObjType<PlatformViewsChannel> $type = type;
-
-  PlatformViewsChannel.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
-
-  static final _class = jni.Jni.findJClass(
-      r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel");
-
-  /// The type which includes information such as the signature of this class.
-  static const type = $PlatformViewsChannelType();
-  static final _id_invokeViewFocused = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"invokeViewFocused", r"(I)V");
-
-  /// from: public void invokeViewFocused(int viewId)
-  void invokeViewFocused(
-    int viewId,
-  ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_invokeViewFocused,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(viewId)]).check();
-  }
-
-  static final _id_new0 = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"<init>", r"(Lio/flutter/embedding/engine/dart/DartExecutor;)V");
-
-  /// from: public void <init>(io.flutter.embedding.engine.dart.DartExecutor dartExecutor)
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// Constructs a {@code PlatformViewsChannel} that connects Android to the Dart code running in
-  /// {@code dartExecutor}.
-  ///
-  /// The given {@code dartExecutor} is permitted to be idle or executing code.
-  ///
-  /// See DartExecutor.
-  factory PlatformViewsChannel(
-    jni.JObject dartExecutor,
-  ) {
-    return PlatformViewsChannel.fromRef(jni.Jni.accessors.newObjectWithArgs(
-        _class.reference, _id_new0, [dartExecutor.reference]).object);
-  }
-
-  static final _id_setPlatformViewsHandler = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setPlatformViewsHandler",
-      r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewsHandler;)V");
-
-  /// from: public void setPlatformViewsHandler(io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewsHandler handler)
-  ///
-  /// Sets the PlatformViewsHandler which receives all events and requests that are parsed
-  /// from the underlying platform views channel.
-  void setPlatformViewsHandler(
-    PlatformViewsChannel_PlatformViewsHandler handler,
-  ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setPlatformViewsHandler,
-        jni.JniCallType.voidType,
-        [handler.reference]).check();
-  }
-}
-
-final class $PlatformViewsChannelType
-    extends jni.JObjType<PlatformViewsChannel> {
-  const $PlatformViewsChannelType();
-
-  @override
-  String get signature =>
-      r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel;";
-
-  @override
-  PlatformViewsChannel fromRef(jni.JObjectPtr ref) =>
-      PlatformViewsChannel.fromRef(ref);
-
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
-
-  @override
-  final superCount = 1;
-
-  @override
-  int get hashCode => ($PlatformViewsChannelType).hashCode;
-
-  @override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($PlatformViewsChannelType) &&
-        other is $PlatformViewsChannelType;
-  }
-}
-
-/// from: io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewTouch
-///
-/// The state of a touch event in Flutter within a platform view.
-class PlatformViewsChannel_PlatformViewTouch extends jni.JObject {
-  @override
-  late final jni.JObjType<PlatformViewsChannel_PlatformViewTouch> $type = type;
-
-  PlatformViewsChannel_PlatformViewTouch.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
-
-  static final _class = jni.Jni.findJClass(
-      r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewTouch");
-
-  /// The type which includes information such as the signature of this class.
-  static const type = $PlatformViewsChannel_PlatformViewTouchType();
-  static final _id_viewId = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"viewId",
-    r"I",
-  );
-
-  /// from: public final int viewId
-  ///
-  /// The ID of the platform view as seen by the Flutter side.
-  int get viewId => jni.Jni.accessors
-      .getField(reference, _id_viewId, jni.JniCallType.intType)
-      .integer;
-
-  static final _id_downTime = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"downTime",
-    r"Ljava/lang/Number;",
-  );
-
-  /// from: public final java.lang.Number downTime
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// The amount of time that the touch has been pressed.
-  jni.JNumber get downTime => const jni.JNumberType().fromRef(jni.Jni.accessors
-      .getField(reference, _id_downTime, jni.JniCallType.objectType)
-      .object);
-
-  static final _id_eventTime = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"eventTime",
-    r"Ljava/lang/Number;",
-  );
-
-  /// from: public final java.lang.Number eventTime
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// TODO(mattcarroll): javadoc
-  jni.JNumber get eventTime => const jni.JNumberType().fromRef(jni.Jni.accessors
-      .getField(reference, _id_eventTime, jni.JniCallType.objectType)
-      .object);
-
-  static final _id_action = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"action",
-    r"I",
-  );
-
-  /// from: public final int action
-  int get action => jni.Jni.accessors
-      .getField(reference, _id_action, jni.JniCallType.intType)
-      .integer;
-
-  static final _id_pointerCount = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"pointerCount",
-    r"I",
-  );
-
-  /// from: public final int pointerCount
-  ///
-  /// The number of pointers (e.g, fingers) involved in the touch event.
-  int get pointerCount => jni.Jni.accessors
-      .getField(reference, _id_pointerCount, jni.JniCallType.intType)
-      .integer;
-
-  static final _id_rawPointerPropertiesList = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"rawPointerPropertiesList",
-    r"Ljava/lang/Object;",
-  );
-
-  /// from: public final java.lang.Object rawPointerPropertiesList
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// Properties for each pointer, encoded in a raw format.
-  jni.JObject get rawPointerPropertiesList =>
-      const jni.JObjectType().fromRef(jni.Jni.accessors
-          .getField(reference, _id_rawPointerPropertiesList,
-              jni.JniCallType.objectType)
-          .object);
-
-  static final _id_rawPointerCoords = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"rawPointerCoords",
-    r"Ljava/lang/Object;",
-  );
-
-  /// from: public final java.lang.Object rawPointerCoords
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// Coordinates for each pointer, encoded in a raw format.
-  jni.JObject get rawPointerCoords =>
-      const jni.JObjectType().fromRef(jni.Jni.accessors
-          .getField(reference, _id_rawPointerCoords, jni.JniCallType.objectType)
-          .object);
-
-  static final _id_metaState = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"metaState",
-    r"I",
-  );
-
-  /// from: public final int metaState
-  ///
-  /// TODO(mattcarroll): javadoc
-  int get metaState => jni.Jni.accessors
-      .getField(reference, _id_metaState, jni.JniCallType.intType)
-      .integer;
-
-  static final _id_buttonState = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"buttonState",
-    r"I",
-  );
-
-  /// from: public final int buttonState
-  ///
-  /// TODO(mattcarroll): javadoc
-  int get buttonState => jni.Jni.accessors
-      .getField(reference, _id_buttonState, jni.JniCallType.intType)
-      .integer;
-
-  static final _id_xPrecision = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"xPrecision",
-    r"F",
-  );
-
-  /// from: public final float xPrecision
-  ///
-  /// Coordinate precision along the x-axis.
-  double get xPrecision => jni.Jni.accessors
-      .getField(reference, _id_xPrecision, jni.JniCallType.floatType)
-      .float;
-
-  static final _id_yPrecision = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"yPrecision",
-    r"F",
-  );
-
-  /// from: public final float yPrecision
-  ///
-  /// Coordinate precision along the y-axis.
-  double get yPrecision => jni.Jni.accessors
-      .getField(reference, _id_yPrecision, jni.JniCallType.floatType)
-      .float;
-
-  static final _id_deviceId = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"deviceId",
-    r"I",
-  );
-
-  /// from: public final int deviceId
-  ///
-  /// TODO(mattcarroll): javadoc
-  int get deviceId => jni.Jni.accessors
-      .getField(reference, _id_deviceId, jni.JniCallType.intType)
-      .integer;
-
-  static final _id_edgeFlags = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"edgeFlags",
-    r"I",
-  );
-
-  /// from: public final int edgeFlags
-  ///
-  /// TODO(mattcarroll): javadoc
-  int get edgeFlags => jni.Jni.accessors
-      .getField(reference, _id_edgeFlags, jni.JniCallType.intType)
-      .integer;
-
-  static final _id_source = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"source",
-    r"I",
-  );
-
-  /// from: public final int source
-  ///
-  /// TODO(mattcarroll): javadoc
-  int get source => jni.Jni.accessors
-      .getField(reference, _id_source, jni.JniCallType.intType)
-      .integer;
-
-  static final _id_flags = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"flags",
-    r"I",
-  );
-
-  /// from: public final int flags
-  ///
-  /// TODO(mattcarroll): javadoc
-  int get flags => jni.Jni.accessors
-      .getField(reference, _id_flags, jni.JniCallType.intType)
-      .integer;
-
-  static final _id_motionEventId = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"motionEventId",
-    r"J",
-  );
-
-  /// from: public final long motionEventId
-  ///
-  /// TODO(iskakaushik): javadoc
-  int get motionEventId => jni.Jni.accessors
-      .getField(reference, _id_motionEventId, jni.JniCallType.longType)
-      .long;
-
-  static final _id_new0 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"<init>",
-      r"(ILjava/lang/Number;Ljava/lang/Number;IILjava/lang/Object;Ljava/lang/Object;IIFFIIIIJ)V");
-
-  /// from: public void <init>(int viewId, java.lang.Number downTime, java.lang.Number eventTime, int action, int pointerCount, java.lang.Object rawPointerPropertiesList, java.lang.Object rawPointerCoords, int metaState, int buttonState, float xPrecision, float yPrecision, int deviceId, int edgeFlags, int source, int flags, long motionEventId)
-  /// The returned object must be released after use, by calling the [release] method.
-  factory PlatformViewsChannel_PlatformViewTouch(
-    int viewId,
-    jni.JNumber downTime,
-    jni.JNumber eventTime,
-    int action,
-    int pointerCount,
-    jni.JObject rawPointerPropertiesList,
-    jni.JObject rawPointerCoords,
-    int metaState,
-    int buttonState,
-    double xPrecision,
-    double yPrecision,
-    int deviceId,
-    int edgeFlags,
-    int source,
-    int flags,
-    int motionEventId,
-  ) {
-    return PlatformViewsChannel_PlatformViewTouch.fromRef(
-        jni.Jni.accessors.newObjectWithArgs(_class.reference, _id_new0, [
-      jni.JValueInt(viewId),
-      downTime.reference,
-      eventTime.reference,
-      jni.JValueInt(action),
-      jni.JValueInt(pointerCount),
-      rawPointerPropertiesList.reference,
-      rawPointerCoords.reference,
-      jni.JValueInt(metaState),
-      jni.JValueInt(buttonState),
-      jni.JValueFloat(xPrecision),
-      jni.JValueFloat(yPrecision),
-      jni.JValueInt(deviceId),
-      jni.JValueInt(edgeFlags),
-      jni.JValueInt(source),
-      jni.JValueInt(flags),
-      motionEventId
-    ]).object);
-  }
-}
-
-final class $PlatformViewsChannel_PlatformViewTouchType
-    extends jni.JObjType<PlatformViewsChannel_PlatformViewTouch> {
-  const $PlatformViewsChannel_PlatformViewTouchType();
-
-  @override
-  String get signature =>
-      r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewTouch;";
-
-  @override
-  PlatformViewsChannel_PlatformViewTouch fromRef(jni.JObjectPtr ref) =>
-      PlatformViewsChannel_PlatformViewTouch.fromRef(ref);
-
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
-
-  @override
-  final superCount = 1;
-
-  @override
-  int get hashCode => ($PlatformViewsChannel_PlatformViewTouchType).hashCode;
-
-  @override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($PlatformViewsChannel_PlatformViewTouchType) &&
-        other is $PlatformViewsChannel_PlatformViewTouchType;
-  }
-}
-
 /// from: io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewBufferResized
 ///
 /// Allows to notify when a platform view buffer has been resized.
@@ -734,26 +767,25 @@ class PlatformViewsChannel_PlatformViewBufferResized extends jni.JObject {
   late final jni.JObjType<PlatformViewsChannel_PlatformViewBufferResized>
       $type = type;
 
-  PlatformViewsChannel_PlatformViewBufferResized.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  PlatformViewsChannel_PlatformViewBufferResized.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
-  static final _class = jni.Jni.findJClass(
+  static final _class = jni.JClass.forName(
       r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewBufferResized");
 
   /// The type which includes information such as the signature of this class.
   static const type = $PlatformViewsChannel_PlatformViewBufferResizedType();
-  static final _id_run = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"run",
-      r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewBufferSize;)V");
+  static final _id_run = _class.instanceMethodId(
+    r"run",
+    r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewBufferSize;)V",
+  );
 
   /// from: public abstract void run(io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewBufferSize bufferSize)
   void run(
     PlatformViewsChannel_PlatformViewBufferSize bufferSize,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_run,
-        jni.JniCallType.voidType, [bufferSize.reference]).check();
+    _id_run(this, const jni.jvoidType(), [bufferSize.reference.pointer]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -807,7 +839,7 @@ class PlatformViewsChannel_PlatformViewBufferResized extends jni.JObject {
     $PlatformViewsChannel_PlatformViewBufferResizedImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = PlatformViewsChannel_PlatformViewBufferResized.fromRef(
+    final $x = PlatformViewsChannel_PlatformViewBufferResized.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewBufferResized",
         $p,
@@ -830,7 +862,7 @@ class PlatformViewsChannel_PlatformViewBufferResized extends jni.JObject {
   }
 }
 
-abstract class $PlatformViewsChannel_PlatformViewBufferResizedImpl {
+abstract interface class $PlatformViewsChannel_PlatformViewBufferResizedImpl {
   factory $PlatformViewsChannel_PlatformViewBufferResizedImpl({
     required void Function(
             PlatformViewsChannel_PlatformViewBufferSize bufferSize)
@@ -865,8 +897,9 @@ final class $PlatformViewsChannel_PlatformViewBufferResizedType
       r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewBufferResized;";
 
   @override
-  PlatformViewsChannel_PlatformViewBufferResized fromRef(jni.JObjectPtr ref) =>
-      PlatformViewsChannel_PlatformViewBufferResized.fromRef(ref);
+  PlatformViewsChannel_PlatformViewBufferResized fromReference(
+          jni.JReference reference) =>
+      PlatformViewsChannel_PlatformViewBufferResized.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -894,17 +927,16 @@ class PlatformViewsChannel_PlatformViewBufferSize extends jni.JObject {
   late final jni.JObjType<PlatformViewsChannel_PlatformViewBufferSize> $type =
       type;
 
-  PlatformViewsChannel_PlatformViewBufferSize.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  PlatformViewsChannel_PlatformViewBufferSize.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
-  static final _class = jni.Jni.findJClass(
+  static final _class = jni.JClass.forName(
       r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewBufferSize");
 
   /// The type which includes information such as the signature of this class.
   static const type = $PlatformViewsChannel_PlatformViewBufferSizeType();
-  static final _id_width = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
+  static final _id_width = _class.instanceFieldId(
     r"width",
     r"I",
   );
@@ -912,12 +944,9 @@ class PlatformViewsChannel_PlatformViewBufferSize extends jni.JObject {
   /// from: public final int width
   ///
   /// The width of the screen buffer.
-  int get width => jni.Jni.accessors
-      .getField(reference, _id_width, jni.JniCallType.intType)
-      .integer;
+  int get width => _id_width.get(this, const jni.jintType());
 
-  static final _id_height = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
+  static final _id_height = _class.instanceFieldId(
     r"height",
     r"I",
   );
@@ -925,12 +954,11 @@ class PlatformViewsChannel_PlatformViewBufferSize extends jni.JObject {
   /// from: public final int height
   ///
   /// The height of the screen buffer.
-  int get height => jni.Jni.accessors
-      .getField(reference, _id_height, jni.JniCallType.intType)
-      .integer;
+  int get height => _id_height.get(this, const jni.jintType());
 
-  static final _id_new0 =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"<init>", r"(II)V");
+  static final _id_new0 = _class.constructorId(
+    r"(II)V",
+  );
 
   /// from: public void <init>(int width, int height)
   /// The returned object must be released after use, by calling the [release] method.
@@ -938,9 +966,8 @@ class PlatformViewsChannel_PlatformViewBufferSize extends jni.JObject {
     int width,
     int height,
   ) {
-    return PlatformViewsChannel_PlatformViewBufferSize.fromRef(jni.Jni.accessors
-        .newObjectWithArgs(_class.reference, _id_new0,
-            [jni.JValueInt(width), jni.JValueInt(height)]).object);
+    return PlatformViewsChannel_PlatformViewBufferSize.fromReference(_id_new0(
+        _class, referenceType, [jni.JValueInt(width), jni.JValueInt(height)]));
   }
 }
 
@@ -953,8 +980,9 @@ final class $PlatformViewsChannel_PlatformViewBufferSizeType
       r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewBufferSize;";
 
   @override
-  PlatformViewsChannel_PlatformViewBufferSize fromRef(jni.JObjectPtr ref) =>
-      PlatformViewsChannel_PlatformViewBufferSize.fromRef(ref);
+  PlatformViewsChannel_PlatformViewBufferSize fromReference(
+          jni.JReference reference) =>
+      PlatformViewsChannel_PlatformViewBufferSize.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -974,347 +1002,6 @@ final class $PlatformViewsChannel_PlatformViewBufferSizeType
   }
 }
 
-/// from: io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewResizeRequest
-///
-/// Request sent from Flutter to resize a platform view.
-class PlatformViewsChannel_PlatformViewResizeRequest extends jni.JObject {
-  @override
-  late final jni.JObjType<PlatformViewsChannel_PlatformViewResizeRequest>
-      $type = type;
-
-  PlatformViewsChannel_PlatformViewResizeRequest.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
-
-  static final _class = jni.Jni.findJClass(
-      r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewResizeRequest");
-
-  /// The type which includes information such as the signature of this class.
-  static const type = $PlatformViewsChannel_PlatformViewResizeRequestType();
-  static final _id_viewId = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"viewId",
-    r"I",
-  );
-
-  /// from: public final int viewId
-  ///
-  /// The ID of the platform view as seen by the Flutter side.
-  int get viewId => jni.Jni.accessors
-      .getField(reference, _id_viewId, jni.JniCallType.intType)
-      .integer;
-
-  static final _id_newLogicalWidth = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"newLogicalWidth",
-    r"D",
-  );
-
-  /// from: public final double newLogicalWidth
-  ///
-  /// The new density independent width to display the platform view.
-  double get newLogicalWidth => jni.Jni.accessors
-      .getField(reference, _id_newLogicalWidth, jni.JniCallType.doubleType)
-      .doubleFloat;
-
-  static final _id_newLogicalHeight = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"newLogicalHeight",
-    r"D",
-  );
-
-  /// from: public final double newLogicalHeight
-  ///
-  /// The new density independent height to display the platform view.
-  double get newLogicalHeight => jni.Jni.accessors
-      .getField(reference, _id_newLogicalHeight, jni.JniCallType.doubleType)
-      .doubleFloat;
-
-  static final _id_new0 =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"<init>", r"(IDD)V");
-
-  /// from: public void <init>(int viewId, double newLogicalWidth, double newLogicalHeight)
-  /// The returned object must be released after use, by calling the [release] method.
-  factory PlatformViewsChannel_PlatformViewResizeRequest(
-    int viewId,
-    double newLogicalWidth,
-    double newLogicalHeight,
-  ) {
-    return PlatformViewsChannel_PlatformViewResizeRequest.fromRef(
-        jni.Jni.accessors.newObjectWithArgs(_class.reference, _id_new0,
-            [jni.JValueInt(viewId), newLogicalWidth, newLogicalHeight]).object);
-  }
-}
-
-final class $PlatformViewsChannel_PlatformViewResizeRequestType
-    extends jni.JObjType<PlatformViewsChannel_PlatformViewResizeRequest> {
-  const $PlatformViewsChannel_PlatformViewResizeRequestType();
-
-  @override
-  String get signature =>
-      r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewResizeRequest;";
-
-  @override
-  PlatformViewsChannel_PlatformViewResizeRequest fromRef(jni.JObjectPtr ref) =>
-      PlatformViewsChannel_PlatformViewResizeRequest.fromRef(ref);
-
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
-
-  @override
-  final superCount = 1;
-
-  @override
-  int get hashCode =>
-      ($PlatformViewsChannel_PlatformViewResizeRequestType).hashCode;
-
-  @override
-  bool operator ==(Object other) {
-    return other.runtimeType ==
-            ($PlatformViewsChannel_PlatformViewResizeRequestType) &&
-        other is $PlatformViewsChannel_PlatformViewResizeRequestType;
-  }
-}
-
-/// from: io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewCreationRequest
-///
-/// Request sent from Flutter to create a new platform view.
-class PlatformViewsChannel_PlatformViewCreationRequest extends jni.JObject {
-  @override
-  late final jni.JObjType<PlatformViewsChannel_PlatformViewCreationRequest>
-      $type = type;
-
-  PlatformViewsChannel_PlatformViewCreationRequest.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
-
-  static final _class = jni.Jni.findJClass(
-      r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest");
-
-  /// The type which includes information such as the signature of this class.
-  static const type = $PlatformViewsChannel_PlatformViewCreationRequestType();
-  static final _id_viewId = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"viewId",
-    r"I",
-  );
-
-  /// from: public final int viewId
-  ///
-  /// The ID of the platform view as seen by the Flutter side.
-  int get viewId => jni.Jni.accessors
-      .getField(reference, _id_viewId, jni.JniCallType.intType)
-      .integer;
-
-  static final _id_viewType = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"viewType",
-    r"Ljava/lang/String;",
-  );
-
-  /// from: public final java.lang.String viewType
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// The type of Android {@code View} to create for this platform view.
-  jni.JString get viewType => const jni.JStringType().fromRef(jni.Jni.accessors
-      .getField(reference, _id_viewType, jni.JniCallType.objectType)
-      .object);
-
-  static final _id_logicalWidth = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"logicalWidth",
-    r"D",
-  );
-
-  /// from: public final double logicalWidth
-  ///
-  /// The density independent width to display the platform view.
-  double get logicalWidth => jni.Jni.accessors
-      .getField(reference, _id_logicalWidth, jni.JniCallType.doubleType)
-      .doubleFloat;
-
-  static final _id_logicalHeight = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"logicalHeight",
-    r"D",
-  );
-
-  /// from: public final double logicalHeight
-  ///
-  /// The density independent height to display the platform view.
-  double get logicalHeight => jni.Jni.accessors
-      .getField(reference, _id_logicalHeight, jni.JniCallType.doubleType)
-      .doubleFloat;
-
-  static final _id_logicalTop = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"logicalTop",
-    r"D",
-  );
-
-  /// from: public final double logicalTop
-  ///
-  /// The density independent top position to display the platform view.
-  double get logicalTop => jni.Jni.accessors
-      .getField(reference, _id_logicalTop, jni.JniCallType.doubleType)
-      .doubleFloat;
-
-  static final _id_logicalLeft = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"logicalLeft",
-    r"D",
-  );
-
-  /// from: public final double logicalLeft
-  ///
-  /// The density independent left position to display the platform view.
-  double get logicalLeft => jni.Jni.accessors
-      .getField(reference, _id_logicalLeft, jni.JniCallType.doubleType)
-      .doubleFloat;
-
-  static final _id_direction = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"direction",
-    r"I",
-  );
-
-  /// from: public final int direction
-  ///
-  /// The layout direction of the new platform view.
-  ///
-  /// See android.view.View\#LAYOUT_DIRECTION_LTR and android.view.View\#LAYOUT_DIRECTION_RTL
-  int get direction => jni.Jni.accessors
-      .getField(reference, _id_direction, jni.JniCallType.intType)
-      .integer;
-
-  static final _id_displayMode = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"displayMode",
-    r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest$RequestedDisplayMode;",
-  );
-
-  /// from: public final io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest.RequestedDisplayMode displayMode
-  /// The returned object must be released after use, by calling the [release] method.
-  PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode
-      get displayMode =>
-          const $PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayModeType()
-              .fromRef(jni.Jni.accessors
-                  .getField(
-                      reference, _id_displayMode, jni.JniCallType.objectType)
-                  .object);
-
-  static final _id_params = jni.Jni.accessors.getFieldIDOf(
-    _class.reference,
-    r"params",
-    r"Ljava/nio/ByteBuffer;",
-  );
-
-  /// from: public final java.nio.ByteBuffer params
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// Custom parameters that are unique to the desired platform view.
-  jni.JByteBuffer get params =>
-      const jni.JByteBufferType().fromRef(jni.Jni.accessors
-          .getField(reference, _id_params, jni.JniCallType.objectType)
-          .object);
-
-  static final _id_new0 = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"<init>", r"(ILjava/lang/String;DDDDILjava/nio/ByteBuffer;)V");
-
-  /// from: public void <init>(int viewId, java.lang.String viewType, double logicalTop, double logicalLeft, double logicalWidth, double logicalHeight, int direction, java.nio.ByteBuffer params)
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// Creates a request to construct a platform view.
-  factory PlatformViewsChannel_PlatformViewCreationRequest(
-    int viewId,
-    jni.JString viewType,
-    double logicalTop,
-    double logicalLeft,
-    double logicalWidth,
-    double logicalHeight,
-    int direction,
-    jni.JByteBuffer params,
-  ) {
-    return PlatformViewsChannel_PlatformViewCreationRequest.fromRef(
-        jni.Jni.accessors.newObjectWithArgs(_class.reference, _id_new0, [
-      jni.JValueInt(viewId),
-      viewType.reference,
-      logicalTop,
-      logicalLeft,
-      logicalWidth,
-      logicalHeight,
-      jni.JValueInt(direction),
-      params.reference
-    ]).object);
-  }
-
-  static final _id_new1 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"<init>",
-      r"(ILjava/lang/String;DDDDILio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest$RequestedDisplayMode;Ljava/nio/ByteBuffer;)V");
-
-  /// from: public void <init>(int viewId, java.lang.String viewType, double logicalTop, double logicalLeft, double logicalWidth, double logicalHeight, int direction, io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest.RequestedDisplayMode displayMode, java.nio.ByteBuffer params)
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// Creates a request to construct a platform view with the given display mode.
-  factory PlatformViewsChannel_PlatformViewCreationRequest.new1(
-    int viewId,
-    jni.JString viewType,
-    double logicalTop,
-    double logicalLeft,
-    double logicalWidth,
-    double logicalHeight,
-    int direction,
-    PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode
-        displayMode,
-    jni.JByteBuffer params,
-  ) {
-    return PlatformViewsChannel_PlatformViewCreationRequest.fromRef(
-        jni.Jni.accessors.newObjectWithArgs(_class.reference, _id_new1, [
-      jni.JValueInt(viewId),
-      viewType.reference,
-      logicalTop,
-      logicalLeft,
-      logicalWidth,
-      logicalHeight,
-      jni.JValueInt(direction),
-      displayMode.reference,
-      params.reference
-    ]).object);
-  }
-}
-
-final class $PlatformViewsChannel_PlatformViewCreationRequestType
-    extends jni.JObjType<PlatformViewsChannel_PlatformViewCreationRequest> {
-  const $PlatformViewsChannel_PlatformViewCreationRequestType();
-
-  @override
-  String get signature =>
-      r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest;";
-
-  @override
-  PlatformViewsChannel_PlatformViewCreationRequest fromRef(
-          jni.JObjectPtr ref) =>
-      PlatformViewsChannel_PlatformViewCreationRequest.fromRef(ref);
-
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
-
-  @override
-  final superCount = 1;
-
-  @override
-  int get hashCode =>
-      ($PlatformViewsChannel_PlatformViewCreationRequestType).hashCode;
-
-  @override
-  bool operator ==(Object other) {
-    return other.runtimeType ==
-            ($PlatformViewsChannel_PlatformViewCreationRequestType) &&
-        other is $PlatformViewsChannel_PlatformViewCreationRequestType;
-  }
-}
-
 /// from: io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewCreationRequest$RequestedDisplayMode
 ///
 /// Platform view display modes that can be requested at creation time.
@@ -1325,36 +1012,37 @@ class PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode
           PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode>
       $type = type;
 
-  PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
-  static final _class = jni.Jni.findJClass(
+  static final _class = jni.JClass.forName(
       r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest$RequestedDisplayMode");
 
   /// The type which includes information such as the signature of this class.
   static const type =
       $PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayModeType();
-  static final _id_values = jni.Jni.accessors.getStaticMethodIDOf(
-      _class.reference,
-      r"values",
-      r"()[Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest$RequestedDisplayMode;");
+  static final _id_values = _class.staticMethodId(
+    r"values",
+    r"()[Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest$RequestedDisplayMode;",
+  );
 
   /// from: static public io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest.RequestedDisplayMode[] values()
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<
           PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode>
       values() {
-    return const jni.JArrayType(
-            $PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayModeType())
-        .fromRef(jni.Jni.accessors.callStaticMethodWithArgs(_class.reference,
-            _id_values, jni.JniCallType.objectType, []).object);
+    return _id_values(
+        _class,
+        const jni.JArrayType(
+            $PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayModeType()),
+        []);
   }
 
-  static final _id_valueOf = jni.Jni.accessors.getStaticMethodIDOf(
-      _class.reference,
-      r"valueOf",
-      r"(Ljava/lang/String;)Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest$RequestedDisplayMode;");
+  static final _id_valueOf = _class.staticMethodId(
+    r"valueOf",
+    r"(Ljava/lang/String;)Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest$RequestedDisplayMode;",
+  );
 
   /// from: static public io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest.RequestedDisplayMode valueOf(java.lang.String name)
   /// The returned object must be released after use, by calling the [release] method.
@@ -1362,9 +1050,10 @@ class PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode
       valueOf(
     jni.JString name,
   ) {
-    return const $PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayModeType()
-        .fromRef(jni.Jni.accessors.callStaticMethodWithArgs(_class.reference,
-            _id_valueOf, jni.JniCallType.objectType, [name.reference]).object);
+    return _id_valueOf(
+        _class,
+        const $PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayModeType(),
+        [name.reference.pointer]);
   }
 }
 
@@ -1378,10 +1067,10 @@ final class $PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMo
       r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest$RequestedDisplayMode;";
 
   @override
-  PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode fromRef(
-          jni.JObjectPtr ref) =>
-      PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode
-          .fromRef(ref);
+  PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode
+      fromReference(jni.JReference reference) =>
+          PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode
+              .fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -1403,6 +1092,570 @@ final class $PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMo
   }
 }
 
+/// from: io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewCreationRequest
+///
+/// Request sent from Flutter to create a new platform view.
+class PlatformViewsChannel_PlatformViewCreationRequest extends jni.JObject {
+  @override
+  late final jni.JObjType<PlatformViewsChannel_PlatformViewCreationRequest>
+      $type = type;
+
+  PlatformViewsChannel_PlatformViewCreationRequest.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
+
+  static final _class = jni.JClass.forName(
+      r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest");
+
+  /// The type which includes information such as the signature of this class.
+  static const type = $PlatformViewsChannel_PlatformViewCreationRequestType();
+  static final _id_viewId = _class.instanceFieldId(
+    r"viewId",
+    r"I",
+  );
+
+  /// from: public final int viewId
+  ///
+  /// The ID of the platform view as seen by the Flutter side.
+  int get viewId => _id_viewId.get(this, const jni.jintType());
+
+  static final _id_viewType = _class.instanceFieldId(
+    r"viewType",
+    r"Ljava/lang/String;",
+  );
+
+  /// from: public final java.lang.String viewType
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// The type of Android {@code View} to create for this platform view.
+  jni.JString get viewType => _id_viewType.get(this, const jni.JStringType());
+
+  static final _id_logicalWidth = _class.instanceFieldId(
+    r"logicalWidth",
+    r"D",
+  );
+
+  /// from: public final double logicalWidth
+  ///
+  /// The density independent width to display the platform view.
+  double get logicalWidth =>
+      _id_logicalWidth.get(this, const jni.jdoubleType());
+
+  static final _id_logicalHeight = _class.instanceFieldId(
+    r"logicalHeight",
+    r"D",
+  );
+
+  /// from: public final double logicalHeight
+  ///
+  /// The density independent height to display the platform view.
+  double get logicalHeight =>
+      _id_logicalHeight.get(this, const jni.jdoubleType());
+
+  static final _id_logicalTop = _class.instanceFieldId(
+    r"logicalTop",
+    r"D",
+  );
+
+  /// from: public final double logicalTop
+  ///
+  /// The density independent top position to display the platform view.
+  double get logicalTop => _id_logicalTop.get(this, const jni.jdoubleType());
+
+  static final _id_logicalLeft = _class.instanceFieldId(
+    r"logicalLeft",
+    r"D",
+  );
+
+  /// from: public final double logicalLeft
+  ///
+  /// The density independent left position to display the platform view.
+  double get logicalLeft => _id_logicalLeft.get(this, const jni.jdoubleType());
+
+  static final _id_direction = _class.instanceFieldId(
+    r"direction",
+    r"I",
+  );
+
+  /// from: public final int direction
+  ///
+  /// The layout direction of the new platform view.
+  ///
+  /// See android.view.View\#LAYOUT_DIRECTION_LTR and android.view.View\#LAYOUT_DIRECTION_RTL
+  int get direction => _id_direction.get(this, const jni.jintType());
+
+  static final _id_displayMode = _class.instanceFieldId(
+    r"displayMode",
+    r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest$RequestedDisplayMode;",
+  );
+
+  /// from: public final io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest.RequestedDisplayMode displayMode
+  /// The returned object must be released after use, by calling the [release] method.
+  PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode
+      get displayMode => _id_displayMode.get(this,
+          const $PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayModeType());
+
+  static final _id_params = _class.instanceFieldId(
+    r"params",
+    r"Ljava/nio/ByteBuffer;",
+  );
+
+  /// from: public final java.nio.ByteBuffer params
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Custom parameters that are unique to the desired platform view.
+  jni.JByteBuffer get params =>
+      _id_params.get(this, const jni.JByteBufferType());
+
+  static final _id_new0 = _class.constructorId(
+    r"(ILjava/lang/String;DDDDILjava/nio/ByteBuffer;)V",
+  );
+
+  /// from: public void <init>(int viewId, java.lang.String viewType, double logicalTop, double logicalLeft, double logicalWidth, double logicalHeight, int direction, java.nio.ByteBuffer params)
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Creates a request to construct a platform view.
+  factory PlatformViewsChannel_PlatformViewCreationRequest(
+    int viewId,
+    jni.JString viewType,
+    double logicalTop,
+    double logicalLeft,
+    double logicalWidth,
+    double logicalHeight,
+    int direction,
+    jni.JByteBuffer params,
+  ) {
+    return PlatformViewsChannel_PlatformViewCreationRequest.fromReference(
+        _id_new0(_class, referenceType, [
+      jni.JValueInt(viewId),
+      viewType.reference.pointer,
+      logicalTop,
+      logicalLeft,
+      logicalWidth,
+      logicalHeight,
+      jni.JValueInt(direction),
+      params.reference.pointer
+    ]));
+  }
+
+  static final _id_new1 = _class.constructorId(
+    r"(ILjava/lang/String;DDDDILio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest$RequestedDisplayMode;Ljava/nio/ByteBuffer;)V",
+  );
+
+  /// from: public void <init>(int viewId, java.lang.String viewType, double logicalTop, double logicalLeft, double logicalWidth, double logicalHeight, int direction, io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest.RequestedDisplayMode displayMode, java.nio.ByteBuffer params)
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Creates a request to construct a platform view with the given display mode.
+  factory PlatformViewsChannel_PlatformViewCreationRequest.new1(
+    int viewId,
+    jni.JString viewType,
+    double logicalTop,
+    double logicalLeft,
+    double logicalWidth,
+    double logicalHeight,
+    int direction,
+    PlatformViewsChannel_PlatformViewCreationRequest_RequestedDisplayMode
+        displayMode,
+    jni.JByteBuffer params,
+  ) {
+    return PlatformViewsChannel_PlatformViewCreationRequest.fromReference(
+        _id_new1(_class, referenceType, [
+      jni.JValueInt(viewId),
+      viewType.reference.pointer,
+      logicalTop,
+      logicalLeft,
+      logicalWidth,
+      logicalHeight,
+      jni.JValueInt(direction),
+      displayMode.reference.pointer,
+      params.reference.pointer
+    ]));
+  }
+}
+
+final class $PlatformViewsChannel_PlatformViewCreationRequestType
+    extends jni.JObjType<PlatformViewsChannel_PlatformViewCreationRequest> {
+  const $PlatformViewsChannel_PlatformViewCreationRequestType();
+
+  @override
+  String get signature =>
+      r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest;";
+
+  @override
+  PlatformViewsChannel_PlatformViewCreationRequest fromReference(
+          jni.JReference reference) =>
+      PlatformViewsChannel_PlatformViewCreationRequest.fromReference(reference);
+
+  @override
+  jni.JObjType get superType => const jni.JObjectType();
+
+  @override
+  final superCount = 1;
+
+  @override
+  int get hashCode =>
+      ($PlatformViewsChannel_PlatformViewCreationRequestType).hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other.runtimeType ==
+            ($PlatformViewsChannel_PlatformViewCreationRequestType) &&
+        other is $PlatformViewsChannel_PlatformViewCreationRequestType;
+  }
+}
+
+/// from: io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewResizeRequest
+///
+/// Request sent from Flutter to resize a platform view.
+class PlatformViewsChannel_PlatformViewResizeRequest extends jni.JObject {
+  @override
+  late final jni.JObjType<PlatformViewsChannel_PlatformViewResizeRequest>
+      $type = type;
+
+  PlatformViewsChannel_PlatformViewResizeRequest.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
+
+  static final _class = jni.JClass.forName(
+      r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewResizeRequest");
+
+  /// The type which includes information such as the signature of this class.
+  static const type = $PlatformViewsChannel_PlatformViewResizeRequestType();
+  static final _id_viewId = _class.instanceFieldId(
+    r"viewId",
+    r"I",
+  );
+
+  /// from: public final int viewId
+  ///
+  /// The ID of the platform view as seen by the Flutter side.
+  int get viewId => _id_viewId.get(this, const jni.jintType());
+
+  static final _id_newLogicalWidth = _class.instanceFieldId(
+    r"newLogicalWidth",
+    r"D",
+  );
+
+  /// from: public final double newLogicalWidth
+  ///
+  /// The new density independent width to display the platform view.
+  double get newLogicalWidth =>
+      _id_newLogicalWidth.get(this, const jni.jdoubleType());
+
+  static final _id_newLogicalHeight = _class.instanceFieldId(
+    r"newLogicalHeight",
+    r"D",
+  );
+
+  /// from: public final double newLogicalHeight
+  ///
+  /// The new density independent height to display the platform view.
+  double get newLogicalHeight =>
+      _id_newLogicalHeight.get(this, const jni.jdoubleType());
+
+  static final _id_new0 = _class.constructorId(
+    r"(IDD)V",
+  );
+
+  /// from: public void <init>(int viewId, double newLogicalWidth, double newLogicalHeight)
+  /// The returned object must be released after use, by calling the [release] method.
+  factory PlatformViewsChannel_PlatformViewResizeRequest(
+    int viewId,
+    double newLogicalWidth,
+    double newLogicalHeight,
+  ) {
+    return PlatformViewsChannel_PlatformViewResizeRequest.fromReference(
+        _id_new0(_class, referenceType,
+            [jni.JValueInt(viewId), newLogicalWidth, newLogicalHeight]));
+  }
+}
+
+final class $PlatformViewsChannel_PlatformViewResizeRequestType
+    extends jni.JObjType<PlatformViewsChannel_PlatformViewResizeRequest> {
+  const $PlatformViewsChannel_PlatformViewResizeRequestType();
+
+  @override
+  String get signature =>
+      r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewResizeRequest;";
+
+  @override
+  PlatformViewsChannel_PlatformViewResizeRequest fromReference(
+          jni.JReference reference) =>
+      PlatformViewsChannel_PlatformViewResizeRequest.fromReference(reference);
+
+  @override
+  jni.JObjType get superType => const jni.JObjectType();
+
+  @override
+  final superCount = 1;
+
+  @override
+  int get hashCode =>
+      ($PlatformViewsChannel_PlatformViewResizeRequestType).hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other.runtimeType ==
+            ($PlatformViewsChannel_PlatformViewResizeRequestType) &&
+        other is $PlatformViewsChannel_PlatformViewResizeRequestType;
+  }
+}
+
+/// from: io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewTouch
+///
+/// The state of a touch event in Flutter within a platform view.
+class PlatformViewsChannel_PlatformViewTouch extends jni.JObject {
+  @override
+  late final jni.JObjType<PlatformViewsChannel_PlatformViewTouch> $type = type;
+
+  PlatformViewsChannel_PlatformViewTouch.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
+
+  static final _class = jni.JClass.forName(
+      r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewTouch");
+
+  /// The type which includes information such as the signature of this class.
+  static const type = $PlatformViewsChannel_PlatformViewTouchType();
+  static final _id_viewId = _class.instanceFieldId(
+    r"viewId",
+    r"I",
+  );
+
+  /// from: public final int viewId
+  ///
+  /// The ID of the platform view as seen by the Flutter side.
+  int get viewId => _id_viewId.get(this, const jni.jintType());
+
+  static final _id_downTime = _class.instanceFieldId(
+    r"downTime",
+    r"Ljava/lang/Number;",
+  );
+
+  /// from: public final java.lang.Number downTime
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// The amount of time that the touch has been pressed.
+  jni.JNumber get downTime => _id_downTime.get(this, const jni.JNumberType());
+
+  static final _id_eventTime = _class.instanceFieldId(
+    r"eventTime",
+    r"Ljava/lang/Number;",
+  );
+
+  /// from: public final java.lang.Number eventTime
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// TODO(mattcarroll): javadoc
+  jni.JNumber get eventTime => _id_eventTime.get(this, const jni.JNumberType());
+
+  static final _id_action = _class.instanceFieldId(
+    r"action",
+    r"I",
+  );
+
+  /// from: public final int action
+  int get action => _id_action.get(this, const jni.jintType());
+
+  static final _id_pointerCount = _class.instanceFieldId(
+    r"pointerCount",
+    r"I",
+  );
+
+  /// from: public final int pointerCount
+  ///
+  /// The number of pointers (e.g, fingers) involved in the touch event.
+  int get pointerCount => _id_pointerCount.get(this, const jni.jintType());
+
+  static final _id_rawPointerPropertiesList = _class.instanceFieldId(
+    r"rawPointerPropertiesList",
+    r"Ljava/lang/Object;",
+  );
+
+  /// from: public final java.lang.Object rawPointerPropertiesList
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Properties for each pointer, encoded in a raw format.
+  jni.JObject get rawPointerPropertiesList =>
+      _id_rawPointerPropertiesList.get(this, const jni.JObjectType());
+
+  static final _id_rawPointerCoords = _class.instanceFieldId(
+    r"rawPointerCoords",
+    r"Ljava/lang/Object;",
+  );
+
+  /// from: public final java.lang.Object rawPointerCoords
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Coordinates for each pointer, encoded in a raw format.
+  jni.JObject get rawPointerCoords =>
+      _id_rawPointerCoords.get(this, const jni.JObjectType());
+
+  static final _id_metaState = _class.instanceFieldId(
+    r"metaState",
+    r"I",
+  );
+
+  /// from: public final int metaState
+  ///
+  /// TODO(mattcarroll): javadoc
+  int get metaState => _id_metaState.get(this, const jni.jintType());
+
+  static final _id_buttonState = _class.instanceFieldId(
+    r"buttonState",
+    r"I",
+  );
+
+  /// from: public final int buttonState
+  ///
+  /// TODO(mattcarroll): javadoc
+  int get buttonState => _id_buttonState.get(this, const jni.jintType());
+
+  static final _id_xPrecision = _class.instanceFieldId(
+    r"xPrecision",
+    r"F",
+  );
+
+  /// from: public final float xPrecision
+  ///
+  /// Coordinate precision along the x-axis.
+  double get xPrecision => _id_xPrecision.get(this, const jni.jfloatType());
+
+  static final _id_yPrecision = _class.instanceFieldId(
+    r"yPrecision",
+    r"F",
+  );
+
+  /// from: public final float yPrecision
+  ///
+  /// Coordinate precision along the y-axis.
+  double get yPrecision => _id_yPrecision.get(this, const jni.jfloatType());
+
+  static final _id_deviceId = _class.instanceFieldId(
+    r"deviceId",
+    r"I",
+  );
+
+  /// from: public final int deviceId
+  ///
+  /// TODO(mattcarroll): javadoc
+  int get deviceId => _id_deviceId.get(this, const jni.jintType());
+
+  static final _id_edgeFlags = _class.instanceFieldId(
+    r"edgeFlags",
+    r"I",
+  );
+
+  /// from: public final int edgeFlags
+  ///
+  /// TODO(mattcarroll): javadoc
+  int get edgeFlags => _id_edgeFlags.get(this, const jni.jintType());
+
+  static final _id_source = _class.instanceFieldId(
+    r"source",
+    r"I",
+  );
+
+  /// from: public final int source
+  ///
+  /// TODO(mattcarroll): javadoc
+  int get source => _id_source.get(this, const jni.jintType());
+
+  static final _id_flags = _class.instanceFieldId(
+    r"flags",
+    r"I",
+  );
+
+  /// from: public final int flags
+  ///
+  /// TODO(mattcarroll): javadoc
+  int get flags => _id_flags.get(this, const jni.jintType());
+
+  static final _id_motionEventId = _class.instanceFieldId(
+    r"motionEventId",
+    r"J",
+  );
+
+  /// from: public final long motionEventId
+  ///
+  /// TODO(iskakaushik): javadoc
+  int get motionEventId => _id_motionEventId.get(this, const jni.jlongType());
+
+  static final _id_new0 = _class.constructorId(
+    r"(ILjava/lang/Number;Ljava/lang/Number;IILjava/lang/Object;Ljava/lang/Object;IIFFIIIIJ)V",
+  );
+
+  /// from: public void <init>(int viewId, java.lang.Number downTime, java.lang.Number eventTime, int action, int pointerCount, java.lang.Object rawPointerPropertiesList, java.lang.Object rawPointerCoords, int metaState, int buttonState, float xPrecision, float yPrecision, int deviceId, int edgeFlags, int source, int flags, long motionEventId)
+  /// The returned object must be released after use, by calling the [release] method.
+  factory PlatformViewsChannel_PlatformViewTouch(
+    int viewId,
+    jni.JNumber downTime,
+    jni.JNumber eventTime,
+    int action,
+    int pointerCount,
+    jni.JObject rawPointerPropertiesList,
+    jni.JObject rawPointerCoords,
+    int metaState,
+    int buttonState,
+    double xPrecision,
+    double yPrecision,
+    int deviceId,
+    int edgeFlags,
+    int source,
+    int flags,
+    int motionEventId,
+  ) {
+    return PlatformViewsChannel_PlatformViewTouch.fromReference(
+        _id_new0(_class, referenceType, [
+      jni.JValueInt(viewId),
+      downTime.reference.pointer,
+      eventTime.reference.pointer,
+      jni.JValueInt(action),
+      jni.JValueInt(pointerCount),
+      rawPointerPropertiesList.reference.pointer,
+      rawPointerCoords.reference.pointer,
+      jni.JValueInt(metaState),
+      jni.JValueInt(buttonState),
+      jni.JValueFloat(xPrecision),
+      jni.JValueFloat(yPrecision),
+      jni.JValueInt(deviceId),
+      jni.JValueInt(edgeFlags),
+      jni.JValueInt(source),
+      jni.JValueInt(flags),
+      motionEventId
+    ]));
+  }
+}
+
+final class $PlatformViewsChannel_PlatformViewTouchType
+    extends jni.JObjType<PlatformViewsChannel_PlatformViewTouch> {
+  const $PlatformViewsChannel_PlatformViewTouchType();
+
+  @override
+  String get signature =>
+      r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewTouch;";
+
+  @override
+  PlatformViewsChannel_PlatformViewTouch fromReference(
+          jni.JReference reference) =>
+      PlatformViewsChannel_PlatformViewTouch.fromReference(reference);
+
+  @override
+  jni.JObjType get superType => const jni.JObjectType();
+
+  @override
+  final superCount = 1;
+
+  @override
+  int get hashCode => ($PlatformViewsChannel_PlatformViewTouchType).hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($PlatformViewsChannel_PlatformViewTouchType) &&
+        other is $PlatformViewsChannel_PlatformViewTouchType;
+  }
+}
+
 /// from: io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewsHandler
 ///
 /// Handler that receives platform view messages sent from Flutter to Android through a given
@@ -1414,11 +1667,11 @@ class PlatformViewsChannel_PlatformViewsHandler extends jni.JObject {
   late final jni.JObjType<PlatformViewsChannel_PlatformViewsHandler> $type =
       type;
 
-  PlatformViewsChannel_PlatformViewsHandler.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  PlatformViewsChannel_PlatformViewsHandler.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
-  static final _class = jni.Jni.findJClass(
+  static final _class = jni.JClass.forName(
       r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewsHandler");
 
   /// The type which includes information such as the signature of this class.
@@ -1426,11 +1679,10 @@ class PlatformViewsChannel_PlatformViewsHandler extends jni.JObject {
 
   /// from: static public final long NON_TEXTURE_FALLBACK
   static const NON_TEXTURE_FALLBACK = -2;
-
-  static final _id_createForPlatformViewLayer = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"createForPlatformViewLayer",
-      r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest;)V");
+  static final _id_createForPlatformViewLayer = _class.instanceMethodId(
+    r"createForPlatformViewLayer",
+    r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest;)V",
+  );
 
   /// from: public abstract void createForPlatformViewLayer(io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest request)
   ///
@@ -1443,17 +1695,14 @@ class PlatformViewsChannel_PlatformViewsHandler extends jni.JObject {
   void createForPlatformViewLayer(
     PlatformViewsChannel_PlatformViewCreationRequest request,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_createForPlatformViewLayer,
-        jni.JniCallType.voidType,
-        [request.reference]).check();
+    _id_createForPlatformViewLayer(
+        this, const jni.jvoidType(), [request.reference.pointer]);
   }
 
-  static final _id_createForTextureLayer = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"createForTextureLayer",
-      r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest;)J");
+  static final _id_createForTextureLayer = _class.instanceMethodId(
+    r"createForTextureLayer",
+    r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest;)J",
+  );
 
   /// from: public abstract long createForTextureLayer(io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest request)
   ///
@@ -1467,15 +1716,14 @@ class PlatformViewsChannel_PlatformViewsHandler extends jni.JObject {
   int createForTextureLayer(
     PlatformViewsChannel_PlatformViewCreationRequest request,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_createForTextureLayer,
-        jni.JniCallType.longType,
-        [request.reference]).long;
+    return _id_createForTextureLayer(
+        this, const jni.jlongType(), [request.reference.pointer]);
   }
 
-  static final _id_dispose =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"dispose", r"(I)V");
+  static final _id_dispose = _class.instanceMethodId(
+    r"dispose",
+    r"(I)V",
+  );
 
   /// from: public abstract void dispose(int viewId)
   ///
@@ -1483,14 +1731,13 @@ class PlatformViewsChannel_PlatformViewsHandler extends jni.JObject {
   void dispose(
     int viewId,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_dispose,
-        jni.JniCallType.voidType, [jni.JValueInt(viewId)]).check();
+    _id_dispose(this, const jni.jvoidType(), [jni.JValueInt(viewId)]);
   }
 
-  static final _id_resize = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"resize",
-      r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewResizeRequest;Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewBufferResized;)V");
+  static final _id_resize = _class.instanceMethodId(
+    r"resize",
+    r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewResizeRequest;Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewBufferResized;)V",
+  );
 
   /// from: public abstract void resize(io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewResizeRequest request, io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewBufferResized onComplete)
   ///
@@ -1502,15 +1749,14 @@ class PlatformViewsChannel_PlatformViewsHandler extends jni.JObject {
     PlatformViewsChannel_PlatformViewResizeRequest request,
     PlatformViewsChannel_PlatformViewBufferResized onComplete,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_resize,
-        jni.JniCallType.voidType,
-        [request.reference, onComplete.reference]).check();
+    _id_resize(this, const jni.jvoidType(),
+        [request.reference.pointer, onComplete.reference.pointer]);
   }
 
-  static final _id_offset =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"offset", r"(IDD)V");
+  static final _id_offset = _class.instanceMethodId(
+    r"offset",
+    r"(IDD)V",
+  );
 
   /// from: public abstract void offset(int viewId, double top, double left)
   ///
@@ -1520,14 +1766,13 @@ class PlatformViewsChannel_PlatformViewsHandler extends jni.JObject {
     double top,
     double left,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_offset,
-        jni.JniCallType.voidType, [jni.JValueInt(viewId), top, left]).check();
+    _id_offset(this, const jni.jvoidType(), [jni.JValueInt(viewId), top, left]);
   }
 
-  static final _id_onTouch = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onTouch",
-      r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewTouch;)V");
+  static final _id_onTouch = _class.instanceMethodId(
+    r"onTouch",
+    r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewTouch;)V",
+  );
 
   /// from: public abstract void onTouch(io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewTouch touch)
   ///
@@ -1537,12 +1782,13 @@ class PlatformViewsChannel_PlatformViewsHandler extends jni.JObject {
   void onTouch(
     PlatformViewsChannel_PlatformViewTouch touch,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onTouch,
-        jni.JniCallType.voidType, [touch.reference]).check();
+    _id_onTouch(this, const jni.jvoidType(), [touch.reference.pointer]);
   }
 
-  static final _id_setDirection = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setDirection", r"(II)V");
+  static final _id_setDirection = _class.instanceMethodId(
+    r"setDirection",
+    r"(II)V",
+  );
 
   /// from: public abstract void setDirection(int viewId, int direction)
   ///
@@ -1552,15 +1798,14 @@ class PlatformViewsChannel_PlatformViewsHandler extends jni.JObject {
     int viewId,
     int direction,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setDirection,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(viewId), jni.JValueInt(direction)]).check();
+    _id_setDirection(this, const jni.jvoidType(),
+        [jni.JValueInt(viewId), jni.JValueInt(direction)]);
   }
 
-  static final _id_clearFocus =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"clearFocus", r"(I)V");
+  static final _id_clearFocus = _class.instanceMethodId(
+    r"clearFocus",
+    r"(I)V",
+  );
 
   /// from: public abstract void clearFocus(int viewId)
   ///
@@ -1568,13 +1813,13 @@ class PlatformViewsChannel_PlatformViewsHandler extends jni.JObject {
   void clearFocus(
     int viewId,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_clearFocus,
-        jni.JniCallType.voidType, [jni.JValueInt(viewId)]).check();
+    _id_clearFocus(this, const jni.jvoidType(), [jni.JValueInt(viewId)]);
   }
 
-  static final _id_synchronizeToNativeViewHierarchy = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"synchronizeToNativeViewHierarchy", r"(Z)V");
+  static final _id_synchronizeToNativeViewHierarchy = _class.instanceMethodId(
+    r"synchronizeToNativeViewHierarchy",
+    r"(Z)V",
+  );
 
   /// from: public abstract void synchronizeToNativeViewHierarchy(boolean yes)
   ///
@@ -1586,11 +1831,8 @@ class PlatformViewsChannel_PlatformViewsHandler extends jni.JObject {
   void synchronizeToNativeViewHierarchy(
     bool yes,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_synchronizeToNativeViewHierarchy,
-        jni.JniCallType.voidType,
-        [yes ? 1 : 0]).check();
+    _id_synchronizeToNativeViewHierarchy(
+        this, const jni.jvoidType(), [yes ? 1 : 0]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -1642,7 +1884,7 @@ class PlatformViewsChannel_PlatformViewsHandler extends jni.JObject {
               const $PlatformViewsChannel_PlatformViewCreationRequestType(),
               releaseOriginal: true),
         );
-        return jni.JLong($r).toPointer();
+        return jni.JLong($r).reference.toPointer();
       }
       if ($d == r"dispose(I)V") {
         _$impls[$p]!.dispose(
@@ -1723,7 +1965,7 @@ class PlatformViewsChannel_PlatformViewsHandler extends jni.JObject {
     $PlatformViewsChannel_PlatformViewsHandlerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = PlatformViewsChannel_PlatformViewsHandler.fromRef(
+    final $x = PlatformViewsChannel_PlatformViewsHandler.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewsHandler",
         $p,
@@ -1746,7 +1988,7 @@ class PlatformViewsChannel_PlatformViewsHandler extends jni.JObject {
   }
 }
 
-abstract class $PlatformViewsChannel_PlatformViewsHandlerImpl {
+abstract interface class $PlatformViewsChannel_PlatformViewsHandlerImpl {
   factory $PlatformViewsChannel_PlatformViewsHandlerImpl({
     required void Function(
             PlatformViewsChannel_PlatformViewCreationRequest request)
@@ -1873,8 +2115,9 @@ final class $PlatformViewsChannel_PlatformViewsHandlerType
       r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewsHandler;";
 
   @override
-  PlatformViewsChannel_PlatformViewsHandler fromRef(jni.JObjectPtr ref) =>
-      PlatformViewsChannel_PlatformViewsHandler.fromRef(ref);
+  PlatformViewsChannel_PlatformViewsHandler fromReference(
+          jni.JReference reference) =>
+      PlatformViewsChannel_PlatformViewsHandler.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -1893,227 +2136,85 @@ final class $PlatformViewsChannel_PlatformViewsHandlerType
   }
 }
 
-/// from: io.flutter.embedding.engine.plugins.FlutterPlugin
+/// from: io.flutter.embedding.engine.systemchannels.PlatformViewsChannel
 ///
-/// Interface to be implemented by all Flutter plugins.
+/// System channel that sends 2-way communication between Flutter and Android to facilitate embedding
+/// of Android Views within a Flutter application.
 ///
-/// A Flutter plugin allows Flutter developers to interact with a host platform, e.g., Android and
-/// iOS, via Dart code. It includes platform code, as well as Dart code. A plugin author is
-/// responsible for setting up an appropriate io.flutter.plugin.common.MethodChannel to
-/// communicate between platform code and Dart code.
-///
-/// A Flutter plugin has a lifecycle. First, a developer must add a {@code FlutterPlugin} to an
-/// instance of io.flutter.embedding.engine.FlutterEngine. To do this, obtain a PluginRegistry with FlutterEngine\#getPlugins(), then call PluginRegistry\#add(FlutterPlugin), passing the instance of the Flutter plugin. During the call
-/// to PluginRegistry\#add(FlutterPlugin), the io.flutter.embedding.engine.FlutterEngine will invoke \#onAttachedToEngine(FlutterPluginBinding) on the given {@code FlutterPlugin}. If the {@code
-/// FlutterPlugin} is removed from the io.flutter.embedding.engine.FlutterEngine via PluginRegistry\#remove(Class), or if the io.flutter.embedding.engine.FlutterEngine is
-/// destroyed, the FlutterEngine will invoke FlutterPlugin\#onDetachedFromEngine(FlutterPluginBinding) on the given {@code FlutterPlugin}.
-///
-/// Once a {@code FlutterPlugin} is attached to a io.flutter.embedding.engine.FlutterEngine, the plugin's code is permitted to access and invoke
-/// methods on resources within the FlutterPluginBinding that the io.flutter.embedding.engine.FlutterEngine gave to the {@code FlutterPlugin} in \#onAttachedToEngine(FlutterPluginBinding). This includes, for example, the application Context for the running app.
-///
-/// The FlutterPluginBinding provided in \#onAttachedToEngine(FlutterPluginBinding)
-/// is no longer valid after the execution of \#onDetachedFromEngine(FlutterPluginBinding). Do
-/// not access any properties of the FlutterPluginBinding after the completion of \#onDetachedFromEngine(FlutterPluginBinding).
-///
-/// To register a io.flutter.plugin.common.MethodChannel, obtain a BinaryMessenger
-/// via the FlutterPluginBinding.
-///
-/// An Android Flutter plugin may require access to app resources or other artifacts that can only
-/// be retrieved through a Context. Developers can access the application context via FlutterPluginBinding\#getApplicationContext().
-///
-/// Some plugins may require access to the {@code Activity} that is displaying a Flutter
-/// experience, or may need to react to {@code Activity} lifecycle events, e.g., {@code onCreate()},
-/// {@code onStart()}, {@code onResume()}, {@code onPause()}, {@code onStop()}, {@code onDestroy()}.
-/// Any such plugin should implement io.flutter.embedding.engine.plugins.activity.ActivityAware in addition to implementing {@code
-/// FlutterPlugin}. {@code ActivityAware} provides callback hooks that expose access to an associated
-/// {@code Activity} and its {@code Lifecycle}. All plugins must respect the possibility that a
-/// Flutter experience may never be associated with an {@code Activity}, e.g., when Flutter is used
-/// for background behavior. Additionally, all plugins must respect that a {@code Activity}s may come
-/// and go over time, thus requiring plugins to cleanup resources and recreate those resources as the
-/// {@code Activity} comes and goes.
-class FlutterPlugin extends jni.JObject {
+/// Register a PlatformViewsHandler to implement the Android side of this channel.
+class PlatformViewsChannel extends jni.JObject {
   @override
-  late final jni.JObjType<FlutterPlugin> $type = type;
+  late final jni.JObjType<PlatformViewsChannel> $type = type;
 
-  FlutterPlugin.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  PlatformViewsChannel.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
-  static final _class =
-      jni.Jni.findJClass(r"io/flutter/embedding/engine/plugins/FlutterPlugin");
+  static final _class = jni.JClass.forName(
+      r"io/flutter/embedding/engine/systemchannels/PlatformViewsChannel");
 
   /// The type which includes information such as the signature of this class.
-  static const type = $FlutterPluginType();
-  static final _id_onAttachedToEngine = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onAttachedToEngine",
-      r"(Lio/flutter/embedding/engine/plugins/FlutterPlugin$FlutterPluginBinding;)V");
+  static const type = $PlatformViewsChannelType();
+  static final _id_invokeViewFocused = _class.instanceMethodId(
+    r"invokeViewFocused",
+    r"(I)V",
+  );
 
-  /// from: public abstract void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding binding)
-  ///
-  /// This {@code FlutterPlugin} has been associated with a io.flutter.embedding.engine.FlutterEngine instance.
-  ///
-  /// Relevant resources that this {@code FlutterPlugin} may need are provided via the {@code
-  /// binding}. The {@code binding} may be cached and referenced until \#onDetachedFromEngine(FlutterPluginBinding) is invoked and returns.
-  void onAttachedToEngine(
-    FlutterPlugin_FlutterPluginBinding binding,
+  /// from: public void invokeViewFocused(int viewId)
+  void invokeViewFocused(
+    int viewId,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onAttachedToEngine,
-        jni.JniCallType.voidType,
-        [binding.reference]).check();
+    _id_invokeViewFocused(this, const jni.jvoidType(), [jni.JValueInt(viewId)]);
   }
 
-  static final _id_onDetachedFromEngine = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onDetachedFromEngine",
-      r"(Lio/flutter/embedding/engine/plugins/FlutterPlugin$FlutterPluginBinding;)V");
+  static final _id_new0 = _class.constructorId(
+    r"(Lio/flutter/embedding/engine/dart/DartExecutor;)V",
+  );
 
-  /// from: public abstract void onDetachedFromEngine(io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding binding)
+  /// from: public void <init>(io.flutter.embedding.engine.dart.DartExecutor dartExecutor)
+  /// The returned object must be released after use, by calling the [release] method.
   ///
-  /// This {@code FlutterPlugin} has been removed from a io.flutter.embedding.engine.FlutterEngine instance.
+  /// Constructs a {@code PlatformViewsChannel} that connects Android to the Dart code running in
+  /// {@code dartExecutor}.
   ///
-  /// The {@code binding} passed to this method is the same instance that was passed in \#onAttachedToEngine(FlutterPluginBinding). It is provided again in this method as a
-  /// convenience. The {@code binding} may be referenced during the execution of this method, but it
-  /// must not be cached or referenced after this method returns.
+  /// The given {@code dartExecutor} is permitted to be idle or executing code.
   ///
-  /// {@code FlutterPlugin}s should release all resources in this method.
-  void onDetachedFromEngine(
-    FlutterPlugin_FlutterPluginBinding binding,
+  /// See DartExecutor.
+  factory PlatformViewsChannel(
+    jni.JObject dartExecutor,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onDetachedFromEngine,
-        jni.JniCallType.voidType,
-        [binding.reference]).check();
+    return PlatformViewsChannel.fromReference(
+        _id_new0(_class, referenceType, [dartExecutor.reference.pointer]));
   }
 
-  /// Maps a specific port to the implemented interface.
-  static final Map<int, $FlutterPluginImpl> _$impls = {};
-  ReceivePort? _$p;
+  static final _id_setPlatformViewsHandler = _class.instanceMethodId(
+    r"setPlatformViewsHandler",
+    r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewsHandler;)V",
+  );
 
-  static jni.JObjectPtr _$invoke(
-    int port,
-    jni.JObjectPtr descriptor,
-    jni.JObjectPtr args,
+  /// from: public void setPlatformViewsHandler(io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewsHandler handler)
+  ///
+  /// Sets the PlatformViewsHandler which receives all events and requests that are parsed
+  /// from the underlying platform views channel.
+  void setPlatformViewsHandler(
+    PlatformViewsChannel_PlatformViewsHandler handler,
   ) {
-    return _$invokeMethod(
-      port,
-      $MethodInvocation.fromAddresses(
-        0,
-        descriptor.address,
-        args.address,
-      ),
-    );
-  }
-
-  static final ffi.Pointer<
-          ffi.NativeFunction<
-              jni.JObjectPtr Function(
-                  ffi.Uint64, jni.JObjectPtr, jni.JObjectPtr)>>
-      _$invokePointer = ffi.Pointer.fromFunction(_$invoke);
-
-  static ffi.Pointer<ffi.Void> _$invokeMethod(
-    int $p,
-    $MethodInvocation $i,
-  ) {
-    try {
-      final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
-      final $a = $i.args;
-      if ($d ==
-          r"onAttachedToEngine(Lio/flutter/embedding/engine/plugins/FlutterPlugin$FlutterPluginBinding;)V") {
-        _$impls[$p]!.onAttachedToEngine(
-          $a[0].castTo(const $FlutterPlugin_FlutterPluginBindingType(),
-              releaseOriginal: true),
-        );
-        return jni.nullptr;
-      }
-      if ($d ==
-          r"onDetachedFromEngine(Lio/flutter/embedding/engine/plugins/FlutterPlugin$FlutterPluginBinding;)V") {
-        _$impls[$p]!.onDetachedFromEngine(
-          $a[0].castTo(const $FlutterPlugin_FlutterPluginBindingType(),
-              releaseOriginal: true),
-        );
-        return jni.nullptr;
-      }
-    } catch (e) {
-      return ProtectedJniExtensions.newDartException(e.toString());
-    }
-    return jni.nullptr;
-  }
-
-  factory FlutterPlugin.implement(
-    $FlutterPluginImpl $impl,
-  ) {
-    final $p = ReceivePort();
-    final $x = FlutterPlugin.fromRef(
-      ProtectedJniExtensions.newPortProxy(
-        r"io.flutter.embedding.engine.plugins.FlutterPlugin",
-        $p,
-        _$invokePointer,
-      ),
-    ).._$p = $p;
-    final $a = $p.sendPort.nativePort;
-    _$impls[$a] = $impl;
-    $p.listen(($m) {
-      if ($m == null) {
-        _$impls.remove($p.sendPort.nativePort);
-        $p.close();
-        return;
-      }
-      final $i = $MethodInvocation.fromMessage($m as List<dynamic>);
-      final $r = _$invokeMethod($p.sendPort.nativePort, $i);
-      ProtectedJniExtensions.returnResult($i.result, $r);
-    });
-    return $x;
+    _id_setPlatformViewsHandler(
+        this, const jni.jvoidType(), [handler.reference.pointer]);
   }
 }
 
-abstract class $FlutterPluginImpl {
-  factory $FlutterPluginImpl({
-    required void Function(FlutterPlugin_FlutterPluginBinding binding)
-        onAttachedToEngine,
-    required void Function(FlutterPlugin_FlutterPluginBinding binding)
-        onDetachedFromEngine,
-  }) = _$FlutterPluginImpl;
-
-  void onAttachedToEngine(FlutterPlugin_FlutterPluginBinding binding);
-  void onDetachedFromEngine(FlutterPlugin_FlutterPluginBinding binding);
-}
-
-class _$FlutterPluginImpl implements $FlutterPluginImpl {
-  _$FlutterPluginImpl({
-    required void Function(FlutterPlugin_FlutterPluginBinding binding)
-        onAttachedToEngine,
-    required void Function(FlutterPlugin_FlutterPluginBinding binding)
-        onDetachedFromEngine,
-  })  : _onAttachedToEngine = onAttachedToEngine,
-        _onDetachedFromEngine = onDetachedFromEngine;
-
-  final void Function(FlutterPlugin_FlutterPluginBinding binding)
-      _onAttachedToEngine;
-  final void Function(FlutterPlugin_FlutterPluginBinding binding)
-      _onDetachedFromEngine;
-
-  void onAttachedToEngine(FlutterPlugin_FlutterPluginBinding binding) {
-    return _onAttachedToEngine(binding);
-  }
-
-  void onDetachedFromEngine(FlutterPlugin_FlutterPluginBinding binding) {
-    return _onDetachedFromEngine(binding);
-  }
-}
-
-final class $FlutterPluginType extends jni.JObjType<FlutterPlugin> {
-  const $FlutterPluginType();
+final class $PlatformViewsChannelType
+    extends jni.JObjType<PlatformViewsChannel> {
+  const $PlatformViewsChannelType();
 
   @override
   String get signature =>
-      r"Lio/flutter/embedding/engine/plugins/FlutterPlugin;";
+      r"Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel;";
 
   @override
-  FlutterPlugin fromRef(jni.JObjectPtr ref) => FlutterPlugin.fromRef(ref);
+  PlatformViewsChannel fromReference(jni.JReference reference) =>
+      PlatformViewsChannel.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -2122,12 +2223,12 @@ final class $FlutterPluginType extends jni.JObjType<FlutterPlugin> {
   final superCount = 1;
 
   @override
-  int get hashCode => ($FlutterPluginType).hashCode;
+  int get hashCode => ($PlatformViewsChannelType).hashCode;
 
   @override
   bool operator ==(Object other) {
-    return other.runtimeType == ($FlutterPluginType) &&
-        other is $FlutterPluginType;
+    return other.runtimeType == ($PlatformViewsChannelType) &&
+        other is $PlatformViewsChannelType;
   }
 }
 
@@ -2138,19 +2239,19 @@ class FlutterPlugin_FlutterAssets extends jni.JObject {
   @override
   late final jni.JObjType<FlutterPlugin_FlutterAssets> $type = type;
 
-  FlutterPlugin_FlutterAssets.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  FlutterPlugin_FlutterAssets.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
-  static final _class = jni.Jni.findJClass(
+  static final _class = jni.JClass.forName(
       r"io/flutter/embedding/engine/plugins/FlutterPlugin$FlutterAssets");
 
   /// The type which includes information such as the signature of this class.
   static const type = $FlutterPlugin_FlutterAssetsType();
-  static final _id_getAssetFilePathByName = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getAssetFilePathByName",
-      r"(Ljava/lang/String;)Ljava/lang/String;");
+  static final _id_getAssetFilePathByName = _class.instanceMethodId(
+    r"getAssetFilePathByName",
+    r"(Ljava/lang/String;)Ljava/lang/String;",
+  );
 
   /// from: public abstract java.lang.String getAssetFilePathByName(java.lang.String assetFileName)
   /// The returned object must be released after use, by calling the [release] method.
@@ -2164,17 +2265,14 @@ class FlutterPlugin_FlutterAssets extends jni.JObject {
   jni.JString getAssetFilePathByName(
     jni.JString assetFileName,
   ) {
-    return const jni.JStringType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getAssetFilePathByName,
-        jni.JniCallType.objectType,
-        [assetFileName.reference]).object);
+    return _id_getAssetFilePathByName(
+        this, const jni.JStringType(), [assetFileName.reference.pointer]);
   }
 
-  static final _id_getAssetFilePathByName1 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getAssetFilePathByName",
-      r"(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;");
+  static final _id_getAssetFilePathByName1 = _class.instanceMethodId(
+    r"getAssetFilePathByName",
+    r"(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;",
+  );
 
   /// from: public abstract java.lang.String getAssetFilePathByName(java.lang.String assetFileName, java.lang.String packageName)
   /// The returned object must be released after use, by calling the [release] method.
@@ -2185,17 +2283,14 @@ class FlutterPlugin_FlutterAssets extends jni.JObject {
     jni.JString assetFileName,
     jni.JString packageName,
   ) {
-    return const jni.JStringType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getAssetFilePathByName1,
-        jni.JniCallType.objectType,
-        [assetFileName.reference, packageName.reference]).object);
+    return _id_getAssetFilePathByName1(this, const jni.JStringType(),
+        [assetFileName.reference.pointer, packageName.reference.pointer]);
   }
 
-  static final _id_getAssetFilePathBySubpath = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getAssetFilePathBySubpath",
-      r"(Ljava/lang/String;)Ljava/lang/String;");
+  static final _id_getAssetFilePathBySubpath = _class.instanceMethodId(
+    r"getAssetFilePathBySubpath",
+    r"(Ljava/lang/String;)Ljava/lang/String;",
+  );
 
   /// from: public abstract java.lang.String getAssetFilePathBySubpath(java.lang.String assetSubpath)
   /// The returned object must be released after use, by calling the [release] method.
@@ -2209,17 +2304,14 @@ class FlutterPlugin_FlutterAssets extends jni.JObject {
   jni.JString getAssetFilePathBySubpath(
     jni.JString assetSubpath,
   ) {
-    return const jni.JStringType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getAssetFilePathBySubpath,
-        jni.JniCallType.objectType,
-        [assetSubpath.reference]).object);
+    return _id_getAssetFilePathBySubpath(
+        this, const jni.JStringType(), [assetSubpath.reference.pointer]);
   }
 
-  static final _id_getAssetFilePathBySubpath1 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getAssetFilePathBySubpath",
-      r"(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;");
+  static final _id_getAssetFilePathBySubpath1 = _class.instanceMethodId(
+    r"getAssetFilePathBySubpath",
+    r"(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;",
+  );
 
   /// from: public abstract java.lang.String getAssetFilePathBySubpath(java.lang.String assetSubpath, java.lang.String packageName)
   /// The returned object must be released after use, by calling the [release] method.
@@ -2230,11 +2322,8 @@ class FlutterPlugin_FlutterAssets extends jni.JObject {
     jni.JString assetSubpath,
     jni.JString packageName,
   ) {
-    return const jni.JStringType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getAssetFilePathBySubpath1,
-        jni.JniCallType.objectType,
-        [assetSubpath.reference, packageName.reference]).object);
+    return _id_getAssetFilePathBySubpath1(this, const jni.JStringType(),
+        [assetSubpath.reference.pointer, packageName.reference.pointer]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -2274,7 +2363,10 @@ class FlutterPlugin_FlutterAssets extends jni.JObject {
         final $r = _$impls[$p]!.getAssetFilePathByName(
           $a[0].castTo(const jni.JStringType(), releaseOriginal: true),
         );
-        return ($r as jni.JObject).castTo(const jni.JObjectType()).toPointer();
+        return ($r as jni.JObject)
+            .castTo(const jni.JObjectType())
+            .reference
+            .toPointer();
       }
       if ($d ==
           r"getAssetFilePathByName(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;") {
@@ -2282,14 +2374,20 @@ class FlutterPlugin_FlutterAssets extends jni.JObject {
           $a[0].castTo(const jni.JStringType(), releaseOriginal: true),
           $a[1].castTo(const jni.JStringType(), releaseOriginal: true),
         );
-        return ($r as jni.JObject).castTo(const jni.JObjectType()).toPointer();
+        return ($r as jni.JObject)
+            .castTo(const jni.JObjectType())
+            .reference
+            .toPointer();
       }
       if ($d ==
           r"getAssetFilePathBySubpath(Ljava/lang/String;)Ljava/lang/String;") {
         final $r = _$impls[$p]!.getAssetFilePathBySubpath(
           $a[0].castTo(const jni.JStringType(), releaseOriginal: true),
         );
-        return ($r as jni.JObject).castTo(const jni.JObjectType()).toPointer();
+        return ($r as jni.JObject)
+            .castTo(const jni.JObjectType())
+            .reference
+            .toPointer();
       }
       if ($d ==
           r"getAssetFilePathBySubpath(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;") {
@@ -2297,7 +2395,10 @@ class FlutterPlugin_FlutterAssets extends jni.JObject {
           $a[0].castTo(const jni.JStringType(), releaseOriginal: true),
           $a[1].castTo(const jni.JStringType(), releaseOriginal: true),
         );
-        return ($r as jni.JObject).castTo(const jni.JObjectType()).toPointer();
+        return ($r as jni.JObject)
+            .castTo(const jni.JObjectType())
+            .reference
+            .toPointer();
       }
     } catch (e) {
       return ProtectedJniExtensions.newDartException(e.toString());
@@ -2309,7 +2410,7 @@ class FlutterPlugin_FlutterAssets extends jni.JObject {
     $FlutterPlugin_FlutterAssetsImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = FlutterPlugin_FlutterAssets.fromRef(
+    final $x = FlutterPlugin_FlutterAssets.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterAssets",
         $p,
@@ -2332,7 +2433,7 @@ class FlutterPlugin_FlutterAssets extends jni.JObject {
   }
 }
 
-abstract class $FlutterPlugin_FlutterAssetsImpl {
+abstract interface class $FlutterPlugin_FlutterAssetsImpl {
   factory $FlutterPlugin_FlutterAssetsImpl({
     required jni.JString Function(jni.JString assetFileName)
         getAssetFilePathByName,
@@ -2408,8 +2509,8 @@ final class $FlutterPlugin_FlutterAssetsType
       r"Lio/flutter/embedding/engine/plugins/FlutterPlugin$FlutterAssets;";
 
   @override
-  FlutterPlugin_FlutterAssets fromRef(jni.JObjectPtr ref) =>
-      FlutterPlugin_FlutterAssets.fromRef(ref);
+  FlutterPlugin_FlutterAssets fromReference(jni.JReference reference) =>
+      FlutterPlugin_FlutterAssets.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -2441,19 +2542,18 @@ class FlutterPlugin_FlutterPluginBinding extends jni.JObject {
   @override
   late final jni.JObjType<FlutterPlugin_FlutterPluginBinding> $type = type;
 
-  FlutterPlugin_FlutterPluginBinding.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  FlutterPlugin_FlutterPluginBinding.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
-  static final _class = jni.Jni.findJClass(
+  static final _class = jni.JClass.forName(
       r"io/flutter/embedding/engine/plugins/FlutterPlugin$FlutterPluginBinding");
 
   /// The type which includes information such as the signature of this class.
   static const type = $FlutterPlugin_FlutterPluginBindingType();
-  static final _id_new0 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"<init>",
-      r"(Landroid/content/Context;Lio/flutter/embedding/engine/FlutterEngine;Lio/flutter/plugin/common/BinaryMessenger;Lio/flutter/view/TextureRegistry;Lio/flutter/plugin/platform/PlatformViewRegistry;Lio/flutter/embedding/engine/plugins/FlutterPlugin$FlutterAssets;Lio/flutter/embedding/engine/FlutterEngineGroup;)V");
+  static final _id_new0 = _class.constructorId(
+    r"(Landroid/content/Context;Lio/flutter/embedding/engine/FlutterEngine;Lio/flutter/plugin/common/BinaryMessenger;Lio/flutter/view/TextureRegistry;Lio/flutter/plugin/platform/PlatformViewRegistry;Lio/flutter/embedding/engine/plugins/FlutterPlugin$FlutterAssets;Lio/flutter/embedding/engine/FlutterEngineGroup;)V",
+  );
 
   /// from: public void <init>(android.content.Context applicationContext, io.flutter.embedding.engine.FlutterEngine flutterEngine, io.flutter.plugin.common.BinaryMessenger binaryMessenger, io.flutter.view.TextureRegistry textureRegistry, io.flutter.plugin.platform.PlatformViewRegistry platformViewRegistry, io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterAssets flutterAssets, io.flutter.embedding.engine.FlutterEngineGroup group)
   /// The returned object must be released after use, by calling the [release] method.
@@ -2466,36 +2566,33 @@ class FlutterPlugin_FlutterPluginBinding extends jni.JObject {
     FlutterPlugin_FlutterAssets flutterAssets,
     jni.JObject group,
   ) {
-    return FlutterPlugin_FlutterPluginBinding.fromRef(
-        jni.Jni.accessors.newObjectWithArgs(_class.reference, _id_new0, [
-      applicationContext.reference,
-      flutterEngine.reference,
-      binaryMessenger.reference,
-      textureRegistry.reference,
-      platformViewRegistry.reference,
-      flutterAssets.reference,
-      group.reference
-    ]).object);
+    return FlutterPlugin_FlutterPluginBinding.fromReference(
+        _id_new0(_class, referenceType, [
+      applicationContext.reference.pointer,
+      flutterEngine.reference.pointer,
+      binaryMessenger.reference.pointer,
+      textureRegistry.reference.pointer,
+      platformViewRegistry.reference.pointer,
+      flutterAssets.reference.pointer,
+      group.reference.pointer
+    ]));
   }
 
-  static final _id_getApplicationContext = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getApplicationContext",
-      r"()Landroid/content/Context;");
+  static final _id_getApplicationContext = _class.instanceMethodId(
+    r"getApplicationContext",
+    r"()Landroid/content/Context;",
+  );
 
   /// from: public android.content.Context getApplicationContext()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getApplicationContext() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getApplicationContext,
-        jni.JniCallType.objectType, []).object);
+    return _id_getApplicationContext(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getFlutterEngine = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getFlutterEngine",
-      r"()Lio/flutter/embedding/engine/FlutterEngine;");
+  static final _id_getFlutterEngine = _class.instanceMethodId(
+    r"getFlutterEngine",
+    r"()Lio/flutter/embedding/engine/FlutterEngine;",
+  );
 
   /// from: public io.flutter.embedding.engine.FlutterEngine getFlutterEngine()
   /// The returned object must be released after use, by calling the [release] method.
@@ -2503,69 +2600,59 @@ class FlutterPlugin_FlutterPluginBinding extends jni.JObject {
   /// @deprecated Use {@code getBinaryMessenger()}, {@code getTextureRegistry()}, or {@code
   ///     getPlatformViewRegistry()} instead.
   FlutterEngine getFlutterEngine() {
-    return const $FlutterEngineType().fromRef(jni.Jni.accessors
-        .callMethodWithArgs(reference, _id_getFlutterEngine,
-            jni.JniCallType.objectType, []).object);
+    return _id_getFlutterEngine(this, const $FlutterEngineType(), []);
   }
 
-  static final _id_getBinaryMessenger = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getBinaryMessenger",
-      r"()Lio/flutter/plugin/common/BinaryMessenger;");
+  static final _id_getBinaryMessenger = _class.instanceMethodId(
+    r"getBinaryMessenger",
+    r"()Lio/flutter/plugin/common/BinaryMessenger;",
+  );
 
   /// from: public io.flutter.plugin.common.BinaryMessenger getBinaryMessenger()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getBinaryMessenger() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getBinaryMessenger,
-        jni.JniCallType.objectType, []).object);
+    return _id_getBinaryMessenger(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getTextureRegistry = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getTextureRegistry",
-      r"()Lio/flutter/view/TextureRegistry;");
+  static final _id_getTextureRegistry = _class.instanceMethodId(
+    r"getTextureRegistry",
+    r"()Lio/flutter/view/TextureRegistry;",
+  );
 
   /// from: public io.flutter.view.TextureRegistry getTextureRegistry()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getTextureRegistry() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getTextureRegistry,
-        jni.JniCallType.objectType, []).object);
+    return _id_getTextureRegistry(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getPlatformViewRegistry = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getPlatformViewRegistry",
-      r"()Lio/flutter/plugin/platform/PlatformViewRegistry;");
+  static final _id_getPlatformViewRegistry = _class.instanceMethodId(
+    r"getPlatformViewRegistry",
+    r"()Lio/flutter/plugin/platform/PlatformViewRegistry;",
+  );
 
   /// from: public io.flutter.plugin.platform.PlatformViewRegistry getPlatformViewRegistry()
   /// The returned object must be released after use, by calling the [release] method.
   PlatformViewRegistry getPlatformViewRegistry() {
-    return const $PlatformViewRegistryType().fromRef(jni.Jni.accessors
-        .callMethodWithArgs(reference, _id_getPlatformViewRegistry,
-            jni.JniCallType.objectType, []).object);
+    return _id_getPlatformViewRegistry(
+        this, const $PlatformViewRegistryType(), []);
   }
 
-  static final _id_getFlutterAssets = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getFlutterAssets",
-      r"()Lio/flutter/embedding/engine/plugins/FlutterPlugin$FlutterAssets;");
+  static final _id_getFlutterAssets = _class.instanceMethodId(
+    r"getFlutterAssets",
+    r"()Lio/flutter/embedding/engine/plugins/FlutterPlugin$FlutterAssets;",
+  );
 
   /// from: public io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterAssets getFlutterAssets()
   /// The returned object must be released after use, by calling the [release] method.
   FlutterPlugin_FlutterAssets getFlutterAssets() {
-    return const $FlutterPlugin_FlutterAssetsType().fromRef(jni.Jni.accessors
-        .callMethodWithArgs(reference, _id_getFlutterAssets,
-            jni.JniCallType.objectType, []).object);
+    return _id_getFlutterAssets(
+        this, const $FlutterPlugin_FlutterAssetsType(), []);
   }
 
-  static final _id_getEngineGroup = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getEngineGroup",
-      r"()Lio/flutter/embedding/engine/FlutterEngineGroup;");
+  static final _id_getEngineGroup = _class.instanceMethodId(
+    r"getEngineGroup",
+    r"()Lio/flutter/embedding/engine/FlutterEngineGroup;",
+  );
 
   /// from: public io.flutter.embedding.engine.FlutterEngineGroup getEngineGroup()
   /// The returned object must be released after use, by calling the [release] method.
@@ -2579,8 +2666,7 @@ class FlutterPlugin_FlutterPluginBinding extends jni.JObject {
   /// available will result in suboptimal performance and odd behaviors related to Dart isolate
   /// groups.
   jni.JObject getEngineGroup() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getEngineGroup, jni.JniCallType.objectType, []).object);
+    return _id_getEngineGroup(this, const jni.JObjectType(), []);
   }
 }
 
@@ -2593,8 +2679,8 @@ final class $FlutterPlugin_FlutterPluginBindingType
       r"Lio/flutter/embedding/engine/plugins/FlutterPlugin$FlutterPluginBinding;";
 
   @override
-  FlutterPlugin_FlutterPluginBinding fromRef(jni.JObjectPtr ref) =>
-      FlutterPlugin_FlutterPluginBinding.fromRef(ref);
+  FlutterPlugin_FlutterPluginBinding fromReference(jni.JReference reference) =>
+      FlutterPlugin_FlutterPluginBinding.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -2612,731 +2698,222 @@ final class $FlutterPlugin_FlutterPluginBindingType
   }
 }
 
-/// from: io.flutter.embedding.engine.FlutterEngine
+/// from: io.flutter.embedding.engine.plugins.FlutterPlugin
 ///
-/// A single Flutter execution environment.
+/// Interface to be implemented by all Flutter plugins.
 ///
-/// The {@code FlutterEngine} is the container through which Dart code can be run in an Android
-/// application.
+/// A Flutter plugin allows Flutter developers to interact with a host platform, e.g., Android and
+/// iOS, via Dart code. It includes platform code, as well as Dart code. A plugin author is
+/// responsible for setting up an appropriate io.flutter.plugin.common.MethodChannel to
+/// communicate between platform code and Dart code.
 ///
-/// Dart code in a {@code FlutterEngine} can execute in the background, or it can be render to the
-/// screen by using the accompanying FlutterRenderer and Dart code using the Flutter
-/// framework on the Dart side. Rendering can be started and stopped, thus allowing a {@code
-/// FlutterEngine} to move from UI interaction to data-only processing and then back to UI
-/// interaction.
+/// A Flutter plugin has a lifecycle. First, a developer must add a {@code FlutterPlugin} to an
+/// instance of io.flutter.embedding.engine.FlutterEngine. To do this, obtain a PluginRegistry with FlutterEngine\#getPlugins(), then call PluginRegistry\#add(FlutterPlugin), passing the instance of the Flutter plugin. During the call
+/// to PluginRegistry\#add(FlutterPlugin), the io.flutter.embedding.engine.FlutterEngine will invoke \#onAttachedToEngine(FlutterPluginBinding) on the given {@code FlutterPlugin}. If the {@code
+/// FlutterPlugin} is removed from the io.flutter.embedding.engine.FlutterEngine via PluginRegistry\#remove(Class), or if the io.flutter.embedding.engine.FlutterEngine is
+/// destroyed, the FlutterEngine will invoke FlutterPlugin\#onDetachedFromEngine(FlutterPluginBinding) on the given {@code FlutterPlugin}.
 ///
-/// Multiple {@code FlutterEngine}s may exist, execute Dart code, and render UIs within a single
-/// Android app. For better memory performance characteristics, construct multiple {@code
-/// FlutterEngine}s via io.flutter.embedding.engine.FlutterEngineGroup rather than via {@code
-/// FlutterEngine}'s constructor directly.
+/// Once a {@code FlutterPlugin} is attached to a io.flutter.embedding.engine.FlutterEngine, the plugin's code is permitted to access and invoke
+/// methods on resources within the FlutterPluginBinding that the io.flutter.embedding.engine.FlutterEngine gave to the {@code FlutterPlugin} in \#onAttachedToEngine(FlutterPluginBinding). This includes, for example, the application Context for the running app.
 ///
-/// To start running Dart and/or Flutter within this {@code FlutterEngine}, get a reference to
-/// this engine's DartExecutor and then use DartExecutor\#executeDartEntrypoint(DartExecutor.DartEntrypoint). The DartExecutor\#executeDartEntrypoint(DartExecutor.DartEntrypoint) method must not be invoked twice
-/// on the same {@code FlutterEngine}.
+/// The FlutterPluginBinding provided in \#onAttachedToEngine(FlutterPluginBinding)
+/// is no longer valid after the execution of \#onDetachedFromEngine(FlutterPluginBinding). Do
+/// not access any properties of the FlutterPluginBinding after the completion of \#onDetachedFromEngine(FlutterPluginBinding).
 ///
-/// To start rendering Flutter content to the screen, use \#getRenderer() to obtain a
-/// FlutterRenderer and then attach a RenderSurface. Consider using a io.flutter.embedding.android.FlutterView as a RenderSurface.
+/// To register a io.flutter.plugin.common.MethodChannel, obtain a BinaryMessenger
+/// via the FlutterPluginBinding.
 ///
-/// Instatiating the first {@code FlutterEngine} per process will also load the Flutter engine's
-/// native library and start the Dart VM. Subsequent {@code FlutterEngine}s will run on the same VM
-/// instance but will have their own Dart <a href="https://api.dartlang.org/stable/dart-isolate/Isolate-class.html">Isolate</a> when the
-/// DartExecutor is run. Each Isolate is a self-contained Dart environment and cannot
-/// communicate with each other except via Isolate ports.
-class FlutterEngine extends jni.JObject {
+/// An Android Flutter plugin may require access to app resources or other artifacts that can only
+/// be retrieved through a Context. Developers can access the application context via FlutterPluginBinding\#getApplicationContext().
+///
+/// Some plugins may require access to the {@code Activity} that is displaying a Flutter
+/// experience, or may need to react to {@code Activity} lifecycle events, e.g., {@code onCreate()},
+/// {@code onStart()}, {@code onResume()}, {@code onPause()}, {@code onStop()}, {@code onDestroy()}.
+/// Any such plugin should implement io.flutter.embedding.engine.plugins.activity.ActivityAware in addition to implementing {@code
+/// FlutterPlugin}. {@code ActivityAware} provides callback hooks that expose access to an associated
+/// {@code Activity} and its {@code Lifecycle}. All plugins must respect the possibility that a
+/// Flutter experience may never be associated with an {@code Activity}, e.g., when Flutter is used
+/// for background behavior. Additionally, all plugins must respect that a {@code Activity}s may come
+/// and go over time, thus requiring plugins to cleanup resources and recreate those resources as the
+/// {@code Activity} comes and goes.
+class FlutterPlugin extends jni.JObject {
   @override
-  late final jni.JObjType<FlutterEngine> $type = type;
+  late final jni.JObjType<FlutterPlugin> $type = type;
 
-  FlutterEngine.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  FlutterPlugin.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"io/flutter/embedding/engine/FlutterEngine");
+      jni.JClass.forName(r"io/flutter/embedding/engine/plugins/FlutterPlugin");
 
   /// The type which includes information such as the signature of this class.
-  static const type = $FlutterEngineType();
-  static final _id_new0 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"<init>", r"(Landroid/content/Context;)V");
+  static const type = $FlutterPluginType();
+  static final _id_onAttachedToEngine = _class.instanceMethodId(
+    r"onAttachedToEngine",
+    r"(Lio/flutter/embedding/engine/plugins/FlutterPlugin$FlutterPluginBinding;)V",
+  );
 
-  /// from: public void <init>(android.content.Context context)
-  /// The returned object must be released after use, by calling the [release] method.
+  /// from: public abstract void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding binding)
   ///
-  /// Constructs a new {@code FlutterEngine}.
+  /// This {@code FlutterPlugin} has been associated with a io.flutter.embedding.engine.FlutterEngine instance.
   ///
-  /// A new {@code FlutterEngine} does not execute any Dart code automatically. See \#getDartExecutor() and DartExecutor\#executeDartEntrypoint(DartExecutor.DartEntrypoint)
-  /// to begin executing Dart code within this {@code FlutterEngine}.
-  ///
-  /// A new {@code FlutterEngine} will not display any UI until a RenderSurface is
-  /// registered. See \#getRenderer() and FlutterRenderer\#startRenderingToSurface(Surface, boolean).
-  ///
-  /// A new {@code FlutterEngine} automatically attaches all plugins. See \#getPlugins().
-  ///
-  /// A new {@code FlutterEngine} does come with all default system channels attached.
-  ///
-  /// The first {@code FlutterEngine} instance constructed per process will also load the Flutter
-  /// native library and start a Dart VM.
-  ///
-  /// In order to pass Dart VM initialization arguments (see io.flutter.embedding.engine.FlutterShellArgs) when creating the VM, manually set the
-  /// initialization arguments by calling io.flutter.embedding.engine.loader.FlutterLoader\#startInitialization(Context) and io.flutter.embedding.engine.loader.FlutterLoader\#ensureInitializationComplete(Context,
-  /// String[]) before constructing the engine.
-  factory FlutterEngine(
-    jni.JObject context,
+  /// Relevant resources that this {@code FlutterPlugin} may need are provided via the {@code
+  /// binding}. The {@code binding} may be cached and referenced until \#onDetachedFromEngine(FlutterPluginBinding) is invoked and returns.
+  void onAttachedToEngine(
+    FlutterPlugin_FlutterPluginBinding binding,
   ) {
-    return FlutterEngine.fromRef(jni.Jni.accessors.newObjectWithArgs(
-        _class.reference, _id_new0, [context.reference]).object);
+    _id_onAttachedToEngine(
+        this, const jni.jvoidType(), [binding.reference.pointer]);
   }
 
-  static final _id_new1 = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"<init>", r"(Landroid/content/Context;[Ljava/lang/String;)V");
+  static final _id_onDetachedFromEngine = _class.instanceMethodId(
+    r"onDetachedFromEngine",
+    r"(Lio/flutter/embedding/engine/plugins/FlutterPlugin$FlutterPluginBinding;)V",
+  );
 
-  /// from: public void <init>(android.content.Context context, java.lang.String[] dartVmArgs)
-  /// The returned object must be released after use, by calling the [release] method.
+  /// from: public abstract void onDetachedFromEngine(io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding binding)
   ///
-  /// Same as \#FlutterEngine(Context) with added support for passing Dart VM arguments.
+  /// This {@code FlutterPlugin} has been removed from a io.flutter.embedding.engine.FlutterEngine instance.
   ///
-  /// If the Dart VM has already started, the given arguments will have no effect.
-  factory FlutterEngine.new1(
-    jni.JObject context,
-    jni.JArray<jni.JString> dartVmArgs,
+  /// The {@code binding} passed to this method is the same instance that was passed in \#onAttachedToEngine(FlutterPluginBinding). It is provided again in this method as a
+  /// convenience. The {@code binding} may be referenced during the execution of this method, but it
+  /// must not be cached or referenced after this method returns.
+  ///
+  /// {@code FlutterPlugin}s should release all resources in this method.
+  void onDetachedFromEngine(
+    FlutterPlugin_FlutterPluginBinding binding,
   ) {
-    return FlutterEngine.fromRef(jni.Jni.accessors.newObjectWithArgs(
-        _class.reference,
-        _id_new1,
-        [context.reference, dartVmArgs.reference]).object);
+    _id_onDetachedFromEngine(
+        this, const jni.jvoidType(), [binding.reference.pointer]);
   }
 
-  static final _id_new2 = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"<init>", r"(Landroid/content/Context;[Ljava/lang/String;Z)V");
+  /// Maps a specific port to the implemented interface.
+  static final Map<int, $FlutterPluginImpl> _$impls = {};
+  ReceivePort? _$p;
 
-  /// from: public void <init>(android.content.Context context, java.lang.String[] dartVmArgs, boolean automaticallyRegisterPlugins)
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// Same as \#FlutterEngine(Context) with added support for passing Dart VM arguments and
-  /// avoiding automatic plugin registration.
-  ///
-  /// If the Dart VM has already started, the given arguments will have no effect.
-  factory FlutterEngine.new2(
-    jni.JObject context,
-    jni.JArray<jni.JString> dartVmArgs,
-    bool automaticallyRegisterPlugins,
+  static jni.JObjectPtr _$invoke(
+    int port,
+    jni.JObjectPtr descriptor,
+    jni.JObjectPtr args,
   ) {
-    return FlutterEngine.fromRef(jni.Jni.accessors.newObjectWithArgs(
-        _class.reference, _id_new2, [
-      context.reference,
-      dartVmArgs.reference,
-      automaticallyRegisterPlugins ? 1 : 0
-    ]).object);
+    return _$invokeMethod(
+      port,
+      $MethodInvocation.fromAddresses(
+        0,
+        descriptor.address,
+        args.address,
+      ),
+    );
   }
 
-  static final _id_new3 = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"<init>", r"(Landroid/content/Context;[Ljava/lang/String;ZZ)V");
+  static final ffi.Pointer<
+          ffi.NativeFunction<
+              jni.JObjectPtr Function(
+                  ffi.Uint64, jni.JObjectPtr, jni.JObjectPtr)>>
+      _$invokePointer = ffi.Pointer.fromFunction(_$invoke);
 
-  /// from: public void <init>(android.content.Context context, java.lang.String[] dartVmArgs, boolean automaticallyRegisterPlugins, boolean waitForRestorationData)
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// Same as \#FlutterEngine(Context, String[], boolean) with added support for configuring
-  /// whether the engine will receive restoration data.
-  ///
-  /// The {@code waitForRestorationData} flag controls whether the engine delays responding to
-  /// requests from the framework for restoration data until that data has been provided to the
-  /// engine via {@code RestorationChannel.setRestorationData(byte[] data)}. If the flag is false,
-  /// the framework may temporarily initialize itself to default values before the restoration data
-  /// has been made available to the engine. Setting {@code waitForRestorationData} to true avoids
-  /// this extra work by delaying initialization until the data is available.
-  ///
-  /// When {@code waitForRestorationData} is set, {@code
-  /// RestorationChannel.setRestorationData(byte[] data)} must be called at a later point in time. If
-  /// it later turns out that no restoration data is available to restore the framework from, that
-  /// method must still be called with null as an argument to indicate "no data".
-  ///
-  /// If the framework never requests the restoration data, this flag has no effect.
-  factory FlutterEngine.new3(
-    jni.JObject context,
-    jni.JArray<jni.JString> dartVmArgs,
-    bool automaticallyRegisterPlugins,
-    bool waitForRestorationData,
+  static ffi.Pointer<ffi.Void> _$invokeMethod(
+    int $p,
+    $MethodInvocation $i,
   ) {
-    return FlutterEngine.fromRef(
-        jni.Jni.accessors.newObjectWithArgs(_class.reference, _id_new3, [
-      context.reference,
-      dartVmArgs.reference,
-      automaticallyRegisterPlugins ? 1 : 0,
-      waitForRestorationData ? 1 : 0
-    ]).object);
+    try {
+      final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
+      final $a = $i.args;
+      if ($d ==
+          r"onAttachedToEngine(Lio/flutter/embedding/engine/plugins/FlutterPlugin$FlutterPluginBinding;)V") {
+        _$impls[$p]!.onAttachedToEngine(
+          $a[0].castTo(const $FlutterPlugin_FlutterPluginBindingType(),
+              releaseOriginal: true),
+        );
+        return jni.nullptr;
+      }
+      if ($d ==
+          r"onDetachedFromEngine(Lio/flutter/embedding/engine/plugins/FlutterPlugin$FlutterPluginBinding;)V") {
+        _$impls[$p]!.onDetachedFromEngine(
+          $a[0].castTo(const $FlutterPlugin_FlutterPluginBindingType(),
+              releaseOriginal: true),
+        );
+        return jni.nullptr;
+      }
+    } catch (e) {
+      return ProtectedJniExtensions.newDartException(e.toString());
+    }
+    return jni.nullptr;
   }
 
-  static final _id_new4 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"<init>",
-      r"(Landroid/content/Context;Lio/flutter/embedding/engine/loader/FlutterLoader;Lio/flutter/embedding/engine/FlutterJNI;)V");
-
-  /// from: public void <init>(android.content.Context context, io.flutter.embedding.engine.loader.FlutterLoader flutterLoader, io.flutter.embedding.engine.FlutterJNI flutterJNI)
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// Same as \#FlutterEngine(Context, FlutterLoader, FlutterJNI, String[], boolean) but with
-  /// no Dart VM flags and automatically registers plugins.
-  ///
-  /// {@code flutterJNI} should be a new instance that has never been attached to an engine
-  /// before.
-  factory FlutterEngine.new4(
-    jni.JObject context,
-    jni.JObject flutterLoader,
-    jni.JObject flutterJNI,
+  factory FlutterPlugin.implement(
+    $FlutterPluginImpl $impl,
   ) {
-    return FlutterEngine.fromRef(jni.Jni.accessors.newObjectWithArgs(
-        _class.reference, _id_new4, [
-      context.reference,
-      flutterLoader.reference,
-      flutterJNI.reference
-    ]).object);
-  }
-
-  static final _id_new5 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"<init>",
-      r"(Landroid/content/Context;Lio/flutter/embedding/engine/loader/FlutterLoader;Lio/flutter/embedding/engine/FlutterJNI;[Ljava/lang/String;Z)V");
-
-  /// from: public void <init>(android.content.Context context, io.flutter.embedding.engine.loader.FlutterLoader flutterLoader, io.flutter.embedding.engine.FlutterJNI flutterJNI, java.lang.String[] dartVmArgs, boolean automaticallyRegisterPlugins)
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// Same as \#FlutterEngine(Context, FlutterLoader, FlutterJNI), plus Dart VM flags in
-  /// {@code dartVmArgs}, and control over whether plugins are automatically registered with this
-  /// {@code FlutterEngine} in {@code automaticallyRegisterPlugins}. If plugins are automatically
-  /// registered, then they are registered during the execution of this constructor.
-  factory FlutterEngine.new5(
-    jni.JObject context,
-    jni.JObject flutterLoader,
-    jni.JObject flutterJNI,
-    jni.JArray<jni.JString> dartVmArgs,
-    bool automaticallyRegisterPlugins,
-  ) {
-    return FlutterEngine.fromRef(
-        jni.Jni.accessors.newObjectWithArgs(_class.reference, _id_new5, [
-      context.reference,
-      flutterLoader.reference,
-      flutterJNI.reference,
-      dartVmArgs.reference,
-      automaticallyRegisterPlugins ? 1 : 0
-    ]).object);
-  }
-
-  static final _id_new6 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"<init>",
-      r"(Landroid/content/Context;Lio/flutter/embedding/engine/loader/FlutterLoader;Lio/flutter/embedding/engine/FlutterJNI;Lio/flutter/plugin/platform/PlatformViewsController;[Ljava/lang/String;Z)V");
-
-  /// from: public void <init>(android.content.Context context, io.flutter.embedding.engine.loader.FlutterLoader flutterLoader, io.flutter.embedding.engine.FlutterJNI flutterJNI, io.flutter.plugin.platform.PlatformViewsController platformViewsController, java.lang.String[] dartVmArgs, boolean automaticallyRegisterPlugins)
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// Same as \#FlutterEngine(Context, FlutterLoader, FlutterJNI, String[], boolean), plus the
-  /// ability to provide a custom {@code PlatformViewsController}.
-  factory FlutterEngine.new6(
-    jni.JObject context,
-    jni.JObject flutterLoader,
-    jni.JObject flutterJNI,
-    PlatformViewsController platformViewsController,
-    jni.JArray<jni.JString> dartVmArgs,
-    bool automaticallyRegisterPlugins,
-  ) {
-    return FlutterEngine.fromRef(
-        jni.Jni.accessors.newObjectWithArgs(_class.reference, _id_new6, [
-      context.reference,
-      flutterLoader.reference,
-      flutterJNI.reference,
-      platformViewsController.reference,
-      dartVmArgs.reference,
-      automaticallyRegisterPlugins ? 1 : 0
-    ]).object);
-  }
-
-  static final _id_new7 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"<init>",
-      r"(Landroid/content/Context;Lio/flutter/embedding/engine/loader/FlutterLoader;Lio/flutter/embedding/engine/FlutterJNI;Lio/flutter/plugin/platform/PlatformViewsController;[Ljava/lang/String;ZZ)V");
-
-  /// from: public void <init>(android.content.Context context, io.flutter.embedding.engine.loader.FlutterLoader flutterLoader, io.flutter.embedding.engine.FlutterJNI flutterJNI, io.flutter.plugin.platform.PlatformViewsController platformViewsController, java.lang.String[] dartVmArgs, boolean automaticallyRegisterPlugins, boolean waitForRestorationData)
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// Fully configurable {@code FlutterEngine} constructor.
-  factory FlutterEngine.new7(
-    jni.JObject context,
-    jni.JObject flutterLoader,
-    jni.JObject flutterJNI,
-    PlatformViewsController platformViewsController,
-    jni.JArray<jni.JString> dartVmArgs,
-    bool automaticallyRegisterPlugins,
-    bool waitForRestorationData,
-  ) {
-    return FlutterEngine.fromRef(
-        jni.Jni.accessors.newObjectWithArgs(_class.reference, _id_new7, [
-      context.reference,
-      flutterLoader.reference,
-      flutterJNI.reference,
-      platformViewsController.reference,
-      dartVmArgs.reference,
-      automaticallyRegisterPlugins ? 1 : 0,
-      waitForRestorationData ? 1 : 0
-    ]).object);
-  }
-
-  static final _id_new8 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"<init>",
-      r"(Landroid/content/Context;Lio/flutter/embedding/engine/loader/FlutterLoader;Lio/flutter/embedding/engine/FlutterJNI;Lio/flutter/plugin/platform/PlatformViewsController;[Ljava/lang/String;ZZLio/flutter/embedding/engine/FlutterEngineGroup;)V");
-
-  /// from: public void <init>(android.content.Context context, io.flutter.embedding.engine.loader.FlutterLoader flutterLoader, io.flutter.embedding.engine.FlutterJNI flutterJNI, io.flutter.plugin.platform.PlatformViewsController platformViewsController, java.lang.String[] dartVmArgs, boolean automaticallyRegisterPlugins, boolean waitForRestorationData, io.flutter.embedding.engine.FlutterEngineGroup group)
-  /// The returned object must be released after use, by calling the [release] method.
-  factory FlutterEngine.new8(
-    jni.JObject context,
-    jni.JObject flutterLoader,
-    jni.JObject flutterJNI,
-    PlatformViewsController platformViewsController,
-    jni.JArray<jni.JString> dartVmArgs,
-    bool automaticallyRegisterPlugins,
-    bool waitForRestorationData,
-    jni.JObject group,
-  ) {
-    return FlutterEngine.fromRef(
-        jni.Jni.accessors.newObjectWithArgs(_class.reference, _id_new8, [
-      context.reference,
-      flutterLoader.reference,
-      flutterJNI.reference,
-      platformViewsController.reference,
-      dartVmArgs.reference,
-      automaticallyRegisterPlugins ? 1 : 0,
-      waitForRestorationData ? 1 : 0,
-      group.reference
-    ]).object);
-  }
-
-  static final _id_destroy =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"destroy", r"()V");
-
-  /// from: public void destroy()
-  ///
-  /// Cleans up all components within this {@code FlutterEngine} and destroys the associated Dart
-  /// Isolate. All state held by the Dart Isolate, such as the Flutter Elements tree, is lost.
-  ///
-  /// This {@code FlutterEngine} instance should be discarded after invoking this method.
-  void destroy() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_destroy, jni.JniCallType.voidType, []).check();
-  }
-
-  static final _id_addEngineLifecycleListener = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"addEngineLifecycleListener",
-      r"(Lio/flutter/embedding/engine/FlutterEngine$EngineLifecycleListener;)V");
-
-  /// from: public void addEngineLifecycleListener(io.flutter.embedding.engine.FlutterEngine.EngineLifecycleListener listener)
-  ///
-  /// Adds a {@code listener} to be notified of Flutter engine lifecycle events, e.g., {@code
-  /// onPreEngineStart()}.
-  void addEngineLifecycleListener(
-    FlutterEngine_EngineLifecycleListener listener,
-  ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_addEngineLifecycleListener,
-        jni.JniCallType.voidType,
-        [listener.reference]).check();
-  }
-
-  static final _id_removeEngineLifecycleListener = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"removeEngineLifecycleListener",
-      r"(Lio/flutter/embedding/engine/FlutterEngine$EngineLifecycleListener;)V");
-
-  /// from: public void removeEngineLifecycleListener(io.flutter.embedding.engine.FlutterEngine.EngineLifecycleListener listener)
-  ///
-  /// Removes a {@code listener} that was previously added with \#addEngineLifecycleListener(EngineLifecycleListener).
-  void removeEngineLifecycleListener(
-    FlutterEngine_EngineLifecycleListener listener,
-  ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_removeEngineLifecycleListener,
-        jni.JniCallType.voidType,
-        [listener.reference]).check();
-  }
-
-  static final _id_getDartExecutor = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getDartExecutor",
-      r"()Lio/flutter/embedding/engine/dart/DartExecutor;");
-
-  /// from: public io.flutter.embedding.engine.dart.DartExecutor getDartExecutor()
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// The Dart execution context associated with this {@code FlutterEngine}.
-  ///
-  /// The DartExecutor can be used to start executing Dart code from a given entrypoint.
-  /// See DartExecutor\#executeDartEntrypoint(DartExecutor.DartEntrypoint).
-  ///
-  /// Use the DartExecutor to connect any desired message channels and method channels to
-  /// facilitate communication between Android and Dart/Flutter.
-  jni.JObject getDartExecutor() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getDartExecutor, jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getRenderer = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getRenderer",
-      r"()Lio/flutter/embedding/engine/renderer/FlutterRenderer;");
-
-  /// from: public io.flutter.embedding.engine.renderer.FlutterRenderer getRenderer()
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// The rendering system associated with this {@code FlutterEngine}.
-  ///
-  /// To render a Flutter UI that is produced by this {@code FlutterEngine}'s Dart code, attach a
-  /// RenderSurface to this FlutterRenderer.
-  jni.JObject getRenderer() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getRenderer, jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getAccessibilityChannel = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getAccessibilityChannel",
-      r"()Lio/flutter/embedding/engine/systemchannels/AccessibilityChannel;");
-
-  /// from: public io.flutter.embedding.engine.systemchannels.AccessibilityChannel getAccessibilityChannel()
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// System channel that sends accessibility requests and events from Flutter to Android.
-  jni.JObject getAccessibilityChannel() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getAccessibilityChannel,
-        jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getLifecycleChannel = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getLifecycleChannel",
-      r"()Lio/flutter/embedding/engine/systemchannels/LifecycleChannel;");
-
-  /// from: public io.flutter.embedding.engine.systemchannels.LifecycleChannel getLifecycleChannel()
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// System channel that sends Android lifecycle events to Flutter.
-  jni.JObject getLifecycleChannel() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getLifecycleChannel,
-        jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getLocalizationChannel = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getLocalizationChannel",
-      r"()Lio/flutter/embedding/engine/systemchannels/LocalizationChannel;");
-
-  /// from: public io.flutter.embedding.engine.systemchannels.LocalizationChannel getLocalizationChannel()
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// System channel that sends locale data from Android to Flutter.
-  jni.JObject getLocalizationChannel() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getLocalizationChannel,
-        jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getNavigationChannel = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getNavigationChannel",
-      r"()Lio/flutter/embedding/engine/systemchannels/NavigationChannel;");
-
-  /// from: public io.flutter.embedding.engine.systemchannels.NavigationChannel getNavigationChannel()
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// System channel that sends Flutter navigation commands from Android to Flutter.
-  jni.JObject getNavigationChannel() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getNavigationChannel,
-        jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getPlatformChannel = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getPlatformChannel",
-      r"()Lio/flutter/embedding/engine/systemchannels/PlatformChannel;");
-
-  /// from: public io.flutter.embedding.engine.systemchannels.PlatformChannel getPlatformChannel()
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// System channel that sends platform-oriented requests and information to Flutter, e.g., requests
-  /// to play sounds, requests for haptics, system chrome settings, etc.
-  jni.JObject getPlatformChannel() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getPlatformChannel,
-        jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getProcessTextChannel = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getProcessTextChannel",
-      r"()Lio/flutter/embedding/engine/systemchannels/ProcessTextChannel;");
-
-  /// from: public io.flutter.embedding.engine.systemchannels.ProcessTextChannel getProcessTextChannel()
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// System channel that sends text processing requests from Flutter to Android.
-  jni.JObject getProcessTextChannel() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getProcessTextChannel,
-        jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getRestorationChannel = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getRestorationChannel",
-      r"()Lio/flutter/embedding/engine/systemchannels/RestorationChannel;");
-
-  /// from: public io.flutter.embedding.engine.systemchannels.RestorationChannel getRestorationChannel()
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// System channel to exchange restoration data between framework and engine.
-  ///
-  /// The engine can obtain the current restoration data from the framework via this channel to
-  /// store it on disk and - when the app is relaunched - provide the stored data back to the
-  /// framework to recreate the original state of the app.
-  jni.JObject getRestorationChannel() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getRestorationChannel,
-        jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getSettingsChannel = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getSettingsChannel",
-      r"()Lio/flutter/embedding/engine/systemchannels/SettingsChannel;");
-
-  /// from: public io.flutter.embedding.engine.systemchannels.SettingsChannel getSettingsChannel()
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// System channel that sends platform/user settings from Android to Flutter, e.g., time format,
-  /// scale factor, etc.
-  jni.JObject getSettingsChannel() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getSettingsChannel,
-        jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getDeferredComponentChannel = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getDeferredComponentChannel",
-      r"()Lio/flutter/embedding/engine/systemchannels/DeferredComponentChannel;");
-
-  /// from: public io.flutter.embedding.engine.systemchannels.DeferredComponentChannel getDeferredComponentChannel()
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// System channel that allows manual installation and state querying of deferred components.
-  jni.JObject getDeferredComponentChannel() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getDeferredComponentChannel,
-        jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getSystemChannel = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getSystemChannel",
-      r"()Lio/flutter/embedding/engine/systemchannels/SystemChannel;");
-
-  /// from: public io.flutter.embedding.engine.systemchannels.SystemChannel getSystemChannel()
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// System channel that sends memory pressure warnings from Android to Flutter.
-  jni.JObject getSystemChannel() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getSystemChannel,
-        jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getMouseCursorChannel = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getMouseCursorChannel",
-      r"()Lio/flutter/embedding/engine/systemchannels/MouseCursorChannel;");
-
-  /// from: public io.flutter.embedding.engine.systemchannels.MouseCursorChannel getMouseCursorChannel()
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// System channel that sends and receives text input requests and state.
-  jni.JObject getMouseCursorChannel() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getMouseCursorChannel,
-        jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getTextInputChannel = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getTextInputChannel",
-      r"()Lio/flutter/embedding/engine/systemchannels/TextInputChannel;");
-
-  /// from: public io.flutter.embedding.engine.systemchannels.TextInputChannel getTextInputChannel()
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// System channel that sends and receives text input requests and state.
-  jni.JObject getTextInputChannel() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getTextInputChannel,
-        jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getSpellCheckChannel = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getSpellCheckChannel",
-      r"()Lio/flutter/embedding/engine/systemchannels/SpellCheckChannel;");
-
-  /// from: public io.flutter.embedding.engine.systemchannels.SpellCheckChannel getSpellCheckChannel()
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// System channel that sends and receives spell check requests and results.
-  jni.JObject getSpellCheckChannel() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getSpellCheckChannel,
-        jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getPlugins = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getPlugins",
-      r"()Lio/flutter/embedding/engine/plugins/PluginRegistry;");
-
-  /// from: public io.flutter.embedding.engine.plugins.PluginRegistry getPlugins()
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// Plugin registry, which registers plugins that want to be applied to this {@code FlutterEngine}.
-  jni.JObject getPlugins() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getPlugins, jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getLocalizationPlugin = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getLocalizationPlugin",
-      r"()Lio/flutter/plugin/localization/LocalizationPlugin;");
-
-  /// from: public io.flutter.plugin.localization.LocalizationPlugin getLocalizationPlugin()
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// The LocalizationPlugin this FlutterEngine created.
-  jni.JObject getLocalizationPlugin() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getLocalizationPlugin,
-        jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getPlatformViewsController = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getPlatformViewsController",
-      r"()Lio/flutter/plugin/platform/PlatformViewsController;");
-
-  /// from: public io.flutter.plugin.platform.PlatformViewsController getPlatformViewsController()
-  /// The returned object must be released after use, by calling the [release] method.
-  ///
-  /// {@code PlatformViewsController}, which controls all platform views running within this {@code
-  /// FlutterEngine}.
-  PlatformViewsController getPlatformViewsController() {
-    return const $PlatformViewsControllerType().fromRef(jni.Jni.accessors
-        .callMethodWithArgs(reference, _id_getPlatformViewsController,
-            jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getActivityControlSurface = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getActivityControlSurface",
-      r"()Lio/flutter/embedding/engine/plugins/activity/ActivityControlSurface;");
-
-  /// from: public io.flutter.embedding.engine.plugins.activity.ActivityControlSurface getActivityControlSurface()
-  /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getActivityControlSurface() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getActivityControlSurface,
-        jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getServiceControlSurface = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getServiceControlSurface",
-      r"()Lio/flutter/embedding/engine/plugins/service/ServiceControlSurface;");
-
-  /// from: public io.flutter.embedding.engine.plugins.service.ServiceControlSurface getServiceControlSurface()
-  /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getServiceControlSurface() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getServiceControlSurface,
-        jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getBroadcastReceiverControlSurface = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getBroadcastReceiverControlSurface",
-          r"()Lio/flutter/embedding/engine/plugins/broadcastreceiver/BroadcastReceiverControlSurface;");
-
-  /// from: public io.flutter.embedding.engine.plugins.broadcastreceiver.BroadcastReceiverControlSurface getBroadcastReceiverControlSurface()
-  /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getBroadcastReceiverControlSurface() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getBroadcastReceiverControlSurface,
-        jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_getContentProviderControlSurface = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getContentProviderControlSurface",
-          r"()Lio/flutter/embedding/engine/plugins/contentprovider/ContentProviderControlSurface;");
-
-  /// from: public io.flutter.embedding.engine.plugins.contentprovider.ContentProviderControlSurface getContentProviderControlSurface()
-  /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getContentProviderControlSurface() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getContentProviderControlSurface,
-        jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_updateDisplayMetrics = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"updateDisplayMetrics", r"(FFF)V");
-
-  /// from: public void updateDisplayMetrics(float width, float height, float density)
-  void updateDisplayMetrics(
-    double width,
-    double height,
-    double density,
-  ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_updateDisplayMetrics, jni.JniCallType.voidType, [
-      jni.JValueFloat(width),
-      jni.JValueFloat(height),
-      jni.JValueFloat(density)
-    ]).check();
+    final $p = ReceivePort();
+    final $x = FlutterPlugin.fromReference(
+      ProtectedJniExtensions.newPortProxy(
+        r"io.flutter.embedding.engine.plugins.FlutterPlugin",
+        $p,
+        _$invokePointer,
+      ),
+    ).._$p = $p;
+    final $a = $p.sendPort.nativePort;
+    _$impls[$a] = $impl;
+    $p.listen(($m) {
+      if ($m == null) {
+        _$impls.remove($p.sendPort.nativePort);
+        $p.close();
+        return;
+      }
+      final $i = $MethodInvocation.fromMessage($m as List<dynamic>);
+      final $r = _$invokeMethod($p.sendPort.nativePort, $i);
+      ProtectedJniExtensions.returnResult($i.result, $r);
+    });
+    return $x;
   }
 }
 
-final class $FlutterEngineType extends jni.JObjType<FlutterEngine> {
-  const $FlutterEngineType();
+abstract interface class $FlutterPluginImpl {
+  factory $FlutterPluginImpl({
+    required void Function(FlutterPlugin_FlutterPluginBinding binding)
+        onAttachedToEngine,
+    required void Function(FlutterPlugin_FlutterPluginBinding binding)
+        onDetachedFromEngine,
+  }) = _$FlutterPluginImpl;
+
+  void onAttachedToEngine(FlutterPlugin_FlutterPluginBinding binding);
+  void onDetachedFromEngine(FlutterPlugin_FlutterPluginBinding binding);
+}
+
+class _$FlutterPluginImpl implements $FlutterPluginImpl {
+  _$FlutterPluginImpl({
+    required void Function(FlutterPlugin_FlutterPluginBinding binding)
+        onAttachedToEngine,
+    required void Function(FlutterPlugin_FlutterPluginBinding binding)
+        onDetachedFromEngine,
+  })  : _onAttachedToEngine = onAttachedToEngine,
+        _onDetachedFromEngine = onDetachedFromEngine;
+
+  final void Function(FlutterPlugin_FlutterPluginBinding binding)
+      _onAttachedToEngine;
+  final void Function(FlutterPlugin_FlutterPluginBinding binding)
+      _onDetachedFromEngine;
+
+  void onAttachedToEngine(FlutterPlugin_FlutterPluginBinding binding) {
+    return _onAttachedToEngine(binding);
+  }
+
+  void onDetachedFromEngine(FlutterPlugin_FlutterPluginBinding binding) {
+    return _onDetachedFromEngine(binding);
+  }
+}
+
+final class $FlutterPluginType extends jni.JObjType<FlutterPlugin> {
+  const $FlutterPluginType();
 
   @override
-  String get signature => r"Lio/flutter/embedding/engine/FlutterEngine;";
+  String get signature =>
+      r"Lio/flutter/embedding/engine/plugins/FlutterPlugin;";
 
   @override
-  FlutterEngine fromRef(jni.JObjectPtr ref) => FlutterEngine.fromRef(ref);
+  FlutterPlugin fromReference(jni.JReference reference) =>
+      FlutterPlugin.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -3345,12 +2922,12 @@ final class $FlutterEngineType extends jni.JObjType<FlutterEngine> {
   final superCount = 1;
 
   @override
-  int get hashCode => ($FlutterEngineType).hashCode;
+  int get hashCode => ($FlutterPluginType).hashCode;
 
   @override
   bool operator ==(Object other) {
-    return other.runtimeType == ($FlutterEngineType) &&
-        other is $FlutterEngineType;
+    return other.runtimeType == ($FlutterPluginType) &&
+        other is $FlutterPluginType;
   }
 }
 
@@ -3361,28 +2938,31 @@ class FlutterEngine_EngineLifecycleListener extends jni.JObject {
   @override
   late final jni.JObjType<FlutterEngine_EngineLifecycleListener> $type = type;
 
-  FlutterEngine_EngineLifecycleListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  FlutterEngine_EngineLifecycleListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
-  static final _class = jni.Jni.findJClass(
+  static final _class = jni.JClass.forName(
       r"io/flutter/embedding/engine/FlutterEngine$EngineLifecycleListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $FlutterEngine_EngineLifecycleListenerType();
-  static final _id_onPreEngineRestart = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onPreEngineRestart", r"()V");
+  static final _id_onPreEngineRestart = _class.instanceMethodId(
+    r"onPreEngineRestart",
+    r"()V",
+  );
 
   /// from: public abstract void onPreEngineRestart()
   ///
   /// Lifecycle callback invoked before a hot restart of the Flutter engine.
   void onPreEngineRestart() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_onPreEngineRestart, jni.JniCallType.voidType, []).check();
+    _id_onPreEngineRestart(this, const jni.jvoidType(), []);
   }
 
-  static final _id_onEngineWillDestroy = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onEngineWillDestroy", r"()V");
+  static final _id_onEngineWillDestroy = _class.instanceMethodId(
+    r"onEngineWillDestroy",
+    r"()V",
+  );
 
   /// from: public abstract void onEngineWillDestroy()
   ///
@@ -3390,8 +2970,7 @@ class FlutterEngine_EngineLifecycleListener extends jni.JObject {
   ///
   /// For the duration of the call, the Flutter engine is still valid.
   void onEngineWillDestroy() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_onEngineWillDestroy, jni.JniCallType.voidType, []).check();
+    _id_onEngineWillDestroy(this, const jni.jvoidType(), []);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -3445,7 +3024,7 @@ class FlutterEngine_EngineLifecycleListener extends jni.JObject {
     $FlutterEngine_EngineLifecycleListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = FlutterEngine_EngineLifecycleListener.fromRef(
+    final $x = FlutterEngine_EngineLifecycleListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"io.flutter.embedding.engine.FlutterEngine$EngineLifecycleListener",
         $p,
@@ -3468,7 +3047,7 @@ class FlutterEngine_EngineLifecycleListener extends jni.JObject {
   }
 }
 
-abstract class $FlutterEngine_EngineLifecycleListenerImpl {
+abstract interface class $FlutterEngine_EngineLifecycleListenerImpl {
   factory $FlutterEngine_EngineLifecycleListenerImpl({
     required void Function() onPreEngineRestart,
     required void Function() onEngineWillDestroy,
@@ -3507,8 +3086,9 @@ final class $FlutterEngine_EngineLifecycleListenerType
       r"Lio/flutter/embedding/engine/FlutterEngine$EngineLifecycleListener;";
 
   @override
-  FlutterEngine_EngineLifecycleListener fromRef(jni.JObjectPtr ref) =>
-      FlutterEngine_EngineLifecycleListener.fromRef(ref);
+  FlutterEngine_EngineLifecycleListener fromReference(
+          jni.JReference reference) =>
+      FlutterEngine_EngineLifecycleListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -3526,6 +3106,681 @@ final class $FlutterEngine_EngineLifecycleListenerType
   }
 }
 
+/// from: io.flutter.embedding.engine.FlutterEngine
+///
+/// A single Flutter execution environment.
+///
+/// The {@code FlutterEngine} is the container through which Dart code can be run in an Android
+/// application.
+///
+/// Dart code in a {@code FlutterEngine} can execute in the background, or it can be render to the
+/// screen by using the accompanying FlutterRenderer and Dart code using the Flutter
+/// framework on the Dart side. Rendering can be started and stopped, thus allowing a {@code
+/// FlutterEngine} to move from UI interaction to data-only processing and then back to UI
+/// interaction.
+///
+/// Multiple {@code FlutterEngine}s may exist, execute Dart code, and render UIs within a single
+/// Android app. For better memory performance characteristics, construct multiple {@code
+/// FlutterEngine}s via io.flutter.embedding.engine.FlutterEngineGroup rather than via {@code
+/// FlutterEngine}'s constructor directly.
+///
+/// To start running Dart and/or Flutter within this {@code FlutterEngine}, get a reference to
+/// this engine's DartExecutor and then use DartExecutor\#executeDartEntrypoint(DartExecutor.DartEntrypoint). The DartExecutor\#executeDartEntrypoint(DartExecutor.DartEntrypoint) method must not be invoked twice
+/// on the same {@code FlutterEngine}.
+///
+/// To start rendering Flutter content to the screen, use \#getRenderer() to obtain a
+/// FlutterRenderer and then attach a RenderSurface. Consider using a io.flutter.embedding.android.FlutterView as a RenderSurface.
+///
+/// Instatiating the first {@code FlutterEngine} per process will also load the Flutter engine's
+/// native library and start the Dart VM. Subsequent {@code FlutterEngine}s will run on the same VM
+/// instance but will have their own Dart <a href="https://api.dartlang.org/stable/dart-isolate/Isolate-class.html">Isolate</a> when the
+/// DartExecutor is run. Each Isolate is a self-contained Dart environment and cannot
+/// communicate with each other except via Isolate ports.
+class FlutterEngine extends jni.JObject {
+  @override
+  late final jni.JObjType<FlutterEngine> $type = type;
+
+  FlutterEngine.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
+
+  static final _class =
+      jni.JClass.forName(r"io/flutter/embedding/engine/FlutterEngine");
+
+  /// The type which includes information such as the signature of this class.
+  static const type = $FlutterEngineType();
+  static final _id_new0 = _class.constructorId(
+    r"(Landroid/content/Context;)V",
+  );
+
+  /// from: public void <init>(android.content.Context context)
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Constructs a new {@code FlutterEngine}.
+  ///
+  /// A new {@code FlutterEngine} does not execute any Dart code automatically. See \#getDartExecutor() and DartExecutor\#executeDartEntrypoint(DartExecutor.DartEntrypoint)
+  /// to begin executing Dart code within this {@code FlutterEngine}.
+  ///
+  /// A new {@code FlutterEngine} will not display any UI until a RenderSurface is
+  /// registered. See \#getRenderer() and FlutterRenderer\#startRenderingToSurface(Surface, boolean).
+  ///
+  /// A new {@code FlutterEngine} automatically attaches all plugins. See \#getPlugins().
+  ///
+  /// A new {@code FlutterEngine} does come with all default system channels attached.
+  ///
+  /// The first {@code FlutterEngine} instance constructed per process will also load the Flutter
+  /// native library and start a Dart VM.
+  ///
+  /// In order to pass Dart VM initialization arguments (see io.flutter.embedding.engine.FlutterShellArgs) when creating the VM, manually set the
+  /// initialization arguments by calling io.flutter.embedding.engine.loader.FlutterLoader\#startInitialization(Context) and io.flutter.embedding.engine.loader.FlutterLoader\#ensureInitializationComplete(Context,
+  /// String[]) before constructing the engine.
+  factory FlutterEngine(
+    jni.JObject context,
+  ) {
+    return FlutterEngine.fromReference(
+        _id_new0(_class, referenceType, [context.reference.pointer]));
+  }
+
+  static final _id_new1 = _class.constructorId(
+    r"(Landroid/content/Context;[Ljava/lang/String;)V",
+  );
+
+  /// from: public void <init>(android.content.Context context, java.lang.String[] dartVmArgs)
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Same as \#FlutterEngine(Context) with added support for passing Dart VM arguments.
+  ///
+  /// If the Dart VM has already started, the given arguments will have no effect.
+  factory FlutterEngine.new1(
+    jni.JObject context,
+    jni.JArray<jni.JString> dartVmArgs,
+  ) {
+    return FlutterEngine.fromReference(_id_new1(_class, referenceType,
+        [context.reference.pointer, dartVmArgs.reference.pointer]));
+  }
+
+  static final _id_new2 = _class.constructorId(
+    r"(Landroid/content/Context;[Ljava/lang/String;Z)V",
+  );
+
+  /// from: public void <init>(android.content.Context context, java.lang.String[] dartVmArgs, boolean automaticallyRegisterPlugins)
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Same as \#FlutterEngine(Context) with added support for passing Dart VM arguments and
+  /// avoiding automatic plugin registration.
+  ///
+  /// If the Dart VM has already started, the given arguments will have no effect.
+  factory FlutterEngine.new2(
+    jni.JObject context,
+    jni.JArray<jni.JString> dartVmArgs,
+    bool automaticallyRegisterPlugins,
+  ) {
+    return FlutterEngine.fromReference(_id_new2(_class, referenceType, [
+      context.reference.pointer,
+      dartVmArgs.reference.pointer,
+      automaticallyRegisterPlugins ? 1 : 0
+    ]));
+  }
+
+  static final _id_new3 = _class.constructorId(
+    r"(Landroid/content/Context;[Ljava/lang/String;ZZ)V",
+  );
+
+  /// from: public void <init>(android.content.Context context, java.lang.String[] dartVmArgs, boolean automaticallyRegisterPlugins, boolean waitForRestorationData)
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Same as \#FlutterEngine(Context, String[], boolean) with added support for configuring
+  /// whether the engine will receive restoration data.
+  ///
+  /// The {@code waitForRestorationData} flag controls whether the engine delays responding to
+  /// requests from the framework for restoration data until that data has been provided to the
+  /// engine via {@code RestorationChannel.setRestorationData(byte[] data)}. If the flag is false,
+  /// the framework may temporarily initialize itself to default values before the restoration data
+  /// has been made available to the engine. Setting {@code waitForRestorationData} to true avoids
+  /// this extra work by delaying initialization until the data is available.
+  ///
+  /// When {@code waitForRestorationData} is set, {@code
+  /// RestorationChannel.setRestorationData(byte[] data)} must be called at a later point in time. If
+  /// it later turns out that no restoration data is available to restore the framework from, that
+  /// method must still be called with null as an argument to indicate "no data".
+  ///
+  /// If the framework never requests the restoration data, this flag has no effect.
+  factory FlutterEngine.new3(
+    jni.JObject context,
+    jni.JArray<jni.JString> dartVmArgs,
+    bool automaticallyRegisterPlugins,
+    bool waitForRestorationData,
+  ) {
+    return FlutterEngine.fromReference(_id_new3(_class, referenceType, [
+      context.reference.pointer,
+      dartVmArgs.reference.pointer,
+      automaticallyRegisterPlugins ? 1 : 0,
+      waitForRestorationData ? 1 : 0
+    ]));
+  }
+
+  static final _id_new4 = _class.constructorId(
+    r"(Landroid/content/Context;Lio/flutter/embedding/engine/loader/FlutterLoader;Lio/flutter/embedding/engine/FlutterJNI;)V",
+  );
+
+  /// from: public void <init>(android.content.Context context, io.flutter.embedding.engine.loader.FlutterLoader flutterLoader, io.flutter.embedding.engine.FlutterJNI flutterJNI)
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Same as \#FlutterEngine(Context, FlutterLoader, FlutterJNI, String[], boolean) but with
+  /// no Dart VM flags and automatically registers plugins.
+  ///
+  /// {@code flutterJNI} should be a new instance that has never been attached to an engine
+  /// before.
+  factory FlutterEngine.new4(
+    jni.JObject context,
+    jni.JObject flutterLoader,
+    jni.JObject flutterJNI,
+  ) {
+    return FlutterEngine.fromReference(_id_new4(_class, referenceType, [
+      context.reference.pointer,
+      flutterLoader.reference.pointer,
+      flutterJNI.reference.pointer
+    ]));
+  }
+
+  static final _id_new5 = _class.constructorId(
+    r"(Landroid/content/Context;Lio/flutter/embedding/engine/loader/FlutterLoader;Lio/flutter/embedding/engine/FlutterJNI;[Ljava/lang/String;Z)V",
+  );
+
+  /// from: public void <init>(android.content.Context context, io.flutter.embedding.engine.loader.FlutterLoader flutterLoader, io.flutter.embedding.engine.FlutterJNI flutterJNI, java.lang.String[] dartVmArgs, boolean automaticallyRegisterPlugins)
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Same as \#FlutterEngine(Context, FlutterLoader, FlutterJNI), plus Dart VM flags in
+  /// {@code dartVmArgs}, and control over whether plugins are automatically registered with this
+  /// {@code FlutterEngine} in {@code automaticallyRegisterPlugins}. If plugins are automatically
+  /// registered, then they are registered during the execution of this constructor.
+  factory FlutterEngine.new5(
+    jni.JObject context,
+    jni.JObject flutterLoader,
+    jni.JObject flutterJNI,
+    jni.JArray<jni.JString> dartVmArgs,
+    bool automaticallyRegisterPlugins,
+  ) {
+    return FlutterEngine.fromReference(_id_new5(_class, referenceType, [
+      context.reference.pointer,
+      flutterLoader.reference.pointer,
+      flutterJNI.reference.pointer,
+      dartVmArgs.reference.pointer,
+      automaticallyRegisterPlugins ? 1 : 0
+    ]));
+  }
+
+  static final _id_new6 = _class.constructorId(
+    r"(Landroid/content/Context;Lio/flutter/embedding/engine/loader/FlutterLoader;Lio/flutter/embedding/engine/FlutterJNI;Lio/flutter/plugin/platform/PlatformViewsController;[Ljava/lang/String;Z)V",
+  );
+
+  /// from: public void <init>(android.content.Context context, io.flutter.embedding.engine.loader.FlutterLoader flutterLoader, io.flutter.embedding.engine.FlutterJNI flutterJNI, io.flutter.plugin.platform.PlatformViewsController platformViewsController, java.lang.String[] dartVmArgs, boolean automaticallyRegisterPlugins)
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Same as \#FlutterEngine(Context, FlutterLoader, FlutterJNI, String[], boolean), plus the
+  /// ability to provide a custom {@code PlatformViewsController}.
+  factory FlutterEngine.new6(
+    jni.JObject context,
+    jni.JObject flutterLoader,
+    jni.JObject flutterJNI,
+    PlatformViewsController platformViewsController,
+    jni.JArray<jni.JString> dartVmArgs,
+    bool automaticallyRegisterPlugins,
+  ) {
+    return FlutterEngine.fromReference(_id_new6(_class, referenceType, [
+      context.reference.pointer,
+      flutterLoader.reference.pointer,
+      flutterJNI.reference.pointer,
+      platformViewsController.reference.pointer,
+      dartVmArgs.reference.pointer,
+      automaticallyRegisterPlugins ? 1 : 0
+    ]));
+  }
+
+  static final _id_new7 = _class.constructorId(
+    r"(Landroid/content/Context;Lio/flutter/embedding/engine/loader/FlutterLoader;Lio/flutter/embedding/engine/FlutterJNI;Lio/flutter/plugin/platform/PlatformViewsController;[Ljava/lang/String;ZZ)V",
+  );
+
+  /// from: public void <init>(android.content.Context context, io.flutter.embedding.engine.loader.FlutterLoader flutterLoader, io.flutter.embedding.engine.FlutterJNI flutterJNI, io.flutter.plugin.platform.PlatformViewsController platformViewsController, java.lang.String[] dartVmArgs, boolean automaticallyRegisterPlugins, boolean waitForRestorationData)
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Fully configurable {@code FlutterEngine} constructor.
+  factory FlutterEngine.new7(
+    jni.JObject context,
+    jni.JObject flutterLoader,
+    jni.JObject flutterJNI,
+    PlatformViewsController platformViewsController,
+    jni.JArray<jni.JString> dartVmArgs,
+    bool automaticallyRegisterPlugins,
+    bool waitForRestorationData,
+  ) {
+    return FlutterEngine.fromReference(_id_new7(_class, referenceType, [
+      context.reference.pointer,
+      flutterLoader.reference.pointer,
+      flutterJNI.reference.pointer,
+      platformViewsController.reference.pointer,
+      dartVmArgs.reference.pointer,
+      automaticallyRegisterPlugins ? 1 : 0,
+      waitForRestorationData ? 1 : 0
+    ]));
+  }
+
+  static final _id_new8 = _class.constructorId(
+    r"(Landroid/content/Context;Lio/flutter/embedding/engine/loader/FlutterLoader;Lio/flutter/embedding/engine/FlutterJNI;Lio/flutter/plugin/platform/PlatformViewsController;[Ljava/lang/String;ZZLio/flutter/embedding/engine/FlutterEngineGroup;)V",
+  );
+
+  /// from: public void <init>(android.content.Context context, io.flutter.embedding.engine.loader.FlutterLoader flutterLoader, io.flutter.embedding.engine.FlutterJNI flutterJNI, io.flutter.plugin.platform.PlatformViewsController platformViewsController, java.lang.String[] dartVmArgs, boolean automaticallyRegisterPlugins, boolean waitForRestorationData, io.flutter.embedding.engine.FlutterEngineGroup group)
+  /// The returned object must be released after use, by calling the [release] method.
+  factory FlutterEngine.new8(
+    jni.JObject context,
+    jni.JObject flutterLoader,
+    jni.JObject flutterJNI,
+    PlatformViewsController platformViewsController,
+    jni.JArray<jni.JString> dartVmArgs,
+    bool automaticallyRegisterPlugins,
+    bool waitForRestorationData,
+    jni.JObject group,
+  ) {
+    return FlutterEngine.fromReference(_id_new8(_class, referenceType, [
+      context.reference.pointer,
+      flutterLoader.reference.pointer,
+      flutterJNI.reference.pointer,
+      platformViewsController.reference.pointer,
+      dartVmArgs.reference.pointer,
+      automaticallyRegisterPlugins ? 1 : 0,
+      waitForRestorationData ? 1 : 0,
+      group.reference.pointer
+    ]));
+  }
+
+  static final _id_destroy = _class.instanceMethodId(
+    r"destroy",
+    r"()V",
+  );
+
+  /// from: public void destroy()
+  ///
+  /// Cleans up all components within this {@code FlutterEngine} and destroys the associated Dart
+  /// Isolate. All state held by the Dart Isolate, such as the Flutter Elements tree, is lost.
+  ///
+  /// This {@code FlutterEngine} instance should be discarded after invoking this method.
+  void destroy() {
+    _id_destroy(this, const jni.jvoidType(), []);
+  }
+
+  static final _id_addEngineLifecycleListener = _class.instanceMethodId(
+    r"addEngineLifecycleListener",
+    r"(Lio/flutter/embedding/engine/FlutterEngine$EngineLifecycleListener;)V",
+  );
+
+  /// from: public void addEngineLifecycleListener(io.flutter.embedding.engine.FlutterEngine.EngineLifecycleListener listener)
+  ///
+  /// Adds a {@code listener} to be notified of Flutter engine lifecycle events, e.g., {@code
+  /// onPreEngineStart()}.
+  void addEngineLifecycleListener(
+    FlutterEngine_EngineLifecycleListener listener,
+  ) {
+    _id_addEngineLifecycleListener(
+        this, const jni.jvoidType(), [listener.reference.pointer]);
+  }
+
+  static final _id_removeEngineLifecycleListener = _class.instanceMethodId(
+    r"removeEngineLifecycleListener",
+    r"(Lio/flutter/embedding/engine/FlutterEngine$EngineLifecycleListener;)V",
+  );
+
+  /// from: public void removeEngineLifecycleListener(io.flutter.embedding.engine.FlutterEngine.EngineLifecycleListener listener)
+  ///
+  /// Removes a {@code listener} that was previously added with \#addEngineLifecycleListener(EngineLifecycleListener).
+  void removeEngineLifecycleListener(
+    FlutterEngine_EngineLifecycleListener listener,
+  ) {
+    _id_removeEngineLifecycleListener(
+        this, const jni.jvoidType(), [listener.reference.pointer]);
+  }
+
+  static final _id_getDartExecutor = _class.instanceMethodId(
+    r"getDartExecutor",
+    r"()Lio/flutter/embedding/engine/dart/DartExecutor;",
+  );
+
+  /// from: public io.flutter.embedding.engine.dart.DartExecutor getDartExecutor()
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// The Dart execution context associated with this {@code FlutterEngine}.
+  ///
+  /// The DartExecutor can be used to start executing Dart code from a given entrypoint.
+  /// See DartExecutor\#executeDartEntrypoint(DartExecutor.DartEntrypoint).
+  ///
+  /// Use the DartExecutor to connect any desired message channels and method channels to
+  /// facilitate communication between Android and Dart/Flutter.
+  jni.JObject getDartExecutor() {
+    return _id_getDartExecutor(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getRenderer = _class.instanceMethodId(
+    r"getRenderer",
+    r"()Lio/flutter/embedding/engine/renderer/FlutterRenderer;",
+  );
+
+  /// from: public io.flutter.embedding.engine.renderer.FlutterRenderer getRenderer()
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// The rendering system associated with this {@code FlutterEngine}.
+  ///
+  /// To render a Flutter UI that is produced by this {@code FlutterEngine}'s Dart code, attach a
+  /// RenderSurface to this FlutterRenderer.
+  jni.JObject getRenderer() {
+    return _id_getRenderer(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getAccessibilityChannel = _class.instanceMethodId(
+    r"getAccessibilityChannel",
+    r"()Lio/flutter/embedding/engine/systemchannels/AccessibilityChannel;",
+  );
+
+  /// from: public io.flutter.embedding.engine.systemchannels.AccessibilityChannel getAccessibilityChannel()
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// System channel that sends accessibility requests and events from Flutter to Android.
+  jni.JObject getAccessibilityChannel() {
+    return _id_getAccessibilityChannel(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getLifecycleChannel = _class.instanceMethodId(
+    r"getLifecycleChannel",
+    r"()Lio/flutter/embedding/engine/systemchannels/LifecycleChannel;",
+  );
+
+  /// from: public io.flutter.embedding.engine.systemchannels.LifecycleChannel getLifecycleChannel()
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// System channel that sends Android lifecycle events to Flutter.
+  jni.JObject getLifecycleChannel() {
+    return _id_getLifecycleChannel(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getLocalizationChannel = _class.instanceMethodId(
+    r"getLocalizationChannel",
+    r"()Lio/flutter/embedding/engine/systemchannels/LocalizationChannel;",
+  );
+
+  /// from: public io.flutter.embedding.engine.systemchannels.LocalizationChannel getLocalizationChannel()
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// System channel that sends locale data from Android to Flutter.
+  jni.JObject getLocalizationChannel() {
+    return _id_getLocalizationChannel(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getNavigationChannel = _class.instanceMethodId(
+    r"getNavigationChannel",
+    r"()Lio/flutter/embedding/engine/systemchannels/NavigationChannel;",
+  );
+
+  /// from: public io.flutter.embedding.engine.systemchannels.NavigationChannel getNavigationChannel()
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// System channel that sends Flutter navigation commands from Android to Flutter.
+  jni.JObject getNavigationChannel() {
+    return _id_getNavigationChannel(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getPlatformChannel = _class.instanceMethodId(
+    r"getPlatformChannel",
+    r"()Lio/flutter/embedding/engine/systemchannels/PlatformChannel;",
+  );
+
+  /// from: public io.flutter.embedding.engine.systemchannels.PlatformChannel getPlatformChannel()
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// System channel that sends platform-oriented requests and information to Flutter, e.g., requests
+  /// to play sounds, requests for haptics, system chrome settings, etc.
+  jni.JObject getPlatformChannel() {
+    return _id_getPlatformChannel(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getProcessTextChannel = _class.instanceMethodId(
+    r"getProcessTextChannel",
+    r"()Lio/flutter/embedding/engine/systemchannels/ProcessTextChannel;",
+  );
+
+  /// from: public io.flutter.embedding.engine.systemchannels.ProcessTextChannel getProcessTextChannel()
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// System channel that sends text processing requests from Flutter to Android.
+  jni.JObject getProcessTextChannel() {
+    return _id_getProcessTextChannel(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getRestorationChannel = _class.instanceMethodId(
+    r"getRestorationChannel",
+    r"()Lio/flutter/embedding/engine/systemchannels/RestorationChannel;",
+  );
+
+  /// from: public io.flutter.embedding.engine.systemchannels.RestorationChannel getRestorationChannel()
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// System channel to exchange restoration data between framework and engine.
+  ///
+  /// The engine can obtain the current restoration data from the framework via this channel to
+  /// store it on disk and - when the app is relaunched - provide the stored data back to the
+  /// framework to recreate the original state of the app.
+  jni.JObject getRestorationChannel() {
+    return _id_getRestorationChannel(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getSettingsChannel = _class.instanceMethodId(
+    r"getSettingsChannel",
+    r"()Lio/flutter/embedding/engine/systemchannels/SettingsChannel;",
+  );
+
+  /// from: public io.flutter.embedding.engine.systemchannels.SettingsChannel getSettingsChannel()
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// System channel that sends platform/user settings from Android to Flutter, e.g., time format,
+  /// scale factor, etc.
+  jni.JObject getSettingsChannel() {
+    return _id_getSettingsChannel(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getDeferredComponentChannel = _class.instanceMethodId(
+    r"getDeferredComponentChannel",
+    r"()Lio/flutter/embedding/engine/systemchannels/DeferredComponentChannel;",
+  );
+
+  /// from: public io.flutter.embedding.engine.systemchannels.DeferredComponentChannel getDeferredComponentChannel()
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// System channel that allows manual installation and state querying of deferred components.
+  jni.JObject getDeferredComponentChannel() {
+    return _id_getDeferredComponentChannel(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getSystemChannel = _class.instanceMethodId(
+    r"getSystemChannel",
+    r"()Lio/flutter/embedding/engine/systemchannels/SystemChannel;",
+  );
+
+  /// from: public io.flutter.embedding.engine.systemchannels.SystemChannel getSystemChannel()
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// System channel that sends memory pressure warnings from Android to Flutter.
+  jni.JObject getSystemChannel() {
+    return _id_getSystemChannel(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getMouseCursorChannel = _class.instanceMethodId(
+    r"getMouseCursorChannel",
+    r"()Lio/flutter/embedding/engine/systemchannels/MouseCursorChannel;",
+  );
+
+  /// from: public io.flutter.embedding.engine.systemchannels.MouseCursorChannel getMouseCursorChannel()
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// System channel that sends and receives text input requests and state.
+  jni.JObject getMouseCursorChannel() {
+    return _id_getMouseCursorChannel(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getTextInputChannel = _class.instanceMethodId(
+    r"getTextInputChannel",
+    r"()Lio/flutter/embedding/engine/systemchannels/TextInputChannel;",
+  );
+
+  /// from: public io.flutter.embedding.engine.systemchannels.TextInputChannel getTextInputChannel()
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// System channel that sends and receives text input requests and state.
+  jni.JObject getTextInputChannel() {
+    return _id_getTextInputChannel(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getSpellCheckChannel = _class.instanceMethodId(
+    r"getSpellCheckChannel",
+    r"()Lio/flutter/embedding/engine/systemchannels/SpellCheckChannel;",
+  );
+
+  /// from: public io.flutter.embedding.engine.systemchannels.SpellCheckChannel getSpellCheckChannel()
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// System channel that sends and receives spell check requests and results.
+  jni.JObject getSpellCheckChannel() {
+    return _id_getSpellCheckChannel(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getPlugins = _class.instanceMethodId(
+    r"getPlugins",
+    r"()Lio/flutter/embedding/engine/plugins/PluginRegistry;",
+  );
+
+  /// from: public io.flutter.embedding.engine.plugins.PluginRegistry getPlugins()
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// Plugin registry, which registers plugins that want to be applied to this {@code FlutterEngine}.
+  jni.JObject getPlugins() {
+    return _id_getPlugins(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getLocalizationPlugin = _class.instanceMethodId(
+    r"getLocalizationPlugin",
+    r"()Lio/flutter/plugin/localization/LocalizationPlugin;",
+  );
+
+  /// from: public io.flutter.plugin.localization.LocalizationPlugin getLocalizationPlugin()
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// The LocalizationPlugin this FlutterEngine created.
+  jni.JObject getLocalizationPlugin() {
+    return _id_getLocalizationPlugin(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getPlatformViewsController = _class.instanceMethodId(
+    r"getPlatformViewsController",
+    r"()Lio/flutter/plugin/platform/PlatformViewsController;",
+  );
+
+  /// from: public io.flutter.plugin.platform.PlatformViewsController getPlatformViewsController()
+  /// The returned object must be released after use, by calling the [release] method.
+  ///
+  /// {@code PlatformViewsController}, which controls all platform views running within this {@code
+  /// FlutterEngine}.
+  PlatformViewsController getPlatformViewsController() {
+    return _id_getPlatformViewsController(
+        this, const $PlatformViewsControllerType(), []);
+  }
+
+  static final _id_getActivityControlSurface = _class.instanceMethodId(
+    r"getActivityControlSurface",
+    r"()Lio/flutter/embedding/engine/plugins/activity/ActivityControlSurface;",
+  );
+
+  /// from: public io.flutter.embedding.engine.plugins.activity.ActivityControlSurface getActivityControlSurface()
+  /// The returned object must be released after use, by calling the [release] method.
+  jni.JObject getActivityControlSurface() {
+    return _id_getActivityControlSurface(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getServiceControlSurface = _class.instanceMethodId(
+    r"getServiceControlSurface",
+    r"()Lio/flutter/embedding/engine/plugins/service/ServiceControlSurface;",
+  );
+
+  /// from: public io.flutter.embedding.engine.plugins.service.ServiceControlSurface getServiceControlSurface()
+  /// The returned object must be released after use, by calling the [release] method.
+  jni.JObject getServiceControlSurface() {
+    return _id_getServiceControlSurface(this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getBroadcastReceiverControlSurface = _class.instanceMethodId(
+    r"getBroadcastReceiverControlSurface",
+    r"()Lio/flutter/embedding/engine/plugins/broadcastreceiver/BroadcastReceiverControlSurface;",
+  );
+
+  /// from: public io.flutter.embedding.engine.plugins.broadcastreceiver.BroadcastReceiverControlSurface getBroadcastReceiverControlSurface()
+  /// The returned object must be released after use, by calling the [release] method.
+  jni.JObject getBroadcastReceiverControlSurface() {
+    return _id_getBroadcastReceiverControlSurface(
+        this, const jni.JObjectType(), []);
+  }
+
+  static final _id_getContentProviderControlSurface = _class.instanceMethodId(
+    r"getContentProviderControlSurface",
+    r"()Lio/flutter/embedding/engine/plugins/contentprovider/ContentProviderControlSurface;",
+  );
+
+  /// from: public io.flutter.embedding.engine.plugins.contentprovider.ContentProviderControlSurface getContentProviderControlSurface()
+  /// The returned object must be released after use, by calling the [release] method.
+  jni.JObject getContentProviderControlSurface() {
+    return _id_getContentProviderControlSurface(
+        this, const jni.JObjectType(), []);
+  }
+
+  static final _id_updateDisplayMetrics = _class.instanceMethodId(
+    r"updateDisplayMetrics",
+    r"(FFF)V",
+  );
+
+  /// from: public void updateDisplayMetrics(float width, float height, float density)
+  void updateDisplayMetrics(
+    double width,
+    double height,
+    double density,
+  ) {
+    _id_updateDisplayMetrics(this, const jni.jvoidType(), [
+      jni.JValueFloat(width),
+      jni.JValueFloat(height),
+      jni.JValueFloat(density)
+    ]);
+  }
+}
+
+final class $FlutterEngineType extends jni.JObjType<FlutterEngine> {
+  const $FlutterEngineType();
+
+  @override
+  String get signature => r"Lio/flutter/embedding/engine/FlutterEngine;";
+
+  @override
+  FlutterEngine fromReference(jni.JReference reference) =>
+      FlutterEngine.fromReference(reference);
+
+  @override
+  jni.JObjType get superType => const jni.JObjectType();
+
+  @override
+  final superCount = 1;
+
+  @override
+  int get hashCode => ($FlutterEngineType).hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($FlutterEngineType) &&
+        other is $FlutterEngineType;
+  }
+}
+
 /// from: io.flutter.plugin.platform.PlatformViewsController
 ///
 /// Manages platform views.
@@ -3536,19 +3791,19 @@ class PlatformViewsController extends jni.JObject {
   @override
   late final jni.JObjType<PlatformViewsController> $type = type;
 
-  PlatformViewsController.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  PlatformViewsController.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"io/flutter/plugin/platform/PlatformViewsController");
+      jni.JClass.forName(r"io/flutter/plugin/platform/PlatformViewsController");
 
   /// The type which includes information such as the signature of this class.
   static const type = $PlatformViewsControllerType();
-  static final _id_createPlatformView = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"createPlatformView",
-      r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest;Z)Lio/flutter/plugin/platform/PlatformView;");
+  static final _id_createPlatformView = _class.instanceMethodId(
+    r"createPlatformView",
+    r"(Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest;Z)Lio/flutter/plugin/platform/PlatformView;",
+  );
 
   /// from: public io.flutter.plugin.platform.PlatformView createPlatformView(io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest request, boolean wrapContext)
   /// The returned object must be released after use, by calling the [release] method.
@@ -3556,34 +3811,29 @@ class PlatformViewsController extends jni.JObject {
     PlatformViewsChannel_PlatformViewCreationRequest request,
     bool wrapContext,
   ) {
-    return const $PlatformViewType().fromRef(jni.Jni.accessors
-        .callMethodWithArgs(
-            reference,
-            _id_createPlatformView,
-            jni.JniCallType.objectType,
-            [request.reference, wrapContext ? 1 : 0]).object);
+    return _id_createPlatformView(this, const $PlatformViewType(),
+        [request.reference.pointer, wrapContext ? 1 : 0]);
   }
 
-  static final _id_configureForTextureLayerComposition = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"configureForTextureLayerComposition",
-          r"(Lio/flutter/plugin/platform/PlatformView;Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest;)J");
+  static final _id_configureForTextureLayerComposition =
+      _class.instanceMethodId(
+    r"configureForTextureLayerComposition",
+    r"(Lio/flutter/plugin/platform/PlatformView;Lio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewCreationRequest;)J",
+  );
 
   /// from: public long configureForTextureLayerComposition(io.flutter.plugin.platform.PlatformView platformView, io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest request)
   int configureForTextureLayerComposition(
     PlatformView platformView,
     PlatformViewsChannel_PlatformViewCreationRequest request,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_configureForTextureLayerComposition,
-        jni.JniCallType.longType,
-        [platformView.reference, request.reference]).long;
+    return _id_configureForTextureLayerComposition(this, const jni.jlongType(),
+        [platformView.reference.pointer, request.reference.pointer]);
   }
 
-  static final _id_toMotionEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"toMotionEvent",
-      r"(FLio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewTouch;Z)Landroid/view/MotionEvent;");
+  static final _id_toMotionEvent = _class.instanceMethodId(
+    r"toMotionEvent",
+    r"(FLio/flutter/embedding/engine/systemchannels/PlatformViewsChannel$PlatformViewTouch;Z)Landroid/view/MotionEvent;",
+  );
 
   /// from: public android.view.MotionEvent toMotionEvent(float density, io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewTouch touch, boolean usingVirtualDiplay)
   /// The returned object must be released after use, by calling the [release] method.
@@ -3592,28 +3842,28 @@ class PlatformViewsController extends jni.JObject {
     PlatformViewsChannel_PlatformViewTouch touch,
     bool usingVirtualDiplay,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_toMotionEvent, jni.JniCallType.objectType, [
+    return _id_toMotionEvent(this, const jni.JObjectType(), [
       jni.JValueFloat(density),
-      touch.reference,
+      touch.reference.pointer,
       usingVirtualDiplay ? 1 : 0
-    ]).object);
+    ]);
   }
 
-  static final _id_new0 =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"<init>", r"()V");
+  static final _id_new0 = _class.constructorId(
+    r"()V",
+  );
 
   /// from: public void <init>()
   /// The returned object must be released after use, by calling the [release] method.
   factory PlatformViewsController() {
-    return PlatformViewsController.fromRef(jni.Jni.accessors
-        .newObjectWithArgs(_class.reference, _id_new0, []).object);
+    return PlatformViewsController.fromReference(
+        _id_new0(_class, referenceType, []));
   }
 
-  static final _id_attach = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"attach",
-      r"(Landroid/content/Context;Lio/flutter/view/TextureRegistry;Lio/flutter/embedding/engine/dart/DartExecutor;)V");
+  static final _id_attach = _class.instanceMethodId(
+    r"attach",
+    r"(Landroid/content/Context;Lio/flutter/view/TextureRegistry;Lio/flutter/embedding/engine/dart/DartExecutor;)V",
+  );
 
   /// from: public void attach(android.content.Context context, io.flutter.view.TextureRegistry textureRegistry, io.flutter.embedding.engine.dart.DartExecutor dartExecutor)
   ///
@@ -3628,16 +3878,17 @@ class PlatformViewsController extends jni.JObject {
     jni.JObject textureRegistry,
     jni.JObject dartExecutor,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_attach, jni.JniCallType.voidType, [
-      context.reference,
-      textureRegistry.reference,
-      dartExecutor.reference
-    ]).check();
+    _id_attach(this, const jni.jvoidType(), [
+      context.reference.pointer,
+      textureRegistry.reference.pointer,
+      dartExecutor.reference.pointer
+    ]);
   }
 
-  static final _id_setSoftwareRendering = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setSoftwareRendering", r"(Z)V");
+  static final _id_setSoftwareRendering = _class.instanceMethodId(
+    r"setSoftwareRendering",
+    r"(Z)V",
+  );
 
   /// from: public void setSoftwareRendering(boolean useSoftwareRendering)
   ///
@@ -3653,15 +3904,14 @@ class PlatformViewsController extends jni.JObject {
   void setSoftwareRendering(
     bool useSoftwareRendering,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setSoftwareRendering,
-        jni.JniCallType.voidType,
-        [useSoftwareRendering ? 1 : 0]).check();
+    _id_setSoftwareRendering(
+        this, const jni.jvoidType(), [useSoftwareRendering ? 1 : 0]);
   }
 
-  static final _id_detach =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"detach", r"()V");
+  static final _id_detach = _class.instanceMethodId(
+    r"detach",
+    r"()V",
+  );
 
   /// from: public void detach()
   ///
@@ -3672,14 +3922,13 @@ class PlatformViewsController extends jni.JObject {
   /// previous messenger, and will not maintain references to the texture registry, context, and
   /// messenger passed to the previous attach call.
   void detach() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_detach, jni.JniCallType.voidType, []).check();
+    _id_detach(this, const jni.jvoidType(), []);
   }
 
-  static final _id_attachToView = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"attachToView",
-      r"(Lio/flutter/embedding/android/FlutterView;)V");
+  static final _id_attachToView = _class.instanceMethodId(
+    r"attachToView",
+    r"(Lio/flutter/embedding/android/FlutterView;)V",
+  );
 
   /// from: public void attachToView(io.flutter.embedding.android.FlutterView newFlutterView)
   ///
@@ -3690,12 +3939,14 @@ class PlatformViewsController extends jni.JObject {
   void attachToView(
     jni.JObject newFlutterView,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_attachToView,
-        jni.JniCallType.voidType, [newFlutterView.reference]).check();
+    _id_attachToView(
+        this, const jni.jvoidType(), [newFlutterView.reference.pointer]);
   }
 
-  static final _id_detachFromView = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"detachFromView", r"()V");
+  static final _id_detachFromView = _class.instanceMethodId(
+    r"detachFromView",
+    r"()V",
+  );
 
   /// from: public void detachFromView()
   ///
@@ -3705,39 +3956,36 @@ class PlatformViewsController extends jni.JObject {
   /// when the device rotates since the FlutterView is detached from the fragment. The next time the
   /// fragment needs to be displayed, a new Flutter view is created, so attachToView is called again.
   void detachFromView() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_detachFromView, jni.JniCallType.voidType, []).check();
+    _id_detachFromView(this, const jni.jvoidType(), []);
   }
 
-  static final _id_attachAccessibilityBridge = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"attachAccessibilityBridge",
-      r"(Lio/flutter/view/AccessibilityBridge;)V");
+  static final _id_attachAccessibilityBridge = _class.instanceMethodId(
+    r"attachAccessibilityBridge",
+    r"(Lio/flutter/view/AccessibilityBridge;)V",
+  );
 
   /// from: public void attachAccessibilityBridge(io.flutter.view.AccessibilityBridge accessibilityBridge)
   void attachAccessibilityBridge(
     jni.JObject accessibilityBridge,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_attachAccessibilityBridge,
-        jni.JniCallType.voidType,
-        [accessibilityBridge.reference]).check();
+    _id_attachAccessibilityBridge(
+        this, const jni.jvoidType(), [accessibilityBridge.reference.pointer]);
   }
 
-  static final _id_detachAccessibilityBridge = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"detachAccessibilityBridge", r"()V");
+  static final _id_detachAccessibilityBridge = _class.instanceMethodId(
+    r"detachAccessibilityBridge",
+    r"()V",
+  );
 
   /// from: public void detachAccessibilityBridge()
   void detachAccessibilityBridge() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_detachAccessibilityBridge, jni.JniCallType.voidType, []).check();
+    _id_detachAccessibilityBridge(this, const jni.jvoidType(), []);
   }
 
-  static final _id_attachTextInputPlugin = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"attachTextInputPlugin",
-      r"(Lio/flutter/plugin/editing/TextInputPlugin;)V");
+  static final _id_attachTextInputPlugin = _class.instanceMethodId(
+    r"attachTextInputPlugin",
+    r"(Lio/flutter/plugin/editing/TextInputPlugin;)V",
+  );
 
   /// from: public void attachTextInputPlugin(io.flutter.plugin.editing.TextInputPlugin textInputPlugin)
   ///
@@ -3751,28 +3999,26 @@ class PlatformViewsController extends jni.JObject {
   void attachTextInputPlugin(
     jni.JObject textInputPlugin,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_attachTextInputPlugin,
-        jni.JniCallType.voidType,
-        [textInputPlugin.reference]).check();
+    _id_attachTextInputPlugin(
+        this, const jni.jvoidType(), [textInputPlugin.reference.pointer]);
   }
 
-  static final _id_detachTextInputPlugin = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"detachTextInputPlugin", r"()V");
+  static final _id_detachTextInputPlugin = _class.instanceMethodId(
+    r"detachTextInputPlugin",
+    r"()V",
+  );
 
   /// from: public void detachTextInputPlugin()
   ///
   /// Detaches this controller from the currently attached text input plugin.
   void detachTextInputPlugin() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_detachTextInputPlugin, jni.JniCallType.voidType, []).check();
+    _id_detachTextInputPlugin(this, const jni.jvoidType(), []);
   }
 
-  static final _id_checkInputConnectionProxy = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"checkInputConnectionProxy",
-      r"(Landroid/view/View;)Z");
+  static final _id_checkInputConnectionProxy = _class.instanceMethodId(
+    r"checkInputConnectionProxy",
+    r"(Landroid/view/View;)Z",
+  );
 
   /// from: public boolean checkInputConnectionProxy(android.view.View view)
   ///
@@ -3784,88 +4030,86 @@ class PlatformViewsController extends jni.JObject {
   bool checkInputConnectionProxy(
     View view,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_checkInputConnectionProxy,
-        jni.JniCallType.booleanType,
-        [view.reference]).boolean;
+    return _id_checkInputConnectionProxy(
+        this, const jni.jbooleanType(), [view.reference.pointer]);
   }
 
-  static final _id_getRegistry = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getRegistry",
-      r"()Lio/flutter/plugin/platform/PlatformViewRegistry;");
+  static final _id_getRegistry = _class.instanceMethodId(
+    r"getRegistry",
+    r"()Lio/flutter/plugin/platform/PlatformViewRegistry;",
+  );
 
   /// from: public io.flutter.plugin.platform.PlatformViewRegistry getRegistry()
   /// The returned object must be released after use, by calling the [release] method.
   PlatformViewRegistry getRegistry() {
-    return const $PlatformViewRegistryType().fromRef(jni.Jni.accessors
-        .callMethodWithArgs(
-            reference, _id_getRegistry, jni.JniCallType.objectType, []).object);
+    return _id_getRegistry(this, const $PlatformViewRegistryType(), []);
   }
 
-  static final _id_onAttachedToJNI = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onAttachedToJNI", r"()V");
+  static final _id_onAttachedToJNI = _class.instanceMethodId(
+    r"onAttachedToJNI",
+    r"()V",
+  );
 
   /// from: public void onAttachedToJNI()
   ///
   /// Invoked when the io.flutter.embedding.engine.FlutterEngine that owns this PlatformViewsController attaches to JNI.
   void onAttachedToJNI() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_onAttachedToJNI, jni.JniCallType.voidType, []).check();
+    _id_onAttachedToJNI(this, const jni.jvoidType(), []);
   }
 
-  static final _id_onDetachedFromJNI = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onDetachedFromJNI", r"()V");
+  static final _id_onDetachedFromJNI = _class.instanceMethodId(
+    r"onDetachedFromJNI",
+    r"()V",
+  );
 
   /// from: public void onDetachedFromJNI()
   ///
   /// Invoked when the io.flutter.embedding.engine.FlutterEngine that owns this PlatformViewsController detaches from JNI.
   void onDetachedFromJNI() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_onDetachedFromJNI, jni.JniCallType.voidType, []).check();
+    _id_onDetachedFromJNI(this, const jni.jvoidType(), []);
   }
 
-  static final _id_onPreEngineRestart = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onPreEngineRestart", r"()V");
+  static final _id_onPreEngineRestart = _class.instanceMethodId(
+    r"onPreEngineRestart",
+    r"()V",
+  );
 
   /// from: public void onPreEngineRestart()
   void onPreEngineRestart() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_onPreEngineRestart, jni.JniCallType.voidType, []).check();
+    _id_onPreEngineRestart(this, const jni.jvoidType(), []);
   }
 
-  static final _id_getPlatformViewById = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getPlatformViewById", r"(I)Landroid/view/View;");
+  static final _id_getPlatformViewById = _class.instanceMethodId(
+    r"getPlatformViewById",
+    r"(I)Landroid/view/View;",
+  );
 
   /// from: public android.view.View getPlatformViewById(int viewId)
   /// The returned object must be released after use, by calling the [release] method.
   View getPlatformViewById(
     int viewId,
   ) {
-    return const $ViewType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getPlatformViewById,
-        jni.JniCallType.objectType,
-        [jni.JValueInt(viewId)]).object);
+    return _id_getPlatformViewById(
+        this, const $ViewType(), [jni.JValueInt(viewId)]);
   }
 
-  static final _id_usesVirtualDisplay = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"usesVirtualDisplay", r"(I)Z");
+  static final _id_usesVirtualDisplay = _class.instanceMethodId(
+    r"usesVirtualDisplay",
+    r"(I)Z",
+  );
 
   /// from: public boolean usesVirtualDisplay(int id)
   bool usesVirtualDisplay(
     int id,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_usesVirtualDisplay,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(id)]).boolean;
+    return _id_usesVirtualDisplay(
+        this, const jni.jbooleanType(), [jni.JValueInt(id)]);
   }
 
-  static final _id_disposePlatformView = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"disposePlatformView", r"(I)V");
+  static final _id_disposePlatformView = _class.instanceMethodId(
+    r"disposePlatformView",
+    r"(I)V",
+  );
 
   /// from: public void disposePlatformView(int viewId)
   ///
@@ -3874,33 +4118,27 @@ class PlatformViewsController extends jni.JObject {
   void disposePlatformView(
     int viewId,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_disposePlatformView,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(viewId)]).check();
+    _id_disposePlatformView(
+        this, const jni.jvoidType(), [jni.JValueInt(viewId)]);
   }
 
-  static final _id_attachToFlutterRenderer = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"attachToFlutterRenderer",
-      r"(Lio/flutter/embedding/engine/renderer/FlutterRenderer;)V");
+  static final _id_attachToFlutterRenderer = _class.instanceMethodId(
+    r"attachToFlutterRenderer",
+    r"(Lio/flutter/embedding/engine/renderer/FlutterRenderer;)V",
+  );
 
   /// from: public void attachToFlutterRenderer(io.flutter.embedding.engine.renderer.FlutterRenderer flutterRenderer)
   void attachToFlutterRenderer(
     jni.JObject flutterRenderer,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_attachToFlutterRenderer,
-        jni.JniCallType.voidType,
-        [flutterRenderer.reference]).check();
+    _id_attachToFlutterRenderer(
+        this, const jni.jvoidType(), [flutterRenderer.reference.pointer]);
   }
 
-  static final _id_onDisplayPlatformView = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onDisplayPlatformView",
-      r"(IIIIIIILio/flutter/embedding/engine/mutatorsstack/FlutterMutatorsStack;)V");
+  static final _id_onDisplayPlatformView = _class.instanceMethodId(
+    r"onDisplayPlatformView",
+    r"(IIIIIIILio/flutter/embedding/engine/mutatorsstack/FlutterMutatorsStack;)V",
+  );
 
   /// from: public void onDisplayPlatformView(int viewId, int x, int y, int width, int height, int viewWidth, int viewHeight, io.flutter.embedding.engine.mutatorsstack.FlutterMutatorsStack mutatorsStack)
   ///
@@ -3924,8 +4162,7 @@ class PlatformViewsController extends jni.JObject {
     int viewHeight,
     jni.JObject mutatorsStack,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_onDisplayPlatformView, jni.JniCallType.voidType, [
+    _id_onDisplayPlatformView(this, const jni.jvoidType(), [
       jni.JValueInt(viewId),
       jni.JValueInt(x),
       jni.JValueInt(y),
@@ -3933,12 +4170,14 @@ class PlatformViewsController extends jni.JObject {
       jni.JValueInt(height),
       jni.JValueInt(viewWidth),
       jni.JValueInt(viewHeight),
-      mutatorsStack.reference
-    ]).check();
+      mutatorsStack.reference.pointer
+    ]);
   }
 
-  static final _id_onDisplayOverlaySurface = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onDisplayOverlaySurface", r"(IIIII)V");
+  static final _id_onDisplayOverlaySurface = _class.instanceMethodId(
+    r"onDisplayOverlaySurface",
+    r"(IIIII)V",
+  );
 
   /// from: public void onDisplayOverlaySurface(int id, int x, int y, int width, int height)
   ///
@@ -3956,27 +4195,29 @@ class PlatformViewsController extends jni.JObject {
     int width,
     int height,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_onDisplayOverlaySurface, jni.JniCallType.voidType, [
+    _id_onDisplayOverlaySurface(this, const jni.jvoidType(), [
       jni.JValueInt(id),
       jni.JValueInt(x),
       jni.JValueInt(y),
       jni.JValueInt(width),
       jni.JValueInt(height)
-    ]).check();
+    ]);
   }
 
-  static final _id_onBeginFrame = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onBeginFrame", r"()V");
+  static final _id_onBeginFrame = _class.instanceMethodId(
+    r"onBeginFrame",
+    r"()V",
+  );
 
   /// from: public void onBeginFrame()
   void onBeginFrame() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_onBeginFrame, jni.JniCallType.voidType, []).check();
+    _id_onBeginFrame(this, const jni.jvoidType(), []);
   }
 
-  static final _id_onEndFrame =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"onEndFrame", r"()V");
+  static final _id_onEndFrame = _class.instanceMethodId(
+    r"onEndFrame",
+    r"()V",
+  );
 
   /// from: public void onEndFrame()
   ///
@@ -3984,14 +4225,13 @@ class PlatformViewsController extends jni.JObject {
   ///
   /// This member is not intended for public use, and is only visible for testing.
   void onEndFrame() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_onEndFrame, jni.JniCallType.voidType, []).check();
+    _id_onEndFrame(this, const jni.jvoidType(), []);
   }
 
-  static final _id_createOverlaySurface = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"createOverlaySurface",
-      r"(Lio/flutter/plugin/platform/PlatformOverlayView;)Lio/flutter/embedding/engine/FlutterOverlaySurface;");
+  static final _id_createOverlaySurface = _class.instanceMethodId(
+    r"createOverlaySurface",
+    r"(Lio/flutter/plugin/platform/PlatformOverlayView;)Lio/flutter/embedding/engine/FlutterOverlaySurface;",
+  );
 
   /// from: public io.flutter.embedding.engine.FlutterOverlaySurface createOverlaySurface(io.flutter.plugin.platform.PlatformOverlayView imageView)
   /// The returned object must be released after use, by calling the [release] method.
@@ -4003,17 +4243,14 @@ class PlatformViewsController extends jni.JObject {
   jni.JObject createOverlaySurface(
     jni.JObject imageView,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_createOverlaySurface,
-        jni.JniCallType.objectType,
-        [imageView.reference]).object);
+    return _id_createOverlaySurface(
+        this, const jni.JObjectType(), [imageView.reference.pointer]);
   }
 
-  static final _id_createOverlaySurface1 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"createOverlaySurface",
-      r"()Lio/flutter/embedding/engine/FlutterOverlaySurface;");
+  static final _id_createOverlaySurface1 = _class.instanceMethodId(
+    r"createOverlaySurface",
+    r"()Lio/flutter/embedding/engine/FlutterOverlaySurface;",
+  );
 
   /// from: public io.flutter.embedding.engine.FlutterOverlaySurface createOverlaySurface()
   /// The returned object must be released after use, by calling the [release] method.
@@ -4024,14 +4261,13 @@ class PlatformViewsController extends jni.JObject {
   ///
   /// This member is not intended for public use, and is only visible for testing.
   jni.JObject createOverlaySurface1() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_createOverlaySurface1,
-        jni.JniCallType.objectType, []).object);
+    return _id_createOverlaySurface1(this, const jni.JObjectType(), []);
   }
 
-  static final _id_destroyOverlaySurfaces = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"destroyOverlaySurfaces", r"()V");
+  static final _id_destroyOverlaySurfaces = _class.instanceMethodId(
+    r"destroyOverlaySurfaces",
+    r"()V",
+  );
 
   /// from: public void destroyOverlaySurfaces()
   ///
@@ -4039,22 +4275,18 @@ class PlatformViewsController extends jni.JObject {
   ///
   /// This method is used only internally by {@code FlutterJNI}.
   void destroyOverlaySurfaces() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_destroyOverlaySurfaces, jni.JniCallType.voidType, []).check();
+    _id_destroyOverlaySurfaces(this, const jni.jvoidType(), []);
   }
 
-  static final _id_getOverlayLayerViews = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getOverlayLayerViews",
-      r"()Landroid/util/SparseArray;");
+  static final _id_getOverlayLayerViews = _class.instanceMethodId(
+    r"getOverlayLayerViews",
+    r"()Landroid/util/SparseArray;",
+  );
 
   /// from: public android.util.SparseArray<io.flutter.plugin.platform.PlatformOverlayView> getOverlayLayerViews()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getOverlayLayerViews() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getOverlayLayerViews,
-        jni.JniCallType.objectType, []).object);
+    return _id_getOverlayLayerViews(this, const jni.JObjectType(), []);
   }
 }
 
@@ -4067,8 +4299,8 @@ final class $PlatformViewsControllerType
       r"Lio/flutter/plugin/platform/PlatformViewsController;";
 
   @override
-  PlatformViewsController fromRef(jni.JObjectPtr ref) =>
-      PlatformViewsController.fromRef(ref);
+  PlatformViewsController fromReference(jni.JReference reference) =>
+      PlatformViewsController.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -4095,19 +4327,19 @@ class PlatformViewRegistry extends jni.JObject {
   @override
   late final jni.JObjType<PlatformViewRegistry> $type = type;
 
-  PlatformViewRegistry.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  PlatformViewRegistry.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"io/flutter/plugin/platform/PlatformViewRegistry");
+      jni.JClass.forName(r"io/flutter/plugin/platform/PlatformViewRegistry");
 
   /// The type which includes information such as the signature of this class.
   static const type = $PlatformViewRegistryType();
-  static final _id_registerViewFactory = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"registerViewFactory",
-      r"(Ljava/lang/String;Lio/flutter/plugin/platform/PlatformViewFactory;)Z");
+  static final _id_registerViewFactory = _class.instanceMethodId(
+    r"registerViewFactory",
+    r"(Ljava/lang/String;Lio/flutter/plugin/platform/PlatformViewFactory;)Z",
+  );
 
   /// from: public abstract boolean registerViewFactory(java.lang.String viewTypeId, io.flutter.plugin.platform.PlatformViewFactory factory)
   ///
@@ -4119,11 +4351,8 @@ class PlatformViewRegistry extends jni.JObject {
     jni.JString viewTypeId,
     jni.JObject factory0,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_registerViewFactory,
-        jni.JniCallType.booleanType,
-        [viewTypeId.reference, factory0.reference]).boolean;
+    return _id_registerViewFactory(this, const jni.jbooleanType(),
+        [viewTypeId.reference.pointer, factory0.reference.pointer]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -4164,7 +4393,7 @@ class PlatformViewRegistry extends jni.JObject {
           $a[0].castTo(const jni.JStringType(), releaseOriginal: true),
           $a[1].castTo(const jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).toPointer();
+        return jni.JBoolean($r).reference.toPointer();
       }
     } catch (e) {
       return ProtectedJniExtensions.newDartException(e.toString());
@@ -4176,7 +4405,7 @@ class PlatformViewRegistry extends jni.JObject {
     $PlatformViewRegistryImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = PlatformViewRegistry.fromRef(
+    final $x = PlatformViewRegistry.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"io.flutter.plugin.platform.PlatformViewRegistry",
         $p,
@@ -4199,7 +4428,7 @@ class PlatformViewRegistry extends jni.JObject {
   }
 }
 
-abstract class $PlatformViewRegistryImpl {
+abstract interface class $PlatformViewRegistryImpl {
   factory $PlatformViewRegistryImpl({
     required bool Function(jni.JString viewTypeId, jni.JObject factory0)
         registerViewFactory,
@@ -4230,8 +4459,8 @@ final class $PlatformViewRegistryType
   String get signature => r"Lio/flutter/plugin/platform/PlatformViewRegistry;";
 
   @override
-  PlatformViewRegistry fromRef(jni.JObjectPtr ref) =>
-      PlatformViewRegistry.fromRef(ref);
+  PlatformViewRegistry fromReference(jni.JReference reference) =>
+      PlatformViewRegistry.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -4249,476 +4478,49 @@ final class $PlatformViewRegistryType
   }
 }
 
-/// from: com.example.webview_demo.NativeViewFactory
-class NativeViewFactory extends jni.JObject {
-  @override
-  late final jni.JObjType<NativeViewFactory> $type = type;
-
-  NativeViewFactory.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
-
-  static final _class =
-      jni.Jni.findJClass(r"com/example/webview_demo/NativeViewFactory");
-
-  /// The type which includes information such as the signature of this class.
-  static const type = $NativeViewFactoryType();
-  static final _id_create = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"create",
-      r"(Landroid/content/Context;ILjava/lang/Object;)Lio/flutter/plugin/platform/PlatformView;");
-
-  /// from: public abstract io.flutter.plugin.platform.PlatformView create(android.content.Context context, int i, java.lang.Object object)
-  /// The returned object must be released after use, by calling the [release] method.
-  PlatformView create(
-    jni.JObject context,
-    int i,
-    jni.JObject object,
-  ) {
-    return const $PlatformViewType().fromRef(jni.Jni.accessors
-        .callMethodWithArgs(reference, _id_create, jni.JniCallType.objectType,
-            [context.reference, jni.JValueInt(i), object.reference]).object);
-  }
-
-  /// Maps a specific port to the implemented interface.
-  static final Map<int, $NativeViewFactoryImpl> _$impls = {};
-  ReceivePort? _$p;
-
-  static jni.JObjectPtr _$invoke(
-    int port,
-    jni.JObjectPtr descriptor,
-    jni.JObjectPtr args,
-  ) {
-    return _$invokeMethod(
-      port,
-      $MethodInvocation.fromAddresses(
-        0,
-        descriptor.address,
-        args.address,
-      ),
-    );
-  }
-
-  static final ffi.Pointer<
-          ffi.NativeFunction<
-              jni.JObjectPtr Function(
-                  ffi.Uint64, jni.JObjectPtr, jni.JObjectPtr)>>
-      _$invokePointer = ffi.Pointer.fromFunction(_$invoke);
-
-  static ffi.Pointer<ffi.Void> _$invokeMethod(
-    int $p,
-    $MethodInvocation $i,
-  ) {
-    try {
-      final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
-      final $a = $i.args;
-      if ($d ==
-          r"create(Landroid/content/Context;ILjava/lang/Object;)Lio/flutter/plugin/platform/PlatformView;") {
-        final $r = _$impls[$p]!.create(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
-          $a[1]
-              .castTo(const jni.JIntegerType(), releaseOriginal: true)
-              .intValue(releaseOriginal: true),
-          $a[2].castTo(const jni.JObjectType(), releaseOriginal: true),
-        );
-        return ($r as jni.JObject).castTo(const jni.JObjectType()).toPointer();
-      }
-    } catch (e) {
-      return ProtectedJniExtensions.newDartException(e.toString());
-    }
-    return jni.nullptr;
-  }
-
-  factory NativeViewFactory.implement(
-    $NativeViewFactoryImpl $impl,
-  ) {
-    final $p = ReceivePort();
-    final $x = NativeViewFactory.fromRef(
-      ProtectedJniExtensions.newPortProxy(
-        r"com.example.webview_demo.NativeViewFactory",
-        $p,
-        _$invokePointer,
-      ),
-    ).._$p = $p;
-    final $a = $p.sendPort.nativePort;
-    _$impls[$a] = $impl;
-    $p.listen(($m) {
-      if ($m == null) {
-        _$impls.remove($p.sendPort.nativePort);
-        $p.close();
-        return;
-      }
-      final $i = $MethodInvocation.fromMessage($m as List<dynamic>);
-      final $r = _$invokeMethod($p.sendPort.nativePort, $i);
-      ProtectedJniExtensions.returnResult($i.result, $r);
-    });
-    return $x;
-  }
-}
-
-abstract class $NativeViewFactoryImpl {
-  factory $NativeViewFactoryImpl({
-    required PlatformView Function(
-            jni.JObject context, int i, jni.JObject object)
-        create,
-  }) = _$NativeViewFactoryImpl;
-
-  PlatformView create(jni.JObject context, int i, jni.JObject object);
-}
-
-class _$NativeViewFactoryImpl implements $NativeViewFactoryImpl {
-  _$NativeViewFactoryImpl({
-    required PlatformView Function(
-            jni.JObject context, int i, jni.JObject object)
-        create,
-  }) : _create = create;
-
-  final PlatformView Function(jni.JObject context, int i, jni.JObject object)
-      _create;
-
-  PlatformView create(jni.JObject context, int i, jni.JObject object) {
-    return _create(context, i, object);
-  }
-}
-
-final class $NativeViewFactoryType extends jni.JObjType<NativeViewFactory> {
-  const $NativeViewFactoryType();
-
-  @override
-  String get signature => r"Lcom/example/webview_demo/NativeViewFactory;";
-
-  @override
-  NativeViewFactory fromRef(jni.JObjectPtr ref) =>
-      NativeViewFactory.fromRef(ref);
-
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
-
-  @override
-  final superCount = 1;
-
-  @override
-  int get hashCode => ($NativeViewFactoryType).hashCode;
-
-  @override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($NativeViewFactoryType) &&
-        other is $NativeViewFactoryType;
-  }
-}
-
-/// from: com.example.webview_demo.NativeViewFactoryWrapper
-class NativeViewFactoryWrapper extends jni.JObject {
-  @override
-  late final jni.JObjType<NativeViewFactoryWrapper> $type = type;
-
-  NativeViewFactoryWrapper.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
-
-  static final _class =
-      jni.Jni.findJClass(r"com/example/webview_demo/NativeViewFactoryWrapper");
-
-  /// The type which includes information such as the signature of this class.
-  static const type = $NativeViewFactoryWrapperType();
-  static final _id_new0 = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"<init>", r"(Lcom/example/webview_demo/NativeViewFactory;)V");
-
-  /// from: public void <init>(com.example.webview_demo.NativeViewFactory nativeViewFactory)
-  /// The returned object must be released after use, by calling the [release] method.
-  factory NativeViewFactoryWrapper(
-    NativeViewFactory nativeViewFactory,
-  ) {
-    return NativeViewFactoryWrapper.fromRef(jni.Jni.accessors.newObjectWithArgs(
-        _class.reference, _id_new0, [nativeViewFactory.reference]).object);
-  }
-
-  static final _id_create = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"create",
-      r"(Landroid/content/Context;ILjava/lang/Object;)Lio/flutter/plugin/platform/PlatformView;");
-
-  /// from: public io.flutter.plugin.platform.PlatformView create(android.content.Context context, int i, java.lang.Object object)
-  /// The returned object must be released after use, by calling the [release] method.
-  PlatformView create(
-    jni.JObject context,
-    int i,
-    jni.JObject object,
-  ) {
-    return const $PlatformViewType().fromRef(jni.Jni.accessors
-        .callMethodWithArgs(reference, _id_create, jni.JniCallType.objectType,
-            [context.reference, jni.JValueInt(i), object.reference]).object);
-  }
-}
-
-final class $NativeViewFactoryWrapperType
-    extends jni.JObjType<NativeViewFactoryWrapper> {
-  const $NativeViewFactoryWrapperType();
-
-  @override
-  String get signature =>
-      r"Lcom/example/webview_demo/NativeViewFactoryWrapper;";
-
-  @override
-  NativeViewFactoryWrapper fromRef(jni.JObjectPtr ref) =>
-      NativeViewFactoryWrapper.fromRef(ref);
-
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
-
-  @override
-  final superCount = 1;
-
-  @override
-  int get hashCode => ($NativeViewFactoryWrapperType).hashCode;
-
-  @override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($NativeViewFactoryWrapperType) &&
-        other is $NativeViewFactoryWrapperType;
-  }
-}
-
-/// from: com.example.webview_demo.MainActivity$Companion
-class MainActivity_Companion extends jni.JObject {
-  @override
-  late final jni.JObjType<MainActivity_Companion> $type = type;
-
-  MainActivity_Companion.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
-
-  static final _class =
-      jni.Jni.findJClass(r"com/example/webview_demo/MainActivity$Companion");
-
-  /// The type which includes information such as the signature of this class.
-  static const type = $MainActivity_CompanionType();
-  static final _id_getTheView = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getTheView", r"()Ljava/util/HashMap;");
-
-  /// from: public final java.util.HashMap getTheView()
-  /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getTheView() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getTheView, jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_setTheView = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"setTheView", r"(Ljava/util/HashMap;)V");
-
-  /// from: public final void setTheView(java.util.HashMap hashMap)
-  void setTheView(
-    jni.JObject hashMap,
-  ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setTheView,
-        jni.JniCallType.voidType, [hashMap.reference]).check();
-  }
-
-  static final _id_new0 = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"<init>", r"(Lkotlin/jvm/internal/DefaultConstructorMarker;)V");
-
-  /// from: public void <init>(kotlin.jvm.internal.DefaultConstructorMarker defaultConstructorMarker)
-  /// The returned object must be released after use, by calling the [release] method.
-  factory MainActivity_Companion(
-    jni.JObject defaultConstructorMarker,
-  ) {
-    return MainActivity_Companion.fromRef(jni.Jni.accessors.newObjectWithArgs(
-        _class.reference,
-        _id_new0,
-        [defaultConstructorMarker.reference]).object);
-  }
-}
-
-final class $MainActivity_CompanionType
-    extends jni.JObjType<MainActivity_Companion> {
-  const $MainActivity_CompanionType();
-
-  @override
-  String get signature => r"Lcom/example/webview_demo/MainActivity$Companion;";
-
-  @override
-  MainActivity_Companion fromRef(jni.JObjectPtr ref) =>
-      MainActivity_Companion.fromRef(ref);
-
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
-
-  @override
-  final superCount = 1;
-
-  @override
-  int get hashCode => ($MainActivity_CompanionType).hashCode;
-
-  @override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($MainActivity_CompanionType) &&
-        other is $MainActivity_CompanionType;
-  }
-}
-
-/// from: com.example.webview_demo.MainActivity
-class MainActivity extends jni.JObject {
-  @override
-  late final jni.JObjType<MainActivity> $type = type;
-
-  MainActivity.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
-
-  static final _class =
-      jni.Jni.findJClass(r"com/example/webview_demo/MainActivity");
-
-  /// The type which includes information such as the signature of this class.
-  static const type = $MainActivityType();
-  static final _id_Companion = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
-    r"Companion",
-    r"Lcom/example/webview_demo/MainActivity$Companion;",
-  );
-
-  /// from: static public final com.example.webview_demo.MainActivity$Companion Companion
-  /// The returned object must be released after use, by calling the [release] method.
-  static MainActivity_Companion get Companion =>
-      const $MainActivity_CompanionType().fromRef(jni.Jni.accessors
-          .getStaticField(
-              _class.reference, _id_Companion, jni.JniCallType.objectType)
-          .object);
-
-  static final _id_theView = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
-    r"theView",
-    r"Ljava/util/HashMap;",
-  );
-
-  /// from: static public java.util.HashMap theView
-  /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject get theView => const jni.JObjectType().fromRef(jni
-      .Jni.accessors
-      .getStaticField(_class.reference, _id_theView, jni.JniCallType.objectType)
-      .object);
-
-  /// from: static public java.util.HashMap theView
-  /// The returned object must be released after use, by calling the [release] method.
-  static set theView(jni.JObject value) => jni.Jni.env
-      .SetStaticObjectField(_class.reference, _id_theView, value.reference);
-
-  static final _id_new0 =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"<init>", r"()V");
-
-  /// from: public void <init>()
-  /// The returned object must be released after use, by calling the [release] method.
-  factory MainActivity() {
-    return MainActivity.fromRef(jni.Jni.accessors
-        .newObjectWithArgs(_class.reference, _id_new0, []).object);
-  }
-
-  static final _id_configureFlutterEngine = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"configureFlutterEngine",
-      r"(Lio/flutter/embedding/engine/FlutterEngine;)V");
-
-  /// from: public void configureFlutterEngine(io.flutter.embedding.engine.FlutterEngine flutterEngine)
-  void configureFlutterEngine(
-    FlutterEngine flutterEngine,
-  ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_configureFlutterEngine,
-        jni.JniCallType.voidType,
-        [flutterEngine.reference]).check();
-  }
-
-  static final _id_getTheView = jni.Jni.accessors.getStaticMethodIDOf(
-      _class.reference, r"getTheView", r"()Ljava/util/HashMap;");
-
-  /// from: static public final java.util.HashMap getTheView()
-  /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject getTheView() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors
-        .callStaticMethodWithArgs(_class.reference, _id_getTheView,
-            jni.JniCallType.objectType, []).object);
-  }
-
-  static final _id_setTheView = jni.Jni.accessors.getStaticMethodIDOf(
-      _class.reference, r"setTheView", r"(Ljava/util/HashMap;)V");
-
-  /// from: static public final void setTheView(java.util.HashMap hashMap)
-  static void setTheView(
-    jni.JObject hashMap,
-  ) {
-    return jni.Jni.accessors.callStaticMethodWithArgs(_class.reference,
-        _id_setTheView, jni.JniCallType.voidType, [hashMap.reference]).check();
-  }
-}
-
-final class $MainActivityType extends jni.JObjType<MainActivity> {
-  const $MainActivityType();
-
-  @override
-  String get signature => r"Lcom/example/webview_demo/MainActivity;";
-
-  @override
-  MainActivity fromRef(jni.JObjectPtr ref) => MainActivity.fromRef(ref);
-
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
-
-  @override
-  final superCount = 1;
-
-  @override
-  int get hashCode => ($MainActivityType).hashCode;
-
-  @override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($MainActivityType) &&
-        other is $MainActivityType;
-  }
-}
-
 /// from: android.view.View$AccessibilityDelegate
 class View_AccessibilityDelegate extends jni.JObject {
   @override
   late final jni.JObjType<View_AccessibilityDelegate> $type = type;
 
-  View_AccessibilityDelegate.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_AccessibilityDelegate.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/view/View$AccessibilityDelegate");
+      jni.JClass.forName(r"android/view/View$AccessibilityDelegate");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_AccessibilityDelegateType();
-  static final _id_new0 =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"<init>", r"()V");
+  static final _id_new0 = _class.constructorId(
+    r"()V",
+  );
 
   /// from: public void <init>()
   /// The returned object must be released after use, by calling the [release] method.
   factory View_AccessibilityDelegate() {
-    return View_AccessibilityDelegate.fromRef(jni.Jni.accessors
-        .newObjectWithArgs(_class.reference, _id_new0, []).object);
+    return View_AccessibilityDelegate.fromReference(
+        _id_new0(_class, referenceType, []));
   }
 
-  static final _id_sendAccessibilityEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"sendAccessibilityEvent", r"(Landroid/view/View;I)V");
+  static final _id_sendAccessibilityEvent = _class.instanceMethodId(
+    r"sendAccessibilityEvent",
+    r"(Landroid/view/View;I)V",
+  );
 
   /// from: public void sendAccessibilityEvent(android.view.View view, int i)
   void sendAccessibilityEvent(
     View view,
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_sendAccessibilityEvent,
-        jni.JniCallType.voidType,
-        [view.reference, jni.JValueInt(i)]).check();
+    _id_sendAccessibilityEvent(this, const jni.jvoidType(),
+        [view.reference.pointer, jni.JValueInt(i)]);
   }
 
-  static final _id_performAccessibilityAction = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"performAccessibilityAction",
-      r"(Landroid/view/View;ILandroid/os/Bundle;)Z");
+  static final _id_performAccessibilityAction = _class.instanceMethodId(
+    r"performAccessibilityAction",
+    r"(Landroid/view/View;ILandroid/os/Bundle;)Z",
+  );
 
   /// from: public boolean performAccessibilityAction(android.view.View view, int i, android.os.Bundle bundle)
   bool performAccessibilityAction(
@@ -4726,98 +4528,87 @@ class View_AccessibilityDelegate extends jni.JObject {
     int i,
     jni.JObject bundle,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_performAccessibilityAction,
-        jni.JniCallType.booleanType,
-        [view.reference, jni.JValueInt(i), bundle.reference]).boolean;
+    return _id_performAccessibilityAction(this, const jni.jbooleanType(),
+        [view.reference.pointer, jni.JValueInt(i), bundle.reference.pointer]);
   }
 
-  static final _id_sendAccessibilityEventUnchecked = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"sendAccessibilityEventUnchecked",
-          r"(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V");
+  static final _id_sendAccessibilityEventUnchecked = _class.instanceMethodId(
+    r"sendAccessibilityEventUnchecked",
+    r"(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V",
+  );
 
   /// from: public void sendAccessibilityEventUnchecked(android.view.View view, android.view.accessibility.AccessibilityEvent accessibilityEvent)
   void sendAccessibilityEventUnchecked(
     View view,
     jni.JObject accessibilityEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_sendAccessibilityEventUnchecked,
-        jni.JniCallType.voidType,
-        [view.reference, accessibilityEvent.reference]).check();
+    _id_sendAccessibilityEventUnchecked(this, const jni.jvoidType(),
+        [view.reference.pointer, accessibilityEvent.reference.pointer]);
   }
 
-  static final _id_dispatchPopulateAccessibilityEvent = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchPopulateAccessibilityEvent",
-          r"(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z");
+  static final _id_dispatchPopulateAccessibilityEvent = _class.instanceMethodId(
+    r"dispatchPopulateAccessibilityEvent",
+    r"(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z",
+  );
 
   /// from: public boolean dispatchPopulateAccessibilityEvent(android.view.View view, android.view.accessibility.AccessibilityEvent accessibilityEvent)
   bool dispatchPopulateAccessibilityEvent(
     View view,
     jni.JObject accessibilityEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchPopulateAccessibilityEvent,
-        jni.JniCallType.booleanType,
-        [view.reference, accessibilityEvent.reference]).boolean;
+    return _id_dispatchPopulateAccessibilityEvent(
+        this,
+        const jni.jbooleanType(),
+        [view.reference.pointer, accessibilityEvent.reference.pointer]);
   }
 
-  static final _id_onPopulateAccessibilityEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onPopulateAccessibilityEvent",
-      r"(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V");
+  static final _id_onPopulateAccessibilityEvent = _class.instanceMethodId(
+    r"onPopulateAccessibilityEvent",
+    r"(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V",
+  );
 
   /// from: public void onPopulateAccessibilityEvent(android.view.View view, android.view.accessibility.AccessibilityEvent accessibilityEvent)
   void onPopulateAccessibilityEvent(
     View view,
     jni.JObject accessibilityEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onPopulateAccessibilityEvent,
-        jni.JniCallType.voidType,
-        [view.reference, accessibilityEvent.reference]).check();
+    _id_onPopulateAccessibilityEvent(this, const jni.jvoidType(),
+        [view.reference.pointer, accessibilityEvent.reference.pointer]);
   }
 
-  static final _id_onInitializeAccessibilityEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onInitializeAccessibilityEvent",
-      r"(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V");
+  static final _id_onInitializeAccessibilityEvent = _class.instanceMethodId(
+    r"onInitializeAccessibilityEvent",
+    r"(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V",
+  );
 
   /// from: public void onInitializeAccessibilityEvent(android.view.View view, android.view.accessibility.AccessibilityEvent accessibilityEvent)
   void onInitializeAccessibilityEvent(
     View view,
     jni.JObject accessibilityEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onInitializeAccessibilityEvent,
-        jni.JniCallType.voidType,
-        [view.reference, accessibilityEvent.reference]).check();
+    _id_onInitializeAccessibilityEvent(this, const jni.jvoidType(),
+        [view.reference.pointer, accessibilityEvent.reference.pointer]);
   }
 
-  static final _id_onInitializeAccessibilityNodeInfo = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onInitializeAccessibilityNodeInfo",
-          r"(Landroid/view/View;Landroid/view/accessibility/AccessibilityNodeInfo;)V");
+  static final _id_onInitializeAccessibilityNodeInfo = _class.instanceMethodId(
+    r"onInitializeAccessibilityNodeInfo",
+    r"(Landroid/view/View;Landroid/view/accessibility/AccessibilityNodeInfo;)V",
+  );
 
   /// from: public void onInitializeAccessibilityNodeInfo(android.view.View view, android.view.accessibility.AccessibilityNodeInfo accessibilityNodeInfo)
   void onInitializeAccessibilityNodeInfo(
     View view,
     jni.JObject accessibilityNodeInfo,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onInitializeAccessibilityNodeInfo,
-        jni.JniCallType.voidType,
-        [view.reference, accessibilityNodeInfo.reference]).check();
+    _id_onInitializeAccessibilityNodeInfo(this, const jni.jvoidType(),
+        [view.reference.pointer, accessibilityNodeInfo.reference.pointer]);
   }
 
-  static final _id_addExtraDataToAccessibilityNodeInfo = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"addExtraDataToAccessibilityNodeInfo",
-          r"(Landroid/view/View;Landroid/view/accessibility/AccessibilityNodeInfo;Ljava/lang/String;Landroid/os/Bundle;)V");
+  static final _id_addExtraDataToAccessibilityNodeInfo =
+      _class.instanceMethodId(
+    r"addExtraDataToAccessibilityNodeInfo",
+    r"(Landroid/view/View;Landroid/view/accessibility/AccessibilityNodeInfo;Ljava/lang/String;Landroid/os/Bundle;)V",
+  );
 
   /// from: public void addExtraDataToAccessibilityNodeInfo(android.view.View view, android.view.accessibility.AccessibilityNodeInfo accessibilityNodeInfo, java.lang.String string, android.os.Bundle bundle)
   void addExtraDataToAccessibilityNodeInfo(
@@ -4826,18 +4617,18 @@ class View_AccessibilityDelegate extends jni.JObject {
     jni.JString string,
     jni.JObject bundle,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_addExtraDataToAccessibilityNodeInfo, jni.JniCallType.voidType, [
-      view.reference,
-      accessibilityNodeInfo.reference,
-      string.reference,
-      bundle.reference
-    ]).check();
+    _id_addExtraDataToAccessibilityNodeInfo(this, const jni.jvoidType(), [
+      view.reference.pointer,
+      accessibilityNodeInfo.reference.pointer,
+      string.reference.pointer,
+      bundle.reference.pointer
+    ]);
   }
 
-  static final _id_onRequestSendAccessibilityEvent = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onRequestSendAccessibilityEvent",
-          r"(Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z");
+  static final _id_onRequestSendAccessibilityEvent = _class.instanceMethodId(
+    r"onRequestSendAccessibilityEvent",
+    r"(Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z",
+  );
 
   /// from: public boolean onRequestSendAccessibilityEvent(android.view.ViewGroup viewGroup, android.view.View view, android.view.accessibility.AccessibilityEvent accessibilityEvent)
   bool onRequestSendAccessibilityEvent(
@@ -4845,29 +4636,25 @@ class View_AccessibilityDelegate extends jni.JObject {
     View view,
     jni.JObject accessibilityEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_onRequestSendAccessibilityEvent, jni.JniCallType.booleanType, [
-      viewGroup.reference,
-      view.reference,
-      accessibilityEvent.reference
-    ]).boolean;
+    return _id_onRequestSendAccessibilityEvent(this, const jni.jbooleanType(), [
+      viewGroup.reference.pointer,
+      view.reference.pointer,
+      accessibilityEvent.reference.pointer
+    ]);
   }
 
-  static final _id_getAccessibilityNodeProvider = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getAccessibilityNodeProvider",
-      r"(Landroid/view/View;)Landroid/view/accessibility/AccessibilityNodeProvider;");
+  static final _id_getAccessibilityNodeProvider = _class.instanceMethodId(
+    r"getAccessibilityNodeProvider",
+    r"(Landroid/view/View;)Landroid/view/accessibility/AccessibilityNodeProvider;",
+  );
 
   /// from: public android.view.accessibility.AccessibilityNodeProvider getAccessibilityNodeProvider(android.view.View view)
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getAccessibilityNodeProvider(
     View view,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getAccessibilityNodeProvider,
-        jni.JniCallType.objectType,
-        [view.reference]).object);
+    return _id_getAccessibilityNodeProvider(
+        this, const jni.JObjectType(), [view.reference.pointer]);
   }
 }
 
@@ -4879,8 +4666,8 @@ final class $View_AccessibilityDelegateType
   String get signature => r"Landroid/view/View$AccessibilityDelegate;";
 
   @override
-  View_AccessibilityDelegate fromRef(jni.JObjectPtr ref) =>
-      View_AccessibilityDelegate.fromRef(ref);
+  View_AccessibilityDelegate fromReference(jni.JReference reference) =>
+      View_AccessibilityDelegate.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -4903,41 +4690,40 @@ class View_BaseSavedState extends jni.JObject {
   @override
   late final jni.JObjType<View_BaseSavedState> $type = type;
 
-  View_BaseSavedState.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_BaseSavedState.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
-  static final _class = jni.Jni.findJClass(r"android/view/View$BaseSavedState");
+  static final _class = jni.JClass.forName(r"android/view/View$BaseSavedState");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_BaseSavedStateType();
-  static final _id_CREATOR = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_CREATOR = _class.staticFieldId(
     r"CREATOR",
     r"Landroid/os/Parcelable$Creator;",
   );
 
   /// from: static public final android.os.Parcelable$Creator CREATOR
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject get CREATOR => const jni.JObjectType().fromRef(jni
-      .Jni.accessors
-      .getStaticField(_class.reference, _id_CREATOR, jni.JniCallType.objectType)
-      .object);
+  static jni.JObject get CREATOR =>
+      _id_CREATOR.get(_class, const jni.JObjectType());
 
-  static final _id_new0 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"<init>", r"(Landroid/os/Parcel;)V");
+  static final _id_new0 = _class.constructorId(
+    r"(Landroid/os/Parcel;)V",
+  );
 
   /// from: public void <init>(android.os.Parcel parcel)
   /// The returned object must be released after use, by calling the [release] method.
   factory View_BaseSavedState(
     jni.JObject parcel,
   ) {
-    return View_BaseSavedState.fromRef(jni.Jni.accessors.newObjectWithArgs(
-        _class.reference, _id_new0, [parcel.reference]).object);
+    return View_BaseSavedState.fromReference(
+        _id_new0(_class, referenceType, [parcel.reference.pointer]));
   }
 
-  static final _id_new1 = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"<init>", r"(Landroid/os/Parcel;Ljava/lang/ClassLoader;)V");
+  static final _id_new1 = _class.constructorId(
+    r"(Landroid/os/Parcel;Ljava/lang/ClassLoader;)V",
+  );
 
   /// from: public void <init>(android.os.Parcel parcel, java.lang.ClassLoader classLoader)
   /// The returned object must be released after use, by calling the [release] method.
@@ -4945,34 +4731,35 @@ class View_BaseSavedState extends jni.JObject {
     jni.JObject parcel,
     jni.JObject classLoader,
   ) {
-    return View_BaseSavedState.fromRef(jni.Jni.accessors.newObjectWithArgs(
-        _class.reference,
-        _id_new1,
-        [parcel.reference, classLoader.reference]).object);
+    return View_BaseSavedState.fromReference(_id_new1(_class, referenceType,
+        [parcel.reference.pointer, classLoader.reference.pointer]));
   }
 
-  static final _id_new2 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"<init>", r"(Landroid/os/Parcelable;)V");
+  static final _id_new2 = _class.constructorId(
+    r"(Landroid/os/Parcelable;)V",
+  );
 
   /// from: public void <init>(android.os.Parcelable parcelable)
   /// The returned object must be released after use, by calling the [release] method.
   factory View_BaseSavedState.new2(
     jni.JObject parcelable,
   ) {
-    return View_BaseSavedState.fromRef(jni.Jni.accessors.newObjectWithArgs(
-        _class.reference, _id_new2, [parcelable.reference]).object);
+    return View_BaseSavedState.fromReference(
+        _id_new2(_class, referenceType, [parcelable.reference.pointer]));
   }
 
-  static final _id_writeToParcel = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"writeToParcel", r"(Landroid/os/Parcel;I)V");
+  static final _id_writeToParcel = _class.instanceMethodId(
+    r"writeToParcel",
+    r"(Landroid/os/Parcel;I)V",
+  );
 
   /// from: public void writeToParcel(android.os.Parcel parcel, int i)
   void writeToParcel(
     jni.JObject parcel,
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_writeToParcel,
-        jni.JniCallType.voidType, [parcel.reference, jni.JValueInt(i)]).check();
+    _id_writeToParcel(this, const jni.jvoidType(),
+        [parcel.reference.pointer, jni.JValueInt(i)]);
   }
 }
 
@@ -4983,8 +4770,8 @@ final class $View_BaseSavedStateType extends jni.JObjType<View_BaseSavedState> {
   String get signature => r"Landroid/view/View$BaseSavedState;";
 
   @override
-  View_BaseSavedState fromRef(jni.JObjectPtr ref) =>
-      View_BaseSavedState.fromRef(ref);
+  View_BaseSavedState fromReference(jni.JReference reference) =>
+      View_BaseSavedState.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -5007,73 +4794,74 @@ class View_DragShadowBuilder extends jni.JObject {
   @override
   late final jni.JObjType<View_DragShadowBuilder> $type = type;
 
-  View_DragShadowBuilder.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_DragShadowBuilder.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/view/View$DragShadowBuilder");
+      jni.JClass.forName(r"android/view/View$DragShadowBuilder");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_DragShadowBuilderType();
-  static final _id_new0 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"<init>", r"(Landroid/view/View;)V");
+  static final _id_new0 = _class.constructorId(
+    r"(Landroid/view/View;)V",
+  );
 
   /// from: public void <init>(android.view.View view)
   /// The returned object must be released after use, by calling the [release] method.
   factory View_DragShadowBuilder(
     View view,
   ) {
-    return View_DragShadowBuilder.fromRef(jni.Jni.accessors.newObjectWithArgs(
-        _class.reference, _id_new0, [view.reference]).object);
+    return View_DragShadowBuilder.fromReference(
+        _id_new0(_class, referenceType, [view.reference.pointer]));
   }
 
-  static final _id_new1 =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"<init>", r"()V");
+  static final _id_new1 = _class.constructorId(
+    r"()V",
+  );
 
   /// from: public void <init>()
   /// The returned object must be released after use, by calling the [release] method.
   factory View_DragShadowBuilder.new1() {
-    return View_DragShadowBuilder.fromRef(jni.Jni.accessors
-        .newObjectWithArgs(_class.reference, _id_new1, []).object);
+    return View_DragShadowBuilder.fromReference(
+        _id_new1(_class, referenceType, []));
   }
 
-  static final _id_getView = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getView", r"()Landroid/view/View;");
+  static final _id_getView = _class.instanceMethodId(
+    r"getView",
+    r"()Landroid/view/View;",
+  );
 
   /// from: public final android.view.View getView()
   /// The returned object must be released after use, by calling the [release] method.
   View getView() {
-    return const $ViewType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getView, jni.JniCallType.objectType, []).object);
+    return _id_getView(this, const $ViewType(), []);
   }
 
-  static final _id_onProvideShadowMetrics = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onProvideShadowMetrics",
-      r"(Landroid/graphics/Point;Landroid/graphics/Point;)V");
+  static final _id_onProvideShadowMetrics = _class.instanceMethodId(
+    r"onProvideShadowMetrics",
+    r"(Landroid/graphics/Point;Landroid/graphics/Point;)V",
+  );
 
   /// from: public void onProvideShadowMetrics(android.graphics.Point point, android.graphics.Point point1)
   void onProvideShadowMetrics(
     jni.JObject point,
     jni.JObject point1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onProvideShadowMetrics,
-        jni.JniCallType.voidType,
-        [point.reference, point1.reference]).check();
+    _id_onProvideShadowMetrics(this, const jni.jvoidType(),
+        [point.reference.pointer, point1.reference.pointer]);
   }
 
-  static final _id_onDrawShadow = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onDrawShadow", r"(Landroid/graphics/Canvas;)V");
+  static final _id_onDrawShadow = _class.instanceMethodId(
+    r"onDrawShadow",
+    r"(Landroid/graphics/Canvas;)V",
+  );
 
   /// from: public void onDrawShadow(android.graphics.Canvas canvas)
   void onDrawShadow(
     jni.JObject canvas,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onDrawShadow,
-        jni.JniCallType.voidType, [canvas.reference]).check();
+    _id_onDrawShadow(this, const jni.jvoidType(), [canvas.reference.pointer]);
   }
 }
 
@@ -5085,8 +4873,8 @@ final class $View_DragShadowBuilderType
   String get signature => r"Landroid/view/View$DragShadowBuilder;";
 
   @override
-  View_DragShadowBuilder fromRef(jni.JObjectPtr ref) =>
-      View_DragShadowBuilder.fromRef(ref);
+  View_DragShadowBuilder fromReference(jni.JReference reference) =>
+      View_DragShadowBuilder.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -5109,11 +4897,11 @@ class View_MeasureSpec extends jni.JObject {
   @override
   late final jni.JObjType<View_MeasureSpec> $type = type;
 
-  View_MeasureSpec.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_MeasureSpec.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
-  static final _class = jni.Jni.findJClass(r"android/view/View$MeasureSpec");
+  static final _class = jni.JClass.forName(r"android/view/View$MeasureSpec");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_MeasureSpecType();
@@ -5126,65 +4914,65 @@ class View_MeasureSpec extends jni.JObject {
 
   /// from: static public final int UNSPECIFIED
   static const UNSPECIFIED = 0;
-
-  static final _id_new0 =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"<init>", r"()V");
+  static final _id_new0 = _class.constructorId(
+    r"()V",
+  );
 
   /// from: public void <init>()
   /// The returned object must be released after use, by calling the [release] method.
   factory View_MeasureSpec() {
-    return View_MeasureSpec.fromRef(jni.Jni.accessors
-        .newObjectWithArgs(_class.reference, _id_new0, []).object);
+    return View_MeasureSpec.fromReference(_id_new0(_class, referenceType, []));
   }
 
-  static final _id_makeMeasureSpec = jni.Jni.accessors
-      .getStaticMethodIDOf(_class.reference, r"makeMeasureSpec", r"(II)I");
+  static final _id_makeMeasureSpec = _class.staticMethodId(
+    r"makeMeasureSpec",
+    r"(II)I",
+  );
 
   /// from: static public int makeMeasureSpec(int i, int i1)
   static int makeMeasureSpec(
     int i,
     int i1,
   ) {
-    return jni.Jni.accessors.callStaticMethodWithArgs(
-        _class.reference,
-        _id_makeMeasureSpec,
-        jni.JniCallType.intType,
-        [jni.JValueInt(i), jni.JValueInt(i1)]).integer;
+    return _id_makeMeasureSpec(
+        _class, const jni.jintType(), [jni.JValueInt(i), jni.JValueInt(i1)]);
   }
 
-  static final _id_getMode = jni.Jni.accessors
-      .getStaticMethodIDOf(_class.reference, r"getMode", r"(I)I");
+  static final _id_getMode = _class.staticMethodId(
+    r"getMode",
+    r"(I)I",
+  );
 
   /// from: static public int getMode(int i)
   static int getMode(
     int i,
   ) {
-    return jni.Jni.accessors.callStaticMethodWithArgs(_class.reference,
-        _id_getMode, jni.JniCallType.intType, [jni.JValueInt(i)]).integer;
+    return _id_getMode(_class, const jni.jintType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getSize = jni.Jni.accessors
-      .getStaticMethodIDOf(_class.reference, r"getSize", r"(I)I");
+  static final _id_getSize = _class.staticMethodId(
+    r"getSize",
+    r"(I)I",
+  );
 
   /// from: static public int getSize(int i)
   static int getSize(
     int i,
   ) {
-    return jni.Jni.accessors.callStaticMethodWithArgs(_class.reference,
-        _id_getSize, jni.JniCallType.intType, [jni.JValueInt(i)]).integer;
+    return _id_getSize(_class, const jni.jintType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_toString1 = jni.Jni.accessors.getStaticMethodIDOf(
-      _class.reference, r"toString", r"(I)Ljava/lang/String;");
+  static final _id_toString1 = _class.staticMethodId(
+    r"toString",
+    r"(I)Ljava/lang/String;",
+  );
 
   /// from: static public java.lang.String toString(int i)
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString toString1(
     int i,
   ) {
-    return const jni.JStringType().fromRef(jni.Jni.accessors
-        .callStaticMethodWithArgs(_class.reference, _id_toString1,
-            jni.JniCallType.objectType, [jni.JValueInt(i)]).object);
+    return _id_toString1(_class, const jni.JStringType(), [jni.JValueInt(i)]);
   }
 }
 
@@ -5195,7 +4983,8 @@ final class $View_MeasureSpecType extends jni.JObjType<View_MeasureSpec> {
   String get signature => r"Landroid/view/View$MeasureSpec;";
 
   @override
-  View_MeasureSpec fromRef(jni.JObjectPtr ref) => View_MeasureSpec.fromRef(ref);
+  View_MeasureSpec fromReference(jni.JReference reference) =>
+      View_MeasureSpec.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -5218,19 +5007,19 @@ class View_OnApplyWindowInsetsListener extends jni.JObject {
   @override
   late final jni.JObjType<View_OnApplyWindowInsetsListener> $type = type;
 
-  View_OnApplyWindowInsetsListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_OnApplyWindowInsetsListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/view/View$OnApplyWindowInsetsListener");
+      jni.JClass.forName(r"android/view/View$OnApplyWindowInsetsListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_OnApplyWindowInsetsListenerType();
-  static final _id_onApplyWindowInsets = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onApplyWindowInsets",
-      r"(Landroid/view/View;Landroid/view/WindowInsets;)Landroid/view/WindowInsets;");
+  static final _id_onApplyWindowInsets = _class.instanceMethodId(
+    r"onApplyWindowInsets",
+    r"(Landroid/view/View;Landroid/view/WindowInsets;)Landroid/view/WindowInsets;",
+  );
 
   /// from: public abstract android.view.WindowInsets onApplyWindowInsets(android.view.View view, android.view.WindowInsets windowInsets)
   /// The returned object must be released after use, by calling the [release] method.
@@ -5238,11 +5027,8 @@ class View_OnApplyWindowInsetsListener extends jni.JObject {
     View view,
     jni.JObject windowInsets,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onApplyWindowInsets,
-        jni.JniCallType.objectType,
-        [view.reference, windowInsets.reference]).object);
+    return _id_onApplyWindowInsets(this, const jni.JObjectType(),
+        [view.reference.pointer, windowInsets.reference.pointer]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -5283,7 +5069,10 @@ class View_OnApplyWindowInsetsListener extends jni.JObject {
           $a[0].castTo(const $ViewType(), releaseOriginal: true),
           $a[1].castTo(const jni.JObjectType(), releaseOriginal: true),
         );
-        return ($r as jni.JObject).castTo(const jni.JObjectType()).toPointer();
+        return ($r as jni.JObject)
+            .castTo(const jni.JObjectType())
+            .reference
+            .toPointer();
       }
     } catch (e) {
       return ProtectedJniExtensions.newDartException(e.toString());
@@ -5295,7 +5084,7 @@ class View_OnApplyWindowInsetsListener extends jni.JObject {
     $View_OnApplyWindowInsetsListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = View_OnApplyWindowInsetsListener.fromRef(
+    final $x = View_OnApplyWindowInsetsListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"android.view.View$OnApplyWindowInsetsListener",
         $p,
@@ -5318,7 +5107,7 @@ class View_OnApplyWindowInsetsListener extends jni.JObject {
   }
 }
 
-abstract class $View_OnApplyWindowInsetsListenerImpl {
+abstract interface class $View_OnApplyWindowInsetsListenerImpl {
   factory $View_OnApplyWindowInsetsListenerImpl({
     required jni.JObject Function(View view, jni.JObject windowInsets)
         onApplyWindowInsets,
@@ -5350,8 +5139,8 @@ final class $View_OnApplyWindowInsetsListenerType
   String get signature => r"Landroid/view/View$OnApplyWindowInsetsListener;";
 
   @override
-  View_OnApplyWindowInsetsListener fromRef(jni.JObjectPtr ref) =>
-      View_OnApplyWindowInsetsListener.fromRef(ref);
+  View_OnApplyWindowInsetsListener fromReference(jni.JReference reference) =>
+      View_OnApplyWindowInsetsListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -5374,41 +5163,39 @@ class View_OnAttachStateChangeListener extends jni.JObject {
   @override
   late final jni.JObjType<View_OnAttachStateChangeListener> $type = type;
 
-  View_OnAttachStateChangeListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_OnAttachStateChangeListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/view/View$OnAttachStateChangeListener");
+      jni.JClass.forName(r"android/view/View$OnAttachStateChangeListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_OnAttachStateChangeListenerType();
-  static final _id_onViewAttachedToWindow = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onViewAttachedToWindow", r"(Landroid/view/View;)V");
+  static final _id_onViewAttachedToWindow = _class.instanceMethodId(
+    r"onViewAttachedToWindow",
+    r"(Landroid/view/View;)V",
+  );
 
   /// from: public abstract void onViewAttachedToWindow(android.view.View view)
   void onViewAttachedToWindow(
     View view,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onViewAttachedToWindow,
-        jni.JniCallType.voidType,
-        [view.reference]).check();
+    _id_onViewAttachedToWindow(
+        this, const jni.jvoidType(), [view.reference.pointer]);
   }
 
-  static final _id_onViewDetachedFromWindow = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onViewDetachedFromWindow", r"(Landroid/view/View;)V");
+  static final _id_onViewDetachedFromWindow = _class.instanceMethodId(
+    r"onViewDetachedFromWindow",
+    r"(Landroid/view/View;)V",
+  );
 
   /// from: public abstract void onViewDetachedFromWindow(android.view.View view)
   void onViewDetachedFromWindow(
     View view,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onViewDetachedFromWindow,
-        jni.JniCallType.voidType,
-        [view.reference]).check();
+    _id_onViewDetachedFromWindow(
+        this, const jni.jvoidType(), [view.reference.pointer]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -5465,7 +5252,7 @@ class View_OnAttachStateChangeListener extends jni.JObject {
     $View_OnAttachStateChangeListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = View_OnAttachStateChangeListener.fromRef(
+    final $x = View_OnAttachStateChangeListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"android.view.View$OnAttachStateChangeListener",
         $p,
@@ -5488,7 +5275,7 @@ class View_OnAttachStateChangeListener extends jni.JObject {
   }
 }
 
-abstract class $View_OnAttachStateChangeListenerImpl {
+abstract interface class $View_OnAttachStateChangeListenerImpl {
   factory $View_OnAttachStateChangeListenerImpl({
     required void Function(View view) onViewAttachedToWindow,
     required void Function(View view) onViewDetachedFromWindow,
@@ -5526,8 +5313,8 @@ final class $View_OnAttachStateChangeListenerType
   String get signature => r"Landroid/view/View$OnAttachStateChangeListener;";
 
   @override
-  View_OnAttachStateChangeListener fromRef(jni.JObjectPtr ref) =>
-      View_OnAttachStateChangeListener.fromRef(ref);
+  View_OnAttachStateChangeListener fromReference(jni.JReference reference) =>
+      View_OnAttachStateChangeListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -5550,30 +5337,27 @@ class View_OnCapturedPointerListener extends jni.JObject {
   @override
   late final jni.JObjType<View_OnCapturedPointerListener> $type = type;
 
-  View_OnCapturedPointerListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_OnCapturedPointerListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/view/View$OnCapturedPointerListener");
+      jni.JClass.forName(r"android/view/View$OnCapturedPointerListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_OnCapturedPointerListenerType();
-  static final _id_onCapturedPointer = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onCapturedPointer",
-      r"(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+  static final _id_onCapturedPointer = _class.instanceMethodId(
+    r"onCapturedPointer",
+    r"(Landroid/view/View;Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: public abstract boolean onCapturedPointer(android.view.View view, android.view.MotionEvent motionEvent)
   bool onCapturedPointer(
     View view,
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onCapturedPointer,
-        jni.JniCallType.booleanType,
-        [view.reference, motionEvent.reference]).boolean;
+    return _id_onCapturedPointer(this, const jni.jbooleanType(),
+        [view.reference.pointer, motionEvent.reference.pointer]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -5614,7 +5398,7 @@ class View_OnCapturedPointerListener extends jni.JObject {
           $a[0].castTo(const $ViewType(), releaseOriginal: true),
           $a[1].castTo(const jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).toPointer();
+        return jni.JBoolean($r).reference.toPointer();
       }
     } catch (e) {
       return ProtectedJniExtensions.newDartException(e.toString());
@@ -5626,7 +5410,7 @@ class View_OnCapturedPointerListener extends jni.JObject {
     $View_OnCapturedPointerListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = View_OnCapturedPointerListener.fromRef(
+    final $x = View_OnCapturedPointerListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"android.view.View$OnCapturedPointerListener",
         $p,
@@ -5649,7 +5433,7 @@ class View_OnCapturedPointerListener extends jni.JObject {
   }
 }
 
-abstract class $View_OnCapturedPointerListenerImpl {
+abstract interface class $View_OnCapturedPointerListenerImpl {
   factory $View_OnCapturedPointerListenerImpl({
     required bool Function(View view, jni.JObject motionEvent)
         onCapturedPointer,
@@ -5680,8 +5464,8 @@ final class $View_OnCapturedPointerListenerType
   String get signature => r"Landroid/view/View$OnCapturedPointerListener;";
 
   @override
-  View_OnCapturedPointerListener fromRef(jni.JObjectPtr ref) =>
-      View_OnCapturedPointerListener.fromRef(ref);
+  View_OnCapturedPointerListener fromReference(jni.JReference reference) =>
+      View_OnCapturedPointerListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -5704,24 +5488,25 @@ class View_OnClickListener extends jni.JObject {
   @override
   late final jni.JObjType<View_OnClickListener> $type = type;
 
-  View_OnClickListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_OnClickListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/view/View$OnClickListener");
+      jni.JClass.forName(r"android/view/View$OnClickListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_OnClickListenerType();
-  static final _id_onClick = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onClick", r"(Landroid/view/View;)V");
+  static final _id_onClick = _class.instanceMethodId(
+    r"onClick",
+    r"(Landroid/view/View;)V",
+  );
 
   /// from: public abstract void onClick(android.view.View view)
   void onClick(
     View view,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onClick,
-        jni.JniCallType.voidType, [view.reference]).check();
+    _id_onClick(this, const jni.jvoidType(), [view.reference.pointer]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -5772,7 +5557,7 @@ class View_OnClickListener extends jni.JObject {
     $View_OnClickListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = View_OnClickListener.fromRef(
+    final $x = View_OnClickListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"android.view.View$OnClickListener",
         $p,
@@ -5795,7 +5580,7 @@ class View_OnClickListener extends jni.JObject {
   }
 }
 
-abstract class $View_OnClickListenerImpl {
+abstract interface class $View_OnClickListenerImpl {
   factory $View_OnClickListenerImpl({
     required void Function(View view) onClick,
   }) = _$View_OnClickListenerImpl;
@@ -5823,8 +5608,8 @@ final class $View_OnClickListenerType
   String get signature => r"Landroid/view/View$OnClickListener;";
 
   @override
-  View_OnClickListener fromRef(jni.JObjectPtr ref) =>
-      View_OnClickListener.fromRef(ref);
+  View_OnClickListener fromReference(jni.JReference reference) =>
+      View_OnClickListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -5847,24 +5632,26 @@ class View_OnContextClickListener extends jni.JObject {
   @override
   late final jni.JObjType<View_OnContextClickListener> $type = type;
 
-  View_OnContextClickListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_OnContextClickListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/view/View$OnContextClickListener");
+      jni.JClass.forName(r"android/view/View$OnContextClickListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_OnContextClickListenerType();
-  static final _id_onContextClick = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onContextClick", r"(Landroid/view/View;)Z");
+  static final _id_onContextClick = _class.instanceMethodId(
+    r"onContextClick",
+    r"(Landroid/view/View;)Z",
+  );
 
   /// from: public abstract boolean onContextClick(android.view.View view)
   bool onContextClick(
     View view,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onContextClick,
-        jni.JniCallType.booleanType, [view.reference]).boolean;
+    return _id_onContextClick(
+        this, const jni.jbooleanType(), [view.reference.pointer]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -5903,7 +5690,7 @@ class View_OnContextClickListener extends jni.JObject {
         final $r = _$impls[$p]!.onContextClick(
           $a[0].castTo(const $ViewType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).toPointer();
+        return jni.JBoolean($r).reference.toPointer();
       }
     } catch (e) {
       return ProtectedJniExtensions.newDartException(e.toString());
@@ -5915,7 +5702,7 @@ class View_OnContextClickListener extends jni.JObject {
     $View_OnContextClickListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = View_OnContextClickListener.fromRef(
+    final $x = View_OnContextClickListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"android.view.View$OnContextClickListener",
         $p,
@@ -5938,7 +5725,7 @@ class View_OnContextClickListener extends jni.JObject {
   }
 }
 
-abstract class $View_OnContextClickListenerImpl {
+abstract interface class $View_OnContextClickListenerImpl {
   factory $View_OnContextClickListenerImpl({
     required bool Function(View view) onContextClick,
   }) = _$View_OnContextClickListenerImpl;
@@ -5967,8 +5754,8 @@ final class $View_OnContextClickListenerType
   String get signature => r"Landroid/view/View$OnContextClickListener;";
 
   @override
-  View_OnContextClickListener fromRef(jni.JObjectPtr ref) =>
-      View_OnContextClickListener.fromRef(ref);
+  View_OnContextClickListener fromReference(jni.JReference reference) =>
+      View_OnContextClickListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -5991,19 +5778,19 @@ class View_OnCreateContextMenuListener extends jni.JObject {
   @override
   late final jni.JObjType<View_OnCreateContextMenuListener> $type = type;
 
-  View_OnCreateContextMenuListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_OnCreateContextMenuListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/view/View$OnCreateContextMenuListener");
+      jni.JClass.forName(r"android/view/View$OnCreateContextMenuListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_OnCreateContextMenuListenerType();
-  static final _id_onCreateContextMenu = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onCreateContextMenu",
-      r"(Landroid/view/ContextMenu;Landroid/view/View;Landroid/view/ContextMenu$ContextMenuInfo;)V");
+  static final _id_onCreateContextMenu = _class.instanceMethodId(
+    r"onCreateContextMenu",
+    r"(Landroid/view/ContextMenu;Landroid/view/View;Landroid/view/ContextMenu$ContextMenuInfo;)V",
+  );
 
   /// from: public abstract void onCreateContextMenu(android.view.ContextMenu contextMenu, android.view.View view, android.view.ContextMenu$ContextMenuInfo contextMenuInfo)
   void onCreateContextMenu(
@@ -6011,12 +5798,11 @@ class View_OnCreateContextMenuListener extends jni.JObject {
     View view,
     jni.JObject contextMenuInfo,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_onCreateContextMenu, jni.JniCallType.voidType, [
-      contextMenu.reference,
-      view.reference,
-      contextMenuInfo.reference
-    ]).check();
+    _id_onCreateContextMenu(this, const jni.jvoidType(), [
+      contextMenu.reference.pointer,
+      view.reference.pointer,
+      contextMenuInfo.reference.pointer
+    ]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -6070,7 +5856,7 @@ class View_OnCreateContextMenuListener extends jni.JObject {
     $View_OnCreateContextMenuListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = View_OnCreateContextMenuListener.fromRef(
+    final $x = View_OnCreateContextMenuListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"android.view.View$OnCreateContextMenuListener",
         $p,
@@ -6093,7 +5879,7 @@ class View_OnCreateContextMenuListener extends jni.JObject {
   }
 }
 
-abstract class $View_OnCreateContextMenuListenerImpl {
+abstract interface class $View_OnCreateContextMenuListenerImpl {
   factory $View_OnCreateContextMenuListenerImpl({
     required void Function(
             jni.JObject contextMenu, View view, jni.JObject contextMenuInfo)
@@ -6130,8 +5916,8 @@ final class $View_OnCreateContextMenuListenerType
   String get signature => r"Landroid/view/View$OnCreateContextMenuListener;";
 
   @override
-  View_OnCreateContextMenuListener fromRef(jni.JObjectPtr ref) =>
-      View_OnCreateContextMenuListener.fromRef(ref);
+  View_OnCreateContextMenuListener fromReference(jni.JReference reference) =>
+      View_OnCreateContextMenuListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -6154,27 +5940,26 @@ class View_OnDragListener extends jni.JObject {
   @override
   late final jni.JObjType<View_OnDragListener> $type = type;
 
-  View_OnDragListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_OnDragListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
-  static final _class = jni.Jni.findJClass(r"android/view/View$OnDragListener");
+  static final _class = jni.JClass.forName(r"android/view/View$OnDragListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_OnDragListenerType();
-  static final _id_onDrag = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"onDrag", r"(Landroid/view/View;Landroid/view/DragEvent;)Z");
+  static final _id_onDrag = _class.instanceMethodId(
+    r"onDrag",
+    r"(Landroid/view/View;Landroid/view/DragEvent;)Z",
+  );
 
   /// from: public abstract boolean onDrag(android.view.View view, android.view.DragEvent dragEvent)
   bool onDrag(
     View view,
     jni.JObject dragEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onDrag,
-        jni.JniCallType.booleanType,
-        [view.reference, dragEvent.reference]).boolean;
+    return _id_onDrag(this, const jni.jbooleanType(),
+        [view.reference.pointer, dragEvent.reference.pointer]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -6214,7 +5999,7 @@ class View_OnDragListener extends jni.JObject {
           $a[0].castTo(const $ViewType(), releaseOriginal: true),
           $a[1].castTo(const jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).toPointer();
+        return jni.JBoolean($r).reference.toPointer();
       }
     } catch (e) {
       return ProtectedJniExtensions.newDartException(e.toString());
@@ -6226,7 +6011,7 @@ class View_OnDragListener extends jni.JObject {
     $View_OnDragListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = View_OnDragListener.fromRef(
+    final $x = View_OnDragListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"android.view.View$OnDragListener",
         $p,
@@ -6249,7 +6034,7 @@ class View_OnDragListener extends jni.JObject {
   }
 }
 
-abstract class $View_OnDragListenerImpl {
+abstract interface class $View_OnDragListenerImpl {
   factory $View_OnDragListenerImpl({
     required bool Function(View view, jni.JObject dragEvent) onDrag,
   }) = _$View_OnDragListenerImpl;
@@ -6276,8 +6061,8 @@ final class $View_OnDragListenerType extends jni.JObjType<View_OnDragListener> {
   String get signature => r"Landroid/view/View$OnDragListener;";
 
   @override
-  View_OnDragListener fromRef(jni.JObjectPtr ref) =>
-      View_OnDragListener.fromRef(ref);
+  View_OnDragListener fromReference(jni.JReference reference) =>
+      View_OnDragListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -6300,25 +6085,27 @@ class View_OnFocusChangeListener extends jni.JObject {
   @override
   late final jni.JObjType<View_OnFocusChangeListener> $type = type;
 
-  View_OnFocusChangeListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_OnFocusChangeListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/view/View$OnFocusChangeListener");
+      jni.JClass.forName(r"android/view/View$OnFocusChangeListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_OnFocusChangeListenerType();
-  static final _id_onFocusChange = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onFocusChange", r"(Landroid/view/View;Z)V");
+  static final _id_onFocusChange = _class.instanceMethodId(
+    r"onFocusChange",
+    r"(Landroid/view/View;Z)V",
+  );
 
   /// from: public abstract void onFocusChange(android.view.View view, boolean z)
   void onFocusChange(
     View view,
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onFocusChange,
-        jni.JniCallType.voidType, [view.reference, z ? 1 : 0]).check();
+    _id_onFocusChange(
+        this, const jni.jvoidType(), [view.reference.pointer, z ? 1 : 0]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -6372,7 +6159,7 @@ class View_OnFocusChangeListener extends jni.JObject {
     $View_OnFocusChangeListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = View_OnFocusChangeListener.fromRef(
+    final $x = View_OnFocusChangeListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"android.view.View$OnFocusChangeListener",
         $p,
@@ -6395,7 +6182,7 @@ class View_OnFocusChangeListener extends jni.JObject {
   }
 }
 
-abstract class $View_OnFocusChangeListenerImpl {
+abstract interface class $View_OnFocusChangeListenerImpl {
   factory $View_OnFocusChangeListenerImpl({
     required void Function(View view, bool z) onFocusChange,
   }) = _$View_OnFocusChangeListenerImpl;
@@ -6424,8 +6211,8 @@ final class $View_OnFocusChangeListenerType
   String get signature => r"Landroid/view/View$OnFocusChangeListener;";
 
   @override
-  View_OnFocusChangeListener fromRef(jni.JObjectPtr ref) =>
-      View_OnFocusChangeListener.fromRef(ref);
+  View_OnFocusChangeListener fromReference(jni.JReference reference) =>
+      View_OnFocusChangeListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -6448,30 +6235,27 @@ class View_OnGenericMotionListener extends jni.JObject {
   @override
   late final jni.JObjType<View_OnGenericMotionListener> $type = type;
 
-  View_OnGenericMotionListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_OnGenericMotionListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/view/View$OnGenericMotionListener");
+      jni.JClass.forName(r"android/view/View$OnGenericMotionListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_OnGenericMotionListenerType();
-  static final _id_onGenericMotion = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onGenericMotion",
-      r"(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+  static final _id_onGenericMotion = _class.instanceMethodId(
+    r"onGenericMotion",
+    r"(Landroid/view/View;Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: public abstract boolean onGenericMotion(android.view.View view, android.view.MotionEvent motionEvent)
   bool onGenericMotion(
     View view,
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onGenericMotion,
-        jni.JniCallType.booleanType,
-        [view.reference, motionEvent.reference]).boolean;
+    return _id_onGenericMotion(this, const jni.jbooleanType(),
+        [view.reference.pointer, motionEvent.reference.pointer]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -6512,7 +6296,7 @@ class View_OnGenericMotionListener extends jni.JObject {
           $a[0].castTo(const $ViewType(), releaseOriginal: true),
           $a[1].castTo(const jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).toPointer();
+        return jni.JBoolean($r).reference.toPointer();
       }
     } catch (e) {
       return ProtectedJniExtensions.newDartException(e.toString());
@@ -6524,7 +6308,7 @@ class View_OnGenericMotionListener extends jni.JObject {
     $View_OnGenericMotionListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = View_OnGenericMotionListener.fromRef(
+    final $x = View_OnGenericMotionListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"android.view.View$OnGenericMotionListener",
         $p,
@@ -6547,7 +6331,7 @@ class View_OnGenericMotionListener extends jni.JObject {
   }
 }
 
-abstract class $View_OnGenericMotionListenerImpl {
+abstract interface class $View_OnGenericMotionListenerImpl {
   factory $View_OnGenericMotionListenerImpl({
     required bool Function(View view, jni.JObject motionEvent) onGenericMotion,
   }) = _$View_OnGenericMotionListenerImpl;
@@ -6576,8 +6360,8 @@ final class $View_OnGenericMotionListenerType
   String get signature => r"Landroid/view/View$OnGenericMotionListener;";
 
   @override
-  View_OnGenericMotionListener fromRef(jni.JObjectPtr ref) =>
-      View_OnGenericMotionListener.fromRef(ref);
+  View_OnGenericMotionListener fromReference(jni.JReference reference) =>
+      View_OnGenericMotionListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -6600,28 +6384,27 @@ class View_OnHoverListener extends jni.JObject {
   @override
   late final jni.JObjType<View_OnHoverListener> $type = type;
 
-  View_OnHoverListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_OnHoverListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/view/View$OnHoverListener");
+      jni.JClass.forName(r"android/view/View$OnHoverListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_OnHoverListenerType();
-  static final _id_onHover = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"onHover", r"(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+  static final _id_onHover = _class.instanceMethodId(
+    r"onHover",
+    r"(Landroid/view/View;Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: public abstract boolean onHover(android.view.View view, android.view.MotionEvent motionEvent)
   bool onHover(
     View view,
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onHover,
-        jni.JniCallType.booleanType,
-        [view.reference, motionEvent.reference]).boolean;
+    return _id_onHover(this, const jni.jbooleanType(),
+        [view.reference.pointer, motionEvent.reference.pointer]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -6661,7 +6444,7 @@ class View_OnHoverListener extends jni.JObject {
           $a[0].castTo(const $ViewType(), releaseOriginal: true),
           $a[1].castTo(const jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).toPointer();
+        return jni.JBoolean($r).reference.toPointer();
       }
     } catch (e) {
       return ProtectedJniExtensions.newDartException(e.toString());
@@ -6673,7 +6456,7 @@ class View_OnHoverListener extends jni.JObject {
     $View_OnHoverListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = View_OnHoverListener.fromRef(
+    final $x = View_OnHoverListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"android.view.View$OnHoverListener",
         $p,
@@ -6696,7 +6479,7 @@ class View_OnHoverListener extends jni.JObject {
   }
 }
 
-abstract class $View_OnHoverListenerImpl {
+abstract interface class $View_OnHoverListenerImpl {
   factory $View_OnHoverListenerImpl({
     required bool Function(View view, jni.JObject motionEvent) onHover,
   }) = _$View_OnHoverListenerImpl;
@@ -6724,8 +6507,8 @@ final class $View_OnHoverListenerType
   String get signature => r"Landroid/view/View$OnHoverListener;";
 
   @override
-  View_OnHoverListener fromRef(jni.JObjectPtr ref) =>
-      View_OnHoverListener.fromRef(ref);
+  View_OnHoverListener fromReference(jni.JReference reference) =>
+      View_OnHoverListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -6748,16 +6531,18 @@ class View_OnKeyListener extends jni.JObject {
   @override
   late final jni.JObjType<View_OnKeyListener> $type = type;
 
-  View_OnKeyListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_OnKeyListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
-  static final _class = jni.Jni.findJClass(r"android/view/View$OnKeyListener");
+  static final _class = jni.JClass.forName(r"android/view/View$OnKeyListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_OnKeyListenerType();
-  static final _id_onKey = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"onKey", r"(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
+  static final _id_onKey = _class.instanceMethodId(
+    r"onKey",
+    r"(Landroid/view/View;ILandroid/view/KeyEvent;)Z",
+  );
 
   /// from: public abstract boolean onKey(android.view.View view, int i, android.view.KeyEvent keyEvent)
   bool onKey(
@@ -6765,11 +6550,8 @@ class View_OnKeyListener extends jni.JObject {
     int i,
     jni.JObject keyEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onKey,
-        jni.JniCallType.booleanType,
-        [view.reference, jni.JValueInt(i), keyEvent.reference]).boolean;
+    return _id_onKey(this, const jni.jbooleanType(),
+        [view.reference.pointer, jni.JValueInt(i), keyEvent.reference.pointer]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -6812,7 +6594,7 @@ class View_OnKeyListener extends jni.JObject {
               .intValue(releaseOriginal: true),
           $a[2].castTo(const jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).toPointer();
+        return jni.JBoolean($r).reference.toPointer();
       }
     } catch (e) {
       return ProtectedJniExtensions.newDartException(e.toString());
@@ -6824,7 +6606,7 @@ class View_OnKeyListener extends jni.JObject {
     $View_OnKeyListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = View_OnKeyListener.fromRef(
+    final $x = View_OnKeyListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"android.view.View$OnKeyListener",
         $p,
@@ -6847,7 +6629,7 @@ class View_OnKeyListener extends jni.JObject {
   }
 }
 
-abstract class $View_OnKeyListenerImpl {
+abstract interface class $View_OnKeyListenerImpl {
   factory $View_OnKeyListenerImpl({
     required bool Function(View view, int i, jni.JObject keyEvent) onKey,
   }) = _$View_OnKeyListenerImpl;
@@ -6874,8 +6656,8 @@ final class $View_OnKeyListenerType extends jni.JObjType<View_OnKeyListener> {
   String get signature => r"Landroid/view/View$OnKeyListener;";
 
   @override
-  View_OnKeyListener fromRef(jni.JObjectPtr ref) =>
-      View_OnKeyListener.fromRef(ref);
+  View_OnKeyListener fromReference(jni.JReference reference) =>
+      View_OnKeyListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -6898,17 +6680,19 @@ class View_OnLayoutChangeListener extends jni.JObject {
   @override
   late final jni.JObjType<View_OnLayoutChangeListener> $type = type;
 
-  View_OnLayoutChangeListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_OnLayoutChangeListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/view/View$OnLayoutChangeListener");
+      jni.JClass.forName(r"android/view/View$OnLayoutChangeListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_OnLayoutChangeListenerType();
-  static final _id_onLayoutChange = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onLayoutChange", r"(Landroid/view/View;IIIIIIII)V");
+  static final _id_onLayoutChange = _class.instanceMethodId(
+    r"onLayoutChange",
+    r"(Landroid/view/View;IIIIIIII)V",
+  );
 
   /// from: public abstract void onLayoutChange(android.view.View view, int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7)
   void onLayoutChange(
@@ -6922,9 +6706,8 @@ class View_OnLayoutChangeListener extends jni.JObject {
     int i6,
     int i7,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_onLayoutChange, jni.JniCallType.voidType, [
-      view.reference,
+    _id_onLayoutChange(this, const jni.jvoidType(), [
+      view.reference.pointer,
       jni.JValueInt(i),
       jni.JValueInt(i1),
       jni.JValueInt(i2),
@@ -6933,7 +6716,7 @@ class View_OnLayoutChangeListener extends jni.JObject {
       jni.JValueInt(i5),
       jni.JValueInt(i6),
       jni.JValueInt(i7)
-    ]).check();
+    ]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -7008,7 +6791,7 @@ class View_OnLayoutChangeListener extends jni.JObject {
     $View_OnLayoutChangeListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = View_OnLayoutChangeListener.fromRef(
+    final $x = View_OnLayoutChangeListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"android.view.View$OnLayoutChangeListener",
         $p,
@@ -7031,7 +6814,7 @@ class View_OnLayoutChangeListener extends jni.JObject {
   }
 }
 
-abstract class $View_OnLayoutChangeListenerImpl {
+abstract interface class $View_OnLayoutChangeListenerImpl {
   factory $View_OnLayoutChangeListenerImpl({
     required void Function(View view, int i, int i1, int i2, int i3, int i4,
             int i5, int i6, int i7)
@@ -7067,8 +6850,8 @@ final class $View_OnLayoutChangeListenerType
   String get signature => r"Landroid/view/View$OnLayoutChangeListener;";
 
   @override
-  View_OnLayoutChangeListener fromRef(jni.JObjectPtr ref) =>
-      View_OnLayoutChangeListener.fromRef(ref);
+  View_OnLayoutChangeListener fromReference(jni.JReference reference) =>
+      View_OnLayoutChangeListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -7091,39 +6874,40 @@ class View_OnLongClickListener extends jni.JObject {
   @override
   late final jni.JObjType<View_OnLongClickListener> $type = type;
 
-  View_OnLongClickListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_OnLongClickListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/view/View$OnLongClickListener");
+      jni.JClass.forName(r"android/view/View$OnLongClickListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_OnLongClickListenerType();
-  static final _id_onLongClick = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onLongClick", r"(Landroid/view/View;)Z");
+  static final _id_onLongClick = _class.instanceMethodId(
+    r"onLongClick",
+    r"(Landroid/view/View;)Z",
+  );
 
   /// from: public abstract boolean onLongClick(android.view.View view)
   bool onLongClick(
     View view,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onLongClick,
-        jni.JniCallType.booleanType, [view.reference]).boolean;
+    return _id_onLongClick(
+        this, const jni.jbooleanType(), [view.reference.pointer]);
   }
 
-  static final _id_onLongClickUseDefaultHapticFeedback = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onLongClickUseDefaultHapticFeedback",
-          r"(Landroid/view/View;)Z");
+  static final _id_onLongClickUseDefaultHapticFeedback =
+      _class.instanceMethodId(
+    r"onLongClickUseDefaultHapticFeedback",
+    r"(Landroid/view/View;)Z",
+  );
 
   /// from: public boolean onLongClickUseDefaultHapticFeedback(android.view.View view)
   bool onLongClickUseDefaultHapticFeedback(
     View view,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onLongClickUseDefaultHapticFeedback,
-        jni.JniCallType.booleanType,
-        [view.reference]).boolean;
+    return _id_onLongClickUseDefaultHapticFeedback(
+        this, const jni.jbooleanType(), [view.reference.pointer]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -7162,13 +6946,13 @@ class View_OnLongClickListener extends jni.JObject {
         final $r = _$impls[$p]!.onLongClick(
           $a[0].castTo(const $ViewType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).toPointer();
+        return jni.JBoolean($r).reference.toPointer();
       }
       if ($d == r"onLongClickUseDefaultHapticFeedback(Landroid/view/View;)Z") {
         final $r = _$impls[$p]!.onLongClickUseDefaultHapticFeedback(
           $a[0].castTo(const $ViewType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).toPointer();
+        return jni.JBoolean($r).reference.toPointer();
       }
     } catch (e) {
       return ProtectedJniExtensions.newDartException(e.toString());
@@ -7180,7 +6964,7 @@ class View_OnLongClickListener extends jni.JObject {
     $View_OnLongClickListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = View_OnLongClickListener.fromRef(
+    final $x = View_OnLongClickListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"android.view.View$OnLongClickListener",
         $p,
@@ -7203,7 +6987,7 @@ class View_OnLongClickListener extends jni.JObject {
   }
 }
 
-abstract class $View_OnLongClickListenerImpl {
+abstract interface class $View_OnLongClickListenerImpl {
   factory $View_OnLongClickListenerImpl({
     required bool Function(View view) onLongClick,
     required bool Function(View view) onLongClickUseDefaultHapticFeedback,
@@ -7241,8 +7025,8 @@ final class $View_OnLongClickListenerType
   String get signature => r"Landroid/view/View$OnLongClickListener;";
 
   @override
-  View_OnLongClickListener fromRef(jni.JObjectPtr ref) =>
-      View_OnLongClickListener.fromRef(ref);
+  View_OnLongClickListener fromReference(jni.JReference reference) =>
+      View_OnLongClickListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -7265,17 +7049,19 @@ class View_OnScrollChangeListener extends jni.JObject {
   @override
   late final jni.JObjType<View_OnScrollChangeListener> $type = type;
 
-  View_OnScrollChangeListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_OnScrollChangeListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/view/View$OnScrollChangeListener");
+      jni.JClass.forName(r"android/view/View$OnScrollChangeListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_OnScrollChangeListenerType();
-  static final _id_onScrollChange = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onScrollChange", r"(Landroid/view/View;IIII)V");
+  static final _id_onScrollChange = _class.instanceMethodId(
+    r"onScrollChange",
+    r"(Landroid/view/View;IIII)V",
+  );
 
   /// from: public abstract void onScrollChange(android.view.View view, int i, int i1, int i2, int i3)
   void onScrollChange(
@@ -7285,14 +7071,13 @@ class View_OnScrollChangeListener extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_onScrollChange, jni.JniCallType.voidType, [
-      view.reference,
+    _id_onScrollChange(this, const jni.jvoidType(), [
+      view.reference.pointer,
       jni.JValueInt(i),
       jni.JValueInt(i1),
       jni.JValueInt(i2),
       jni.JValueInt(i3)
-    ]).check();
+    ]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -7355,7 +7140,7 @@ class View_OnScrollChangeListener extends jni.JObject {
     $View_OnScrollChangeListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = View_OnScrollChangeListener.fromRef(
+    final $x = View_OnScrollChangeListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"android.view.View$OnScrollChangeListener",
         $p,
@@ -7378,7 +7163,7 @@ class View_OnScrollChangeListener extends jni.JObject {
   }
 }
 
-abstract class $View_OnScrollChangeListenerImpl {
+abstract interface class $View_OnScrollChangeListenerImpl {
   factory $View_OnScrollChangeListenerImpl({
     required void Function(View view, int i, int i1, int i2, int i3)
         onScrollChange,
@@ -7409,8 +7194,8 @@ final class $View_OnScrollChangeListenerType
   String get signature => r"Landroid/view/View$OnScrollChangeListener;";
 
   @override
-  View_OnScrollChangeListener fromRef(jni.JObjectPtr ref) =>
-      View_OnScrollChangeListener.fromRef(ref);
+  View_OnScrollChangeListener fromReference(jni.JReference reference) =>
+      View_OnScrollChangeListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -7433,27 +7218,26 @@ class View_OnSystemUiVisibilityChangeListener extends jni.JObject {
   @override
   late final jni.JObjType<View_OnSystemUiVisibilityChangeListener> $type = type;
 
-  View_OnSystemUiVisibilityChangeListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_OnSystemUiVisibilityChangeListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
-  static final _class = jni.Jni.findJClass(
+  static final _class = jni.JClass.forName(
       r"android/view/View$OnSystemUiVisibilityChangeListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_OnSystemUiVisibilityChangeListenerType();
-  static final _id_onSystemUiVisibilityChange = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onSystemUiVisibilityChange", r"(I)V");
+  static final _id_onSystemUiVisibilityChange = _class.instanceMethodId(
+    r"onSystemUiVisibilityChange",
+    r"(I)V",
+  );
 
   /// from: public abstract void onSystemUiVisibilityChange(int i)
   void onSystemUiVisibilityChange(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onSystemUiVisibilityChange,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_onSystemUiVisibilityChange(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -7507,7 +7291,7 @@ class View_OnSystemUiVisibilityChangeListener extends jni.JObject {
     $View_OnSystemUiVisibilityChangeListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = View_OnSystemUiVisibilityChangeListener.fromRef(
+    final $x = View_OnSystemUiVisibilityChangeListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"android.view.View$OnSystemUiVisibilityChangeListener",
         $p,
@@ -7530,7 +7314,7 @@ class View_OnSystemUiVisibilityChangeListener extends jni.JObject {
   }
 }
 
-abstract class $View_OnSystemUiVisibilityChangeListenerImpl {
+abstract interface class $View_OnSystemUiVisibilityChangeListenerImpl {
   factory $View_OnSystemUiVisibilityChangeListenerImpl({
     required void Function(int i) onSystemUiVisibilityChange,
   }) = _$View_OnSystemUiVisibilityChangeListenerImpl;
@@ -7560,8 +7344,9 @@ final class $View_OnSystemUiVisibilityChangeListenerType
       r"Landroid/view/View$OnSystemUiVisibilityChangeListener;";
 
   @override
-  View_OnSystemUiVisibilityChangeListener fromRef(jni.JObjectPtr ref) =>
-      View_OnSystemUiVisibilityChangeListener.fromRef(ref);
+  View_OnSystemUiVisibilityChangeListener fromReference(
+          jni.JReference reference) =>
+      View_OnSystemUiVisibilityChangeListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -7585,28 +7370,27 @@ class View_OnTouchListener extends jni.JObject {
   @override
   late final jni.JObjType<View_OnTouchListener> $type = type;
 
-  View_OnTouchListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_OnTouchListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/view/View$OnTouchListener");
+      jni.JClass.forName(r"android/view/View$OnTouchListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_OnTouchListenerType();
-  static final _id_onTouch = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"onTouch", r"(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+  static final _id_onTouch = _class.instanceMethodId(
+    r"onTouch",
+    r"(Landroid/view/View;Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: public abstract boolean onTouch(android.view.View view, android.view.MotionEvent motionEvent)
   bool onTouch(
     View view,
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onTouch,
-        jni.JniCallType.booleanType,
-        [view.reference, motionEvent.reference]).boolean;
+    return _id_onTouch(this, const jni.jbooleanType(),
+        [view.reference.pointer, motionEvent.reference.pointer]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -7646,7 +7430,7 @@ class View_OnTouchListener extends jni.JObject {
           $a[0].castTo(const $ViewType(), releaseOriginal: true),
           $a[1].castTo(const jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).toPointer();
+        return jni.JBoolean($r).reference.toPointer();
       }
     } catch (e) {
       return ProtectedJniExtensions.newDartException(e.toString());
@@ -7658,7 +7442,7 @@ class View_OnTouchListener extends jni.JObject {
     $View_OnTouchListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = View_OnTouchListener.fromRef(
+    final $x = View_OnTouchListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"android.view.View$OnTouchListener",
         $p,
@@ -7681,7 +7465,7 @@ class View_OnTouchListener extends jni.JObject {
   }
 }
 
-abstract class $View_OnTouchListenerImpl {
+abstract interface class $View_OnTouchListenerImpl {
   factory $View_OnTouchListenerImpl({
     required bool Function(View view, jni.JObject motionEvent) onTouch,
   }) = _$View_OnTouchListenerImpl;
@@ -7709,8 +7493,8 @@ final class $View_OnTouchListenerType
   String get signature => r"Landroid/view/View$OnTouchListener;";
 
   @override
-  View_OnTouchListener fromRef(jni.JObjectPtr ref) =>
-      View_OnTouchListener.fromRef(ref);
+  View_OnTouchListener fromReference(jni.JReference reference) =>
+      View_OnTouchListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -7733,30 +7517,27 @@ class View_OnUnhandledKeyEventListener extends jni.JObject {
   @override
   late final jni.JObjType<View_OnUnhandledKeyEventListener> $type = type;
 
-  View_OnUnhandledKeyEventListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View_OnUnhandledKeyEventListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/view/View$OnUnhandledKeyEventListener");
+      jni.JClass.forName(r"android/view/View$OnUnhandledKeyEventListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $View_OnUnhandledKeyEventListenerType();
-  static final _id_onUnhandledKeyEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onUnhandledKeyEvent",
-      r"(Landroid/view/View;Landroid/view/KeyEvent;)Z");
+  static final _id_onUnhandledKeyEvent = _class.instanceMethodId(
+    r"onUnhandledKeyEvent",
+    r"(Landroid/view/View;Landroid/view/KeyEvent;)Z",
+  );
 
   /// from: public abstract boolean onUnhandledKeyEvent(android.view.View view, android.view.KeyEvent keyEvent)
   bool onUnhandledKeyEvent(
     View view,
     jni.JObject keyEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onUnhandledKeyEvent,
-        jni.JniCallType.booleanType,
-        [view.reference, keyEvent.reference]).boolean;
+    return _id_onUnhandledKeyEvent(this, const jni.jbooleanType(),
+        [view.reference.pointer, keyEvent.reference.pointer]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -7797,7 +7578,7 @@ class View_OnUnhandledKeyEventListener extends jni.JObject {
           $a[0].castTo(const $ViewType(), releaseOriginal: true),
           $a[1].castTo(const jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).toPointer();
+        return jni.JBoolean($r).reference.toPointer();
       }
     } catch (e) {
       return ProtectedJniExtensions.newDartException(e.toString());
@@ -7809,7 +7590,7 @@ class View_OnUnhandledKeyEventListener extends jni.JObject {
     $View_OnUnhandledKeyEventListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = View_OnUnhandledKeyEventListener.fromRef(
+    final $x = View_OnUnhandledKeyEventListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"android.view.View$OnUnhandledKeyEventListener",
         $p,
@@ -7832,7 +7613,7 @@ class View_OnUnhandledKeyEventListener extends jni.JObject {
   }
 }
 
-abstract class $View_OnUnhandledKeyEventListenerImpl {
+abstract interface class $View_OnUnhandledKeyEventListenerImpl {
   factory $View_OnUnhandledKeyEventListenerImpl({
     required bool Function(View view, jni.JObject keyEvent) onUnhandledKeyEvent,
   }) = _$View_OnUnhandledKeyEventListenerImpl;
@@ -7861,8 +7642,8 @@ final class $View_OnUnhandledKeyEventListenerType
   String get signature => r"Landroid/view/View$OnUnhandledKeyEventListener;";
 
   @override
-  View_OnUnhandledKeyEventListener fromRef(jni.JObjectPtr ref) =>
-      View_OnUnhandledKeyEventListener.fromRef(ref);
+  View_OnUnhandledKeyEventListener fromReference(jni.JReference reference) =>
+      View_OnUnhandledKeyEventListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -7885,11 +7666,11 @@ class View extends jni.JObject {
   @override
   late final jni.JObjType<View> $type = type;
 
-  View.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  View.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
-  static final _class = jni.Jni.findJClass(r"android/view/View");
+  static final _class = jni.JClass.forName(r"android/view/View");
 
   /// The type which includes information such as the signature of this class.
   static const type = $ViewType();
@@ -7911,66 +7692,157 @@ class View extends jni.JObject {
 
   /// from: static public final int ACCESSIBILITY_LIVE_REGION_POLITE
   static const ACCESSIBILITY_LIVE_REGION_POLITE = 1;
-
-  static final _id_ALPHA = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_ALPHA = _class.staticFieldId(
     r"ALPHA",
     r"Landroid/util/Property;",
   );
 
   /// from: static public final android.util.Property ALPHA
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject get ALPHA => const jni.JObjectType().fromRef(jni
-      .Jni.accessors
-      .getStaticField(_class.reference, _id_ALPHA, jni.JniCallType.objectType)
-      .object);
+  static jni.JObject get ALPHA =>
+      _id_ALPHA.get(_class, const jni.JObjectType());
 
   /// from: static public final int AUTOFILL_FLAG_INCLUDE_NOT_IMPORTANT_VIEWS
   static const AUTOFILL_FLAG_INCLUDE_NOT_IMPORTANT_VIEWS = 1;
+  static final _id_AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DATE =
+      _class.staticFieldId(
+    r"AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DATE",
+    r"Ljava/lang/String;",
+  );
 
   /// from: static public final java.lang.String AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DATE
-  static const AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DATE =
-      r"""creditCardExpirationDate""";
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JString get AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DATE =>
+      _id_AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DATE.get(
+          _class, const jni.JStringType());
+
+  static final _id_AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DAY =
+      _class.staticFieldId(
+    r"AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DAY",
+    r"Ljava/lang/String;",
+  );
 
   /// from: static public final java.lang.String AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DAY
-  static const AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DAY =
-      r"""creditCardExpirationDay""";
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JString get AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DAY =>
+      _id_AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DAY.get(
+          _class, const jni.JStringType());
+
+  static final _id_AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_MONTH =
+      _class.staticFieldId(
+    r"AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_MONTH",
+    r"Ljava/lang/String;",
+  );
 
   /// from: static public final java.lang.String AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_MONTH
-  static const AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_MONTH =
-      r"""creditCardExpirationMonth""";
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JString get AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_MONTH =>
+      _id_AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_MONTH.get(
+          _class, const jni.JStringType());
+
+  static final _id_AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_YEAR =
+      _class.staticFieldId(
+    r"AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_YEAR",
+    r"Ljava/lang/String;",
+  );
 
   /// from: static public final java.lang.String AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_YEAR
-  static const AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_YEAR =
-      r"""creditCardExpirationYear""";
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JString get AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_YEAR =>
+      _id_AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_YEAR.get(
+          _class, const jni.JStringType());
+
+  static final _id_AUTOFILL_HINT_CREDIT_CARD_NUMBER = _class.staticFieldId(
+    r"AUTOFILL_HINT_CREDIT_CARD_NUMBER",
+    r"Ljava/lang/String;",
+  );
 
   /// from: static public final java.lang.String AUTOFILL_HINT_CREDIT_CARD_NUMBER
-  static const AUTOFILL_HINT_CREDIT_CARD_NUMBER = r"""creditCardNumber""";
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JString get AUTOFILL_HINT_CREDIT_CARD_NUMBER =>
+      _id_AUTOFILL_HINT_CREDIT_CARD_NUMBER.get(_class, const jni.JStringType());
+
+  static final _id_AUTOFILL_HINT_CREDIT_CARD_SECURITY_CODE =
+      _class.staticFieldId(
+    r"AUTOFILL_HINT_CREDIT_CARD_SECURITY_CODE",
+    r"Ljava/lang/String;",
+  );
 
   /// from: static public final java.lang.String AUTOFILL_HINT_CREDIT_CARD_SECURITY_CODE
-  static const AUTOFILL_HINT_CREDIT_CARD_SECURITY_CODE =
-      r"""creditCardSecurityCode""";
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JString get AUTOFILL_HINT_CREDIT_CARD_SECURITY_CODE =>
+      _id_AUTOFILL_HINT_CREDIT_CARD_SECURITY_CODE.get(
+          _class, const jni.JStringType());
+
+  static final _id_AUTOFILL_HINT_EMAIL_ADDRESS = _class.staticFieldId(
+    r"AUTOFILL_HINT_EMAIL_ADDRESS",
+    r"Ljava/lang/String;",
+  );
 
   /// from: static public final java.lang.String AUTOFILL_HINT_EMAIL_ADDRESS
-  static const AUTOFILL_HINT_EMAIL_ADDRESS = r"""emailAddress""";
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JString get AUTOFILL_HINT_EMAIL_ADDRESS =>
+      _id_AUTOFILL_HINT_EMAIL_ADDRESS.get(_class, const jni.JStringType());
+
+  static final _id_AUTOFILL_HINT_NAME = _class.staticFieldId(
+    r"AUTOFILL_HINT_NAME",
+    r"Ljava/lang/String;",
+  );
 
   /// from: static public final java.lang.String AUTOFILL_HINT_NAME
-  static const AUTOFILL_HINT_NAME = r"""name""";
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JString get AUTOFILL_HINT_NAME =>
+      _id_AUTOFILL_HINT_NAME.get(_class, const jni.JStringType());
+
+  static final _id_AUTOFILL_HINT_PASSWORD = _class.staticFieldId(
+    r"AUTOFILL_HINT_PASSWORD",
+    r"Ljava/lang/String;",
+  );
 
   /// from: static public final java.lang.String AUTOFILL_HINT_PASSWORD
-  static const AUTOFILL_HINT_PASSWORD = r"""password""";
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JString get AUTOFILL_HINT_PASSWORD =>
+      _id_AUTOFILL_HINT_PASSWORD.get(_class, const jni.JStringType());
+
+  static final _id_AUTOFILL_HINT_PHONE = _class.staticFieldId(
+    r"AUTOFILL_HINT_PHONE",
+    r"Ljava/lang/String;",
+  );
 
   /// from: static public final java.lang.String AUTOFILL_HINT_PHONE
-  static const AUTOFILL_HINT_PHONE = r"""phone""";
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JString get AUTOFILL_HINT_PHONE =>
+      _id_AUTOFILL_HINT_PHONE.get(_class, const jni.JStringType());
+
+  static final _id_AUTOFILL_HINT_POSTAL_ADDRESS = _class.staticFieldId(
+    r"AUTOFILL_HINT_POSTAL_ADDRESS",
+    r"Ljava/lang/String;",
+  );
 
   /// from: static public final java.lang.String AUTOFILL_HINT_POSTAL_ADDRESS
-  static const AUTOFILL_HINT_POSTAL_ADDRESS = r"""postalAddress""";
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JString get AUTOFILL_HINT_POSTAL_ADDRESS =>
+      _id_AUTOFILL_HINT_POSTAL_ADDRESS.get(_class, const jni.JStringType());
+
+  static final _id_AUTOFILL_HINT_POSTAL_CODE = _class.staticFieldId(
+    r"AUTOFILL_HINT_POSTAL_CODE",
+    r"Ljava/lang/String;",
+  );
 
   /// from: static public final java.lang.String AUTOFILL_HINT_POSTAL_CODE
-  static const AUTOFILL_HINT_POSTAL_CODE = r"""postalCode""";
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JString get AUTOFILL_HINT_POSTAL_CODE =>
+      _id_AUTOFILL_HINT_POSTAL_CODE.get(_class, const jni.JStringType());
+
+  static final _id_AUTOFILL_HINT_USERNAME = _class.staticFieldId(
+    r"AUTOFILL_HINT_USERNAME",
+    r"Ljava/lang/String;",
+  );
 
   /// from: static public final java.lang.String AUTOFILL_HINT_USERNAME
-  static const AUTOFILL_HINT_USERNAME = r"""username""";
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JString get AUTOFILL_HINT_USERNAME =>
+      _id_AUTOFILL_HINT_USERNAME.get(_class, const jni.JStringType());
 
   /// from: static public final int AUTOFILL_TYPE_DATE
   static const AUTOFILL_TYPE_DATE = 4;
@@ -8016,9 +7888,7 @@ class View extends jni.JObject {
 
   /// from: static public final int DRAWING_CACHE_QUALITY_LOW
   static const DRAWING_CACHE_QUALITY_LOW = 524288;
-
-  static final _id_EMPTY_STATE_SET = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_EMPTY_STATE_SET = _class.staticFieldId(
     r"EMPTY_STATE_SET",
     r"[I",
   );
@@ -8026,14 +7896,9 @@ class View extends jni.JObject {
   /// from: static protected final int[] EMPTY_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get EMPTY_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(
-              _class.reference, _id_EMPTY_STATE_SET, jni.JniCallType.objectType)
-          .object);
+      _id_EMPTY_STATE_SET.get(_class, const jni.JArrayType(jni.jintType()));
 
-  static final _id_ENABLED_FOCUSED_SELECTED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_ENABLED_FOCUSED_SELECTED_STATE_SET = _class.staticFieldId(
     r"ENABLED_FOCUSED_SELECTED_STATE_SET",
     r"[I",
   );
@@ -8041,16 +7906,11 @@ class View extends jni.JObject {
   /// from: static protected final int[] ENABLED_FOCUSED_SELECTED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get ENABLED_FOCUSED_SELECTED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(
-              _class.reference,
-              _id_ENABLED_FOCUSED_SELECTED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_ENABLED_FOCUSED_SELECTED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
   static final _id_ENABLED_FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+      _class.staticFieldId(
     r"ENABLED_FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8059,16 +7919,10 @@ class View extends jni.JObject {
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint>
       get ENABLED_FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET =>
-          const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-              .getStaticField(
-                  _class.reference,
-                  _id_ENABLED_FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET,
-                  jni.JniCallType.objectType)
-              .object);
+          _id_ENABLED_FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET.get(
+              _class, const jni.JArrayType(jni.jintType()));
 
-  static final _id_ENABLED_FOCUSED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_ENABLED_FOCUSED_STATE_SET = _class.staticFieldId(
     r"ENABLED_FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8076,14 +7930,11 @@ class View extends jni.JObject {
   /// from: static protected final int[] ENABLED_FOCUSED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get ENABLED_FOCUSED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(_class.reference, _id_ENABLED_FOCUSED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_ENABLED_FOCUSED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
   static final _id_ENABLED_FOCUSED_WINDOW_FOCUSED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+      _class.staticFieldId(
     r"ENABLED_FOCUSED_WINDOW_FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8091,16 +7942,10 @@ class View extends jni.JObject {
   /// from: static protected final int[] ENABLED_FOCUSED_WINDOW_FOCUSED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get ENABLED_FOCUSED_WINDOW_FOCUSED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(
-              _class.reference,
-              _id_ENABLED_FOCUSED_WINDOW_FOCUSED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_ENABLED_FOCUSED_WINDOW_FOCUSED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
-  static final _id_ENABLED_SELECTED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_ENABLED_SELECTED_STATE_SET = _class.staticFieldId(
     r"ENABLED_SELECTED_STATE_SET",
     r"[I",
   );
@@ -8108,14 +7953,11 @@ class View extends jni.JObject {
   /// from: static protected final int[] ENABLED_SELECTED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get ENABLED_SELECTED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(_class.reference, _id_ENABLED_SELECTED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_ENABLED_SELECTED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
   static final _id_ENABLED_SELECTED_WINDOW_FOCUSED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+      _class.staticFieldId(
     r"ENABLED_SELECTED_WINDOW_FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8123,15 +7965,10 @@ class View extends jni.JObject {
   /// from: static protected final int[] ENABLED_SELECTED_WINDOW_FOCUSED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get ENABLED_SELECTED_WINDOW_FOCUSED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(
-              _class.reference,
-              _id_ENABLED_SELECTED_WINDOW_FOCUSED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_ENABLED_SELECTED_WINDOW_FOCUSED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
-  static final _id_ENABLED_STATE_SET = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_ENABLED_STATE_SET = _class.staticFieldId(
     r"ENABLED_STATE_SET",
     r"[I",
   );
@@ -8139,14 +7976,9 @@ class View extends jni.JObject {
   /// from: static protected final int[] ENABLED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get ENABLED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(_class.reference, _id_ENABLED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_ENABLED_STATE_SET.get(_class, const jni.JArrayType(jni.jintType()));
 
-  static final _id_ENABLED_WINDOW_FOCUSED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_ENABLED_WINDOW_FOCUSED_STATE_SET = _class.staticFieldId(
     r"ENABLED_WINDOW_FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8154,10 +7986,8 @@ class View extends jni.JObject {
   /// from: static protected final int[] ENABLED_WINDOW_FOCUSED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get ENABLED_WINDOW_FOCUSED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(_class.reference,
-              _id_ENABLED_WINDOW_FOCUSED_STATE_SET, jni.JniCallType.objectType)
-          .object);
+      _id_ENABLED_WINDOW_FOCUSED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
   /// from: static public final int FIND_VIEWS_WITH_CONTENT_DESCRIPTION
   static const FIND_VIEWS_WITH_CONTENT_DESCRIPTION = 2;
@@ -8176,10 +8006,7 @@ class View extends jni.JObject {
 
   /// from: static public final int FOCUSABLE_AUTO
   static const FOCUSABLE_AUTO = 16;
-
-  static final _id_FOCUSED_SELECTED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_FOCUSED_SELECTED_STATE_SET = _class.staticFieldId(
     r"FOCUSED_SELECTED_STATE_SET",
     r"[I",
   );
@@ -8187,14 +8014,11 @@ class View extends jni.JObject {
   /// from: static protected final int[] FOCUSED_SELECTED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get FOCUSED_SELECTED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(_class.reference, _id_FOCUSED_SELECTED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_FOCUSED_SELECTED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
   static final _id_FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+      _class.staticFieldId(
     r"FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8202,15 +8026,10 @@ class View extends jni.JObject {
   /// from: static protected final int[] FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(
-              _class.reference,
-              _id_FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
-  static final _id_FOCUSED_STATE_SET = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_FOCUSED_STATE_SET = _class.staticFieldId(
     r"FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8218,14 +8037,9 @@ class View extends jni.JObject {
   /// from: static protected final int[] FOCUSED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get FOCUSED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(_class.reference, _id_FOCUSED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_FOCUSED_STATE_SET.get(_class, const jni.JArrayType(jni.jintType()));
 
-  static final _id_FOCUSED_WINDOW_FOCUSED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_FOCUSED_WINDOW_FOCUSED_STATE_SET = _class.staticFieldId(
     r"FOCUSED_WINDOW_FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8233,10 +8047,8 @@ class View extends jni.JObject {
   /// from: static protected final int[] FOCUSED_WINDOW_FOCUSED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get FOCUSED_WINDOW_FOCUSED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(_class.reference,
-              _id_FOCUSED_WINDOW_FOCUSED_STATE_SET, jni.JniCallType.objectType)
-          .object);
+      _id_FOCUSED_WINDOW_FOCUSED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
   /// from: static public final int FOCUS_BACKWARD
   static const FOCUS_BACKWARD = 1;
@@ -8357,10 +8169,8 @@ class View extends jni.JObject {
 
   /// from: static public final int OVER_SCROLL_NEVER
   static const OVER_SCROLL_NEVER = 2;
-
   static final _id_PRESSED_ENABLED_FOCUSED_SELECTED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+      _class.staticFieldId(
     r"PRESSED_ENABLED_FOCUSED_SELECTED_STATE_SET",
     r"[I",
   );
@@ -8368,16 +8178,11 @@ class View extends jni.JObject {
   /// from: static protected final int[] PRESSED_ENABLED_FOCUSED_SELECTED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get PRESSED_ENABLED_FOCUSED_SELECTED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(
-              _class.reference,
-              _id_PRESSED_ENABLED_FOCUSED_SELECTED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_PRESSED_ENABLED_FOCUSED_SELECTED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
   static final _id_PRESSED_ENABLED_FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+      _class.staticFieldId(
     r"PRESSED_ENABLED_FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8386,16 +8191,10 @@ class View extends jni.JObject {
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint>
       get PRESSED_ENABLED_FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET =>
-          const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-              .getStaticField(
-                  _class.reference,
-                  _id_PRESSED_ENABLED_FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET,
-                  jni.JniCallType.objectType)
-              .object);
+          _id_PRESSED_ENABLED_FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET.get(
+              _class, const jni.JArrayType(jni.jintType()));
 
-  static final _id_PRESSED_ENABLED_FOCUSED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_PRESSED_ENABLED_FOCUSED_STATE_SET = _class.staticFieldId(
     r"PRESSED_ENABLED_FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8403,14 +8202,11 @@ class View extends jni.JObject {
   /// from: static protected final int[] PRESSED_ENABLED_FOCUSED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get PRESSED_ENABLED_FOCUSED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(_class.reference,
-              _id_PRESSED_ENABLED_FOCUSED_STATE_SET, jni.JniCallType.objectType)
-          .object);
+      _id_PRESSED_ENABLED_FOCUSED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
   static final _id_PRESSED_ENABLED_FOCUSED_WINDOW_FOCUSED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+      _class.staticFieldId(
     r"PRESSED_ENABLED_FOCUSED_WINDOW_FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8419,16 +8215,10 @@ class View extends jni.JObject {
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint>
       get PRESSED_ENABLED_FOCUSED_WINDOW_FOCUSED_STATE_SET =>
-          const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-              .getStaticField(
-                  _class.reference,
-                  _id_PRESSED_ENABLED_FOCUSED_WINDOW_FOCUSED_STATE_SET,
-                  jni.JniCallType.objectType)
-              .object);
+          _id_PRESSED_ENABLED_FOCUSED_WINDOW_FOCUSED_STATE_SET.get(
+              _class, const jni.JArrayType(jni.jintType()));
 
-  static final _id_PRESSED_ENABLED_SELECTED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_PRESSED_ENABLED_SELECTED_STATE_SET = _class.staticFieldId(
     r"PRESSED_ENABLED_SELECTED_STATE_SET",
     r"[I",
   );
@@ -8436,16 +8226,11 @@ class View extends jni.JObject {
   /// from: static protected final int[] PRESSED_ENABLED_SELECTED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get PRESSED_ENABLED_SELECTED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(
-              _class.reference,
-              _id_PRESSED_ENABLED_SELECTED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_PRESSED_ENABLED_SELECTED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
   static final _id_PRESSED_ENABLED_SELECTED_WINDOW_FOCUSED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+      _class.staticFieldId(
     r"PRESSED_ENABLED_SELECTED_WINDOW_FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8454,16 +8239,10 @@ class View extends jni.JObject {
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint>
       get PRESSED_ENABLED_SELECTED_WINDOW_FOCUSED_STATE_SET =>
-          const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-              .getStaticField(
-                  _class.reference,
-                  _id_PRESSED_ENABLED_SELECTED_WINDOW_FOCUSED_STATE_SET,
-                  jni.JniCallType.objectType)
-              .object);
+          _id_PRESSED_ENABLED_SELECTED_WINDOW_FOCUSED_STATE_SET.get(
+              _class, const jni.JArrayType(jni.jintType()));
 
-  static final _id_PRESSED_ENABLED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_PRESSED_ENABLED_STATE_SET = _class.staticFieldId(
     r"PRESSED_ENABLED_STATE_SET",
     r"[I",
   );
@@ -8471,14 +8250,11 @@ class View extends jni.JObject {
   /// from: static protected final int[] PRESSED_ENABLED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get PRESSED_ENABLED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(_class.reference, _id_PRESSED_ENABLED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_PRESSED_ENABLED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
   static final _id_PRESSED_ENABLED_WINDOW_FOCUSED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+      _class.staticFieldId(
     r"PRESSED_ENABLED_WINDOW_FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8486,16 +8262,10 @@ class View extends jni.JObject {
   /// from: static protected final int[] PRESSED_ENABLED_WINDOW_FOCUSED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get PRESSED_ENABLED_WINDOW_FOCUSED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(
-              _class.reference,
-              _id_PRESSED_ENABLED_WINDOW_FOCUSED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_PRESSED_ENABLED_WINDOW_FOCUSED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
-  static final _id_PRESSED_FOCUSED_SELECTED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_PRESSED_FOCUSED_SELECTED_STATE_SET = _class.staticFieldId(
     r"PRESSED_FOCUSED_SELECTED_STATE_SET",
     r"[I",
   );
@@ -8503,16 +8273,11 @@ class View extends jni.JObject {
   /// from: static protected final int[] PRESSED_FOCUSED_SELECTED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get PRESSED_FOCUSED_SELECTED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(
-              _class.reference,
-              _id_PRESSED_FOCUSED_SELECTED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_PRESSED_FOCUSED_SELECTED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
   static final _id_PRESSED_FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+      _class.staticFieldId(
     r"PRESSED_FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8521,16 +8286,10 @@ class View extends jni.JObject {
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint>
       get PRESSED_FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET =>
-          const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-              .getStaticField(
-                  _class.reference,
-                  _id_PRESSED_FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET,
-                  jni.JniCallType.objectType)
-              .object);
+          _id_PRESSED_FOCUSED_SELECTED_WINDOW_FOCUSED_STATE_SET.get(
+              _class, const jni.JArrayType(jni.jintType()));
 
-  static final _id_PRESSED_FOCUSED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_PRESSED_FOCUSED_STATE_SET = _class.staticFieldId(
     r"PRESSED_FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8538,14 +8297,11 @@ class View extends jni.JObject {
   /// from: static protected final int[] PRESSED_FOCUSED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get PRESSED_FOCUSED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(_class.reference, _id_PRESSED_FOCUSED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_PRESSED_FOCUSED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
   static final _id_PRESSED_FOCUSED_WINDOW_FOCUSED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+      _class.staticFieldId(
     r"PRESSED_FOCUSED_WINDOW_FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8553,16 +8309,10 @@ class View extends jni.JObject {
   /// from: static protected final int[] PRESSED_FOCUSED_WINDOW_FOCUSED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get PRESSED_FOCUSED_WINDOW_FOCUSED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(
-              _class.reference,
-              _id_PRESSED_FOCUSED_WINDOW_FOCUSED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_PRESSED_FOCUSED_WINDOW_FOCUSED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
-  static final _id_PRESSED_SELECTED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_PRESSED_SELECTED_STATE_SET = _class.staticFieldId(
     r"PRESSED_SELECTED_STATE_SET",
     r"[I",
   );
@@ -8570,14 +8320,11 @@ class View extends jni.JObject {
   /// from: static protected final int[] PRESSED_SELECTED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get PRESSED_SELECTED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(_class.reference, _id_PRESSED_SELECTED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_PRESSED_SELECTED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
   static final _id_PRESSED_SELECTED_WINDOW_FOCUSED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+      _class.staticFieldId(
     r"PRESSED_SELECTED_WINDOW_FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8585,15 +8332,10 @@ class View extends jni.JObject {
   /// from: static protected final int[] PRESSED_SELECTED_WINDOW_FOCUSED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get PRESSED_SELECTED_WINDOW_FOCUSED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(
-              _class.reference,
-              _id_PRESSED_SELECTED_WINDOW_FOCUSED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_PRESSED_SELECTED_WINDOW_FOCUSED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
-  static final _id_PRESSED_STATE_SET = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_PRESSED_STATE_SET = _class.staticFieldId(
     r"PRESSED_STATE_SET",
     r"[I",
   );
@@ -8601,14 +8343,9 @@ class View extends jni.JObject {
   /// from: static protected final int[] PRESSED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get PRESSED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(_class.reference, _id_PRESSED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_PRESSED_STATE_SET.get(_class, const jni.JArrayType(jni.jintType()));
 
-  static final _id_PRESSED_WINDOW_FOCUSED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_PRESSED_WINDOW_FOCUSED_STATE_SET = _class.staticFieldId(
     r"PRESSED_WINDOW_FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8616,13 +8353,10 @@ class View extends jni.JObject {
   /// from: static protected final int[] PRESSED_WINDOW_FOCUSED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get PRESSED_WINDOW_FOCUSED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(_class.reference,
-              _id_PRESSED_WINDOW_FOCUSED_STATE_SET, jni.JniCallType.objectType)
-          .object);
+      _id_PRESSED_WINDOW_FOCUSED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
-  static final _id_ROTATION = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_ROTATION = _class.staticFieldId(
     r"ROTATION",
     r"Landroid/util/Property;",
   );
@@ -8630,13 +8364,9 @@ class View extends jni.JObject {
   /// from: static public final android.util.Property ROTATION
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JObject get ROTATION =>
-      const jni.JObjectType().fromRef(jni.Jni.accessors
-          .getStaticField(
-              _class.reference, _id_ROTATION, jni.JniCallType.objectType)
-          .object);
+      _id_ROTATION.get(_class, const jni.JObjectType());
 
-  static final _id_ROTATION_X = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_ROTATION_X = _class.staticFieldId(
     r"ROTATION_X",
     r"Landroid/util/Property;",
   );
@@ -8644,13 +8374,9 @@ class View extends jni.JObject {
   /// from: static public final android.util.Property ROTATION_X
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JObject get ROTATION_X =>
-      const jni.JObjectType().fromRef(jni.Jni.accessors
-          .getStaticField(
-              _class.reference, _id_ROTATION_X, jni.JniCallType.objectType)
-          .object);
+      _id_ROTATION_X.get(_class, const jni.JObjectType());
 
-  static final _id_ROTATION_Y = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_ROTATION_Y = _class.staticFieldId(
     r"ROTATION_Y",
     r"Landroid/util/Property;",
   );
@@ -8658,36 +8384,27 @@ class View extends jni.JObject {
   /// from: static public final android.util.Property ROTATION_Y
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JObject get ROTATION_Y =>
-      const jni.JObjectType().fromRef(jni.Jni.accessors
-          .getStaticField(
-              _class.reference, _id_ROTATION_Y, jni.JniCallType.objectType)
-          .object);
+      _id_ROTATION_Y.get(_class, const jni.JObjectType());
 
-  static final _id_SCALE_X = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_SCALE_X = _class.staticFieldId(
     r"SCALE_X",
     r"Landroid/util/Property;",
   );
 
   /// from: static public final android.util.Property SCALE_X
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject get SCALE_X => const jni.JObjectType().fromRef(jni
-      .Jni.accessors
-      .getStaticField(_class.reference, _id_SCALE_X, jni.JniCallType.objectType)
-      .object);
+  static jni.JObject get SCALE_X =>
+      _id_SCALE_X.get(_class, const jni.JObjectType());
 
-  static final _id_SCALE_Y = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_SCALE_Y = _class.staticFieldId(
     r"SCALE_Y",
     r"Landroid/util/Property;",
   );
 
   /// from: static public final android.util.Property SCALE_Y
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject get SCALE_Y => const jni.JObjectType().fromRef(jni
-      .Jni.accessors
-      .getStaticField(_class.reference, _id_SCALE_Y, jni.JniCallType.objectType)
-      .object);
+  static jni.JObject get SCALE_Y =>
+      _id_SCALE_Y.get(_class, const jni.JObjectType());
 
   /// from: static public final int SCREEN_STATE_OFF
   static const SCREEN_STATE_OFF = 0;
@@ -8754,9 +8471,7 @@ class View extends jni.JObject {
 
   /// from: static public final int SCROLL_INDICATOR_TOP
   static const SCROLL_INDICATOR_TOP = 1;
-
-  static final _id_SELECTED_STATE_SET = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_SELECTED_STATE_SET = _class.staticFieldId(
     r"SELECTED_STATE_SET",
     r"[I",
   );
@@ -8764,14 +8479,9 @@ class View extends jni.JObject {
   /// from: static protected final int[] SELECTED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get SELECTED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(_class.reference, _id_SELECTED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_SELECTED_STATE_SET.get(_class, const jni.JArrayType(jni.jintType()));
 
-  static final _id_SELECTED_WINDOW_FOCUSED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_SELECTED_WINDOW_FOCUSED_STATE_SET = _class.staticFieldId(
     r"SELECTED_WINDOW_FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8779,10 +8489,8 @@ class View extends jni.JObject {
   /// from: static protected final int[] SELECTED_WINDOW_FOCUSED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get SELECTED_WINDOW_FOCUSED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(_class.reference,
-              _id_SELECTED_WINDOW_FOCUSED_STATE_SET, jni.JniCallType.objectType)
-          .object);
+      _id_SELECTED_WINDOW_FOCUSED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
   /// from: static public final int SOUND_EFFECTS_ENABLED
   static const SOUND_EFFECTS_ENABLED = 134217728;
@@ -8873,9 +8581,7 @@ class View extends jni.JObject {
 
   /// from: static public final int TEXT_DIRECTION_RTL
   static const TEXT_DIRECTION_RTL = 4;
-
-  static final _id_TRANSLATION_X = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_TRANSLATION_X = _class.staticFieldId(
     r"TRANSLATION_X",
     r"Landroid/util/Property;",
   );
@@ -8883,13 +8589,9 @@ class View extends jni.JObject {
   /// from: static public final android.util.Property TRANSLATION_X
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JObject get TRANSLATION_X =>
-      const jni.JObjectType().fromRef(jni.Jni.accessors
-          .getStaticField(
-              _class.reference, _id_TRANSLATION_X, jni.JniCallType.objectType)
-          .object);
+      _id_TRANSLATION_X.get(_class, const jni.JObjectType());
 
-  static final _id_TRANSLATION_Y = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_TRANSLATION_Y = _class.staticFieldId(
     r"TRANSLATION_Y",
     r"Landroid/util/Property;",
   );
@@ -8897,13 +8599,9 @@ class View extends jni.JObject {
   /// from: static public final android.util.Property TRANSLATION_Y
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JObject get TRANSLATION_Y =>
-      const jni.JObjectType().fromRef(jni.Jni.accessors
-          .getStaticField(
-              _class.reference, _id_TRANSLATION_Y, jni.JniCallType.objectType)
-          .object);
+      _id_TRANSLATION_Y.get(_class, const jni.JObjectType());
 
-  static final _id_TRANSLATION_Z = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_TRANSLATION_Z = _class.staticFieldId(
     r"TRANSLATION_Z",
     r"Landroid/util/Property;",
   );
@@ -8911,20 +8609,21 @@ class View extends jni.JObject {
   /// from: static public final android.util.Property TRANSLATION_Z
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JObject get TRANSLATION_Z =>
-      const jni.JObjectType().fromRef(jni.Jni.accessors
-          .getStaticField(
-              _class.reference, _id_TRANSLATION_Z, jni.JniCallType.objectType)
-          .object);
+      _id_TRANSLATION_Z.get(_class, const jni.JObjectType());
+
+  static final _id_VIEW_LOG_TAG = _class.staticFieldId(
+    r"VIEW_LOG_TAG",
+    r"Ljava/lang/String;",
+  );
 
   /// from: static protected final java.lang.String VIEW_LOG_TAG
-  static const VIEW_LOG_TAG = r"""View""";
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JString get VIEW_LOG_TAG =>
+      _id_VIEW_LOG_TAG.get(_class, const jni.JStringType());
 
   /// from: static public final int VISIBLE
   static const VISIBLE = 0;
-
-  static final _id_WINDOW_FOCUSED_STATE_SET =
-      jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_WINDOW_FOCUSED_STATE_SET = _class.staticFieldId(
     r"WINDOW_FOCUSED_STATE_SET",
     r"[I",
   );
@@ -8932,61 +8631,52 @@ class View extends jni.JObject {
   /// from: static protected final int[] WINDOW_FOCUSED_STATE_SET
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.jint> get WINDOW_FOCUSED_STATE_SET =>
-      const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-          .getStaticField(_class.reference, _id_WINDOW_FOCUSED_STATE_SET,
-              jni.JniCallType.objectType)
-          .object);
+      _id_WINDOW_FOCUSED_STATE_SET.get(
+          _class, const jni.JArrayType(jni.jintType()));
 
-  static final _id_X = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_X = _class.staticFieldId(
     r"X",
     r"Landroid/util/Property;",
   );
 
   /// from: static public final android.util.Property X
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject get X => const jni.JObjectType().fromRef(jni.Jni.accessors
-      .getStaticField(_class.reference, _id_X, jni.JniCallType.objectType)
-      .object);
+  static jni.JObject get X => _id_X.get(_class, const jni.JObjectType());
 
-  static final _id_Y = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_Y = _class.staticFieldId(
     r"Y",
     r"Landroid/util/Property;",
   );
 
   /// from: static public final android.util.Property Y
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject get Y => const jni.JObjectType().fromRef(jni.Jni.accessors
-      .getStaticField(_class.reference, _id_Y, jni.JniCallType.objectType)
-      .object);
+  static jni.JObject get Y => _id_Y.get(_class, const jni.JObjectType());
 
-  static final _id_Z = jni.Jni.accessors.getStaticFieldIDOf(
-    _class.reference,
+  static final _id_Z = _class.staticFieldId(
     r"Z",
     r"Landroid/util/Property;",
   );
 
   /// from: static public final android.util.Property Z
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject get Z => const jni.JObjectType().fromRef(jni.Jni.accessors
-      .getStaticField(_class.reference, _id_Z, jni.JniCallType.objectType)
-      .object);
+  static jni.JObject get Z => _id_Z.get(_class, const jni.JObjectType());
 
-  static final _id_new0 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"<init>", r"(Landroid/content/Context;)V");
+  static final _id_new0 = _class.constructorId(
+    r"(Landroid/content/Context;)V",
+  );
 
   /// from: public void <init>(android.content.Context context)
   /// The returned object must be released after use, by calling the [release] method.
   factory View(
     jni.JObject context,
   ) {
-    return View.fromRef(jni.Jni.accessors.newObjectWithArgs(
-        _class.reference, _id_new0, [context.reference]).object);
+    return View.fromReference(
+        _id_new0(_class, referenceType, [context.reference.pointer]));
   }
 
-  static final _id_new1 = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"<init>", r"(Landroid/content/Context;Landroid/util/AttributeSet;)V");
+  static final _id_new1 = _class.constructorId(
+    r"(Landroid/content/Context;Landroid/util/AttributeSet;)V",
+  );
 
   /// from: public void <init>(android.content.Context context, android.util.AttributeSet attributeSet)
   /// The returned object must be released after use, by calling the [release] method.
@@ -8994,12 +8684,13 @@ class View extends jni.JObject {
     jni.JObject context,
     jni.JObject attributeSet,
   ) {
-    return View.fromRef(jni.Jni.accessors.newObjectWithArgs(_class.reference,
-        _id_new1, [context.reference, attributeSet.reference]).object);
+    return View.fromReference(_id_new1(_class, referenceType,
+        [context.reference.pointer, attributeSet.reference.pointer]));
   }
 
-  static final _id_new2 = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"<init>", r"(Landroid/content/Context;Landroid/util/AttributeSet;I)V");
+  static final _id_new2 = _class.constructorId(
+    r"(Landroid/content/Context;Landroid/util/AttributeSet;I)V",
+  );
 
   /// from: public void <init>(android.content.Context context, android.util.AttributeSet attributeSet, int i)
   /// The returned object must be released after use, by calling the [release] method.
@@ -9008,14 +8699,16 @@ class View extends jni.JObject {
     jni.JObject attributeSet,
     int i,
   ) {
-    return View.fromRef(jni.Jni.accessors.newObjectWithArgs(
-        _class.reference,
-        _id_new2,
-        [context.reference, attributeSet.reference, jni.JValueInt(i)]).object);
+    return View.fromReference(_id_new2(_class, referenceType, [
+      context.reference.pointer,
+      attributeSet.reference.pointer,
+      jni.JValueInt(i)
+    ]));
   }
 
-  static final _id_new3 = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"<init>", r"(Landroid/content/Context;Landroid/util/AttributeSet;II)V");
+  static final _id_new3 = _class.constructorId(
+    r"(Landroid/content/Context;Landroid/util/AttributeSet;II)V",
+  );
 
   /// from: public void <init>(android.content.Context context, android.util.AttributeSet attributeSet, int i, int i1)
   /// The returned object must be released after use, by calling the [release] method.
@@ -9025,65 +8718,64 @@ class View extends jni.JObject {
     int i,
     int i1,
   ) {
-    return View.fromRef(jni.Jni.accessors.newObjectWithArgs(
-        _class.reference, _id_new3, [
-      context.reference,
-      attributeSet.reference,
+    return View.fromReference(_id_new3(_class, referenceType, [
+      context.reference.pointer,
+      attributeSet.reference.pointer,
       jni.JValueInt(i),
       jni.JValueInt(i1)
-    ]).object);
+    ]));
   }
 
-  static final _id_getAttributeResolutionStack = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"getAttributeResolutionStack", r"(I)[I");
+  static final _id_getAttributeResolutionStack = _class.instanceMethodId(
+    r"getAttributeResolutionStack",
+    r"(I)[I",
+  );
 
   /// from: public int[] getAttributeResolutionStack(int i)
   /// The returned object must be released after use, by calling the [release] method.
   jni.JArray<jni.jint> getAttributeResolutionStack(
     int i,
   ) {
-    return const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-        .callMethodWithArgs(reference, _id_getAttributeResolutionStack,
-            jni.JniCallType.objectType, [jni.JValueInt(i)]).object);
+    return _id_getAttributeResolutionStack(
+        this, const jni.JArrayType(jni.jintType()), [jni.JValueInt(i)]);
   }
 
-  static final _id_getAttributeSourceResourceMap = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getAttributeSourceResourceMap",
-          r"()Ljava/util/Map;");
+  static final _id_getAttributeSourceResourceMap = _class.instanceMethodId(
+    r"getAttributeSourceResourceMap",
+    r"()Ljava/util/Map;",
+  );
 
   /// from: public java.util.Map getAttributeSourceResourceMap()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JMap<jni.JInteger, jni.JInteger> getAttributeSourceResourceMap() {
-    return const jni.JMapType(jni.JIntegerType(), jni.JIntegerType()).fromRef(
-        jni.Jni.accessors.callMethodWithArgs(
-            reference,
-            _id_getAttributeSourceResourceMap,
-            jni.JniCallType.objectType, []).object);
+    return _id_getAttributeSourceResourceMap(
+        this, const jni.JMapType(jni.JIntegerType(), jni.JIntegerType()), []);
   }
 
-  static final _id_getExplicitStyle = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getExplicitStyle", r"()I");
+  static final _id_getExplicitStyle = _class.instanceMethodId(
+    r"getExplicitStyle",
+    r"()I",
+  );
 
   /// from: public int getExplicitStyle()
   int getExplicitStyle() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getExplicitStyle, jni.JniCallType.intType, []).integer;
+    return _id_getExplicitStyle(this, const jni.jintType(), []);
   }
 
-  static final _id_isShowingLayoutBounds = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isShowingLayoutBounds", r"()Z");
+  static final _id_isShowingLayoutBounds = _class.instanceMethodId(
+    r"isShowingLayoutBounds",
+    r"()Z",
+  );
 
   /// from: public final boolean isShowingLayoutBounds()
   bool isShowingLayoutBounds() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isShowingLayoutBounds, jni.JniCallType.booleanType, []).boolean;
+    return _id_isShowingLayoutBounds(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_saveAttributeDataForStyleable = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"saveAttributeDataForStyleable",
-      r"(Landroid/content/Context;[ILandroid/util/AttributeSet;Landroid/content/res/TypedArray;II)V");
+  static final _id_saveAttributeDataForStyleable = _class.instanceMethodId(
+    r"saveAttributeDataForStyleable",
+    r"(Landroid/content/Context;[ILandroid/util/AttributeSet;Landroid/content/res/TypedArray;II)V",
+  );
 
   /// from: public final void saveAttributeDataForStyleable(android.content.Context context, int[] is, android.util.AttributeSet attributeSet, android.content.res.TypedArray typedArray, int i, int i1)
   void saveAttributeDataForStyleable(
@@ -9094,550 +8786,514 @@ class View extends jni.JObject {
     int i,
     int i1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_saveAttributeDataForStyleable, jni.JniCallType.voidType, [
-      context.reference,
-      is0.reference,
-      attributeSet.reference,
-      typedArray.reference,
+    _id_saveAttributeDataForStyleable(this, const jni.jvoidType(), [
+      context.reference.pointer,
+      is0.reference.pointer,
+      attributeSet.reference.pointer,
+      typedArray.reference.pointer,
       jni.JValueInt(i),
       jni.JValueInt(i1)
-    ]).check();
+    ]);
   }
 
-  static final _id_toString1 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"toString", r"()Ljava/lang/String;");
+  static final _id_toString1 = _class.instanceMethodId(
+    r"toString",
+    r"()Ljava/lang/String;",
+  );
 
   /// from: public java.lang.String toString()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString toString1() {
-    return const jni.JStringType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_toString1, jni.JniCallType.objectType, []).object);
+    return _id_toString1(this, const jni.JStringType(), []);
   }
 
-  static final _id_getVerticalFadingEdgeLength = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getVerticalFadingEdgeLength", r"()I");
+  static final _id_getVerticalFadingEdgeLength = _class.instanceMethodId(
+    r"getVerticalFadingEdgeLength",
+    r"()I",
+  );
 
   /// from: public int getVerticalFadingEdgeLength()
   int getVerticalFadingEdgeLength() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getVerticalFadingEdgeLength, jni.JniCallType.intType, []).integer;
+    return _id_getVerticalFadingEdgeLength(this, const jni.jintType(), []);
   }
 
-  static final _id_setFadingEdgeLength = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setFadingEdgeLength", r"(I)V");
+  static final _id_setFadingEdgeLength = _class.instanceMethodId(
+    r"setFadingEdgeLength",
+    r"(I)V",
+  );
 
   /// from: public void setFadingEdgeLength(int i)
   void setFadingEdgeLength(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setFadingEdgeLength,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setFadingEdgeLength(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getHorizontalFadingEdgeLength = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"getHorizontalFadingEdgeLength", r"()I");
+  static final _id_getHorizontalFadingEdgeLength = _class.instanceMethodId(
+    r"getHorizontalFadingEdgeLength",
+    r"()I",
+  );
 
   /// from: public int getHorizontalFadingEdgeLength()
   int getHorizontalFadingEdgeLength() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getHorizontalFadingEdgeLength, jni.JniCallType.intType, []).integer;
+    return _id_getHorizontalFadingEdgeLength(this, const jni.jintType(), []);
   }
 
-  static final _id_getVerticalScrollbarWidth = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getVerticalScrollbarWidth", r"()I");
+  static final _id_getVerticalScrollbarWidth = _class.instanceMethodId(
+    r"getVerticalScrollbarWidth",
+    r"()I",
+  );
 
   /// from: public int getVerticalScrollbarWidth()
   int getVerticalScrollbarWidth() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getVerticalScrollbarWidth, jni.JniCallType.intType, []).integer;
+    return _id_getVerticalScrollbarWidth(this, const jni.jintType(), []);
   }
 
-  static final _id_getHorizontalScrollbarHeight = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getHorizontalScrollbarHeight", r"()I");
+  static final _id_getHorizontalScrollbarHeight = _class.instanceMethodId(
+    r"getHorizontalScrollbarHeight",
+    r"()I",
+  );
 
   /// from: protected int getHorizontalScrollbarHeight()
   int getHorizontalScrollbarHeight() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getHorizontalScrollbarHeight, jni.JniCallType.intType, []).integer;
+    return _id_getHorizontalScrollbarHeight(this, const jni.jintType(), []);
   }
 
-  static final _id_setVerticalScrollbarThumbDrawable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setVerticalScrollbarThumbDrawable",
-          r"(Landroid/graphics/drawable/Drawable;)V");
+  static final _id_setVerticalScrollbarThumbDrawable = _class.instanceMethodId(
+    r"setVerticalScrollbarThumbDrawable",
+    r"(Landroid/graphics/drawable/Drawable;)V",
+  );
 
   /// from: public void setVerticalScrollbarThumbDrawable(android.graphics.drawable.Drawable drawable)
   void setVerticalScrollbarThumbDrawable(
     jni.JObject drawable,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setVerticalScrollbarThumbDrawable,
-        jni.JniCallType.voidType,
-        [drawable.reference]).check();
+    _id_setVerticalScrollbarThumbDrawable(
+        this, const jni.jvoidType(), [drawable.reference.pointer]);
   }
 
-  static final _id_setVerticalScrollbarTrackDrawable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setVerticalScrollbarTrackDrawable",
-          r"(Landroid/graphics/drawable/Drawable;)V");
+  static final _id_setVerticalScrollbarTrackDrawable = _class.instanceMethodId(
+    r"setVerticalScrollbarTrackDrawable",
+    r"(Landroid/graphics/drawable/Drawable;)V",
+  );
 
   /// from: public void setVerticalScrollbarTrackDrawable(android.graphics.drawable.Drawable drawable)
   void setVerticalScrollbarTrackDrawable(
     jni.JObject drawable,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setVerticalScrollbarTrackDrawable,
-        jni.JniCallType.voidType,
-        [drawable.reference]).check();
+    _id_setVerticalScrollbarTrackDrawable(
+        this, const jni.jvoidType(), [drawable.reference.pointer]);
   }
 
-  static final _id_setHorizontalScrollbarThumbDrawable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setHorizontalScrollbarThumbDrawable",
-          r"(Landroid/graphics/drawable/Drawable;)V");
+  static final _id_setHorizontalScrollbarThumbDrawable =
+      _class.instanceMethodId(
+    r"setHorizontalScrollbarThumbDrawable",
+    r"(Landroid/graphics/drawable/Drawable;)V",
+  );
 
   /// from: public void setHorizontalScrollbarThumbDrawable(android.graphics.drawable.Drawable drawable)
   void setHorizontalScrollbarThumbDrawable(
     jni.JObject drawable,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setHorizontalScrollbarThumbDrawable,
-        jni.JniCallType.voidType,
-        [drawable.reference]).check();
+    _id_setHorizontalScrollbarThumbDrawable(
+        this, const jni.jvoidType(), [drawable.reference.pointer]);
   }
 
-  static final _id_setHorizontalScrollbarTrackDrawable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setHorizontalScrollbarTrackDrawable",
-          r"(Landroid/graphics/drawable/Drawable;)V");
+  static final _id_setHorizontalScrollbarTrackDrawable =
+      _class.instanceMethodId(
+    r"setHorizontalScrollbarTrackDrawable",
+    r"(Landroid/graphics/drawable/Drawable;)V",
+  );
 
   /// from: public void setHorizontalScrollbarTrackDrawable(android.graphics.drawable.Drawable drawable)
   void setHorizontalScrollbarTrackDrawable(
     jni.JObject drawable,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setHorizontalScrollbarTrackDrawable,
-        jni.JniCallType.voidType,
-        [drawable.reference]).check();
+    _id_setHorizontalScrollbarTrackDrawable(
+        this, const jni.jvoidType(), [drawable.reference.pointer]);
   }
 
-  static final _id_getVerticalScrollbarThumbDrawable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getVerticalScrollbarThumbDrawable",
-          r"()Landroid/graphics/drawable/Drawable;");
+  static final _id_getVerticalScrollbarThumbDrawable = _class.instanceMethodId(
+    r"getVerticalScrollbarThumbDrawable",
+    r"()Landroid/graphics/drawable/Drawable;",
+  );
 
   /// from: public android.graphics.drawable.Drawable getVerticalScrollbarThumbDrawable()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getVerticalScrollbarThumbDrawable() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getVerticalScrollbarThumbDrawable,
-        jni.JniCallType.objectType, []).object);
+    return _id_getVerticalScrollbarThumbDrawable(
+        this, const jni.JObjectType(), []);
   }
 
-  static final _id_getVerticalScrollbarTrackDrawable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getVerticalScrollbarTrackDrawable",
-          r"()Landroid/graphics/drawable/Drawable;");
+  static final _id_getVerticalScrollbarTrackDrawable = _class.instanceMethodId(
+    r"getVerticalScrollbarTrackDrawable",
+    r"()Landroid/graphics/drawable/Drawable;",
+  );
 
   /// from: public android.graphics.drawable.Drawable getVerticalScrollbarTrackDrawable()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getVerticalScrollbarTrackDrawable() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getVerticalScrollbarTrackDrawable,
-        jni.JniCallType.objectType, []).object);
+    return _id_getVerticalScrollbarTrackDrawable(
+        this, const jni.JObjectType(), []);
   }
 
-  static final _id_getHorizontalScrollbarThumbDrawable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getHorizontalScrollbarThumbDrawable",
-          r"()Landroid/graphics/drawable/Drawable;");
+  static final _id_getHorizontalScrollbarThumbDrawable =
+      _class.instanceMethodId(
+    r"getHorizontalScrollbarThumbDrawable",
+    r"()Landroid/graphics/drawable/Drawable;",
+  );
 
   /// from: public android.graphics.drawable.Drawable getHorizontalScrollbarThumbDrawable()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getHorizontalScrollbarThumbDrawable() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getHorizontalScrollbarThumbDrawable,
-        jni.JniCallType.objectType, []).object);
+    return _id_getHorizontalScrollbarThumbDrawable(
+        this, const jni.JObjectType(), []);
   }
 
-  static final _id_getHorizontalScrollbarTrackDrawable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getHorizontalScrollbarTrackDrawable",
-          r"()Landroid/graphics/drawable/Drawable;");
+  static final _id_getHorizontalScrollbarTrackDrawable =
+      _class.instanceMethodId(
+    r"getHorizontalScrollbarTrackDrawable",
+    r"()Landroid/graphics/drawable/Drawable;",
+  );
 
   /// from: public android.graphics.drawable.Drawable getHorizontalScrollbarTrackDrawable()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getHorizontalScrollbarTrackDrawable() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getHorizontalScrollbarTrackDrawable,
-        jni.JniCallType.objectType, []).object);
+    return _id_getHorizontalScrollbarTrackDrawable(
+        this, const jni.JObjectType(), []);
   }
 
-  static final _id_setVerticalScrollbarPosition = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"setVerticalScrollbarPosition", r"(I)V");
+  static final _id_setVerticalScrollbarPosition = _class.instanceMethodId(
+    r"setVerticalScrollbarPosition",
+    r"(I)V",
+  );
 
   /// from: public void setVerticalScrollbarPosition(int i)
   void setVerticalScrollbarPosition(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setVerticalScrollbarPosition,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setVerticalScrollbarPosition(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getVerticalScrollbarPosition = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getVerticalScrollbarPosition", r"()I");
+  static final _id_getVerticalScrollbarPosition = _class.instanceMethodId(
+    r"getVerticalScrollbarPosition",
+    r"()I",
+  );
 
   /// from: public int getVerticalScrollbarPosition()
   int getVerticalScrollbarPosition() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getVerticalScrollbarPosition, jni.JniCallType.intType, []).integer;
+    return _id_getVerticalScrollbarPosition(this, const jni.jintType(), []);
   }
 
-  static final _id_setScrollIndicators = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setScrollIndicators", r"(I)V");
+  static final _id_setScrollIndicators = _class.instanceMethodId(
+    r"setScrollIndicators",
+    r"(I)V",
+  );
 
   /// from: public void setScrollIndicators(int i)
   void setScrollIndicators(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setScrollIndicators,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setScrollIndicators(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_setScrollIndicators1 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setScrollIndicators", r"(II)V");
+  static final _id_setScrollIndicators1 = _class.instanceMethodId(
+    r"setScrollIndicators",
+    r"(II)V",
+  );
 
   /// from: public void setScrollIndicators(int i, int i1)
   void setScrollIndicators1(
     int i,
     int i1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setScrollIndicators1,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i), jni.JValueInt(i1)]).check();
+    _id_setScrollIndicators1(
+        this, const jni.jvoidType(), [jni.JValueInt(i), jni.JValueInt(i1)]);
   }
 
-  static final _id_getScrollIndicators = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getScrollIndicators", r"()I");
+  static final _id_getScrollIndicators = _class.instanceMethodId(
+    r"getScrollIndicators",
+    r"()I",
+  );
 
   /// from: public int getScrollIndicators()
   int getScrollIndicators() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getScrollIndicators, jni.JniCallType.intType, []).integer;
+    return _id_getScrollIndicators(this, const jni.jintType(), []);
   }
 
-  static final _id_setOnScrollChangeListener = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setOnScrollChangeListener",
-      r"(Landroid/view/View$OnScrollChangeListener;)V");
+  static final _id_setOnScrollChangeListener = _class.instanceMethodId(
+    r"setOnScrollChangeListener",
+    r"(Landroid/view/View$OnScrollChangeListener;)V",
+  );
 
   /// from: public void setOnScrollChangeListener(android.view.View$OnScrollChangeListener onScrollChangeListener)
   void setOnScrollChangeListener(
     View_OnScrollChangeListener onScrollChangeListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setOnScrollChangeListener,
-        jni.JniCallType.voidType,
-        [onScrollChangeListener.reference]).check();
+    _id_setOnScrollChangeListener(this, const jni.jvoidType(),
+        [onScrollChangeListener.reference.pointer]);
   }
 
-  static final _id_setOnFocusChangeListener = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setOnFocusChangeListener",
-      r"(Landroid/view/View$OnFocusChangeListener;)V");
+  static final _id_setOnFocusChangeListener = _class.instanceMethodId(
+    r"setOnFocusChangeListener",
+    r"(Landroid/view/View$OnFocusChangeListener;)V",
+  );
 
   /// from: public void setOnFocusChangeListener(android.view.View$OnFocusChangeListener onFocusChangeListener)
   void setOnFocusChangeListener(
     View_OnFocusChangeListener onFocusChangeListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setOnFocusChangeListener,
-        jni.JniCallType.voidType,
-        [onFocusChangeListener.reference]).check();
+    _id_setOnFocusChangeListener(
+        this, const jni.jvoidType(), [onFocusChangeListener.reference.pointer]);
   }
 
-  static final _id_addOnLayoutChangeListener = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"addOnLayoutChangeListener",
-      r"(Landroid/view/View$OnLayoutChangeListener;)V");
+  static final _id_addOnLayoutChangeListener = _class.instanceMethodId(
+    r"addOnLayoutChangeListener",
+    r"(Landroid/view/View$OnLayoutChangeListener;)V",
+  );
 
   /// from: public void addOnLayoutChangeListener(android.view.View$OnLayoutChangeListener onLayoutChangeListener)
   void addOnLayoutChangeListener(
     View_OnLayoutChangeListener onLayoutChangeListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_addOnLayoutChangeListener,
-        jni.JniCallType.voidType,
-        [onLayoutChangeListener.reference]).check();
+    _id_addOnLayoutChangeListener(this, const jni.jvoidType(),
+        [onLayoutChangeListener.reference.pointer]);
   }
 
-  static final _id_removeOnLayoutChangeListener = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"removeOnLayoutChangeListener",
-          r"(Landroid/view/View$OnLayoutChangeListener;)V");
+  static final _id_removeOnLayoutChangeListener = _class.instanceMethodId(
+    r"removeOnLayoutChangeListener",
+    r"(Landroid/view/View$OnLayoutChangeListener;)V",
+  );
 
   /// from: public void removeOnLayoutChangeListener(android.view.View$OnLayoutChangeListener onLayoutChangeListener)
   void removeOnLayoutChangeListener(
     View_OnLayoutChangeListener onLayoutChangeListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_removeOnLayoutChangeListener,
-        jni.JniCallType.voidType,
-        [onLayoutChangeListener.reference]).check();
+    _id_removeOnLayoutChangeListener(this, const jni.jvoidType(),
+        [onLayoutChangeListener.reference.pointer]);
   }
 
-  static final _id_addOnAttachStateChangeListener = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"addOnAttachStateChangeListener",
-          r"(Landroid/view/View$OnAttachStateChangeListener;)V");
+  static final _id_addOnAttachStateChangeListener = _class.instanceMethodId(
+    r"addOnAttachStateChangeListener",
+    r"(Landroid/view/View$OnAttachStateChangeListener;)V",
+  );
 
   /// from: public void addOnAttachStateChangeListener(android.view.View$OnAttachStateChangeListener onAttachStateChangeListener)
   void addOnAttachStateChangeListener(
     View_OnAttachStateChangeListener onAttachStateChangeListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_addOnAttachStateChangeListener,
-        jni.JniCallType.voidType,
-        [onAttachStateChangeListener.reference]).check();
+    _id_addOnAttachStateChangeListener(this, const jni.jvoidType(),
+        [onAttachStateChangeListener.reference.pointer]);
   }
 
-  static final _id_removeOnAttachStateChangeListener = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"removeOnAttachStateChangeListener",
-          r"(Landroid/view/View$OnAttachStateChangeListener;)V");
+  static final _id_removeOnAttachStateChangeListener = _class.instanceMethodId(
+    r"removeOnAttachStateChangeListener",
+    r"(Landroid/view/View$OnAttachStateChangeListener;)V",
+  );
 
   /// from: public void removeOnAttachStateChangeListener(android.view.View$OnAttachStateChangeListener onAttachStateChangeListener)
   void removeOnAttachStateChangeListener(
     View_OnAttachStateChangeListener onAttachStateChangeListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_removeOnAttachStateChangeListener,
-        jni.JniCallType.voidType,
-        [onAttachStateChangeListener.reference]).check();
+    _id_removeOnAttachStateChangeListener(this, const jni.jvoidType(),
+        [onAttachStateChangeListener.reference.pointer]);
   }
 
-  static final _id_getOnFocusChangeListener = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getOnFocusChangeListener",
-      r"()Landroid/view/View$OnFocusChangeListener;");
+  static final _id_getOnFocusChangeListener = _class.instanceMethodId(
+    r"getOnFocusChangeListener",
+    r"()Landroid/view/View$OnFocusChangeListener;",
+  );
 
   /// from: public android.view.View$OnFocusChangeListener getOnFocusChangeListener()
   /// The returned object must be released after use, by calling the [release] method.
   View_OnFocusChangeListener getOnFocusChangeListener() {
-    return const $View_OnFocusChangeListenerType().fromRef(jni.Jni.accessors
-        .callMethodWithArgs(reference, _id_getOnFocusChangeListener,
-            jni.JniCallType.objectType, []).object);
+    return _id_getOnFocusChangeListener(
+        this, const $View_OnFocusChangeListenerType(), []);
   }
 
-  static final _id_setOnClickListener = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setOnClickListener",
-      r"(Landroid/view/View$OnClickListener;)V");
+  static final _id_setOnClickListener = _class.instanceMethodId(
+    r"setOnClickListener",
+    r"(Landroid/view/View$OnClickListener;)V",
+  );
 
   /// from: public void setOnClickListener(android.view.View$OnClickListener onClickListener)
   void setOnClickListener(
     View_OnClickListener onClickListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setOnClickListener,
-        jni.JniCallType.voidType,
-        [onClickListener.reference]).check();
+    _id_setOnClickListener(
+        this, const jni.jvoidType(), [onClickListener.reference.pointer]);
   }
 
-  static final _id_hasOnClickListeners = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"hasOnClickListeners", r"()Z");
+  static final _id_hasOnClickListeners = _class.instanceMethodId(
+    r"hasOnClickListeners",
+    r"()Z",
+  );
 
   /// from: public boolean hasOnClickListeners()
   bool hasOnClickListeners() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_hasOnClickListeners, jni.JniCallType.booleanType, []).boolean;
+    return _id_hasOnClickListeners(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setOnLongClickListener = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setOnLongClickListener",
-      r"(Landroid/view/View$OnLongClickListener;)V");
+  static final _id_setOnLongClickListener = _class.instanceMethodId(
+    r"setOnLongClickListener",
+    r"(Landroid/view/View$OnLongClickListener;)V",
+  );
 
   /// from: public void setOnLongClickListener(android.view.View$OnLongClickListener onLongClickListener)
   void setOnLongClickListener(
     View_OnLongClickListener onLongClickListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setOnLongClickListener,
-        jni.JniCallType.voidType,
-        [onLongClickListener.reference]).check();
+    _id_setOnLongClickListener(
+        this, const jni.jvoidType(), [onLongClickListener.reference.pointer]);
   }
 
-  static final _id_hasOnLongClickListeners = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"hasOnLongClickListeners", r"()Z");
+  static final _id_hasOnLongClickListeners = _class.instanceMethodId(
+    r"hasOnLongClickListeners",
+    r"()Z",
+  );
 
   /// from: public boolean hasOnLongClickListeners()
   bool hasOnLongClickListeners() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_hasOnLongClickListeners, jni.JniCallType.booleanType, []).boolean;
+    return _id_hasOnLongClickListeners(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setOnContextClickListener = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setOnContextClickListener",
-      r"(Landroid/view/View$OnContextClickListener;)V");
+  static final _id_setOnContextClickListener = _class.instanceMethodId(
+    r"setOnContextClickListener",
+    r"(Landroid/view/View$OnContextClickListener;)V",
+  );
 
   /// from: public void setOnContextClickListener(android.view.View$OnContextClickListener onContextClickListener)
   void setOnContextClickListener(
     View_OnContextClickListener onContextClickListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setOnContextClickListener,
-        jni.JniCallType.voidType,
-        [onContextClickListener.reference]).check();
+    _id_setOnContextClickListener(this, const jni.jvoidType(),
+        [onContextClickListener.reference.pointer]);
   }
 
-  static final _id_setOnCreateContextMenuListener = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setOnCreateContextMenuListener",
-          r"(Landroid/view/View$OnCreateContextMenuListener;)V");
+  static final _id_setOnCreateContextMenuListener = _class.instanceMethodId(
+    r"setOnCreateContextMenuListener",
+    r"(Landroid/view/View$OnCreateContextMenuListener;)V",
+  );
 
   /// from: public void setOnCreateContextMenuListener(android.view.View$OnCreateContextMenuListener onCreateContextMenuListener)
   void setOnCreateContextMenuListener(
     View_OnCreateContextMenuListener onCreateContextMenuListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setOnCreateContextMenuListener,
-        jni.JniCallType.voidType,
-        [onCreateContextMenuListener.reference]).check();
+    _id_setOnCreateContextMenuListener(this, const jni.jvoidType(),
+        [onCreateContextMenuListener.reference.pointer]);
   }
 
-  static final _id_performClick = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"performClick", r"()Z");
+  static final _id_performClick = _class.instanceMethodId(
+    r"performClick",
+    r"()Z",
+  );
 
   /// from: public boolean performClick()
   bool performClick() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_performClick, jni.JniCallType.booleanType, []).boolean;
+    return _id_performClick(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_callOnClick =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"callOnClick", r"()Z");
+  static final _id_callOnClick = _class.instanceMethodId(
+    r"callOnClick",
+    r"()Z",
+  );
 
   /// from: public boolean callOnClick()
   bool callOnClick() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_callOnClick, jni.JniCallType.booleanType, []).boolean;
+    return _id_callOnClick(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_performLongClick = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"performLongClick", r"()Z");
+  static final _id_performLongClick = _class.instanceMethodId(
+    r"performLongClick",
+    r"()Z",
+  );
 
   /// from: public boolean performLongClick()
   bool performLongClick() {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_performLongClick,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_performLongClick(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_performLongClick1 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"performLongClick", r"(FF)Z");
+  static final _id_performLongClick1 = _class.instanceMethodId(
+    r"performLongClick",
+    r"(FF)Z",
+  );
 
   /// from: public boolean performLongClick(float f, float f1)
   bool performLongClick1(
     double f,
     double f1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_performLongClick1,
-        jni.JniCallType.booleanType,
-        [jni.JValueFloat(f), jni.JValueFloat(f1)]).boolean;
+    return _id_performLongClick1(this, const jni.jbooleanType(),
+        [jni.JValueFloat(f), jni.JValueFloat(f1)]);
   }
 
-  static final _id_performContextClick = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"performContextClick", r"(FF)Z");
+  static final _id_performContextClick = _class.instanceMethodId(
+    r"performContextClick",
+    r"(FF)Z",
+  );
 
   /// from: public boolean performContextClick(float f, float f1)
   bool performContextClick(
     double f,
     double f1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_performContextClick,
-        jni.JniCallType.booleanType,
-        [jni.JValueFloat(f), jni.JValueFloat(f1)]).boolean;
+    return _id_performContextClick(this, const jni.jbooleanType(),
+        [jni.JValueFloat(f), jni.JValueFloat(f1)]);
   }
 
-  static final _id_performContextClick1 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"performContextClick", r"()Z");
+  static final _id_performContextClick1 = _class.instanceMethodId(
+    r"performContextClick",
+    r"()Z",
+  );
 
   /// from: public boolean performContextClick()
   bool performContextClick1() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_performContextClick1, jni.JniCallType.booleanType, []).boolean;
+    return _id_performContextClick1(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_showContextMenu = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"showContextMenu", r"()Z");
+  static final _id_showContextMenu = _class.instanceMethodId(
+    r"showContextMenu",
+    r"()Z",
+  );
 
   /// from: public boolean showContextMenu()
   bool showContextMenu() {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_showContextMenu,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_showContextMenu(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_showContextMenu1 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"showContextMenu", r"(FF)Z");
+  static final _id_showContextMenu1 = _class.instanceMethodId(
+    r"showContextMenu",
+    r"(FF)Z",
+  );
 
   /// from: public boolean showContextMenu(float f, float f1)
   bool showContextMenu1(
     double f,
     double f1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_showContextMenu1,
-        jni.JniCallType.booleanType,
-        [jni.JValueFloat(f), jni.JValueFloat(f1)]).boolean;
+    return _id_showContextMenu1(this, const jni.jbooleanType(),
+        [jni.JValueFloat(f), jni.JValueFloat(f1)]);
   }
 
-  static final _id_startActionMode = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"startActionMode",
-      r"(Landroid/view/ActionMode$Callback;)Landroid/view/ActionMode;");
+  static final _id_startActionMode = _class.instanceMethodId(
+    r"startActionMode",
+    r"(Landroid/view/ActionMode$Callback;)Landroid/view/ActionMode;",
+  );
 
   /// from: public android.view.ActionMode startActionMode(android.view.ActionMode$Callback callback)
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject startActionMode(
     jni.JObject callback,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_startActionMode,
-        jni.JniCallType.objectType,
-        [callback.reference]).object);
+    return _id_startActionMode(
+        this, const jni.JObjectType(), [callback.reference.pointer]);
   }
 
-  static final _id_startActionMode1 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"startActionMode",
-      r"(Landroid/view/ActionMode$Callback;I)Landroid/view/ActionMode;");
+  static final _id_startActionMode1 = _class.instanceMethodId(
+    r"startActionMode",
+    r"(Landroid/view/ActionMode$Callback;I)Landroid/view/ActionMode;",
+  );
 
   /// from: public android.view.ActionMode startActionMode(android.view.ActionMode$Callback callback, int i)
   /// The returned object must be released after use, by calling the [release] method.
@@ -9645,184 +9301,168 @@ class View extends jni.JObject {
     jni.JObject callback,
     int i,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_startActionMode1,
-        jni.JniCallType.objectType,
-        [callback.reference, jni.JValueInt(i)]).object);
+    return _id_startActionMode1(this, const jni.JObjectType(),
+        [callback.reference.pointer, jni.JValueInt(i)]);
   }
 
-  static final _id_setOnKeyListener = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setOnKeyListener",
-      r"(Landroid/view/View$OnKeyListener;)V");
+  static final _id_setOnKeyListener = _class.instanceMethodId(
+    r"setOnKeyListener",
+    r"(Landroid/view/View$OnKeyListener;)V",
+  );
 
   /// from: public void setOnKeyListener(android.view.View$OnKeyListener onKeyListener)
   void setOnKeyListener(
     View_OnKeyListener onKeyListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setOnKeyListener,
-        jni.JniCallType.voidType, [onKeyListener.reference]).check();
+    _id_setOnKeyListener(
+        this, const jni.jvoidType(), [onKeyListener.reference.pointer]);
   }
 
-  static final _id_setOnTouchListener = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setOnTouchListener",
-      r"(Landroid/view/View$OnTouchListener;)V");
+  static final _id_setOnTouchListener = _class.instanceMethodId(
+    r"setOnTouchListener",
+    r"(Landroid/view/View$OnTouchListener;)V",
+  );
 
   /// from: public void setOnTouchListener(android.view.View$OnTouchListener onTouchListener)
   void setOnTouchListener(
     View_OnTouchListener onTouchListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setOnTouchListener,
-        jni.JniCallType.voidType,
-        [onTouchListener.reference]).check();
+    _id_setOnTouchListener(
+        this, const jni.jvoidType(), [onTouchListener.reference.pointer]);
   }
 
-  static final _id_setOnGenericMotionListener = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setOnGenericMotionListener",
-      r"(Landroid/view/View$OnGenericMotionListener;)V");
+  static final _id_setOnGenericMotionListener = _class.instanceMethodId(
+    r"setOnGenericMotionListener",
+    r"(Landroid/view/View$OnGenericMotionListener;)V",
+  );
 
   /// from: public void setOnGenericMotionListener(android.view.View$OnGenericMotionListener onGenericMotionListener)
   void setOnGenericMotionListener(
     View_OnGenericMotionListener onGenericMotionListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setOnGenericMotionListener,
-        jni.JniCallType.voidType,
-        [onGenericMotionListener.reference]).check();
+    _id_setOnGenericMotionListener(this, const jni.jvoidType(),
+        [onGenericMotionListener.reference.pointer]);
   }
 
-  static final _id_setOnHoverListener = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setOnHoverListener",
-      r"(Landroid/view/View$OnHoverListener;)V");
+  static final _id_setOnHoverListener = _class.instanceMethodId(
+    r"setOnHoverListener",
+    r"(Landroid/view/View$OnHoverListener;)V",
+  );
 
   /// from: public void setOnHoverListener(android.view.View$OnHoverListener onHoverListener)
   void setOnHoverListener(
     View_OnHoverListener onHoverListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setOnHoverListener,
-        jni.JniCallType.voidType,
-        [onHoverListener.reference]).check();
+    _id_setOnHoverListener(
+        this, const jni.jvoidType(), [onHoverListener.reference.pointer]);
   }
 
-  static final _id_setOnDragListener = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setOnDragListener",
-      r"(Landroid/view/View$OnDragListener;)V");
+  static final _id_setOnDragListener = _class.instanceMethodId(
+    r"setOnDragListener",
+    r"(Landroid/view/View$OnDragListener;)V",
+  );
 
   /// from: public void setOnDragListener(android.view.View$OnDragListener onDragListener)
   void setOnDragListener(
     View_OnDragListener onDragListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setOnDragListener,
-        jni.JniCallType.voidType,
-        [onDragListener.reference]).check();
+    _id_setOnDragListener(
+        this, const jni.jvoidType(), [onDragListener.reference.pointer]);
   }
 
-  static final _id_setRevealOnFocusHint = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setRevealOnFocusHint", r"(Z)V");
+  static final _id_setRevealOnFocusHint = _class.instanceMethodId(
+    r"setRevealOnFocusHint",
+    r"(Z)V",
+  );
 
   /// from: public final void setRevealOnFocusHint(boolean z)
   void setRevealOnFocusHint(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setRevealOnFocusHint,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setRevealOnFocusHint(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_getRevealOnFocusHint = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getRevealOnFocusHint", r"()Z");
+  static final _id_getRevealOnFocusHint = _class.instanceMethodId(
+    r"getRevealOnFocusHint",
+    r"()Z",
+  );
 
   /// from: public final boolean getRevealOnFocusHint()
   bool getRevealOnFocusHint() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getRevealOnFocusHint, jni.JniCallType.booleanType, []).boolean;
+    return _id_getRevealOnFocusHint(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_requestRectangleOnScreen = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"requestRectangleOnScreen",
-      r"(Landroid/graphics/Rect;)Z");
+  static final _id_requestRectangleOnScreen = _class.instanceMethodId(
+    r"requestRectangleOnScreen",
+    r"(Landroid/graphics/Rect;)Z",
+  );
 
   /// from: public boolean requestRectangleOnScreen(android.graphics.Rect rect)
   bool requestRectangleOnScreen(
     jni.JObject rect,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_requestRectangleOnScreen,
-        jni.JniCallType.booleanType,
-        [rect.reference]).boolean;
+    return _id_requestRectangleOnScreen(
+        this, const jni.jbooleanType(), [rect.reference.pointer]);
   }
 
-  static final _id_requestRectangleOnScreen1 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"requestRectangleOnScreen",
-      r"(Landroid/graphics/Rect;Z)Z");
+  static final _id_requestRectangleOnScreen1 = _class.instanceMethodId(
+    r"requestRectangleOnScreen",
+    r"(Landroid/graphics/Rect;Z)Z",
+  );
 
   /// from: public boolean requestRectangleOnScreen(android.graphics.Rect rect, boolean z)
   bool requestRectangleOnScreen1(
     jni.JObject rect,
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_requestRectangleOnScreen1,
-        jni.JniCallType.booleanType,
-        [rect.reference, z ? 1 : 0]).boolean;
+    return _id_requestRectangleOnScreen1(
+        this, const jni.jbooleanType(), [rect.reference.pointer, z ? 1 : 0]);
   }
 
-  static final _id_clearFocus =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"clearFocus", r"()V");
+  static final _id_clearFocus = _class.instanceMethodId(
+    r"clearFocus",
+    r"()V",
+  );
 
   /// from: public void clearFocus()
   void clearFocus() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_clearFocus, jni.JniCallType.voidType, []).check();
+    _id_clearFocus(this, const jni.jvoidType(), []);
   }
 
-  static final _id_hasFocus =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"hasFocus", r"()Z");
+  static final _id_hasFocus = _class.instanceMethodId(
+    r"hasFocus",
+    r"()Z",
+  );
 
   /// from: public boolean hasFocus()
   bool hasFocus() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_hasFocus, jni.JniCallType.booleanType, []).boolean;
+    return _id_hasFocus(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_hasFocusable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"hasFocusable", r"()Z");
+  static final _id_hasFocusable = _class.instanceMethodId(
+    r"hasFocusable",
+    r"()Z",
+  );
 
   /// from: public boolean hasFocusable()
   bool hasFocusable() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_hasFocusable, jni.JniCallType.booleanType, []).boolean;
+    return _id_hasFocusable(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_hasExplicitFocusable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"hasExplicitFocusable", r"()Z");
+  static final _id_hasExplicitFocusable = _class.instanceMethodId(
+    r"hasExplicitFocusable",
+    r"()Z",
+  );
 
   /// from: public boolean hasExplicitFocusable()
   bool hasExplicitFocusable() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_hasExplicitFocusable, jni.JniCallType.booleanType, []).boolean;
+    return _id_hasExplicitFocusable(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_onFocusChanged = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onFocusChanged", r"(ZILandroid/graphics/Rect;)V");
+  static final _id_onFocusChanged = _class.instanceMethodId(
+    r"onFocusChanged",
+    r"(ZILandroid/graphics/Rect;)V",
+  );
 
   /// from: protected void onFocusChanged(boolean z, int i, android.graphics.Rect rect)
   void onFocusChanged(
@@ -9830,533 +9470,474 @@ class View extends jni.JObject {
     int i,
     jni.JObject rect,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onFocusChanged,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0, jni.JValueInt(i), rect.reference]).check();
+    _id_onFocusChanged(this, const jni.jvoidType(),
+        [z ? 1 : 0, jni.JValueInt(i), rect.reference.pointer]);
   }
 
-  static final _id_setAccessibilityPaneTitle = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setAccessibilityPaneTitle",
-      r"(Ljava/lang/CharSequence;)V");
+  static final _id_setAccessibilityPaneTitle = _class.instanceMethodId(
+    r"setAccessibilityPaneTitle",
+    r"(Ljava/lang/CharSequence;)V",
+  );
 
   /// from: public void setAccessibilityPaneTitle(java.lang.CharSequence charSequence)
   void setAccessibilityPaneTitle(
     jni.JObject charSequence,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setAccessibilityPaneTitle,
-        jni.JniCallType.voidType,
-        [charSequence.reference]).check();
+    _id_setAccessibilityPaneTitle(
+        this, const jni.jvoidType(), [charSequence.reference.pointer]);
   }
 
-  static final _id_getAccessibilityPaneTitle = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getAccessibilityPaneTitle",
-      r"()Ljava/lang/CharSequence;");
+  static final _id_getAccessibilityPaneTitle = _class.instanceMethodId(
+    r"getAccessibilityPaneTitle",
+    r"()Ljava/lang/CharSequence;",
+  );
 
   /// from: public java.lang.CharSequence getAccessibilityPaneTitle()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getAccessibilityPaneTitle() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getAccessibilityPaneTitle,
-        jni.JniCallType.objectType, []).object);
+    return _id_getAccessibilityPaneTitle(this, const jni.JObjectType(), []);
   }
 
-  static final _id_sendAccessibilityEvent = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"sendAccessibilityEvent", r"(I)V");
+  static final _id_sendAccessibilityEvent = _class.instanceMethodId(
+    r"sendAccessibilityEvent",
+    r"(I)V",
+  );
 
   /// from: public void sendAccessibilityEvent(int i)
   void sendAccessibilityEvent(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_sendAccessibilityEvent,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_sendAccessibilityEvent(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_announceForAccessibility = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"announceForAccessibility",
-      r"(Ljava/lang/CharSequence;)V");
+  static final _id_announceForAccessibility = _class.instanceMethodId(
+    r"announceForAccessibility",
+    r"(Ljava/lang/CharSequence;)V",
+  );
 
   /// from: public void announceForAccessibility(java.lang.CharSequence charSequence)
   void announceForAccessibility(
     jni.JObject charSequence,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_announceForAccessibility,
-        jni.JniCallType.voidType,
-        [charSequence.reference]).check();
+    _id_announceForAccessibility(
+        this, const jni.jvoidType(), [charSequence.reference.pointer]);
   }
 
-  static final _id_sendAccessibilityEventUnchecked = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"sendAccessibilityEventUnchecked",
-          r"(Landroid/view/accessibility/AccessibilityEvent;)V");
+  static final _id_sendAccessibilityEventUnchecked = _class.instanceMethodId(
+    r"sendAccessibilityEventUnchecked",
+    r"(Landroid/view/accessibility/AccessibilityEvent;)V",
+  );
 
   /// from: public void sendAccessibilityEventUnchecked(android.view.accessibility.AccessibilityEvent accessibilityEvent)
   void sendAccessibilityEventUnchecked(
     jni.JObject accessibilityEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_sendAccessibilityEventUnchecked,
-        jni.JniCallType.voidType,
-        [accessibilityEvent.reference]).check();
+    _id_sendAccessibilityEventUnchecked(
+        this, const jni.jvoidType(), [accessibilityEvent.reference.pointer]);
   }
 
-  static final _id_dispatchPopulateAccessibilityEvent = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchPopulateAccessibilityEvent",
-          r"(Landroid/view/accessibility/AccessibilityEvent;)Z");
+  static final _id_dispatchPopulateAccessibilityEvent = _class.instanceMethodId(
+    r"dispatchPopulateAccessibilityEvent",
+    r"(Landroid/view/accessibility/AccessibilityEvent;)Z",
+  );
 
   /// from: public boolean dispatchPopulateAccessibilityEvent(android.view.accessibility.AccessibilityEvent accessibilityEvent)
   bool dispatchPopulateAccessibilityEvent(
     jni.JObject accessibilityEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchPopulateAccessibilityEvent,
-        jni.JniCallType.booleanType,
-        [accessibilityEvent.reference]).boolean;
+    return _id_dispatchPopulateAccessibilityEvent(
+        this, const jni.jbooleanType(), [accessibilityEvent.reference.pointer]);
   }
 
-  static final _id_onPopulateAccessibilityEvent = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onPopulateAccessibilityEvent",
-          r"(Landroid/view/accessibility/AccessibilityEvent;)V");
+  static final _id_onPopulateAccessibilityEvent = _class.instanceMethodId(
+    r"onPopulateAccessibilityEvent",
+    r"(Landroid/view/accessibility/AccessibilityEvent;)V",
+  );
 
   /// from: public void onPopulateAccessibilityEvent(android.view.accessibility.AccessibilityEvent accessibilityEvent)
   void onPopulateAccessibilityEvent(
     jni.JObject accessibilityEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onPopulateAccessibilityEvent,
-        jni.JniCallType.voidType,
-        [accessibilityEvent.reference]).check();
+    _id_onPopulateAccessibilityEvent(
+        this, const jni.jvoidType(), [accessibilityEvent.reference.pointer]);
   }
 
-  static final _id_onInitializeAccessibilityEvent = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onInitializeAccessibilityEvent",
-          r"(Landroid/view/accessibility/AccessibilityEvent;)V");
+  static final _id_onInitializeAccessibilityEvent = _class.instanceMethodId(
+    r"onInitializeAccessibilityEvent",
+    r"(Landroid/view/accessibility/AccessibilityEvent;)V",
+  );
 
   /// from: public void onInitializeAccessibilityEvent(android.view.accessibility.AccessibilityEvent accessibilityEvent)
   void onInitializeAccessibilityEvent(
     jni.JObject accessibilityEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onInitializeAccessibilityEvent,
-        jni.JniCallType.voidType,
-        [accessibilityEvent.reference]).check();
+    _id_onInitializeAccessibilityEvent(
+        this, const jni.jvoidType(), [accessibilityEvent.reference.pointer]);
   }
 
-  static final _id_createAccessibilityNodeInfo = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"createAccessibilityNodeInfo",
-          r"()Landroid/view/accessibility/AccessibilityNodeInfo;");
+  static final _id_createAccessibilityNodeInfo = _class.instanceMethodId(
+    r"createAccessibilityNodeInfo",
+    r"()Landroid/view/accessibility/AccessibilityNodeInfo;",
+  );
 
   /// from: public android.view.accessibility.AccessibilityNodeInfo createAccessibilityNodeInfo()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject createAccessibilityNodeInfo() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_createAccessibilityNodeInfo,
-        jni.JniCallType.objectType, []).object);
+    return _id_createAccessibilityNodeInfo(this, const jni.JObjectType(), []);
   }
 
-  static final _id_onInitializeAccessibilityNodeInfo = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onInitializeAccessibilityNodeInfo",
-          r"(Landroid/view/accessibility/AccessibilityNodeInfo;)V");
+  static final _id_onInitializeAccessibilityNodeInfo = _class.instanceMethodId(
+    r"onInitializeAccessibilityNodeInfo",
+    r"(Landroid/view/accessibility/AccessibilityNodeInfo;)V",
+  );
 
   /// from: public void onInitializeAccessibilityNodeInfo(android.view.accessibility.AccessibilityNodeInfo accessibilityNodeInfo)
   void onInitializeAccessibilityNodeInfo(
     jni.JObject accessibilityNodeInfo,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onInitializeAccessibilityNodeInfo,
-        jni.JniCallType.voidType,
-        [accessibilityNodeInfo.reference]).check();
+    _id_onInitializeAccessibilityNodeInfo(
+        this, const jni.jvoidType(), [accessibilityNodeInfo.reference.pointer]);
   }
 
-  static final _id_getAccessibilityClassName = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getAccessibilityClassName",
-      r"()Ljava/lang/CharSequence;");
+  static final _id_getAccessibilityClassName = _class.instanceMethodId(
+    r"getAccessibilityClassName",
+    r"()Ljava/lang/CharSequence;",
+  );
 
   /// from: public java.lang.CharSequence getAccessibilityClassName()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getAccessibilityClassName() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getAccessibilityClassName,
-        jni.JniCallType.objectType, []).object);
+    return _id_getAccessibilityClassName(this, const jni.JObjectType(), []);
   }
 
-  static final _id_onProvideStructure = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onProvideStructure",
-      r"(Landroid/view/ViewStructure;)V");
+  static final _id_onProvideStructure = _class.instanceMethodId(
+    r"onProvideStructure",
+    r"(Landroid/view/ViewStructure;)V",
+  );
 
   /// from: public void onProvideStructure(android.view.ViewStructure viewStructure)
   void onProvideStructure(
     jni.JObject viewStructure,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onProvideStructure,
-        jni.JniCallType.voidType,
-        [viewStructure.reference]).check();
+    _id_onProvideStructure(
+        this, const jni.jvoidType(), [viewStructure.reference.pointer]);
   }
 
-  static final _id_onProvideAutofillStructure = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onProvideAutofillStructure",
-      r"(Landroid/view/ViewStructure;I)V");
+  static final _id_onProvideAutofillStructure = _class.instanceMethodId(
+    r"onProvideAutofillStructure",
+    r"(Landroid/view/ViewStructure;I)V",
+  );
 
   /// from: public void onProvideAutofillStructure(android.view.ViewStructure viewStructure, int i)
   void onProvideAutofillStructure(
     jni.JObject viewStructure,
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onProvideAutofillStructure,
-        jni.JniCallType.voidType,
-        [viewStructure.reference, jni.JValueInt(i)]).check();
+    _id_onProvideAutofillStructure(this, const jni.jvoidType(),
+        [viewStructure.reference.pointer, jni.JValueInt(i)]);
   }
 
-  static final _id_onProvideContentCaptureStructure = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onProvideContentCaptureStructure",
-          r"(Landroid/view/ViewStructure;I)V");
+  static final _id_onProvideContentCaptureStructure = _class.instanceMethodId(
+    r"onProvideContentCaptureStructure",
+    r"(Landroid/view/ViewStructure;I)V",
+  );
 
   /// from: public void onProvideContentCaptureStructure(android.view.ViewStructure viewStructure, int i)
   void onProvideContentCaptureStructure(
     jni.JObject viewStructure,
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onProvideContentCaptureStructure,
-        jni.JniCallType.voidType,
-        [viewStructure.reference, jni.JValueInt(i)]).check();
+    _id_onProvideContentCaptureStructure(this, const jni.jvoidType(),
+        [viewStructure.reference.pointer, jni.JValueInt(i)]);
   }
 
-  static final _id_onProvideVirtualStructure = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onProvideVirtualStructure",
-      r"(Landroid/view/ViewStructure;)V");
+  static final _id_onProvideVirtualStructure = _class.instanceMethodId(
+    r"onProvideVirtualStructure",
+    r"(Landroid/view/ViewStructure;)V",
+  );
 
   /// from: public void onProvideVirtualStructure(android.view.ViewStructure viewStructure)
   void onProvideVirtualStructure(
     jni.JObject viewStructure,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onProvideVirtualStructure,
-        jni.JniCallType.voidType,
-        [viewStructure.reference]).check();
+    _id_onProvideVirtualStructure(
+        this, const jni.jvoidType(), [viewStructure.reference.pointer]);
   }
 
-  static final _id_onProvideAutofillVirtualStructure = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onProvideAutofillVirtualStructure",
-          r"(Landroid/view/ViewStructure;I)V");
+  static final _id_onProvideAutofillVirtualStructure = _class.instanceMethodId(
+    r"onProvideAutofillVirtualStructure",
+    r"(Landroid/view/ViewStructure;I)V",
+  );
 
   /// from: public void onProvideAutofillVirtualStructure(android.view.ViewStructure viewStructure, int i)
   void onProvideAutofillVirtualStructure(
     jni.JObject viewStructure,
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onProvideAutofillVirtualStructure,
-        jni.JniCallType.voidType,
-        [viewStructure.reference, jni.JValueInt(i)]).check();
+    _id_onProvideAutofillVirtualStructure(this, const jni.jvoidType(),
+        [viewStructure.reference.pointer, jni.JValueInt(i)]);
   }
 
-  static final _id_setOnReceiveContentListener = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setOnReceiveContentListener",
-          r"([Ljava/lang/String;Landroid/view/OnReceiveContentListener;)V");
+  static final _id_setOnReceiveContentListener = _class.instanceMethodId(
+    r"setOnReceiveContentListener",
+    r"([Ljava/lang/String;Landroid/view/OnReceiveContentListener;)V",
+  );
 
   /// from: public void setOnReceiveContentListener(java.lang.String[] strings, android.view.OnReceiveContentListener onReceiveContentListener)
   void setOnReceiveContentListener(
     jni.JArray<jni.JString> strings,
     jni.JObject onReceiveContentListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setOnReceiveContentListener,
-        jni.JniCallType.voidType,
-        [strings.reference, onReceiveContentListener.reference]).check();
+    _id_setOnReceiveContentListener(this, const jni.jvoidType(), [
+      strings.reference.pointer,
+      onReceiveContentListener.reference.pointer
+    ]);
   }
 
-  static final _id_performReceiveContent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"performReceiveContent",
-      r"(Landroid/view/ContentInfo;)Landroid/view/ContentInfo;");
+  static final _id_performReceiveContent = _class.instanceMethodId(
+    r"performReceiveContent",
+    r"(Landroid/view/ContentInfo;)Landroid/view/ContentInfo;",
+  );
 
   /// from: public android.view.ContentInfo performReceiveContent(android.view.ContentInfo contentInfo)
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject performReceiveContent(
     jni.JObject contentInfo,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_performReceiveContent,
-        jni.JniCallType.objectType,
-        [contentInfo.reference]).object);
+    return _id_performReceiveContent(
+        this, const jni.JObjectType(), [contentInfo.reference.pointer]);
   }
 
-  static final _id_onReceiveContent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onReceiveContent",
-      r"(Landroid/view/ContentInfo;)Landroid/view/ContentInfo;");
+  static final _id_onReceiveContent = _class.instanceMethodId(
+    r"onReceiveContent",
+    r"(Landroid/view/ContentInfo;)Landroid/view/ContentInfo;",
+  );
 
   /// from: public android.view.ContentInfo onReceiveContent(android.view.ContentInfo contentInfo)
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject onReceiveContent(
     jni.JObject contentInfo,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onReceiveContent,
-        jni.JniCallType.objectType,
-        [contentInfo.reference]).object);
+    return _id_onReceiveContent(
+        this, const jni.JObjectType(), [contentInfo.reference.pointer]);
   }
 
-  static final _id_getReceiveContentMimeTypes = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getReceiveContentMimeTypes",
-      r"()[Ljava/lang/String;");
+  static final _id_getReceiveContentMimeTypes = _class.instanceMethodId(
+    r"getReceiveContentMimeTypes",
+    r"()[Ljava/lang/String;",
+  );
 
   /// from: public java.lang.String[] getReceiveContentMimeTypes()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JArray<jni.JString> getReceiveContentMimeTypes() {
-    return const jni.JArrayType(jni.JStringType()).fromRef(jni.Jni.accessors
-        .callMethodWithArgs(reference, _id_getReceiveContentMimeTypes,
-            jni.JniCallType.objectType, []).object);
+    return _id_getReceiveContentMimeTypes(
+        this, const jni.JArrayType(jni.JStringType()), []);
   }
 
-  static final _id_autofill = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"autofill", r"(Landroid/view/autofill/AutofillValue;)V");
+  static final _id_autofill = _class.instanceMethodId(
+    r"autofill",
+    r"(Landroid/view/autofill/AutofillValue;)V",
+  );
 
   /// from: public void autofill(android.view.autofill.AutofillValue autofillValue)
   void autofill(
     jni.JObject autofillValue,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_autofill,
-        jni.JniCallType.voidType, [autofillValue.reference]).check();
+    _id_autofill(
+        this, const jni.jvoidType(), [autofillValue.reference.pointer]);
   }
 
-  static final _id_autofill1 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"autofill", r"(Landroid/util/SparseArray;)V");
+  static final _id_autofill1 = _class.instanceMethodId(
+    r"autofill",
+    r"(Landroid/util/SparseArray;)V",
+  );
 
   /// from: public void autofill(android.util.SparseArray sparseArray)
   void autofill1(
     jni.JObject sparseArray,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_autofill1,
-        jni.JniCallType.voidType, [sparseArray.reference]).check();
+    _id_autofill1(this, const jni.jvoidType(), [sparseArray.reference.pointer]);
   }
 
-  static final _id_getAutofillId = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getAutofillId",
-      r"()Landroid/view/autofill/AutofillId;");
+  static final _id_getAutofillId = _class.instanceMethodId(
+    r"getAutofillId",
+    r"()Landroid/view/autofill/AutofillId;",
+  );
 
   /// from: public final android.view.autofill.AutofillId getAutofillId()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getAutofillId() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getAutofillId, jni.JniCallType.objectType, []).object);
+    return _id_getAutofillId(this, const jni.JObjectType(), []);
   }
 
-  static final _id_setAutofillId = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setAutofillId",
-      r"(Landroid/view/autofill/AutofillId;)V");
+  static final _id_setAutofillId = _class.instanceMethodId(
+    r"setAutofillId",
+    r"(Landroid/view/autofill/AutofillId;)V",
+  );
 
   /// from: public void setAutofillId(android.view.autofill.AutofillId autofillId)
   void setAutofillId(
     jni.JObject autofillId,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setAutofillId,
-        jni.JniCallType.voidType, [autofillId.reference]).check();
+    _id_setAutofillId(
+        this, const jni.jvoidType(), [autofillId.reference.pointer]);
   }
 
-  static final _id_getAutofillType = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getAutofillType", r"()I");
+  static final _id_getAutofillType = _class.instanceMethodId(
+    r"getAutofillType",
+    r"()I",
+  );
 
   /// from: public int getAutofillType()
   int getAutofillType() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getAutofillType, jni.JniCallType.intType, []).integer;
+    return _id_getAutofillType(this, const jni.jintType(), []);
   }
 
-  static final _id_getAutofillHints = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getAutofillHints", r"()[Ljava/lang/String;");
+  static final _id_getAutofillHints = _class.instanceMethodId(
+    r"getAutofillHints",
+    r"()[Ljava/lang/String;",
+  );
 
   /// from: public java.lang.String[] getAutofillHints()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JArray<jni.JString> getAutofillHints() {
-    return const jni.JArrayType(jni.JStringType()).fromRef(jni.Jni.accessors
-        .callMethodWithArgs(reference, _id_getAutofillHints,
-            jni.JniCallType.objectType, []).object);
+    return _id_getAutofillHints(
+        this, const jni.JArrayType(jni.JStringType()), []);
   }
 
-  static final _id_getAutofillValue = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getAutofillValue",
-      r"()Landroid/view/autofill/AutofillValue;");
+  static final _id_getAutofillValue = _class.instanceMethodId(
+    r"getAutofillValue",
+    r"()Landroid/view/autofill/AutofillValue;",
+  );
 
   /// from: public android.view.autofill.AutofillValue getAutofillValue()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getAutofillValue() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getAutofillValue,
-        jni.JniCallType.objectType, []).object);
+    return _id_getAutofillValue(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getImportantForAutofill = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getImportantForAutofill", r"()I");
+  static final _id_getImportantForAutofill = _class.instanceMethodId(
+    r"getImportantForAutofill",
+    r"()I",
+  );
 
   /// from: public int getImportantForAutofill()
   int getImportantForAutofill() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getImportantForAutofill, jni.JniCallType.intType, []).integer;
+    return _id_getImportantForAutofill(this, const jni.jintType(), []);
   }
 
-  static final _id_setImportantForAutofill = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setImportantForAutofill", r"(I)V");
+  static final _id_setImportantForAutofill = _class.instanceMethodId(
+    r"setImportantForAutofill",
+    r"(I)V",
+  );
 
   /// from: public void setImportantForAutofill(int i)
   void setImportantForAutofill(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setImportantForAutofill,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setImportantForAutofill(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_isImportantForAutofill = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isImportantForAutofill", r"()Z");
+  static final _id_isImportantForAutofill = _class.instanceMethodId(
+    r"isImportantForAutofill",
+    r"()Z",
+  );
 
   /// from: public final boolean isImportantForAutofill()
   bool isImportantForAutofill() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isImportantForAutofill, jni.JniCallType.booleanType, []).boolean;
+    return _id_isImportantForAutofill(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_getImportantForContentCapture = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"getImportantForContentCapture", r"()I");
+  static final _id_getImportantForContentCapture = _class.instanceMethodId(
+    r"getImportantForContentCapture",
+    r"()I",
+  );
 
   /// from: public int getImportantForContentCapture()
   int getImportantForContentCapture() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getImportantForContentCapture, jni.JniCallType.intType, []).integer;
+    return _id_getImportantForContentCapture(this, const jni.jintType(), []);
   }
 
-  static final _id_setImportantForContentCapture = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"setImportantForContentCapture", r"(I)V");
+  static final _id_setImportantForContentCapture = _class.instanceMethodId(
+    r"setImportantForContentCapture",
+    r"(I)V",
+  );
 
   /// from: public void setImportantForContentCapture(int i)
   void setImportantForContentCapture(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setImportantForContentCapture,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setImportantForContentCapture(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_isImportantForContentCapture = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isImportantForContentCapture", r"()Z");
+  static final _id_isImportantForContentCapture = _class.instanceMethodId(
+    r"isImportantForContentCapture",
+    r"()Z",
+  );
 
   /// from: public final boolean isImportantForContentCapture()
   bool isImportantForContentCapture() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_isImportantForContentCapture,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_isImportantForContentCapture(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setContentCaptureSession = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setContentCaptureSession",
-      r"(Landroid/view/contentcapture/ContentCaptureSession;)V");
+  static final _id_setContentCaptureSession = _class.instanceMethodId(
+    r"setContentCaptureSession",
+    r"(Landroid/view/contentcapture/ContentCaptureSession;)V",
+  );
 
   /// from: public void setContentCaptureSession(android.view.contentcapture.ContentCaptureSession contentCaptureSession)
   void setContentCaptureSession(
     jni.JObject contentCaptureSession,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setContentCaptureSession,
-        jni.JniCallType.voidType,
-        [contentCaptureSession.reference]).check();
+    _id_setContentCaptureSession(
+        this, const jni.jvoidType(), [contentCaptureSession.reference.pointer]);
   }
 
-  static final _id_getContentCaptureSession = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getContentCaptureSession",
-      r"()Landroid/view/contentcapture/ContentCaptureSession;");
+  static final _id_getContentCaptureSession = _class.instanceMethodId(
+    r"getContentCaptureSession",
+    r"()Landroid/view/contentcapture/ContentCaptureSession;",
+  );
 
   /// from: public final android.view.contentcapture.ContentCaptureSession getContentCaptureSession()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getContentCaptureSession() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getContentCaptureSession,
-        jni.JniCallType.objectType, []).object);
+    return _id_getContentCaptureSession(this, const jni.JObjectType(), []);
   }
 
-  static final _id_dispatchProvideStructure = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"dispatchProvideStructure",
-      r"(Landroid/view/ViewStructure;)V");
+  static final _id_dispatchProvideStructure = _class.instanceMethodId(
+    r"dispatchProvideStructure",
+    r"(Landroid/view/ViewStructure;)V",
+  );
 
   /// from: public void dispatchProvideStructure(android.view.ViewStructure viewStructure)
   void dispatchProvideStructure(
     jni.JObject viewStructure,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchProvideStructure,
-        jni.JniCallType.voidType,
-        [viewStructure.reference]).check();
+    _id_dispatchProvideStructure(
+        this, const jni.jvoidType(), [viewStructure.reference.pointer]);
   }
 
-  static final _id_dispatchProvideAutofillStructure = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchProvideAutofillStructure",
-          r"(Landroid/view/ViewStructure;I)V");
+  static final _id_dispatchProvideAutofillStructure = _class.instanceMethodId(
+    r"dispatchProvideAutofillStructure",
+    r"(Landroid/view/ViewStructure;I)V",
+  );
 
   /// from: public void dispatchProvideAutofillStructure(android.view.ViewStructure viewStructure, int i)
   void dispatchProvideAutofillStructure(
     jni.JObject viewStructure,
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchProvideAutofillStructure,
-        jni.JniCallType.voidType,
-        [viewStructure.reference, jni.JValueInt(i)]).check();
+    _id_dispatchProvideAutofillStructure(this, const jni.jvoidType(),
+        [viewStructure.reference.pointer, jni.JValueInt(i)]);
   }
 
-  static final _id_addExtraDataToAccessibilityNodeInfo = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"addExtraDataToAccessibilityNodeInfo",
-          r"(Landroid/view/accessibility/AccessibilityNodeInfo;Ljava/lang/String;Landroid/os/Bundle;)V");
+  static final _id_addExtraDataToAccessibilityNodeInfo =
+      _class.instanceMethodId(
+    r"addExtraDataToAccessibilityNodeInfo",
+    r"(Landroid/view/accessibility/AccessibilityNodeInfo;Ljava/lang/String;Landroid/os/Bundle;)V",
+  );
 
   /// from: public void addExtraDataToAccessibilityNodeInfo(android.view.accessibility.AccessibilityNodeInfo accessibilityNodeInfo, java.lang.String string, android.os.Bundle bundle)
   void addExtraDataToAccessibilityNodeInfo(
@@ -10364,519 +9945,493 @@ class View extends jni.JObject {
     jni.JString string,
     jni.JObject bundle,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_addExtraDataToAccessibilityNodeInfo, jni.JniCallType.voidType, [
-      accessibilityNodeInfo.reference,
-      string.reference,
-      bundle.reference
-    ]).check();
+    _id_addExtraDataToAccessibilityNodeInfo(this, const jni.jvoidType(), [
+      accessibilityNodeInfo.reference.pointer,
+      string.reference.pointer,
+      bundle.reference.pointer
+    ]);
   }
 
-  static final _id_isVisibleToUserForAutofill = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isVisibleToUserForAutofill", r"(I)Z");
+  static final _id_isVisibleToUserForAutofill = _class.instanceMethodId(
+    r"isVisibleToUserForAutofill",
+    r"(I)Z",
+  );
 
   /// from: public boolean isVisibleToUserForAutofill(int i)
   bool isVisibleToUserForAutofill(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_isVisibleToUserForAutofill,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i)]).boolean;
+    return _id_isVisibleToUserForAutofill(
+        this, const jni.jbooleanType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getAccessibilityDelegate = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getAccessibilityDelegate",
-      r"()Landroid/view/View$AccessibilityDelegate;");
+  static final _id_getAccessibilityDelegate = _class.instanceMethodId(
+    r"getAccessibilityDelegate",
+    r"()Landroid/view/View$AccessibilityDelegate;",
+  );
 
   /// from: public android.view.View$AccessibilityDelegate getAccessibilityDelegate()
   /// The returned object must be released after use, by calling the [release] method.
   View_AccessibilityDelegate getAccessibilityDelegate() {
-    return const $View_AccessibilityDelegateType().fromRef(jni.Jni.accessors
-        .callMethodWithArgs(reference, _id_getAccessibilityDelegate,
-            jni.JniCallType.objectType, []).object);
+    return _id_getAccessibilityDelegate(
+        this, const $View_AccessibilityDelegateType(), []);
   }
 
-  static final _id_setAccessibilityDelegate = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setAccessibilityDelegate",
-      r"(Landroid/view/View$AccessibilityDelegate;)V");
+  static final _id_setAccessibilityDelegate = _class.instanceMethodId(
+    r"setAccessibilityDelegate",
+    r"(Landroid/view/View$AccessibilityDelegate;)V",
+  );
 
   /// from: public void setAccessibilityDelegate(android.view.View$AccessibilityDelegate accessibilityDelegate)
   void setAccessibilityDelegate(
     View_AccessibilityDelegate accessibilityDelegate,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setAccessibilityDelegate,
-        jni.JniCallType.voidType,
-        [accessibilityDelegate.reference]).check();
+    _id_setAccessibilityDelegate(
+        this, const jni.jvoidType(), [accessibilityDelegate.reference.pointer]);
   }
 
-  static final _id_getAccessibilityNodeProvider = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getAccessibilityNodeProvider",
-          r"()Landroid/view/accessibility/AccessibilityNodeProvider;");
+  static final _id_getAccessibilityNodeProvider = _class.instanceMethodId(
+    r"getAccessibilityNodeProvider",
+    r"()Landroid/view/accessibility/AccessibilityNodeProvider;",
+  );
 
   /// from: public android.view.accessibility.AccessibilityNodeProvider getAccessibilityNodeProvider()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getAccessibilityNodeProvider() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getAccessibilityNodeProvider,
-        jni.JniCallType.objectType, []).object);
+    return _id_getAccessibilityNodeProvider(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getStateDescription = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getStateDescription", r"()Ljava/lang/CharSequence;");
+  static final _id_getStateDescription = _class.instanceMethodId(
+    r"getStateDescription",
+    r"()Ljava/lang/CharSequence;",
+  );
 
   /// from: public final java.lang.CharSequence getStateDescription()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getStateDescription() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getStateDescription,
-        jni.JniCallType.objectType, []).object);
+    return _id_getStateDescription(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getContentDescription = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getContentDescription",
-      r"()Ljava/lang/CharSequence;");
+  static final _id_getContentDescription = _class.instanceMethodId(
+    r"getContentDescription",
+    r"()Ljava/lang/CharSequence;",
+  );
 
   /// from: public java.lang.CharSequence getContentDescription()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getContentDescription() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getContentDescription,
-        jni.JniCallType.objectType, []).object);
+    return _id_getContentDescription(this, const jni.JObjectType(), []);
   }
 
-  static final _id_setStateDescription = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"setStateDescription", r"(Ljava/lang/CharSequence;)V");
+  static final _id_setStateDescription = _class.instanceMethodId(
+    r"setStateDescription",
+    r"(Ljava/lang/CharSequence;)V",
+  );
 
   /// from: public void setStateDescription(java.lang.CharSequence charSequence)
   void setStateDescription(
     jni.JObject charSequence,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setStateDescription,
-        jni.JniCallType.voidType,
-        [charSequence.reference]).check();
+    _id_setStateDescription(
+        this, const jni.jvoidType(), [charSequence.reference.pointer]);
   }
 
-  static final _id_setContentDescription = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setContentDescription",
-      r"(Ljava/lang/CharSequence;)V");
+  static final _id_setContentDescription = _class.instanceMethodId(
+    r"setContentDescription",
+    r"(Ljava/lang/CharSequence;)V",
+  );
 
   /// from: public void setContentDescription(java.lang.CharSequence charSequence)
   void setContentDescription(
     jni.JObject charSequence,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setContentDescription,
-        jni.JniCallType.voidType,
-        [charSequence.reference]).check();
+    _id_setContentDescription(
+        this, const jni.jvoidType(), [charSequence.reference.pointer]);
   }
 
-  static final _id_setAccessibilityTraversalBefore = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"setAccessibilityTraversalBefore", r"(I)V");
+  static final _id_setAccessibilityTraversalBefore = _class.instanceMethodId(
+    r"setAccessibilityTraversalBefore",
+    r"(I)V",
+  );
 
   /// from: public void setAccessibilityTraversalBefore(int i)
   void setAccessibilityTraversalBefore(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setAccessibilityTraversalBefore,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setAccessibilityTraversalBefore(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getAccessibilityTraversalBefore = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"getAccessibilityTraversalBefore", r"()I");
+  static final _id_getAccessibilityTraversalBefore = _class.instanceMethodId(
+    r"getAccessibilityTraversalBefore",
+    r"()I",
+  );
 
   /// from: public int getAccessibilityTraversalBefore()
   int getAccessibilityTraversalBefore() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getAccessibilityTraversalBefore,
-        jni.JniCallType.intType, []).integer;
+    return _id_getAccessibilityTraversalBefore(this, const jni.jintType(), []);
   }
 
-  static final _id_setAccessibilityTraversalAfter = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"setAccessibilityTraversalAfter", r"(I)V");
+  static final _id_setAccessibilityTraversalAfter = _class.instanceMethodId(
+    r"setAccessibilityTraversalAfter",
+    r"(I)V",
+  );
 
   /// from: public void setAccessibilityTraversalAfter(int i)
   void setAccessibilityTraversalAfter(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setAccessibilityTraversalAfter,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setAccessibilityTraversalAfter(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getAccessibilityTraversalAfter = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"getAccessibilityTraversalAfter", r"()I");
+  static final _id_getAccessibilityTraversalAfter = _class.instanceMethodId(
+    r"getAccessibilityTraversalAfter",
+    r"()I",
+  );
 
   /// from: public int getAccessibilityTraversalAfter()
   int getAccessibilityTraversalAfter() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getAccessibilityTraversalAfter,
-        jni.JniCallType.intType, []).integer;
+    return _id_getAccessibilityTraversalAfter(this, const jni.jintType(), []);
   }
 
-  static final _id_getLabelFor =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getLabelFor", r"()I");
+  static final _id_getLabelFor = _class.instanceMethodId(
+    r"getLabelFor",
+    r"()I",
+  );
 
   /// from: public int getLabelFor()
   int getLabelFor() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getLabelFor, jni.JniCallType.intType, []).integer;
+    return _id_getLabelFor(this, const jni.jintType(), []);
   }
 
-  static final _id_setLabelFor = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setLabelFor", r"(I)V");
+  static final _id_setLabelFor = _class.instanceMethodId(
+    r"setLabelFor",
+    r"(I)V",
+  );
 
   /// from: public void setLabelFor(int i)
   void setLabelFor(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setLabelFor,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_setLabelFor(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_isFocused =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"isFocused", r"()Z");
+  static final _id_isFocused = _class.instanceMethodId(
+    r"isFocused",
+    r"()Z",
+  );
 
   /// from: public boolean isFocused()
   bool isFocused() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_isFocused, jni.JniCallType.booleanType, []).boolean;
+    return _id_isFocused(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_findFocus = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"findFocus", r"()Landroid/view/View;");
+  static final _id_findFocus = _class.instanceMethodId(
+    r"findFocus",
+    r"()Landroid/view/View;",
+  );
 
   /// from: public android.view.View findFocus()
   /// The returned object must be released after use, by calling the [release] method.
   View findFocus() {
-    return const $ViewType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_findFocus, jni.JniCallType.objectType, []).object);
+    return _id_findFocus(this, const $ViewType(), []);
   }
 
-  static final _id_isScrollContainer = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isScrollContainer", r"()Z");
+  static final _id_isScrollContainer = _class.instanceMethodId(
+    r"isScrollContainer",
+    r"()Z",
+  );
 
   /// from: public boolean isScrollContainer()
   bool isScrollContainer() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isScrollContainer, jni.JniCallType.booleanType, []).boolean;
+    return _id_isScrollContainer(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setScrollContainer = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setScrollContainer", r"(Z)V");
+  static final _id_setScrollContainer = _class.instanceMethodId(
+    r"setScrollContainer",
+    r"(Z)V",
+  );
 
   /// from: public void setScrollContainer(boolean z)
   void setScrollContainer(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_setScrollContainer, jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_setScrollContainer(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_getDrawingCacheQuality = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getDrawingCacheQuality", r"()I");
+  static final _id_getDrawingCacheQuality = _class.instanceMethodId(
+    r"getDrawingCacheQuality",
+    r"()I",
+  );
 
   /// from: public int getDrawingCacheQuality()
   int getDrawingCacheQuality() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getDrawingCacheQuality, jni.JniCallType.intType, []).integer;
+    return _id_getDrawingCacheQuality(this, const jni.jintType(), []);
   }
 
-  static final _id_setDrawingCacheQuality = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setDrawingCacheQuality", r"(I)V");
+  static final _id_setDrawingCacheQuality = _class.instanceMethodId(
+    r"setDrawingCacheQuality",
+    r"(I)V",
+  );
 
   /// from: public void setDrawingCacheQuality(int i)
   void setDrawingCacheQuality(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setDrawingCacheQuality,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setDrawingCacheQuality(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getKeepScreenOn = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getKeepScreenOn", r"()Z");
+  static final _id_getKeepScreenOn = _class.instanceMethodId(
+    r"getKeepScreenOn",
+    r"()Z",
+  );
 
   /// from: public boolean getKeepScreenOn()
   bool getKeepScreenOn() {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_getKeepScreenOn,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_getKeepScreenOn(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setKeepScreenOn = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setKeepScreenOn", r"(Z)V");
+  static final _id_setKeepScreenOn = _class.instanceMethodId(
+    r"setKeepScreenOn",
+    r"(Z)V",
+  );
 
   /// from: public void setKeepScreenOn(boolean z)
   void setKeepScreenOn(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setKeepScreenOn,
-        jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_setKeepScreenOn(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_getNextFocusLeftId = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getNextFocusLeftId", r"()I");
+  static final _id_getNextFocusLeftId = _class.instanceMethodId(
+    r"getNextFocusLeftId",
+    r"()I",
+  );
 
   /// from: public int getNextFocusLeftId()
   int getNextFocusLeftId() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getNextFocusLeftId, jni.JniCallType.intType, []).integer;
+    return _id_getNextFocusLeftId(this, const jni.jintType(), []);
   }
 
-  static final _id_setNextFocusLeftId = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setNextFocusLeftId", r"(I)V");
+  static final _id_setNextFocusLeftId = _class.instanceMethodId(
+    r"setNextFocusLeftId",
+    r"(I)V",
+  );
 
   /// from: public void setNextFocusLeftId(int i)
   void setNextFocusLeftId(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setNextFocusLeftId,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setNextFocusLeftId(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getNextFocusRightId = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getNextFocusRightId", r"()I");
+  static final _id_getNextFocusRightId = _class.instanceMethodId(
+    r"getNextFocusRightId",
+    r"()I",
+  );
 
   /// from: public int getNextFocusRightId()
   int getNextFocusRightId() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getNextFocusRightId, jni.JniCallType.intType, []).integer;
+    return _id_getNextFocusRightId(this, const jni.jintType(), []);
   }
 
-  static final _id_setNextFocusRightId = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setNextFocusRightId", r"(I)V");
+  static final _id_setNextFocusRightId = _class.instanceMethodId(
+    r"setNextFocusRightId",
+    r"(I)V",
+  );
 
   /// from: public void setNextFocusRightId(int i)
   void setNextFocusRightId(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setNextFocusRightId,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setNextFocusRightId(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getNextFocusUpId = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getNextFocusUpId", r"()I");
+  static final _id_getNextFocusUpId = _class.instanceMethodId(
+    r"getNextFocusUpId",
+    r"()I",
+  );
 
   /// from: public int getNextFocusUpId()
   int getNextFocusUpId() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getNextFocusUpId, jni.JniCallType.intType, []).integer;
+    return _id_getNextFocusUpId(this, const jni.jintType(), []);
   }
 
-  static final _id_setNextFocusUpId = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setNextFocusUpId", r"(I)V");
+  static final _id_setNextFocusUpId = _class.instanceMethodId(
+    r"setNextFocusUpId",
+    r"(I)V",
+  );
 
   /// from: public void setNextFocusUpId(int i)
   void setNextFocusUpId(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setNextFocusUpId,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_setNextFocusUpId(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getNextFocusDownId = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getNextFocusDownId", r"()I");
+  static final _id_getNextFocusDownId = _class.instanceMethodId(
+    r"getNextFocusDownId",
+    r"()I",
+  );
 
   /// from: public int getNextFocusDownId()
   int getNextFocusDownId() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getNextFocusDownId, jni.JniCallType.intType, []).integer;
+    return _id_getNextFocusDownId(this, const jni.jintType(), []);
   }
 
-  static final _id_setNextFocusDownId = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setNextFocusDownId", r"(I)V");
+  static final _id_setNextFocusDownId = _class.instanceMethodId(
+    r"setNextFocusDownId",
+    r"(I)V",
+  );
 
   /// from: public void setNextFocusDownId(int i)
   void setNextFocusDownId(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setNextFocusDownId,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setNextFocusDownId(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getNextFocusForwardId = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getNextFocusForwardId", r"()I");
+  static final _id_getNextFocusForwardId = _class.instanceMethodId(
+    r"getNextFocusForwardId",
+    r"()I",
+  );
 
   /// from: public int getNextFocusForwardId()
   int getNextFocusForwardId() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getNextFocusForwardId, jni.JniCallType.intType, []).integer;
+    return _id_getNextFocusForwardId(this, const jni.jintType(), []);
   }
 
-  static final _id_setNextFocusForwardId = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setNextFocusForwardId", r"(I)V");
+  static final _id_setNextFocusForwardId = _class.instanceMethodId(
+    r"setNextFocusForwardId",
+    r"(I)V",
+  );
 
   /// from: public void setNextFocusForwardId(int i)
   void setNextFocusForwardId(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setNextFocusForwardId,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setNextFocusForwardId(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getNextClusterForwardId = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getNextClusterForwardId", r"()I");
+  static final _id_getNextClusterForwardId = _class.instanceMethodId(
+    r"getNextClusterForwardId",
+    r"()I",
+  );
 
   /// from: public int getNextClusterForwardId()
   int getNextClusterForwardId() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getNextClusterForwardId, jni.JniCallType.intType, []).integer;
+    return _id_getNextClusterForwardId(this, const jni.jintType(), []);
   }
 
-  static final _id_setNextClusterForwardId = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setNextClusterForwardId", r"(I)V");
+  static final _id_setNextClusterForwardId = _class.instanceMethodId(
+    r"setNextClusterForwardId",
+    r"(I)V",
+  );
 
   /// from: public void setNextClusterForwardId(int i)
   void setNextClusterForwardId(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setNextClusterForwardId,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setNextClusterForwardId(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_isShown =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"isShown", r"()Z");
+  static final _id_isShown = _class.instanceMethodId(
+    r"isShown",
+    r"()Z",
+  );
 
   /// from: public boolean isShown()
   bool isShown() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_isShown, jni.JniCallType.booleanType, []).boolean;
+    return _id_isShown(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_fitSystemWindows = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"fitSystemWindows", r"(Landroid/graphics/Rect;)Z");
+  static final _id_fitSystemWindows = _class.instanceMethodId(
+    r"fitSystemWindows",
+    r"(Landroid/graphics/Rect;)Z",
+  );
 
   /// from: protected boolean fitSystemWindows(android.graphics.Rect rect)
   bool fitSystemWindows(
     jni.JObject rect,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_fitSystemWindows,
-        jni.JniCallType.booleanType, [rect.reference]).boolean;
+    return _id_fitSystemWindows(
+        this, const jni.jbooleanType(), [rect.reference.pointer]);
   }
 
-  static final _id_onApplyWindowInsets = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onApplyWindowInsets",
-      r"(Landroid/view/WindowInsets;)Landroid/view/WindowInsets;");
+  static final _id_onApplyWindowInsets = _class.instanceMethodId(
+    r"onApplyWindowInsets",
+    r"(Landroid/view/WindowInsets;)Landroid/view/WindowInsets;",
+  );
 
   /// from: public android.view.WindowInsets onApplyWindowInsets(android.view.WindowInsets windowInsets)
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject onApplyWindowInsets(
     jni.JObject windowInsets,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onApplyWindowInsets,
-        jni.JniCallType.objectType,
-        [windowInsets.reference]).object);
+    return _id_onApplyWindowInsets(
+        this, const jni.JObjectType(), [windowInsets.reference.pointer]);
   }
 
-  static final _id_setOnApplyWindowInsetsListener = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setOnApplyWindowInsetsListener",
-          r"(Landroid/view/View$OnApplyWindowInsetsListener;)V");
+  static final _id_setOnApplyWindowInsetsListener = _class.instanceMethodId(
+    r"setOnApplyWindowInsetsListener",
+    r"(Landroid/view/View$OnApplyWindowInsetsListener;)V",
+  );
 
   /// from: public void setOnApplyWindowInsetsListener(android.view.View$OnApplyWindowInsetsListener onApplyWindowInsetsListener)
   void setOnApplyWindowInsetsListener(
     View_OnApplyWindowInsetsListener onApplyWindowInsetsListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setOnApplyWindowInsetsListener,
-        jni.JniCallType.voidType,
-        [onApplyWindowInsetsListener.reference]).check();
+    _id_setOnApplyWindowInsetsListener(this, const jni.jvoidType(),
+        [onApplyWindowInsetsListener.reference.pointer]);
   }
 
-  static final _id_dispatchApplyWindowInsets = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"dispatchApplyWindowInsets",
-      r"(Landroid/view/WindowInsets;)Landroid/view/WindowInsets;");
+  static final _id_dispatchApplyWindowInsets = _class.instanceMethodId(
+    r"dispatchApplyWindowInsets",
+    r"(Landroid/view/WindowInsets;)Landroid/view/WindowInsets;",
+  );
 
   /// from: public android.view.WindowInsets dispatchApplyWindowInsets(android.view.WindowInsets windowInsets)
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject dispatchApplyWindowInsets(
     jni.JObject windowInsets,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchApplyWindowInsets,
-        jni.JniCallType.objectType,
-        [windowInsets.reference]).object);
+    return _id_dispatchApplyWindowInsets(
+        this, const jni.JObjectType(), [windowInsets.reference.pointer]);
   }
 
-  static final _id_setWindowInsetsAnimationCallback = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setWindowInsetsAnimationCallback",
-          r"(Landroid/view/WindowInsetsAnimation$Callback;)V");
+  static final _id_setWindowInsetsAnimationCallback = _class.instanceMethodId(
+    r"setWindowInsetsAnimationCallback",
+    r"(Landroid/view/WindowInsetsAnimation$Callback;)V",
+  );
 
   /// from: public void setWindowInsetsAnimationCallback(android.view.WindowInsetsAnimation$Callback callback)
   void setWindowInsetsAnimationCallback(
     jni.JObject callback,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setWindowInsetsAnimationCallback,
-        jni.JniCallType.voidType,
-        [callback.reference]).check();
+    _id_setWindowInsetsAnimationCallback(
+        this, const jni.jvoidType(), [callback.reference.pointer]);
   }
 
-  static final _id_dispatchWindowInsetsAnimationPrepare = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchWindowInsetsAnimationPrepare",
-          r"(Landroid/view/WindowInsetsAnimation;)V");
+  static final _id_dispatchWindowInsetsAnimationPrepare =
+      _class.instanceMethodId(
+    r"dispatchWindowInsetsAnimationPrepare",
+    r"(Landroid/view/WindowInsetsAnimation;)V",
+  );
 
   /// from: public void dispatchWindowInsetsAnimationPrepare(android.view.WindowInsetsAnimation windowInsetsAnimation)
   void dispatchWindowInsetsAnimationPrepare(
     jni.JObject windowInsetsAnimation,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchWindowInsetsAnimationPrepare,
-        jni.JniCallType.voidType,
-        [windowInsetsAnimation.reference]).check();
+    _id_dispatchWindowInsetsAnimationPrepare(
+        this, const jni.jvoidType(), [windowInsetsAnimation.reference.pointer]);
   }
 
-  static final _id_dispatchWindowInsetsAnimationStart = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchWindowInsetsAnimationStart",
-          r"(Landroid/view/WindowInsetsAnimation;Landroid/view/WindowInsetsAnimation$Bounds;)Landroid/view/WindowInsetsAnimation$Bounds;");
+  static final _id_dispatchWindowInsetsAnimationStart = _class.instanceMethodId(
+    r"dispatchWindowInsetsAnimationStart",
+    r"(Landroid/view/WindowInsetsAnimation;Landroid/view/WindowInsetsAnimation$Bounds;)Landroid/view/WindowInsetsAnimation$Bounds;",
+  );
 
   /// from: public android.view.WindowInsetsAnimation$Bounds dispatchWindowInsetsAnimationStart(android.view.WindowInsetsAnimation windowInsetsAnimation, android.view.WindowInsetsAnimation$Bounds bounds)
   /// The returned object must be released after use, by calling the [release] method.
@@ -10884,16 +10439,15 @@ class View extends jni.JObject {
     jni.JObject windowInsetsAnimation,
     jni.JObject bounds,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchWindowInsetsAnimationStart,
-        jni.JniCallType.objectType,
-        [windowInsetsAnimation.reference, bounds.reference]).object);
+    return _id_dispatchWindowInsetsAnimationStart(this, const jni.JObjectType(),
+        [windowInsetsAnimation.reference.pointer, bounds.reference.pointer]);
   }
 
-  static final _id_dispatchWindowInsetsAnimationProgress = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchWindowInsetsAnimationProgress",
-          r"(Landroid/view/WindowInsets;Ljava/util/List;)Landroid/view/WindowInsets;");
+  static final _id_dispatchWindowInsetsAnimationProgress =
+      _class.instanceMethodId(
+    r"dispatchWindowInsetsAnimationProgress",
+    r"(Landroid/view/WindowInsets;Ljava/util/List;)Landroid/view/WindowInsets;",
+  );
 
   /// from: public android.view.WindowInsets dispatchWindowInsetsAnimationProgress(android.view.WindowInsets windowInsets, java.util.List list)
   /// The returned object must be released after use, by calling the [release] method.
@@ -10901,103 +10455,101 @@ class View extends jni.JObject {
     jni.JObject windowInsets,
     jni.JList<jni.JObject> list,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchWindowInsetsAnimationProgress,
-        jni.JniCallType.objectType,
-        [windowInsets.reference, list.reference]).object);
+    return _id_dispatchWindowInsetsAnimationProgress(
+        this,
+        const jni.JObjectType(),
+        [windowInsets.reference.pointer, list.reference.pointer]);
   }
 
-  static final _id_dispatchWindowInsetsAnimationEnd = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchWindowInsetsAnimationEnd",
-          r"(Landroid/view/WindowInsetsAnimation;)V");
+  static final _id_dispatchWindowInsetsAnimationEnd = _class.instanceMethodId(
+    r"dispatchWindowInsetsAnimationEnd",
+    r"(Landroid/view/WindowInsetsAnimation;)V",
+  );
 
   /// from: public void dispatchWindowInsetsAnimationEnd(android.view.WindowInsetsAnimation windowInsetsAnimation)
   void dispatchWindowInsetsAnimationEnd(
     jni.JObject windowInsetsAnimation,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchWindowInsetsAnimationEnd,
-        jni.JniCallType.voidType,
-        [windowInsetsAnimation.reference]).check();
+    _id_dispatchWindowInsetsAnimationEnd(
+        this, const jni.jvoidType(), [windowInsetsAnimation.reference.pointer]);
   }
 
-  static final _id_setSystemGestureExclusionRects = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setSystemGestureExclusionRects",
-          r"(Ljava/util/List;)V");
+  static final _id_setSystemGestureExclusionRects = _class.instanceMethodId(
+    r"setSystemGestureExclusionRects",
+    r"(Ljava/util/List;)V",
+  );
 
   /// from: public void setSystemGestureExclusionRects(java.util.List list)
   void setSystemGestureExclusionRects(
     jni.JList<jni.JObject> list,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setSystemGestureExclusionRects,
-        jni.JniCallType.voidType,
-        [list.reference]).check();
+    _id_setSystemGestureExclusionRects(
+        this, const jni.jvoidType(), [list.reference.pointer]);
   }
 
-  static final _id_getSystemGestureExclusionRects = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getSystemGestureExclusionRects",
-          r"()Ljava/util/List;");
+  static final _id_getSystemGestureExclusionRects = _class.instanceMethodId(
+    r"getSystemGestureExclusionRects",
+    r"()Ljava/util/List;",
+  );
 
   /// from: public java.util.List getSystemGestureExclusionRects()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JList<jni.JObject> getSystemGestureExclusionRects() {
-    return const jni.JListType(jni.JObjectType()).fromRef(jni.Jni.accessors
-        .callMethodWithArgs(reference, _id_getSystemGestureExclusionRects,
-            jni.JniCallType.objectType, []).object);
+    return _id_getSystemGestureExclusionRects(
+        this, const jni.JListType(jni.JObjectType()), []);
   }
 
-  static final _id_setPreferKeepClear = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setPreferKeepClear", r"(Z)V");
+  static final _id_setPreferKeepClear = _class.instanceMethodId(
+    r"setPreferKeepClear",
+    r"(Z)V",
+  );
 
   /// from: public final void setPreferKeepClear(boolean z)
   void setPreferKeepClear(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_setPreferKeepClear, jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_setPreferKeepClear(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isPreferKeepClear = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isPreferKeepClear", r"()Z");
+  static final _id_isPreferKeepClear = _class.instanceMethodId(
+    r"isPreferKeepClear",
+    r"()Z",
+  );
 
   /// from: public final boolean isPreferKeepClear()
   bool isPreferKeepClear() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isPreferKeepClear, jni.JniCallType.booleanType, []).boolean;
+    return _id_isPreferKeepClear(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setPreferKeepClearRects = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"setPreferKeepClearRects", r"(Ljava/util/List;)V");
+  static final _id_setPreferKeepClearRects = _class.instanceMethodId(
+    r"setPreferKeepClearRects",
+    r"(Ljava/util/List;)V",
+  );
 
   /// from: public final void setPreferKeepClearRects(java.util.List list)
   void setPreferKeepClearRects(
     jni.JList<jni.JObject> list,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setPreferKeepClearRects,
-        jni.JniCallType.voidType,
-        [list.reference]).check();
+    _id_setPreferKeepClearRects(
+        this, const jni.jvoidType(), [list.reference.pointer]);
   }
 
-  static final _id_getPreferKeepClearRects = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getPreferKeepClearRects", r"()Ljava/util/List;");
+  static final _id_getPreferKeepClearRects = _class.instanceMethodId(
+    r"getPreferKeepClearRects",
+    r"()Ljava/util/List;",
+  );
 
   /// from: public final java.util.List getPreferKeepClearRects()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JList<jni.JObject> getPreferKeepClearRects() {
-    return const jni.JListType(jni.JObjectType()).fromRef(jni.Jni.accessors
-        .callMethodWithArgs(reference, _id_getPreferKeepClearRects,
-            jni.JniCallType.objectType, []).object);
+    return _id_getPreferKeepClearRects(
+        this, const jni.JListType(jni.JObjectType()), []);
   }
 
-  static final _id_setHandwritingBoundsOffsets = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"setHandwritingBoundsOffsets", r"(FFFF)V");
+  static final _id_setHandwritingBoundsOffsets = _class.instanceMethodId(
+    r"setHandwritingBoundsOffsets",
+    r"(FFFF)V",
+  );
 
   /// from: public void setHandwritingBoundsOffsets(float f, float f1, float f2, float f3)
   void setHandwritingBoundsOffsets(
@@ -11006,229 +10558,207 @@ class View extends jni.JObject {
     double f2,
     double f3,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_setHandwritingBoundsOffsets, jni.JniCallType.voidType, [
+    _id_setHandwritingBoundsOffsets(this, const jni.jvoidType(), [
       jni.JValueFloat(f),
       jni.JValueFloat(f1),
       jni.JValueFloat(f2),
       jni.JValueFloat(f3)
-    ]).check();
+    ]);
   }
 
-  static final _id_getHandwritingBoundsOffsetLeft = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"getHandwritingBoundsOffsetLeft", r"()F");
+  static final _id_getHandwritingBoundsOffsetLeft = _class.instanceMethodId(
+    r"getHandwritingBoundsOffsetLeft",
+    r"()F",
+  );
 
   /// from: public float getHandwritingBoundsOffsetLeft()
   double getHandwritingBoundsOffsetLeft() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getHandwritingBoundsOffsetLeft,
-        jni.JniCallType.floatType, []).float;
+    return _id_getHandwritingBoundsOffsetLeft(this, const jni.jfloatType(), []);
   }
 
-  static final _id_getHandwritingBoundsOffsetTop = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"getHandwritingBoundsOffsetTop", r"()F");
+  static final _id_getHandwritingBoundsOffsetTop = _class.instanceMethodId(
+    r"getHandwritingBoundsOffsetTop",
+    r"()F",
+  );
 
   /// from: public float getHandwritingBoundsOffsetTop()
   double getHandwritingBoundsOffsetTop() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getHandwritingBoundsOffsetTop, jni.JniCallType.floatType, []).float;
+    return _id_getHandwritingBoundsOffsetTop(this, const jni.jfloatType(), []);
   }
 
-  static final _id_getHandwritingBoundsOffsetRight = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"getHandwritingBoundsOffsetRight", r"()F");
+  static final _id_getHandwritingBoundsOffsetRight = _class.instanceMethodId(
+    r"getHandwritingBoundsOffsetRight",
+    r"()F",
+  );
 
   /// from: public float getHandwritingBoundsOffsetRight()
   double getHandwritingBoundsOffsetRight() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getHandwritingBoundsOffsetRight,
-        jni.JniCallType.floatType, []).float;
+    return _id_getHandwritingBoundsOffsetRight(
+        this, const jni.jfloatType(), []);
   }
 
-  static final _id_getHandwritingBoundsOffsetBottom = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"getHandwritingBoundsOffsetBottom", r"()F");
+  static final _id_getHandwritingBoundsOffsetBottom = _class.instanceMethodId(
+    r"getHandwritingBoundsOffsetBottom",
+    r"()F",
+  );
 
   /// from: public float getHandwritingBoundsOffsetBottom()
   double getHandwritingBoundsOffsetBottom() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getHandwritingBoundsOffsetBottom,
-        jni.JniCallType.floatType, []).float;
+    return _id_getHandwritingBoundsOffsetBottom(
+        this, const jni.jfloatType(), []);
   }
 
-  static final _id_setHandwritingDelegatorCallback = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setHandwritingDelegatorCallback",
-          r"(Ljava/lang/Runnable;)V");
+  static final _id_setHandwritingDelegatorCallback = _class.instanceMethodId(
+    r"setHandwritingDelegatorCallback",
+    r"(Ljava/lang/Runnable;)V",
+  );
 
   /// from: public void setHandwritingDelegatorCallback(java.lang.Runnable runnable)
   void setHandwritingDelegatorCallback(
     jni.JObject runnable,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setHandwritingDelegatorCallback,
-        jni.JniCallType.voidType,
-        [runnable.reference]).check();
+    _id_setHandwritingDelegatorCallback(
+        this, const jni.jvoidType(), [runnable.reference.pointer]);
   }
 
-  static final _id_getHandwritingDelegatorCallback = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getHandwritingDelegatorCallback",
-          r"()Ljava/lang/Runnable;");
+  static final _id_getHandwritingDelegatorCallback = _class.instanceMethodId(
+    r"getHandwritingDelegatorCallback",
+    r"()Ljava/lang/Runnable;",
+  );
 
   /// from: public java.lang.Runnable getHandwritingDelegatorCallback()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getHandwritingDelegatorCallback() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getHandwritingDelegatorCallback,
-        jni.JniCallType.objectType, []).object);
+    return _id_getHandwritingDelegatorCallback(
+        this, const jni.JObjectType(), []);
   }
 
-  static final _id_setAllowedHandwritingDelegatePackage = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setAllowedHandwritingDelegatePackage",
-          r"(Ljava/lang/String;)V");
+  static final _id_setAllowedHandwritingDelegatePackage =
+      _class.instanceMethodId(
+    r"setAllowedHandwritingDelegatePackage",
+    r"(Ljava/lang/String;)V",
+  );
 
   /// from: public void setAllowedHandwritingDelegatePackage(java.lang.String string)
   void setAllowedHandwritingDelegatePackage(
     jni.JString string,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setAllowedHandwritingDelegatePackage,
-        jni.JniCallType.voidType,
-        [string.reference]).check();
+    _id_setAllowedHandwritingDelegatePackage(
+        this, const jni.jvoidType(), [string.reference.pointer]);
   }
 
-  static final _id_getAllowedHandwritingDelegatePackageName = jni.Jni.accessors
-      .getMethodIDOf(_class.reference,
-          r"getAllowedHandwritingDelegatePackageName", r"()Ljava/lang/String;");
+  static final _id_getAllowedHandwritingDelegatePackageName =
+      _class.instanceMethodId(
+    r"getAllowedHandwritingDelegatePackageName",
+    r"()Ljava/lang/String;",
+  );
 
   /// from: public java.lang.String getAllowedHandwritingDelegatePackageName()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getAllowedHandwritingDelegatePackageName() {
-    return const jni.JStringType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getAllowedHandwritingDelegatePackageName,
-        jni.JniCallType.objectType, []).object);
+    return _id_getAllowedHandwritingDelegatePackageName(
+        this, const jni.JStringType(), []);
   }
 
-  static final _id_setIsHandwritingDelegate = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setIsHandwritingDelegate", r"(Z)V");
+  static final _id_setIsHandwritingDelegate = _class.instanceMethodId(
+    r"setIsHandwritingDelegate",
+    r"(Z)V",
+  );
 
   /// from: public void setIsHandwritingDelegate(boolean z)
   void setIsHandwritingDelegate(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setIsHandwritingDelegate,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setIsHandwritingDelegate(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isHandwritingDelegate = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isHandwritingDelegate", r"()Z");
+  static final _id_isHandwritingDelegate = _class.instanceMethodId(
+    r"isHandwritingDelegate",
+    r"()Z",
+  );
 
   /// from: public boolean isHandwritingDelegate()
   bool isHandwritingDelegate() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isHandwritingDelegate, jni.JniCallType.booleanType, []).boolean;
+    return _id_isHandwritingDelegate(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setAllowedHandwritingDelegatorPackage = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setAllowedHandwritingDelegatorPackage",
-          r"(Ljava/lang/String;)V");
+  static final _id_setAllowedHandwritingDelegatorPackage =
+      _class.instanceMethodId(
+    r"setAllowedHandwritingDelegatorPackage",
+    r"(Ljava/lang/String;)V",
+  );
 
   /// from: public void setAllowedHandwritingDelegatorPackage(java.lang.String string)
   void setAllowedHandwritingDelegatorPackage(
     jni.JString string,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setAllowedHandwritingDelegatorPackage,
-        jni.JniCallType.voidType,
-        [string.reference]).check();
+    _id_setAllowedHandwritingDelegatorPackage(
+        this, const jni.jvoidType(), [string.reference.pointer]);
   }
 
-  static final _id_getAllowedHandwritingDelegatorPackageName = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference,
-          r"getAllowedHandwritingDelegatorPackageName",
-          r"()Ljava/lang/String;");
+  static final _id_getAllowedHandwritingDelegatorPackageName =
+      _class.instanceMethodId(
+    r"getAllowedHandwritingDelegatorPackageName",
+    r"()Ljava/lang/String;",
+  );
 
   /// from: public java.lang.String getAllowedHandwritingDelegatorPackageName()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getAllowedHandwritingDelegatorPackageName() {
-    return const jni.JStringType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getAllowedHandwritingDelegatorPackageName,
-        jni.JniCallType.objectType, []).object);
+    return _id_getAllowedHandwritingDelegatorPackageName(
+        this, const jni.JStringType(), []);
   }
 
-  static final _id_getLocationInSurface = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getLocationInSurface", r"([I)V");
+  static final _id_getLocationInSurface = _class.instanceMethodId(
+    r"getLocationInSurface",
+    r"([I)V",
+  );
 
   /// from: public void getLocationInSurface(int[] is)
   void getLocationInSurface(
     jni.JArray<jni.jint> is0,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getLocationInSurface,
-        jni.JniCallType.voidType,
-        [is0.reference]).check();
+    _id_getLocationInSurface(
+        this, const jni.jvoidType(), [is0.reference.pointer]);
   }
 
-  static final _id_getRootWindowInsets = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getRootWindowInsets",
-      r"()Landroid/view/WindowInsets;");
+  static final _id_getRootWindowInsets = _class.instanceMethodId(
+    r"getRootWindowInsets",
+    r"()Landroid/view/WindowInsets;",
+  );
 
   /// from: public android.view.WindowInsets getRootWindowInsets()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getRootWindowInsets() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getRootWindowInsets,
-        jni.JniCallType.objectType, []).object);
+    return _id_getRootWindowInsets(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getWindowInsetsController = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getWindowInsetsController",
-      r"()Landroid/view/WindowInsetsController;");
+  static final _id_getWindowInsetsController = _class.instanceMethodId(
+    r"getWindowInsetsController",
+    r"()Landroid/view/WindowInsetsController;",
+  );
 
   /// from: public android.view.WindowInsetsController getWindowInsetsController()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getWindowInsetsController() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getWindowInsetsController,
-        jni.JniCallType.objectType, []).object);
+    return _id_getWindowInsetsController(this, const jni.JObjectType(), []);
   }
 
-  static final _id_findOnBackInvokedDispatcher = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"findOnBackInvokedDispatcher",
-          r"()Landroid/window/OnBackInvokedDispatcher;");
+  static final _id_findOnBackInvokedDispatcher = _class.instanceMethodId(
+    r"findOnBackInvokedDispatcher",
+    r"()Landroid/window/OnBackInvokedDispatcher;",
+  );
 
   /// from: public final android.window.OnBackInvokedDispatcher findOnBackInvokedDispatcher()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject findOnBackInvokedDispatcher() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_findOnBackInvokedDispatcher,
-        jni.JniCallType.objectType, []).object);
+    return _id_findOnBackInvokedDispatcher(this, const jni.JObjectType(), []);
   }
 
-  static final _id_computeSystemWindowInsets = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"computeSystemWindowInsets",
-      r"(Landroid/view/WindowInsets;Landroid/graphics/Rect;)Landroid/view/WindowInsets;");
+  static final _id_computeSystemWindowInsets = _class.instanceMethodId(
+    r"computeSystemWindowInsets",
+    r"(Landroid/view/WindowInsets;Landroid/graphics/Rect;)Landroid/view/WindowInsets;",
+  );
 
   /// from: public android.view.WindowInsets computeSystemWindowInsets(android.view.WindowInsets windowInsets, android.graphics.Rect rect)
   /// The returned object must be released after use, by calling the [release] method.
@@ -11236,605 +10766,610 @@ class View extends jni.JObject {
     jni.JObject windowInsets,
     jni.JObject rect,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_computeSystemWindowInsets,
-        jni.JniCallType.objectType,
-        [windowInsets.reference, rect.reference]).object);
+    return _id_computeSystemWindowInsets(this, const jni.JObjectType(),
+        [windowInsets.reference.pointer, rect.reference.pointer]);
   }
 
-  static final _id_setFitsSystemWindows = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setFitsSystemWindows", r"(Z)V");
+  static final _id_setFitsSystemWindows = _class.instanceMethodId(
+    r"setFitsSystemWindows",
+    r"(Z)V",
+  );
 
   /// from: public void setFitsSystemWindows(boolean z)
   void setFitsSystemWindows(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setFitsSystemWindows,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setFitsSystemWindows(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_getFitsSystemWindows = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getFitsSystemWindows", r"()Z");
+  static final _id_getFitsSystemWindows = _class.instanceMethodId(
+    r"getFitsSystemWindows",
+    r"()Z",
+  );
 
   /// from: public boolean getFitsSystemWindows()
   bool getFitsSystemWindows() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getFitsSystemWindows, jni.JniCallType.booleanType, []).boolean;
+    return _id_getFitsSystemWindows(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_requestFitSystemWindows = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"requestFitSystemWindows", r"()V");
+  static final _id_requestFitSystemWindows = _class.instanceMethodId(
+    r"requestFitSystemWindows",
+    r"()V",
+  );
 
   /// from: public void requestFitSystemWindows()
   void requestFitSystemWindows() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_requestFitSystemWindows, jni.JniCallType.voidType, []).check();
+    _id_requestFitSystemWindows(this, const jni.jvoidType(), []);
   }
 
-  static final _id_requestApplyInsets = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"requestApplyInsets", r"()V");
+  static final _id_requestApplyInsets = _class.instanceMethodId(
+    r"requestApplyInsets",
+    r"()V",
+  );
 
   /// from: public void requestApplyInsets()
   void requestApplyInsets() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_requestApplyInsets, jni.JniCallType.voidType, []).check();
+    _id_requestApplyInsets(this, const jni.jvoidType(), []);
   }
 
-  static final _id_getVisibility = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getVisibility", r"()I");
+  static final _id_getVisibility = _class.instanceMethodId(
+    r"getVisibility",
+    r"()I",
+  );
 
   /// from: public int getVisibility()
   int getVisibility() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getVisibility, jni.JniCallType.intType, []).integer;
+    return _id_getVisibility(this, const jni.jintType(), []);
   }
 
-  static final _id_setVisibility = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setVisibility", r"(I)V");
+  static final _id_setVisibility = _class.instanceMethodId(
+    r"setVisibility",
+    r"(I)V",
+  );
 
   /// from: public void setVisibility(int i)
   void setVisibility(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setVisibility,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_setVisibility(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_isEnabled =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"isEnabled", r"()Z");
+  static final _id_isEnabled = _class.instanceMethodId(
+    r"isEnabled",
+    r"()Z",
+  );
 
   /// from: public boolean isEnabled()
   bool isEnabled() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_isEnabled, jni.JniCallType.booleanType, []).boolean;
+    return _id_isEnabled(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setEnabled =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"setEnabled", r"(Z)V");
+  static final _id_setEnabled = _class.instanceMethodId(
+    r"setEnabled",
+    r"(Z)V",
+  );
 
   /// from: public void setEnabled(boolean z)
   void setEnabled(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setEnabled,
-        jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_setEnabled(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_setFocusable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setFocusable", r"(Z)V");
+  static final _id_setFocusable = _class.instanceMethodId(
+    r"setFocusable",
+    r"(Z)V",
+  );
 
   /// from: public void setFocusable(boolean z)
   void setFocusable(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setFocusable,
-        jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_setFocusable(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_setFocusable1 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setFocusable", r"(I)V");
+  static final _id_setFocusable1 = _class.instanceMethodId(
+    r"setFocusable",
+    r"(I)V",
+  );
 
   /// from: public void setFocusable(int i)
   void setFocusable1(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setFocusable1,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_setFocusable1(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_setFocusableInTouchMode = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setFocusableInTouchMode", r"(Z)V");
+  static final _id_setFocusableInTouchMode = _class.instanceMethodId(
+    r"setFocusableInTouchMode",
+    r"(Z)V",
+  );
 
   /// from: public void setFocusableInTouchMode(boolean z)
   void setFocusableInTouchMode(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setFocusableInTouchMode,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setFocusableInTouchMode(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_setAutofillHints = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"setAutofillHints", r"([Ljava/lang/String;)V");
+  static final _id_setAutofillHints = _class.instanceMethodId(
+    r"setAutofillHints",
+    r"([Ljava/lang/String;)V",
+  );
 
   /// from: public void setAutofillHints(java.lang.String[] strings)
   void setAutofillHints(
     jni.JArray<jni.JString> strings,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setAutofillHints,
-        jni.JniCallType.voidType, [strings.reference]).check();
+    _id_setAutofillHints(
+        this, const jni.jvoidType(), [strings.reference.pointer]);
   }
 
-  static final _id_setSoundEffectsEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setSoundEffectsEnabled", r"(Z)V");
+  static final _id_setSoundEffectsEnabled = _class.instanceMethodId(
+    r"setSoundEffectsEnabled",
+    r"(Z)V",
+  );
 
   /// from: public void setSoundEffectsEnabled(boolean z)
   void setSoundEffectsEnabled(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setSoundEffectsEnabled,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setSoundEffectsEnabled(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isSoundEffectsEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isSoundEffectsEnabled", r"()Z");
+  static final _id_isSoundEffectsEnabled = _class.instanceMethodId(
+    r"isSoundEffectsEnabled",
+    r"()Z",
+  );
 
   /// from: public boolean isSoundEffectsEnabled()
   bool isSoundEffectsEnabled() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isSoundEffectsEnabled, jni.JniCallType.booleanType, []).boolean;
+    return _id_isSoundEffectsEnabled(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setHapticFeedbackEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setHapticFeedbackEnabled", r"(Z)V");
+  static final _id_setHapticFeedbackEnabled = _class.instanceMethodId(
+    r"setHapticFeedbackEnabled",
+    r"(Z)V",
+  );
 
   /// from: public void setHapticFeedbackEnabled(boolean z)
   void setHapticFeedbackEnabled(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setHapticFeedbackEnabled,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setHapticFeedbackEnabled(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isHapticFeedbackEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isHapticFeedbackEnabled", r"()Z");
+  static final _id_isHapticFeedbackEnabled = _class.instanceMethodId(
+    r"isHapticFeedbackEnabled",
+    r"()Z",
+  );
 
   /// from: public boolean isHapticFeedbackEnabled()
   bool isHapticFeedbackEnabled() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isHapticFeedbackEnabled, jni.JniCallType.booleanType, []).boolean;
+    return _id_isHapticFeedbackEnabled(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setLayoutDirection = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setLayoutDirection", r"(I)V");
+  static final _id_setLayoutDirection = _class.instanceMethodId(
+    r"setLayoutDirection",
+    r"(I)V",
+  );
 
   /// from: public void setLayoutDirection(int i)
   void setLayoutDirection(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setLayoutDirection,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setLayoutDirection(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getLayoutDirection = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getLayoutDirection", r"()I");
+  static final _id_getLayoutDirection = _class.instanceMethodId(
+    r"getLayoutDirection",
+    r"()I",
+  );
 
   /// from: public int getLayoutDirection()
   int getLayoutDirection() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getLayoutDirection, jni.JniCallType.intType, []).integer;
+    return _id_getLayoutDirection(this, const jni.jintType(), []);
   }
 
-  static final _id_hasTransientState = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"hasTransientState", r"()Z");
+  static final _id_hasTransientState = _class.instanceMethodId(
+    r"hasTransientState",
+    r"()Z",
+  );
 
   /// from: public boolean hasTransientState()
   bool hasTransientState() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_hasTransientState, jni.JniCallType.booleanType, []).boolean;
+    return _id_hasTransientState(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setHasTransientState = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setHasTransientState", r"(Z)V");
+  static final _id_setHasTransientState = _class.instanceMethodId(
+    r"setHasTransientState",
+    r"(Z)V",
+  );
 
   /// from: public void setHasTransientState(boolean z)
   void setHasTransientState(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setHasTransientState,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setHasTransientState(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isAttachedToWindow = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isAttachedToWindow", r"()Z");
+  static final _id_isAttachedToWindow = _class.instanceMethodId(
+    r"isAttachedToWindow",
+    r"()Z",
+  );
 
   /// from: public boolean isAttachedToWindow()
   bool isAttachedToWindow() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isAttachedToWindow, jni.JniCallType.booleanType, []).boolean;
+    return _id_isAttachedToWindow(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_isLaidOut =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"isLaidOut", r"()Z");
+  static final _id_isLaidOut = _class.instanceMethodId(
+    r"isLaidOut",
+    r"()Z",
+  );
 
   /// from: public boolean isLaidOut()
   bool isLaidOut() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_isLaidOut, jni.JniCallType.booleanType, []).boolean;
+    return _id_isLaidOut(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setWillNotDraw = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setWillNotDraw", r"(Z)V");
+  static final _id_setWillNotDraw = _class.instanceMethodId(
+    r"setWillNotDraw",
+    r"(Z)V",
+  );
 
   /// from: public void setWillNotDraw(boolean z)
   void setWillNotDraw(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setWillNotDraw,
-        jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_setWillNotDraw(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_willNotDraw =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"willNotDraw", r"()Z");
+  static final _id_willNotDraw = _class.instanceMethodId(
+    r"willNotDraw",
+    r"()Z",
+  );
 
   /// from: public boolean willNotDraw()
   bool willNotDraw() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_willNotDraw, jni.JniCallType.booleanType, []).boolean;
+    return _id_willNotDraw(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setWillNotCacheDrawing = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setWillNotCacheDrawing", r"(Z)V");
+  static final _id_setWillNotCacheDrawing = _class.instanceMethodId(
+    r"setWillNotCacheDrawing",
+    r"(Z)V",
+  );
 
   /// from: public void setWillNotCacheDrawing(boolean z)
   void setWillNotCacheDrawing(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setWillNotCacheDrawing,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setWillNotCacheDrawing(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_willNotCacheDrawing = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"willNotCacheDrawing", r"()Z");
+  static final _id_willNotCacheDrawing = _class.instanceMethodId(
+    r"willNotCacheDrawing",
+    r"()Z",
+  );
 
   /// from: public boolean willNotCacheDrawing()
   bool willNotCacheDrawing() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_willNotCacheDrawing, jni.JniCallType.booleanType, []).boolean;
+    return _id_willNotCacheDrawing(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_isClickable =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"isClickable", r"()Z");
+  static final _id_isClickable = _class.instanceMethodId(
+    r"isClickable",
+    r"()Z",
+  );
 
   /// from: public boolean isClickable()
   bool isClickable() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_isClickable, jni.JniCallType.booleanType, []).boolean;
+    return _id_isClickable(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setClickable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setClickable", r"(Z)V");
+  static final _id_setClickable = _class.instanceMethodId(
+    r"setClickable",
+    r"(Z)V",
+  );
 
   /// from: public void setClickable(boolean z)
   void setClickable(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setClickable,
-        jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_setClickable(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_setAllowClickWhenDisabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setAllowClickWhenDisabled", r"(Z)V");
+  static final _id_setAllowClickWhenDisabled = _class.instanceMethodId(
+    r"setAllowClickWhenDisabled",
+    r"(Z)V",
+  );
 
   /// from: public void setAllowClickWhenDisabled(boolean z)
   void setAllowClickWhenDisabled(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setAllowClickWhenDisabled,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setAllowClickWhenDisabled(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isLongClickable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isLongClickable", r"()Z");
+  static final _id_isLongClickable = _class.instanceMethodId(
+    r"isLongClickable",
+    r"()Z",
+  );
 
   /// from: public boolean isLongClickable()
   bool isLongClickable() {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_isLongClickable,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_isLongClickable(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setLongClickable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setLongClickable", r"(Z)V");
+  static final _id_setLongClickable = _class.instanceMethodId(
+    r"setLongClickable",
+    r"(Z)V",
+  );
 
   /// from: public void setLongClickable(boolean z)
   void setLongClickable(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setLongClickable,
-        jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_setLongClickable(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isContextClickable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isContextClickable", r"()Z");
+  static final _id_isContextClickable = _class.instanceMethodId(
+    r"isContextClickable",
+    r"()Z",
+  );
 
   /// from: public boolean isContextClickable()
   bool isContextClickable() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isContextClickable, jni.JniCallType.booleanType, []).boolean;
+    return _id_isContextClickable(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setContextClickable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setContextClickable", r"(Z)V");
+  static final _id_setContextClickable = _class.instanceMethodId(
+    r"setContextClickable",
+    r"(Z)V",
+  );
 
   /// from: public void setContextClickable(boolean z)
   void setContextClickable(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_setContextClickable, jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_setContextClickable(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_setPressed =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"setPressed", r"(Z)V");
+  static final _id_setPressed = _class.instanceMethodId(
+    r"setPressed",
+    r"(Z)V",
+  );
 
   /// from: public void setPressed(boolean z)
   void setPressed(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setPressed,
-        jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_setPressed(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_dispatchSetPressed = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchSetPressed", r"(Z)V");
+  static final _id_dispatchSetPressed = _class.instanceMethodId(
+    r"dispatchSetPressed",
+    r"(Z)V",
+  );
 
   /// from: protected void dispatchSetPressed(boolean z)
   void dispatchSetPressed(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_dispatchSetPressed, jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_dispatchSetPressed(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isPressed =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"isPressed", r"()Z");
+  static final _id_isPressed = _class.instanceMethodId(
+    r"isPressed",
+    r"()Z",
+  );
 
   /// from: public boolean isPressed()
   bool isPressed() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_isPressed, jni.JniCallType.booleanType, []).boolean;
+    return _id_isPressed(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_isSaveEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isSaveEnabled", r"()Z");
+  static final _id_isSaveEnabled = _class.instanceMethodId(
+    r"isSaveEnabled",
+    r"()Z",
+  );
 
   /// from: public boolean isSaveEnabled()
   bool isSaveEnabled() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_isSaveEnabled, jni.JniCallType.booleanType, []).boolean;
+    return _id_isSaveEnabled(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setSaveEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setSaveEnabled", r"(Z)V");
+  static final _id_setSaveEnabled = _class.instanceMethodId(
+    r"setSaveEnabled",
+    r"(Z)V",
+  );
 
   /// from: public void setSaveEnabled(boolean z)
   void setSaveEnabled(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setSaveEnabled,
-        jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_setSaveEnabled(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_getFilterTouchesWhenObscured = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getFilterTouchesWhenObscured", r"()Z");
+  static final _id_getFilterTouchesWhenObscured = _class.instanceMethodId(
+    r"getFilterTouchesWhenObscured",
+    r"()Z",
+  );
 
   /// from: public boolean getFilterTouchesWhenObscured()
   bool getFilterTouchesWhenObscured() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getFilterTouchesWhenObscured,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_getFilterTouchesWhenObscured(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setFilterTouchesWhenObscured = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"setFilterTouchesWhenObscured", r"(Z)V");
+  static final _id_setFilterTouchesWhenObscured = _class.instanceMethodId(
+    r"setFilterTouchesWhenObscured",
+    r"(Z)V",
+  );
 
   /// from: public void setFilterTouchesWhenObscured(boolean z)
   void setFilterTouchesWhenObscured(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setFilterTouchesWhenObscured,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setFilterTouchesWhenObscured(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isSaveFromParentEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isSaveFromParentEnabled", r"()Z");
+  static final _id_isSaveFromParentEnabled = _class.instanceMethodId(
+    r"isSaveFromParentEnabled",
+    r"()Z",
+  );
 
   /// from: public boolean isSaveFromParentEnabled()
   bool isSaveFromParentEnabled() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isSaveFromParentEnabled, jni.JniCallType.booleanType, []).boolean;
+    return _id_isSaveFromParentEnabled(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setSaveFromParentEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setSaveFromParentEnabled", r"(Z)V");
+  static final _id_setSaveFromParentEnabled = _class.instanceMethodId(
+    r"setSaveFromParentEnabled",
+    r"(Z)V",
+  );
 
   /// from: public void setSaveFromParentEnabled(boolean z)
   void setSaveFromParentEnabled(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setSaveFromParentEnabled,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setSaveFromParentEnabled(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isFocusable =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"isFocusable", r"()Z");
+  static final _id_isFocusable = _class.instanceMethodId(
+    r"isFocusable",
+    r"()Z",
+  );
 
   /// from: public final boolean isFocusable()
   bool isFocusable() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_isFocusable, jni.JniCallType.booleanType, []).boolean;
+    return _id_isFocusable(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_getFocusable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getFocusable", r"()I");
+  static final _id_getFocusable = _class.instanceMethodId(
+    r"getFocusable",
+    r"()I",
+  );
 
   /// from: public int getFocusable()
   int getFocusable() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getFocusable, jni.JniCallType.intType, []).integer;
+    return _id_getFocusable(this, const jni.jintType(), []);
   }
 
-  static final _id_isFocusableInTouchMode = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isFocusableInTouchMode", r"()Z");
+  static final _id_isFocusableInTouchMode = _class.instanceMethodId(
+    r"isFocusableInTouchMode",
+    r"()Z",
+  );
 
   /// from: public final boolean isFocusableInTouchMode()
   bool isFocusableInTouchMode() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isFocusableInTouchMode, jni.JniCallType.booleanType, []).boolean;
+    return _id_isFocusableInTouchMode(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_isScreenReaderFocusable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isScreenReaderFocusable", r"()Z");
+  static final _id_isScreenReaderFocusable = _class.instanceMethodId(
+    r"isScreenReaderFocusable",
+    r"()Z",
+  );
 
   /// from: public boolean isScreenReaderFocusable()
   bool isScreenReaderFocusable() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isScreenReaderFocusable, jni.JniCallType.booleanType, []).boolean;
+    return _id_isScreenReaderFocusable(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setScreenReaderFocusable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setScreenReaderFocusable", r"(Z)V");
+  static final _id_setScreenReaderFocusable = _class.instanceMethodId(
+    r"setScreenReaderFocusable",
+    r"(Z)V",
+  );
 
   /// from: public void setScreenReaderFocusable(boolean z)
   void setScreenReaderFocusable(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setScreenReaderFocusable,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setScreenReaderFocusable(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isAccessibilityHeading = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isAccessibilityHeading", r"()Z");
+  static final _id_isAccessibilityHeading = _class.instanceMethodId(
+    r"isAccessibilityHeading",
+    r"()Z",
+  );
 
   /// from: public boolean isAccessibilityHeading()
   bool isAccessibilityHeading() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isAccessibilityHeading, jni.JniCallType.booleanType, []).boolean;
+    return _id_isAccessibilityHeading(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setAccessibilityHeading = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setAccessibilityHeading", r"(Z)V");
+  static final _id_setAccessibilityHeading = _class.instanceMethodId(
+    r"setAccessibilityHeading",
+    r"(Z)V",
+  );
 
   /// from: public void setAccessibilityHeading(boolean z)
   void setAccessibilityHeading(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setAccessibilityHeading,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setAccessibilityHeading(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_focusSearch = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"focusSearch", r"(I)Landroid/view/View;");
+  static final _id_focusSearch = _class.instanceMethodId(
+    r"focusSearch",
+    r"(I)Landroid/view/View;",
+  );
 
   /// from: public android.view.View focusSearch(int i)
   /// The returned object must be released after use, by calling the [release] method.
   View focusSearch(
     int i,
   ) {
-    return const $ViewType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_focusSearch,
-        jni.JniCallType.objectType,
-        [jni.JValueInt(i)]).object);
+    return _id_focusSearch(this, const $ViewType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_isKeyboardNavigationCluster = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isKeyboardNavigationCluster", r"()Z");
+  static final _id_isKeyboardNavigationCluster = _class.instanceMethodId(
+    r"isKeyboardNavigationCluster",
+    r"()Z",
+  );
 
   /// from: public final boolean isKeyboardNavigationCluster()
   bool isKeyboardNavigationCluster() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_isKeyboardNavigationCluster,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_isKeyboardNavigationCluster(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setKeyboardNavigationCluster = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"setKeyboardNavigationCluster", r"(Z)V");
+  static final _id_setKeyboardNavigationCluster = _class.instanceMethodId(
+    r"setKeyboardNavigationCluster",
+    r"(Z)V",
+  );
 
   /// from: public void setKeyboardNavigationCluster(boolean z)
   void setKeyboardNavigationCluster(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setKeyboardNavigationCluster,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setKeyboardNavigationCluster(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isFocusedByDefault = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isFocusedByDefault", r"()Z");
+  static final _id_isFocusedByDefault = _class.instanceMethodId(
+    r"isFocusedByDefault",
+    r"()Z",
+  );
 
   /// from: public final boolean isFocusedByDefault()
   bool isFocusedByDefault() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isFocusedByDefault, jni.JniCallType.booleanType, []).boolean;
+    return _id_isFocusedByDefault(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setFocusedByDefault = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setFocusedByDefault", r"(Z)V");
+  static final _id_setFocusedByDefault = _class.instanceMethodId(
+    r"setFocusedByDefault",
+    r"(Z)V",
+  );
 
   /// from: public void setFocusedByDefault(boolean z)
   void setFocusedByDefault(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_setFocusedByDefault, jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_setFocusedByDefault(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_keyboardNavigationClusterSearch = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"keyboardNavigationClusterSearch",
-          r"(Landroid/view/View;I)Landroid/view/View;");
+  static final _id_keyboardNavigationClusterSearch = _class.instanceMethodId(
+    r"keyboardNavigationClusterSearch",
+    r"(Landroid/view/View;I)Landroid/view/View;",
+  );
 
   /// from: public android.view.View keyboardNavigationClusterSearch(android.view.View view, int i)
   /// The returned object must be released after use, by calling the [release] method.
@@ -11842,87 +11377,79 @@ class View extends jni.JObject {
     View view,
     int i,
   ) {
-    return const $ViewType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_keyboardNavigationClusterSearch,
-        jni.JniCallType.objectType,
-        [view.reference, jni.JValueInt(i)]).object);
+    return _id_keyboardNavigationClusterSearch(
+        this, const $ViewType(), [view.reference.pointer, jni.JValueInt(i)]);
   }
 
-  static final _id_dispatchUnhandledMove = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"dispatchUnhandledMove", r"(Landroid/view/View;I)Z");
+  static final _id_dispatchUnhandledMove = _class.instanceMethodId(
+    r"dispatchUnhandledMove",
+    r"(Landroid/view/View;I)Z",
+  );
 
   /// from: public boolean dispatchUnhandledMove(android.view.View view, int i)
   bool dispatchUnhandledMove(
     View view,
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchUnhandledMove,
-        jni.JniCallType.booleanType,
-        [view.reference, jni.JValueInt(i)]).boolean;
+    return _id_dispatchUnhandledMove(this, const jni.jbooleanType(),
+        [view.reference.pointer, jni.JValueInt(i)]);
   }
 
-  static final _id_setDefaultFocusHighlightEnabled = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"setDefaultFocusHighlightEnabled", r"(Z)V");
+  static final _id_setDefaultFocusHighlightEnabled = _class.instanceMethodId(
+    r"setDefaultFocusHighlightEnabled",
+    r"(Z)V",
+  );
 
   /// from: public void setDefaultFocusHighlightEnabled(boolean z)
   void setDefaultFocusHighlightEnabled(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setDefaultFocusHighlightEnabled,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setDefaultFocusHighlightEnabled(
+        this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_getDefaultFocusHighlightEnabled = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"getDefaultFocusHighlightEnabled", r"()Z");
+  static final _id_getDefaultFocusHighlightEnabled = _class.instanceMethodId(
+    r"getDefaultFocusHighlightEnabled",
+    r"()Z",
+  );
 
   /// from: public final boolean getDefaultFocusHighlightEnabled()
   bool getDefaultFocusHighlightEnabled() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getDefaultFocusHighlightEnabled,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_getDefaultFocusHighlightEnabled(
+        this, const jni.jbooleanType(), []);
   }
 
-  static final _id_getFocusables = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getFocusables", r"(I)Ljava/util/ArrayList;");
+  static final _id_getFocusables = _class.instanceMethodId(
+    r"getFocusables",
+    r"(I)Ljava/util/ArrayList;",
+  );
 
   /// from: public java.util.ArrayList getFocusables(int i)
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getFocusables(
     int i,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getFocusables,
-        jni.JniCallType.objectType,
-        [jni.JValueInt(i)]).object);
+    return _id_getFocusables(this, const jni.JObjectType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_addFocusables = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"addFocusables", r"(Ljava/util/ArrayList;I)V");
+  static final _id_addFocusables = _class.instanceMethodId(
+    r"addFocusables",
+    r"(Ljava/util/ArrayList;I)V",
+  );
 
   /// from: public void addFocusables(java.util.ArrayList arrayList, int i)
   void addFocusables(
     jni.JObject arrayList,
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_addFocusables,
-        jni.JniCallType.voidType,
-        [arrayList.reference, jni.JValueInt(i)]).check();
+    _id_addFocusables(this, const jni.jvoidType(),
+        [arrayList.reference.pointer, jni.JValueInt(i)]);
   }
 
-  static final _id_addFocusables1 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"addFocusables", r"(Ljava/util/ArrayList;II)V");
+  static final _id_addFocusables1 = _class.instanceMethodId(
+    r"addFocusables",
+    r"(Ljava/util/ArrayList;II)V",
+  );
 
   /// from: public void addFocusables(java.util.ArrayList arrayList, int i, int i1)
   void addFocusables1(
@@ -11930,33 +11457,28 @@ class View extends jni.JObject {
     int i,
     int i1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_addFocusables1,
-        jni.JniCallType.voidType,
-        [arrayList.reference, jni.JValueInt(i), jni.JValueInt(i1)]).check();
+    _id_addFocusables1(this, const jni.jvoidType(),
+        [arrayList.reference.pointer, jni.JValueInt(i), jni.JValueInt(i1)]);
   }
 
-  static final _id_addKeyboardNavigationClusters = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"addKeyboardNavigationClusters",
-          r"(Ljava/util/Collection;I)V");
+  static final _id_addKeyboardNavigationClusters = _class.instanceMethodId(
+    r"addKeyboardNavigationClusters",
+    r"(Ljava/util/Collection;I)V",
+  );
 
   /// from: public void addKeyboardNavigationClusters(java.util.Collection collection, int i)
   void addKeyboardNavigationClusters(
     jni.JObject collection,
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_addKeyboardNavigationClusters,
-        jni.JniCallType.voidType,
-        [collection.reference, jni.JValueInt(i)]).check();
+    _id_addKeyboardNavigationClusters(this, const jni.jvoidType(),
+        [collection.reference.pointer, jni.JValueInt(i)]);
   }
 
-  static final _id_findViewsWithText = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"findViewsWithText",
-      r"(Ljava/util/ArrayList;Ljava/lang/CharSequence;I)V");
+  static final _id_findViewsWithText = _class.instanceMethodId(
+    r"findViewsWithText",
+    r"(Ljava/util/ArrayList;Ljava/lang/CharSequence;I)V",
+  );
 
   /// from: public void findViewsWithText(java.util.ArrayList arrayList, java.lang.CharSequence charSequence, int i)
   void findViewsWithText(
@@ -11964,761 +11486,707 @@ class View extends jni.JObject {
     jni.JObject charSequence,
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_findViewsWithText, jni.JniCallType.voidType, [
-      arrayList.reference,
-      charSequence.reference,
+    _id_findViewsWithText(this, const jni.jvoidType(), [
+      arrayList.reference.pointer,
+      charSequence.reference.pointer,
       jni.JValueInt(i)
-    ]).check();
+    ]);
   }
 
-  static final _id_getTouchables = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getTouchables", r"()Ljava/util/ArrayList;");
+  static final _id_getTouchables = _class.instanceMethodId(
+    r"getTouchables",
+    r"()Ljava/util/ArrayList;",
+  );
 
   /// from: public java.util.ArrayList getTouchables()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getTouchables() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getTouchables, jni.JniCallType.objectType, []).object);
+    return _id_getTouchables(this, const jni.JObjectType(), []);
   }
 
-  static final _id_addTouchables = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"addTouchables", r"(Ljava/util/ArrayList;)V");
+  static final _id_addTouchables = _class.instanceMethodId(
+    r"addTouchables",
+    r"(Ljava/util/ArrayList;)V",
+  );
 
   /// from: public void addTouchables(java.util.ArrayList arrayList)
   void addTouchables(
     jni.JObject arrayList,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_addTouchables,
-        jni.JniCallType.voidType, [arrayList.reference]).check();
+    _id_addTouchables(
+        this, const jni.jvoidType(), [arrayList.reference.pointer]);
   }
 
-  static final _id_isAccessibilityFocused = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isAccessibilityFocused", r"()Z");
+  static final _id_isAccessibilityFocused = _class.instanceMethodId(
+    r"isAccessibilityFocused",
+    r"()Z",
+  );
 
   /// from: public boolean isAccessibilityFocused()
   bool isAccessibilityFocused() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isAccessibilityFocused, jni.JniCallType.booleanType, []).boolean;
+    return _id_isAccessibilityFocused(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_requestFocus = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"requestFocus", r"()Z");
+  static final _id_requestFocus = _class.instanceMethodId(
+    r"requestFocus",
+    r"()Z",
+  );
 
   /// from: public final boolean requestFocus()
   bool requestFocus() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_requestFocus, jni.JniCallType.booleanType, []).boolean;
+    return _id_requestFocus(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_restoreDefaultFocus = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"restoreDefaultFocus", r"()Z");
+  static final _id_restoreDefaultFocus = _class.instanceMethodId(
+    r"restoreDefaultFocus",
+    r"()Z",
+  );
 
   /// from: public boolean restoreDefaultFocus()
   bool restoreDefaultFocus() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_restoreDefaultFocus, jni.JniCallType.booleanType, []).boolean;
+    return _id_restoreDefaultFocus(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_requestFocus1 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"requestFocus", r"(I)Z");
+  static final _id_requestFocus1 = _class.instanceMethodId(
+    r"requestFocus",
+    r"(I)Z",
+  );
 
   /// from: public final boolean requestFocus(int i)
   bool requestFocus1(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_requestFocus1,
-        jni.JniCallType.booleanType, [jni.JValueInt(i)]).boolean;
+    return _id_requestFocus1(
+        this, const jni.jbooleanType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_requestFocus2 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"requestFocus", r"(ILandroid/graphics/Rect;)Z");
+  static final _id_requestFocus2 = _class.instanceMethodId(
+    r"requestFocus",
+    r"(ILandroid/graphics/Rect;)Z",
+  );
 
   /// from: public boolean requestFocus(int i, android.graphics.Rect rect)
   bool requestFocus2(
     int i,
     jni.JObject rect,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_requestFocus2,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i), rect.reference]).boolean;
+    return _id_requestFocus2(this, const jni.jbooleanType(),
+        [jni.JValueInt(i), rect.reference.pointer]);
   }
 
-  static final _id_requestFocusFromTouch = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"requestFocusFromTouch", r"()Z");
+  static final _id_requestFocusFromTouch = _class.instanceMethodId(
+    r"requestFocusFromTouch",
+    r"()Z",
+  );
 
   /// from: public final boolean requestFocusFromTouch()
   bool requestFocusFromTouch() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_requestFocusFromTouch, jni.JniCallType.booleanType, []).boolean;
+    return _id_requestFocusFromTouch(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_getImportantForAccessibility = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getImportantForAccessibility", r"()I");
+  static final _id_getImportantForAccessibility = _class.instanceMethodId(
+    r"getImportantForAccessibility",
+    r"()I",
+  );
 
   /// from: public int getImportantForAccessibility()
   int getImportantForAccessibility() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getImportantForAccessibility, jni.JniCallType.intType, []).integer;
+    return _id_getImportantForAccessibility(this, const jni.jintType(), []);
   }
 
-  static final _id_setAccessibilityLiveRegion = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setAccessibilityLiveRegion", r"(I)V");
+  static final _id_setAccessibilityLiveRegion = _class.instanceMethodId(
+    r"setAccessibilityLiveRegion",
+    r"(I)V",
+  );
 
   /// from: public void setAccessibilityLiveRegion(int i)
   void setAccessibilityLiveRegion(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setAccessibilityLiveRegion,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setAccessibilityLiveRegion(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getAccessibilityLiveRegion = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getAccessibilityLiveRegion", r"()I");
+  static final _id_getAccessibilityLiveRegion = _class.instanceMethodId(
+    r"getAccessibilityLiveRegion",
+    r"()I",
+  );
 
   /// from: public int getAccessibilityLiveRegion()
   int getAccessibilityLiveRegion() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getAccessibilityLiveRegion, jni.JniCallType.intType, []).integer;
+    return _id_getAccessibilityLiveRegion(this, const jni.jintType(), []);
   }
 
-  static final _id_setImportantForAccessibility = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"setImportantForAccessibility", r"(I)V");
+  static final _id_setImportantForAccessibility = _class.instanceMethodId(
+    r"setImportantForAccessibility",
+    r"(I)V",
+  );
 
   /// from: public void setImportantForAccessibility(int i)
   void setImportantForAccessibility(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setImportantForAccessibility,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setImportantForAccessibility(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_isImportantForAccessibility = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isImportantForAccessibility", r"()Z");
+  static final _id_isImportantForAccessibility = _class.instanceMethodId(
+    r"isImportantForAccessibility",
+    r"()Z",
+  );
 
   /// from: public boolean isImportantForAccessibility()
   bool isImportantForAccessibility() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_isImportantForAccessibility,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_isImportantForAccessibility(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_getParentForAccessibility = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getParentForAccessibility",
-      r"()Landroid/view/ViewParent;");
+  static final _id_getParentForAccessibility = _class.instanceMethodId(
+    r"getParentForAccessibility",
+    r"()Landroid/view/ViewParent;",
+  );
 
   /// from: public android.view.ViewParent getParentForAccessibility()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getParentForAccessibility() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getParentForAccessibility,
-        jni.JniCallType.objectType, []).object);
+    return _id_getParentForAccessibility(this, const jni.JObjectType(), []);
   }
 
-  static final _id_addChildrenForAccessibility = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"addChildrenForAccessibility",
-          r"(Ljava/util/ArrayList;)V");
+  static final _id_addChildrenForAccessibility = _class.instanceMethodId(
+    r"addChildrenForAccessibility",
+    r"(Ljava/util/ArrayList;)V",
+  );
 
   /// from: public void addChildrenForAccessibility(java.util.ArrayList arrayList)
   void addChildrenForAccessibility(
     jni.JObject arrayList,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_addChildrenForAccessibility,
-        jni.JniCallType.voidType,
-        [arrayList.reference]).check();
+    _id_addChildrenForAccessibility(
+        this, const jni.jvoidType(), [arrayList.reference.pointer]);
   }
 
-  static final _id_isAccessibilityDataSensitive = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isAccessibilityDataSensitive", r"()Z");
+  static final _id_isAccessibilityDataSensitive = _class.instanceMethodId(
+    r"isAccessibilityDataSensitive",
+    r"()Z",
+  );
 
   /// from: public boolean isAccessibilityDataSensitive()
   bool isAccessibilityDataSensitive() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_isAccessibilityDataSensitive,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_isAccessibilityDataSensitive(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setAccessibilityDataSensitive = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"setAccessibilityDataSensitive", r"(I)V");
+  static final _id_setAccessibilityDataSensitive = _class.instanceMethodId(
+    r"setAccessibilityDataSensitive",
+    r"(I)V",
+  );
 
   /// from: public void setAccessibilityDataSensitive(int i)
   void setAccessibilityDataSensitive(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setAccessibilityDataSensitive,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setAccessibilityDataSensitive(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_setTransitionVisibility = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setTransitionVisibility", r"(I)V");
+  static final _id_setTransitionVisibility = _class.instanceMethodId(
+    r"setTransitionVisibility",
+    r"(I)V",
+  );
 
   /// from: public void setTransitionVisibility(int i)
   void setTransitionVisibility(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setTransitionVisibility,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setTransitionVisibility(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
   static final _id_dispatchNestedPrePerformAccessibilityAction =
-      jni.Jni.accessors.getMethodIDOf(
-          _class.reference,
-          r"dispatchNestedPrePerformAccessibilityAction",
-          r"(ILandroid/os/Bundle;)Z");
+      _class.instanceMethodId(
+    r"dispatchNestedPrePerformAccessibilityAction",
+    r"(ILandroid/os/Bundle;)Z",
+  );
 
   /// from: public boolean dispatchNestedPrePerformAccessibilityAction(int i, android.os.Bundle bundle)
   bool dispatchNestedPrePerformAccessibilityAction(
     int i,
     jni.JObject bundle,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchNestedPrePerformAccessibilityAction,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i), bundle.reference]).boolean;
+    return _id_dispatchNestedPrePerformAccessibilityAction(this,
+        const jni.jbooleanType(), [jni.JValueInt(i), bundle.reference.pointer]);
   }
 
-  static final _id_performAccessibilityAction = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"performAccessibilityAction",
-      r"(ILandroid/os/Bundle;)Z");
+  static final _id_performAccessibilityAction = _class.instanceMethodId(
+    r"performAccessibilityAction",
+    r"(ILandroid/os/Bundle;)Z",
+  );
 
   /// from: public boolean performAccessibilityAction(int i, android.os.Bundle bundle)
   bool performAccessibilityAction(
     int i,
     jni.JObject bundle,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_performAccessibilityAction,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i), bundle.reference]).boolean;
+    return _id_performAccessibilityAction(this, const jni.jbooleanType(),
+        [jni.JValueInt(i), bundle.reference.pointer]);
   }
 
-  static final _id_isTemporarilyDetached = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isTemporarilyDetached", r"()Z");
+  static final _id_isTemporarilyDetached = _class.instanceMethodId(
+    r"isTemporarilyDetached",
+    r"()Z",
+  );
 
   /// from: public final boolean isTemporarilyDetached()
   bool isTemporarilyDetached() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isTemporarilyDetached, jni.JniCallType.booleanType, []).boolean;
+    return _id_isTemporarilyDetached(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_dispatchStartTemporaryDetach = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchStartTemporaryDetach", r"()V");
+  static final _id_dispatchStartTemporaryDetach = _class.instanceMethodId(
+    r"dispatchStartTemporaryDetach",
+    r"()V",
+  );
 
   /// from: public void dispatchStartTemporaryDetach()
   void dispatchStartTemporaryDetach() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_dispatchStartTemporaryDetach, jni.JniCallType.voidType, []).check();
+    _id_dispatchStartTemporaryDetach(this, const jni.jvoidType(), []);
   }
 
-  static final _id_onStartTemporaryDetach = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onStartTemporaryDetach", r"()V");
+  static final _id_onStartTemporaryDetach = _class.instanceMethodId(
+    r"onStartTemporaryDetach",
+    r"()V",
+  );
 
   /// from: public void onStartTemporaryDetach()
   void onStartTemporaryDetach() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_onStartTemporaryDetach, jni.JniCallType.voidType, []).check();
+    _id_onStartTemporaryDetach(this, const jni.jvoidType(), []);
   }
 
-  static final _id_dispatchFinishTemporaryDetach = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"dispatchFinishTemporaryDetach", r"()V");
+  static final _id_dispatchFinishTemporaryDetach = _class.instanceMethodId(
+    r"dispatchFinishTemporaryDetach",
+    r"()V",
+  );
 
   /// from: public void dispatchFinishTemporaryDetach()
   void dispatchFinishTemporaryDetach() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchFinishTemporaryDetach,
-        jni.JniCallType.voidType, []).check();
+    _id_dispatchFinishTemporaryDetach(this, const jni.jvoidType(), []);
   }
 
-  static final _id_onFinishTemporaryDetach = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onFinishTemporaryDetach", r"()V");
+  static final _id_onFinishTemporaryDetach = _class.instanceMethodId(
+    r"onFinishTemporaryDetach",
+    r"()V",
+  );
 
   /// from: public void onFinishTemporaryDetach()
   void onFinishTemporaryDetach() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_onFinishTemporaryDetach, jni.JniCallType.voidType, []).check();
+    _id_onFinishTemporaryDetach(this, const jni.jvoidType(), []);
   }
 
-  static final _id_getKeyDispatcherState = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getKeyDispatcherState",
-      r"()Landroid/view/KeyEvent$DispatcherState;");
+  static final _id_getKeyDispatcherState = _class.instanceMethodId(
+    r"getKeyDispatcherState",
+    r"()Landroid/view/KeyEvent$DispatcherState;",
+  );
 
   /// from: public android.view.KeyEvent$DispatcherState getKeyDispatcherState()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getKeyDispatcherState() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getKeyDispatcherState,
-        jni.JniCallType.objectType, []).object);
+    return _id_getKeyDispatcherState(this, const jni.JObjectType(), []);
   }
 
-  static final _id_dispatchKeyEventPreIme = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"dispatchKeyEventPreIme",
-      r"(Landroid/view/KeyEvent;)Z");
+  static final _id_dispatchKeyEventPreIme = _class.instanceMethodId(
+    r"dispatchKeyEventPreIme",
+    r"(Landroid/view/KeyEvent;)Z",
+  );
 
   /// from: public boolean dispatchKeyEventPreIme(android.view.KeyEvent keyEvent)
   bool dispatchKeyEventPreIme(
     jni.JObject keyEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchKeyEventPreIme,
-        jni.JniCallType.booleanType,
-        [keyEvent.reference]).boolean;
+    return _id_dispatchKeyEventPreIme(
+        this, const jni.jbooleanType(), [keyEvent.reference.pointer]);
   }
 
-  static final _id_dispatchKeyEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"dispatchKeyEvent", r"(Landroid/view/KeyEvent;)Z");
+  static final _id_dispatchKeyEvent = _class.instanceMethodId(
+    r"dispatchKeyEvent",
+    r"(Landroid/view/KeyEvent;)Z",
+  );
 
   /// from: public boolean dispatchKeyEvent(android.view.KeyEvent keyEvent)
   bool dispatchKeyEvent(
     jni.JObject keyEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_dispatchKeyEvent,
-        jni.JniCallType.booleanType, [keyEvent.reference]).boolean;
+    return _id_dispatchKeyEvent(
+        this, const jni.jbooleanType(), [keyEvent.reference.pointer]);
   }
 
-  static final _id_dispatchKeyShortcutEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"dispatchKeyShortcutEvent",
-      r"(Landroid/view/KeyEvent;)Z");
+  static final _id_dispatchKeyShortcutEvent = _class.instanceMethodId(
+    r"dispatchKeyShortcutEvent",
+    r"(Landroid/view/KeyEvent;)Z",
+  );
 
   /// from: public boolean dispatchKeyShortcutEvent(android.view.KeyEvent keyEvent)
   bool dispatchKeyShortcutEvent(
     jni.JObject keyEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchKeyShortcutEvent,
-        jni.JniCallType.booleanType,
-        [keyEvent.reference]).boolean;
+    return _id_dispatchKeyShortcutEvent(
+        this, const jni.jbooleanType(), [keyEvent.reference.pointer]);
   }
 
-  static final _id_dispatchTouchEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"dispatchTouchEvent",
-      r"(Landroid/view/MotionEvent;)Z");
+  static final _id_dispatchTouchEvent = _class.instanceMethodId(
+    r"dispatchTouchEvent",
+    r"(Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: public boolean dispatchTouchEvent(android.view.MotionEvent motionEvent)
   bool dispatchTouchEvent(
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchTouchEvent,
-        jni.JniCallType.booleanType,
-        [motionEvent.reference]).boolean;
+    return _id_dispatchTouchEvent(
+        this, const jni.jbooleanType(), [motionEvent.reference.pointer]);
   }
 
-  static final _id_onFilterTouchEventForSecurity = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onFilterTouchEventForSecurity",
-          r"(Landroid/view/MotionEvent;)Z");
+  static final _id_onFilterTouchEventForSecurity = _class.instanceMethodId(
+    r"onFilterTouchEventForSecurity",
+    r"(Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: public boolean onFilterTouchEventForSecurity(android.view.MotionEvent motionEvent)
   bool onFilterTouchEventForSecurity(
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onFilterTouchEventForSecurity,
-        jni.JniCallType.booleanType,
-        [motionEvent.reference]).boolean;
+    return _id_onFilterTouchEventForSecurity(
+        this, const jni.jbooleanType(), [motionEvent.reference.pointer]);
   }
 
-  static final _id_dispatchTrackballEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"dispatchTrackballEvent",
-      r"(Landroid/view/MotionEvent;)Z");
+  static final _id_dispatchTrackballEvent = _class.instanceMethodId(
+    r"dispatchTrackballEvent",
+    r"(Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: public boolean dispatchTrackballEvent(android.view.MotionEvent motionEvent)
   bool dispatchTrackballEvent(
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchTrackballEvent,
-        jni.JniCallType.booleanType,
-        [motionEvent.reference]).boolean;
+    return _id_dispatchTrackballEvent(
+        this, const jni.jbooleanType(), [motionEvent.reference.pointer]);
   }
 
-  static final _id_dispatchCapturedPointerEvent = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchCapturedPointerEvent",
-          r"(Landroid/view/MotionEvent;)Z");
+  static final _id_dispatchCapturedPointerEvent = _class.instanceMethodId(
+    r"dispatchCapturedPointerEvent",
+    r"(Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: public boolean dispatchCapturedPointerEvent(android.view.MotionEvent motionEvent)
   bool dispatchCapturedPointerEvent(
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchCapturedPointerEvent,
-        jni.JniCallType.booleanType,
-        [motionEvent.reference]).boolean;
+    return _id_dispatchCapturedPointerEvent(
+        this, const jni.jbooleanType(), [motionEvent.reference.pointer]);
   }
 
-  static final _id_dispatchGenericMotionEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"dispatchGenericMotionEvent",
-      r"(Landroid/view/MotionEvent;)Z");
+  static final _id_dispatchGenericMotionEvent = _class.instanceMethodId(
+    r"dispatchGenericMotionEvent",
+    r"(Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: public boolean dispatchGenericMotionEvent(android.view.MotionEvent motionEvent)
   bool dispatchGenericMotionEvent(
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchGenericMotionEvent,
-        jni.JniCallType.booleanType,
-        [motionEvent.reference]).boolean;
+    return _id_dispatchGenericMotionEvent(
+        this, const jni.jbooleanType(), [motionEvent.reference.pointer]);
   }
 
-  static final _id_dispatchHoverEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"dispatchHoverEvent",
-      r"(Landroid/view/MotionEvent;)Z");
+  static final _id_dispatchHoverEvent = _class.instanceMethodId(
+    r"dispatchHoverEvent",
+    r"(Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: protected boolean dispatchHoverEvent(android.view.MotionEvent motionEvent)
   bool dispatchHoverEvent(
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchHoverEvent,
-        jni.JniCallType.booleanType,
-        [motionEvent.reference]).boolean;
+    return _id_dispatchHoverEvent(
+        this, const jni.jbooleanType(), [motionEvent.reference.pointer]);
   }
 
-  static final _id_dispatchGenericPointerEvent = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchGenericPointerEvent",
-          r"(Landroid/view/MotionEvent;)Z");
+  static final _id_dispatchGenericPointerEvent = _class.instanceMethodId(
+    r"dispatchGenericPointerEvent",
+    r"(Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: protected boolean dispatchGenericPointerEvent(android.view.MotionEvent motionEvent)
   bool dispatchGenericPointerEvent(
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchGenericPointerEvent,
-        jni.JniCallType.booleanType,
-        [motionEvent.reference]).boolean;
+    return _id_dispatchGenericPointerEvent(
+        this, const jni.jbooleanType(), [motionEvent.reference.pointer]);
   }
 
-  static final _id_dispatchGenericFocusedEvent = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchGenericFocusedEvent",
-          r"(Landroid/view/MotionEvent;)Z");
+  static final _id_dispatchGenericFocusedEvent = _class.instanceMethodId(
+    r"dispatchGenericFocusedEvent",
+    r"(Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: protected boolean dispatchGenericFocusedEvent(android.view.MotionEvent motionEvent)
   bool dispatchGenericFocusedEvent(
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchGenericFocusedEvent,
-        jni.JniCallType.booleanType,
-        [motionEvent.reference]).boolean;
+    return _id_dispatchGenericFocusedEvent(
+        this, const jni.jbooleanType(), [motionEvent.reference.pointer]);
   }
 
-  static final _id_dispatchWindowFocusChanged = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchWindowFocusChanged", r"(Z)V");
+  static final _id_dispatchWindowFocusChanged = _class.instanceMethodId(
+    r"dispatchWindowFocusChanged",
+    r"(Z)V",
+  );
 
   /// from: public void dispatchWindowFocusChanged(boolean z)
   void dispatchWindowFocusChanged(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchWindowFocusChanged,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_dispatchWindowFocusChanged(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_onWindowFocusChanged = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onWindowFocusChanged", r"(Z)V");
+  static final _id_onWindowFocusChanged = _class.instanceMethodId(
+    r"onWindowFocusChanged",
+    r"(Z)V",
+  );
 
   /// from: public void onWindowFocusChanged(boolean z)
   void onWindowFocusChanged(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onWindowFocusChanged,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_onWindowFocusChanged(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_hasWindowFocus = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"hasWindowFocus", r"()Z");
+  static final _id_hasWindowFocus = _class.instanceMethodId(
+    r"hasWindowFocus",
+    r"()Z",
+  );
 
   /// from: public boolean hasWindowFocus()
   bool hasWindowFocus() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_hasWindowFocus, jni.JniCallType.booleanType, []).boolean;
+    return _id_hasWindowFocus(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_dispatchVisibilityChanged = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"dispatchVisibilityChanged",
-      r"(Landroid/view/View;I)V");
+  static final _id_dispatchVisibilityChanged = _class.instanceMethodId(
+    r"dispatchVisibilityChanged",
+    r"(Landroid/view/View;I)V",
+  );
 
   /// from: protected void dispatchVisibilityChanged(android.view.View view, int i)
   void dispatchVisibilityChanged(
     View view,
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchVisibilityChanged,
-        jni.JniCallType.voidType,
-        [view.reference, jni.JValueInt(i)]).check();
+    _id_dispatchVisibilityChanged(this, const jni.jvoidType(),
+        [view.reference.pointer, jni.JValueInt(i)]);
   }
 
-  static final _id_onVisibilityChanged = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onVisibilityChanged", r"(Landroid/view/View;I)V");
+  static final _id_onVisibilityChanged = _class.instanceMethodId(
+    r"onVisibilityChanged",
+    r"(Landroid/view/View;I)V",
+  );
 
   /// from: protected void onVisibilityChanged(android.view.View view, int i)
   void onVisibilityChanged(
     View view,
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onVisibilityChanged,
-        jni.JniCallType.voidType,
-        [view.reference, jni.JValueInt(i)]).check();
+    _id_onVisibilityChanged(this, const jni.jvoidType(),
+        [view.reference.pointer, jni.JValueInt(i)]);
   }
 
-  static final _id_dispatchDisplayHint = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchDisplayHint", r"(I)V");
+  static final _id_dispatchDisplayHint = _class.instanceMethodId(
+    r"dispatchDisplayHint",
+    r"(I)V",
+  );
 
   /// from: public void dispatchDisplayHint(int i)
   void dispatchDisplayHint(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchDisplayHint,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_dispatchDisplayHint(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_onDisplayHint = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onDisplayHint", r"(I)V");
+  static final _id_onDisplayHint = _class.instanceMethodId(
+    r"onDisplayHint",
+    r"(I)V",
+  );
 
   /// from: protected void onDisplayHint(int i)
   void onDisplayHint(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onDisplayHint,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_onDisplayHint(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_dispatchWindowVisibilityChanged = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"dispatchWindowVisibilityChanged", r"(I)V");
+  static final _id_dispatchWindowVisibilityChanged = _class.instanceMethodId(
+    r"dispatchWindowVisibilityChanged",
+    r"(I)V",
+  );
 
   /// from: public void dispatchWindowVisibilityChanged(int i)
   void dispatchWindowVisibilityChanged(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchWindowVisibilityChanged,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_dispatchWindowVisibilityChanged(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_onWindowVisibilityChanged = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onWindowVisibilityChanged", r"(I)V");
+  static final _id_onWindowVisibilityChanged = _class.instanceMethodId(
+    r"onWindowVisibilityChanged",
+    r"(I)V",
+  );
 
   /// from: protected void onWindowVisibilityChanged(int i)
   void onWindowVisibilityChanged(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onWindowVisibilityChanged,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_onWindowVisibilityChanged(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_onVisibilityAggregated = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onVisibilityAggregated", r"(Z)V");
+  static final _id_onVisibilityAggregated = _class.instanceMethodId(
+    r"onVisibilityAggregated",
+    r"(Z)V",
+  );
 
   /// from: public void onVisibilityAggregated(boolean z)
   void onVisibilityAggregated(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onVisibilityAggregated,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_onVisibilityAggregated(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_getWindowVisibility = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getWindowVisibility", r"()I");
+  static final _id_getWindowVisibility = _class.instanceMethodId(
+    r"getWindowVisibility",
+    r"()I",
+  );
 
   /// from: public int getWindowVisibility()
   int getWindowVisibility() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getWindowVisibility, jni.JniCallType.intType, []).integer;
+    return _id_getWindowVisibility(this, const jni.jintType(), []);
   }
 
-  static final _id_getWindowVisibleDisplayFrame = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getWindowVisibleDisplayFrame",
-          r"(Landroid/graphics/Rect;)V");
+  static final _id_getWindowVisibleDisplayFrame = _class.instanceMethodId(
+    r"getWindowVisibleDisplayFrame",
+    r"(Landroid/graphics/Rect;)V",
+  );
 
   /// from: public void getWindowVisibleDisplayFrame(android.graphics.Rect rect)
   void getWindowVisibleDisplayFrame(
     jni.JObject rect,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getWindowVisibleDisplayFrame,
-        jni.JniCallType.voidType,
-        [rect.reference]).check();
+    _id_getWindowVisibleDisplayFrame(
+        this, const jni.jvoidType(), [rect.reference.pointer]);
   }
 
-  static final _id_dispatchConfigurationChanged = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchConfigurationChanged",
-          r"(Landroid/content/res/Configuration;)V");
+  static final _id_dispatchConfigurationChanged = _class.instanceMethodId(
+    r"dispatchConfigurationChanged",
+    r"(Landroid/content/res/Configuration;)V",
+  );
 
   /// from: public void dispatchConfigurationChanged(android.content.res.Configuration configuration)
   void dispatchConfigurationChanged(
     jni.JObject configuration,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchConfigurationChanged,
-        jni.JniCallType.voidType,
-        [configuration.reference]).check();
+    _id_dispatchConfigurationChanged(
+        this, const jni.jvoidType(), [configuration.reference.pointer]);
   }
 
-  static final _id_onConfigurationChanged = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onConfigurationChanged",
-      r"(Landroid/content/res/Configuration;)V");
+  static final _id_onConfigurationChanged = _class.instanceMethodId(
+    r"onConfigurationChanged",
+    r"(Landroid/content/res/Configuration;)V",
+  );
 
   /// from: protected void onConfigurationChanged(android.content.res.Configuration configuration)
   void onConfigurationChanged(
     jni.JObject configuration,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onConfigurationChanged,
-        jni.JniCallType.voidType,
-        [configuration.reference]).check();
+    _id_onConfigurationChanged(
+        this, const jni.jvoidType(), [configuration.reference.pointer]);
   }
 
-  static final _id_isInTouchMode = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isInTouchMode", r"()Z");
+  static final _id_isInTouchMode = _class.instanceMethodId(
+    r"isInTouchMode",
+    r"()Z",
+  );
 
   /// from: public boolean isInTouchMode()
   bool isInTouchMode() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_isInTouchMode, jni.JniCallType.booleanType, []).boolean;
+    return _id_isInTouchMode(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_getContext = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getContext", r"()Landroid/content/Context;");
+  static final _id_getContext = _class.instanceMethodId(
+    r"getContext",
+    r"()Landroid/content/Context;",
+  );
 
   /// from: public final android.content.Context getContext()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getContext() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getContext, jni.JniCallType.objectType, []).object);
+    return _id_getContext(this, const jni.JObjectType(), []);
   }
 
-  static final _id_onKeyPreIme = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onKeyPreIme", r"(ILandroid/view/KeyEvent;)Z");
+  static final _id_onKeyPreIme = _class.instanceMethodId(
+    r"onKeyPreIme",
+    r"(ILandroid/view/KeyEvent;)Z",
+  );
 
   /// from: public boolean onKeyPreIme(int i, android.view.KeyEvent keyEvent)
   bool onKeyPreIme(
     int i,
     jni.JObject keyEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onKeyPreIme,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i), keyEvent.reference]).boolean;
+    return _id_onKeyPreIme(this, const jni.jbooleanType(),
+        [jni.JValueInt(i), keyEvent.reference.pointer]);
   }
 
-  static final _id_onKeyDown = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onKeyDown", r"(ILandroid/view/KeyEvent;)Z");
+  static final _id_onKeyDown = _class.instanceMethodId(
+    r"onKeyDown",
+    r"(ILandroid/view/KeyEvent;)Z",
+  );
 
   /// from: public boolean onKeyDown(int i, android.view.KeyEvent keyEvent)
   bool onKeyDown(
     int i,
     jni.JObject keyEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onKeyDown,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i), keyEvent.reference]).boolean;
+    return _id_onKeyDown(this, const jni.jbooleanType(),
+        [jni.JValueInt(i), keyEvent.reference.pointer]);
   }
 
-  static final _id_onKeyLongPress = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onKeyLongPress", r"(ILandroid/view/KeyEvent;)Z");
+  static final _id_onKeyLongPress = _class.instanceMethodId(
+    r"onKeyLongPress",
+    r"(ILandroid/view/KeyEvent;)Z",
+  );
 
   /// from: public boolean onKeyLongPress(int i, android.view.KeyEvent keyEvent)
   bool onKeyLongPress(
     int i,
     jni.JObject keyEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onKeyLongPress,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i), keyEvent.reference]).boolean;
+    return _id_onKeyLongPress(this, const jni.jbooleanType(),
+        [jni.JValueInt(i), keyEvent.reference.pointer]);
   }
 
-  static final _id_onKeyUp = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onKeyUp", r"(ILandroid/view/KeyEvent;)Z");
+  static final _id_onKeyUp = _class.instanceMethodId(
+    r"onKeyUp",
+    r"(ILandroid/view/KeyEvent;)Z",
+  );
 
   /// from: public boolean onKeyUp(int i, android.view.KeyEvent keyEvent)
   bool onKeyUp(
     int i,
     jni.JObject keyEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onKeyUp,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i), keyEvent.reference]).boolean;
+    return _id_onKeyUp(this, const jni.jbooleanType(),
+        [jni.JValueInt(i), keyEvent.reference.pointer]);
   }
 
-  static final _id_onKeyMultiple = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onKeyMultiple", r"(IILandroid/view/KeyEvent;)Z");
+  static final _id_onKeyMultiple = _class.instanceMethodId(
+    r"onKeyMultiple",
+    r"(IILandroid/view/KeyEvent;)Z",
+  );
 
   /// from: public boolean onKeyMultiple(int i, int i1, android.view.KeyEvent keyEvent)
   bool onKeyMultiple(
@@ -12726,269 +12194,258 @@ class View extends jni.JObject {
     int i1,
     jni.JObject keyEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onKeyMultiple,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i), jni.JValueInt(i1), keyEvent.reference]).boolean;
+    return _id_onKeyMultiple(this, const jni.jbooleanType(),
+        [jni.JValueInt(i), jni.JValueInt(i1), keyEvent.reference.pointer]);
   }
 
-  static final _id_onKeyShortcut = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onKeyShortcut", r"(ILandroid/view/KeyEvent;)Z");
+  static final _id_onKeyShortcut = _class.instanceMethodId(
+    r"onKeyShortcut",
+    r"(ILandroid/view/KeyEvent;)Z",
+  );
 
   /// from: public boolean onKeyShortcut(int i, android.view.KeyEvent keyEvent)
   bool onKeyShortcut(
     int i,
     jni.JObject keyEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onKeyShortcut,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i), keyEvent.reference]).boolean;
+    return _id_onKeyShortcut(this, const jni.jbooleanType(),
+        [jni.JValueInt(i), keyEvent.reference.pointer]);
   }
 
-  static final _id_onCheckIsTextEditor = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onCheckIsTextEditor", r"()Z");
+  static final _id_onCheckIsTextEditor = _class.instanceMethodId(
+    r"onCheckIsTextEditor",
+    r"()Z",
+  );
 
   /// from: public boolean onCheckIsTextEditor()
   bool onCheckIsTextEditor() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_onCheckIsTextEditor, jni.JniCallType.booleanType, []).boolean;
+    return _id_onCheckIsTextEditor(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_onCreateInputConnection = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onCreateInputConnection",
-      r"(Landroid/view/inputmethod/EditorInfo;)Landroid/view/inputmethod/InputConnection;");
+  static final _id_onCreateInputConnection = _class.instanceMethodId(
+    r"onCreateInputConnection",
+    r"(Landroid/view/inputmethod/EditorInfo;)Landroid/view/inputmethod/InputConnection;",
+  );
 
   /// from: public android.view.inputmethod.InputConnection onCreateInputConnection(android.view.inputmethod.EditorInfo editorInfo)
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject onCreateInputConnection(
     jni.JObject editorInfo,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onCreateInputConnection,
-        jni.JniCallType.objectType,
-        [editorInfo.reference]).object);
+    return _id_onCreateInputConnection(
+        this, const jni.JObjectType(), [editorInfo.reference.pointer]);
   }
 
-  static final _id_checkInputConnectionProxy = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"checkInputConnectionProxy",
-      r"(Landroid/view/View;)Z");
+  static final _id_checkInputConnectionProxy = _class.instanceMethodId(
+    r"checkInputConnectionProxy",
+    r"(Landroid/view/View;)Z",
+  );
 
   /// from: public boolean checkInputConnectionProxy(android.view.View view)
   bool checkInputConnectionProxy(
     View view,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_checkInputConnectionProxy,
-        jni.JniCallType.booleanType,
-        [view.reference]).boolean;
+    return _id_checkInputConnectionProxy(
+        this, const jni.jbooleanType(), [view.reference.pointer]);
   }
 
-  static final _id_createContextMenu = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"createContextMenu", r"(Landroid/view/ContextMenu;)V");
+  static final _id_createContextMenu = _class.instanceMethodId(
+    r"createContextMenu",
+    r"(Landroid/view/ContextMenu;)V",
+  );
 
   /// from: public void createContextMenu(android.view.ContextMenu contextMenu)
   void createContextMenu(
     jni.JObject contextMenu,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_createContextMenu,
-        jni.JniCallType.voidType,
-        [contextMenu.reference]).check();
+    _id_createContextMenu(
+        this, const jni.jvoidType(), [contextMenu.reference.pointer]);
   }
 
-  static final _id_getContextMenuInfo = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getContextMenuInfo",
-      r"()Landroid/view/ContextMenu$ContextMenuInfo;");
+  static final _id_getContextMenuInfo = _class.instanceMethodId(
+    r"getContextMenuInfo",
+    r"()Landroid/view/ContextMenu$ContextMenuInfo;",
+  );
 
   /// from: protected android.view.ContextMenu$ContextMenuInfo getContextMenuInfo()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getContextMenuInfo() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getContextMenuInfo,
-        jni.JniCallType.objectType, []).object);
+    return _id_getContextMenuInfo(this, const jni.JObjectType(), []);
   }
 
-  static final _id_onCreateContextMenu = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onCreateContextMenu",
-      r"(Landroid/view/ContextMenu;)V");
+  static final _id_onCreateContextMenu = _class.instanceMethodId(
+    r"onCreateContextMenu",
+    r"(Landroid/view/ContextMenu;)V",
+  );
 
   /// from: protected void onCreateContextMenu(android.view.ContextMenu contextMenu)
   void onCreateContextMenu(
     jni.JObject contextMenu,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onCreateContextMenu,
-        jni.JniCallType.voidType,
-        [contextMenu.reference]).check();
+    _id_onCreateContextMenu(
+        this, const jni.jvoidType(), [contextMenu.reference.pointer]);
   }
 
-  static final _id_onTrackballEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onTrackballEvent", r"(Landroid/view/MotionEvent;)Z");
+  static final _id_onTrackballEvent = _class.instanceMethodId(
+    r"onTrackballEvent",
+    r"(Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: public boolean onTrackballEvent(android.view.MotionEvent motionEvent)
   bool onTrackballEvent(
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onTrackballEvent,
-        jni.JniCallType.booleanType, [motionEvent.reference]).boolean;
+    return _id_onTrackballEvent(
+        this, const jni.jbooleanType(), [motionEvent.reference.pointer]);
   }
 
-  static final _id_onGenericMotionEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onGenericMotionEvent",
-      r"(Landroid/view/MotionEvent;)Z");
+  static final _id_onGenericMotionEvent = _class.instanceMethodId(
+    r"onGenericMotionEvent",
+    r"(Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: public boolean onGenericMotionEvent(android.view.MotionEvent motionEvent)
   bool onGenericMotionEvent(
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onGenericMotionEvent,
-        jni.JniCallType.booleanType,
-        [motionEvent.reference]).boolean;
+    return _id_onGenericMotionEvent(
+        this, const jni.jbooleanType(), [motionEvent.reference.pointer]);
   }
 
-  static final _id_onHoverEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onHoverEvent", r"(Landroid/view/MotionEvent;)Z");
+  static final _id_onHoverEvent = _class.instanceMethodId(
+    r"onHoverEvent",
+    r"(Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: public boolean onHoverEvent(android.view.MotionEvent motionEvent)
   bool onHoverEvent(
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onHoverEvent,
-        jni.JniCallType.booleanType, [motionEvent.reference]).boolean;
+    return _id_onHoverEvent(
+        this, const jni.jbooleanType(), [motionEvent.reference.pointer]);
   }
 
-  static final _id_isHovered =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"isHovered", r"()Z");
+  static final _id_isHovered = _class.instanceMethodId(
+    r"isHovered",
+    r"()Z",
+  );
 
   /// from: public boolean isHovered()
   bool isHovered() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_isHovered, jni.JniCallType.booleanType, []).boolean;
+    return _id_isHovered(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setHovered =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"setHovered", r"(Z)V");
+  static final _id_setHovered = _class.instanceMethodId(
+    r"setHovered",
+    r"(Z)V",
+  );
 
   /// from: public void setHovered(boolean z)
   void setHovered(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setHovered,
-        jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_setHovered(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_onHoverChanged = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onHoverChanged", r"(Z)V");
+  static final _id_onHoverChanged = _class.instanceMethodId(
+    r"onHoverChanged",
+    r"(Z)V",
+  );
 
   /// from: public void onHoverChanged(boolean z)
   void onHoverChanged(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onHoverChanged,
-        jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_onHoverChanged(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_onTouchEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onTouchEvent", r"(Landroid/view/MotionEvent;)Z");
+  static final _id_onTouchEvent = _class.instanceMethodId(
+    r"onTouchEvent",
+    r"(Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: public boolean onTouchEvent(android.view.MotionEvent motionEvent)
   bool onTouchEvent(
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onTouchEvent,
-        jni.JniCallType.booleanType, [motionEvent.reference]).boolean;
+    return _id_onTouchEvent(
+        this, const jni.jbooleanType(), [motionEvent.reference.pointer]);
   }
 
-  static final _id_cancelLongPress = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"cancelLongPress", r"()V");
+  static final _id_cancelLongPress = _class.instanceMethodId(
+    r"cancelLongPress",
+    r"()V",
+  );
 
   /// from: public void cancelLongPress()
   void cancelLongPress() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_cancelLongPress, jni.JniCallType.voidType, []).check();
+    _id_cancelLongPress(this, const jni.jvoidType(), []);
   }
 
-  static final _id_setTouchDelegate = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setTouchDelegate",
-      r"(Landroid/view/TouchDelegate;)V");
+  static final _id_setTouchDelegate = _class.instanceMethodId(
+    r"setTouchDelegate",
+    r"(Landroid/view/TouchDelegate;)V",
+  );
 
   /// from: public void setTouchDelegate(android.view.TouchDelegate touchDelegate)
   void setTouchDelegate(
     jni.JObject touchDelegate,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setTouchDelegate,
-        jni.JniCallType.voidType, [touchDelegate.reference]).check();
+    _id_setTouchDelegate(
+        this, const jni.jvoidType(), [touchDelegate.reference.pointer]);
   }
 
-  static final _id_getTouchDelegate = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getTouchDelegate", r"()Landroid/view/TouchDelegate;");
+  static final _id_getTouchDelegate = _class.instanceMethodId(
+    r"getTouchDelegate",
+    r"()Landroid/view/TouchDelegate;",
+  );
 
   /// from: public android.view.TouchDelegate getTouchDelegate()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getTouchDelegate() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getTouchDelegate,
-        jni.JniCallType.objectType, []).object);
+    return _id_getTouchDelegate(this, const jni.JObjectType(), []);
   }
 
-  static final _id_requestUnbufferedDispatch = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"requestUnbufferedDispatch",
-      r"(Landroid/view/MotionEvent;)V");
+  static final _id_requestUnbufferedDispatch = _class.instanceMethodId(
+    r"requestUnbufferedDispatch",
+    r"(Landroid/view/MotionEvent;)V",
+  );
 
   /// from: public final void requestUnbufferedDispatch(android.view.MotionEvent motionEvent)
   void requestUnbufferedDispatch(
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_requestUnbufferedDispatch,
-        jni.JniCallType.voidType,
-        [motionEvent.reference]).check();
+    _id_requestUnbufferedDispatch(
+        this, const jni.jvoidType(), [motionEvent.reference.pointer]);
   }
 
-  static final _id_requestUnbufferedDispatch1 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"requestUnbufferedDispatch", r"(I)V");
+  static final _id_requestUnbufferedDispatch1 = _class.instanceMethodId(
+    r"requestUnbufferedDispatch",
+    r"(I)V",
+  );
 
   /// from: public final void requestUnbufferedDispatch(int i)
   void requestUnbufferedDispatch1(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_requestUnbufferedDispatch1,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_requestUnbufferedDispatch1(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_bringToFront = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"bringToFront", r"()V");
+  static final _id_bringToFront = _class.instanceMethodId(
+    r"bringToFront",
+    r"()V",
+  );
 
   /// from: public void bringToFront()
   void bringToFront() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_bringToFront, jni.JniCallType.voidType, []).check();
+    _id_bringToFront(this, const jni.jvoidType(), []);
   }
 
-  static final _id_onScrollChanged = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onScrollChanged", r"(IIII)V");
+  static final _id_onScrollChanged = _class.instanceMethodId(
+    r"onScrollChanged",
+    r"(IIII)V",
+  );
 
   /// from: protected void onScrollChanged(int i, int i1, int i2, int i3)
   void onScrollChanged(
@@ -12997,17 +12454,18 @@ class View extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_onScrollChanged, jni.JniCallType.voidType, [
+    _id_onScrollChanged(this, const jni.jvoidType(), [
       jni.JValueInt(i),
       jni.JValueInt(i1),
       jni.JValueInt(i2),
       jni.JValueInt(i3)
-    ]).check();
+    ]);
   }
 
-  static final _id_onSizeChanged = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onSizeChanged", r"(IIII)V");
+  static final _id_onSizeChanged = _class.instanceMethodId(
+    r"onSizeChanged",
+    r"(IIII)V",
+  );
 
   /// from: protected void onSizeChanged(int i, int i1, int i2, int i3)
   void onSizeChanged(
@@ -13016,1031 +12474,1063 @@ class View extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_onSizeChanged, jni.JniCallType.voidType, [
+    _id_onSizeChanged(this, const jni.jvoidType(), [
       jni.JValueInt(i),
       jni.JValueInt(i1),
       jni.JValueInt(i2),
       jni.JValueInt(i3)
-    ]).check();
+    ]);
   }
 
-  static final _id_dispatchDraw = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"dispatchDraw", r"(Landroid/graphics/Canvas;)V");
+  static final _id_dispatchDraw = _class.instanceMethodId(
+    r"dispatchDraw",
+    r"(Landroid/graphics/Canvas;)V",
+  );
 
   /// from: protected void dispatchDraw(android.graphics.Canvas canvas)
   void dispatchDraw(
     jni.JObject canvas,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_dispatchDraw,
-        jni.JniCallType.voidType, [canvas.reference]).check();
+    _id_dispatchDraw(this, const jni.jvoidType(), [canvas.reference.pointer]);
   }
 
-  static final _id_getParent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getParent", r"()Landroid/view/ViewParent;");
+  static final _id_getParent = _class.instanceMethodId(
+    r"getParent",
+    r"()Landroid/view/ViewParent;",
+  );
 
   /// from: public final android.view.ViewParent getParent()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getParent() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getParent, jni.JniCallType.objectType, []).object);
+    return _id_getParent(this, const jni.JObjectType(), []);
   }
 
-  static final _id_setScrollX =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"setScrollX", r"(I)V");
+  static final _id_setScrollX = _class.instanceMethodId(
+    r"setScrollX",
+    r"(I)V",
+  );
 
   /// from: public void setScrollX(int i)
   void setScrollX(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setScrollX,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_setScrollX(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_setScrollY =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"setScrollY", r"(I)V");
+  static final _id_setScrollY = _class.instanceMethodId(
+    r"setScrollY",
+    r"(I)V",
+  );
 
   /// from: public void setScrollY(int i)
   void setScrollY(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setScrollY,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_setScrollY(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getScrollX =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getScrollX", r"()I");
+  static final _id_getScrollX = _class.instanceMethodId(
+    r"getScrollX",
+    r"()I",
+  );
 
   /// from: public final int getScrollX()
   int getScrollX() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getScrollX, jni.JniCallType.intType, []).integer;
+    return _id_getScrollX(this, const jni.jintType(), []);
   }
 
-  static final _id_getScrollY =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getScrollY", r"()I");
+  static final _id_getScrollY = _class.instanceMethodId(
+    r"getScrollY",
+    r"()I",
+  );
 
   /// from: public final int getScrollY()
   int getScrollY() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getScrollY, jni.JniCallType.intType, []).integer;
+    return _id_getScrollY(this, const jni.jintType(), []);
   }
 
-  static final _id_getWidth =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getWidth", r"()I");
+  static final _id_getWidth = _class.instanceMethodId(
+    r"getWidth",
+    r"()I",
+  );
 
   /// from: public final int getWidth()
   int getWidth() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getWidth, jni.JniCallType.intType, []).integer;
+    return _id_getWidth(this, const jni.jintType(), []);
   }
 
-  static final _id_getHeight =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getHeight", r"()I");
+  static final _id_getHeight = _class.instanceMethodId(
+    r"getHeight",
+    r"()I",
+  );
 
   /// from: public final int getHeight()
   int getHeight() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getHeight, jni.JniCallType.intType, []).integer;
+    return _id_getHeight(this, const jni.jintType(), []);
   }
 
-  static final _id_getDrawingRect = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getDrawingRect", r"(Landroid/graphics/Rect;)V");
+  static final _id_getDrawingRect = _class.instanceMethodId(
+    r"getDrawingRect",
+    r"(Landroid/graphics/Rect;)V",
+  );
 
   /// from: public void getDrawingRect(android.graphics.Rect rect)
   void getDrawingRect(
     jni.JObject rect,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_getDrawingRect,
-        jni.JniCallType.voidType, [rect.reference]).check();
+    _id_getDrawingRect(this, const jni.jvoidType(), [rect.reference.pointer]);
   }
 
-  static final _id_getMeasuredWidth = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getMeasuredWidth", r"()I");
+  static final _id_getMeasuredWidth = _class.instanceMethodId(
+    r"getMeasuredWidth",
+    r"()I",
+  );
 
   /// from: public final int getMeasuredWidth()
   int getMeasuredWidth() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getMeasuredWidth, jni.JniCallType.intType, []).integer;
+    return _id_getMeasuredWidth(this, const jni.jintType(), []);
   }
 
-  static final _id_getMeasuredWidthAndState = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getMeasuredWidthAndState", r"()I");
+  static final _id_getMeasuredWidthAndState = _class.instanceMethodId(
+    r"getMeasuredWidthAndState",
+    r"()I",
+  );
 
   /// from: public final int getMeasuredWidthAndState()
   int getMeasuredWidthAndState() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getMeasuredWidthAndState, jni.JniCallType.intType, []).integer;
+    return _id_getMeasuredWidthAndState(this, const jni.jintType(), []);
   }
 
-  static final _id_getMeasuredHeight = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getMeasuredHeight", r"()I");
+  static final _id_getMeasuredHeight = _class.instanceMethodId(
+    r"getMeasuredHeight",
+    r"()I",
+  );
 
   /// from: public final int getMeasuredHeight()
   int getMeasuredHeight() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getMeasuredHeight, jni.JniCallType.intType, []).integer;
+    return _id_getMeasuredHeight(this, const jni.jintType(), []);
   }
 
-  static final _id_getMeasuredHeightAndState = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getMeasuredHeightAndState", r"()I");
+  static final _id_getMeasuredHeightAndState = _class.instanceMethodId(
+    r"getMeasuredHeightAndState",
+    r"()I",
+  );
 
   /// from: public final int getMeasuredHeightAndState()
   int getMeasuredHeightAndState() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getMeasuredHeightAndState, jni.JniCallType.intType, []).integer;
+    return _id_getMeasuredHeightAndState(this, const jni.jintType(), []);
   }
 
-  static final _id_getMeasuredState = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getMeasuredState", r"()I");
+  static final _id_getMeasuredState = _class.instanceMethodId(
+    r"getMeasuredState",
+    r"()I",
+  );
 
   /// from: public final int getMeasuredState()
   int getMeasuredState() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getMeasuredState, jni.JniCallType.intType, []).integer;
+    return _id_getMeasuredState(this, const jni.jintType(), []);
   }
 
-  static final _id_getMatrix = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getMatrix", r"()Landroid/graphics/Matrix;");
+  static final _id_getMatrix = _class.instanceMethodId(
+    r"getMatrix",
+    r"()Landroid/graphics/Matrix;",
+  );
 
   /// from: public android.graphics.Matrix getMatrix()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getMatrix() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getMatrix, jni.JniCallType.objectType, []).object);
+    return _id_getMatrix(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getCameraDistance = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getCameraDistance", r"()F");
+  static final _id_getCameraDistance = _class.instanceMethodId(
+    r"getCameraDistance",
+    r"()F",
+  );
 
   /// from: public float getCameraDistance()
   double getCameraDistance() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getCameraDistance, jni.JniCallType.floatType, []).float;
+    return _id_getCameraDistance(this, const jni.jfloatType(), []);
   }
 
-  static final _id_setCameraDistance = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setCameraDistance", r"(F)V");
+  static final _id_setCameraDistance = _class.instanceMethodId(
+    r"setCameraDistance",
+    r"(F)V",
+  );
 
   /// from: public void setCameraDistance(float f)
   void setCameraDistance(
     double f,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setCameraDistance,
-        jni.JniCallType.voidType,
-        [jni.JValueFloat(f)]).check();
+    _id_setCameraDistance(this, const jni.jvoidType(), [jni.JValueFloat(f)]);
   }
 
-  static final _id_getRotation =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getRotation", r"()F");
+  static final _id_getRotation = _class.instanceMethodId(
+    r"getRotation",
+    r"()F",
+  );
 
   /// from: public float getRotation()
   double getRotation() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getRotation, jni.JniCallType.floatType, []).float;
+    return _id_getRotation(this, const jni.jfloatType(), []);
   }
 
-  static final _id_setRotation = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setRotation", r"(F)V");
+  static final _id_setRotation = _class.instanceMethodId(
+    r"setRotation",
+    r"(F)V",
+  );
 
   /// from: public void setRotation(float f)
   void setRotation(
     double f,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setRotation,
-        jni.JniCallType.voidType, [jni.JValueFloat(f)]).check();
+    _id_setRotation(this, const jni.jvoidType(), [jni.JValueFloat(f)]);
   }
 
-  static final _id_getRotationY = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getRotationY", r"()F");
+  static final _id_getRotationY = _class.instanceMethodId(
+    r"getRotationY",
+    r"()F",
+  );
 
   /// from: public float getRotationY()
   double getRotationY() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getRotationY, jni.JniCallType.floatType, []).float;
+    return _id_getRotationY(this, const jni.jfloatType(), []);
   }
 
-  static final _id_setRotationY = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setRotationY", r"(F)V");
+  static final _id_setRotationY = _class.instanceMethodId(
+    r"setRotationY",
+    r"(F)V",
+  );
 
   /// from: public void setRotationY(float f)
   void setRotationY(
     double f,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setRotationY,
-        jni.JniCallType.voidType, [jni.JValueFloat(f)]).check();
+    _id_setRotationY(this, const jni.jvoidType(), [jni.JValueFloat(f)]);
   }
 
-  static final _id_getRotationX = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getRotationX", r"()F");
+  static final _id_getRotationX = _class.instanceMethodId(
+    r"getRotationX",
+    r"()F",
+  );
 
   /// from: public float getRotationX()
   double getRotationX() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getRotationX, jni.JniCallType.floatType, []).float;
+    return _id_getRotationX(this, const jni.jfloatType(), []);
   }
 
-  static final _id_setRotationX = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setRotationX", r"(F)V");
+  static final _id_setRotationX = _class.instanceMethodId(
+    r"setRotationX",
+    r"(F)V",
+  );
 
   /// from: public void setRotationX(float f)
   void setRotationX(
     double f,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setRotationX,
-        jni.JniCallType.voidType, [jni.JValueFloat(f)]).check();
+    _id_setRotationX(this, const jni.jvoidType(), [jni.JValueFloat(f)]);
   }
 
-  static final _id_getScaleX =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getScaleX", r"()F");
+  static final _id_getScaleX = _class.instanceMethodId(
+    r"getScaleX",
+    r"()F",
+  );
 
   /// from: public float getScaleX()
   double getScaleX() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getScaleX, jni.JniCallType.floatType, []).float;
+    return _id_getScaleX(this, const jni.jfloatType(), []);
   }
 
-  static final _id_setScaleX =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"setScaleX", r"(F)V");
+  static final _id_setScaleX = _class.instanceMethodId(
+    r"setScaleX",
+    r"(F)V",
+  );
 
   /// from: public void setScaleX(float f)
   void setScaleX(
     double f,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setScaleX,
-        jni.JniCallType.voidType, [jni.JValueFloat(f)]).check();
+    _id_setScaleX(this, const jni.jvoidType(), [jni.JValueFloat(f)]);
   }
 
-  static final _id_getScaleY =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getScaleY", r"()F");
+  static final _id_getScaleY = _class.instanceMethodId(
+    r"getScaleY",
+    r"()F",
+  );
 
   /// from: public float getScaleY()
   double getScaleY() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getScaleY, jni.JniCallType.floatType, []).float;
+    return _id_getScaleY(this, const jni.jfloatType(), []);
   }
 
-  static final _id_setScaleY =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"setScaleY", r"(F)V");
+  static final _id_setScaleY = _class.instanceMethodId(
+    r"setScaleY",
+    r"(F)V",
+  );
 
   /// from: public void setScaleY(float f)
   void setScaleY(
     double f,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setScaleY,
-        jni.JniCallType.voidType, [jni.JValueFloat(f)]).check();
+    _id_setScaleY(this, const jni.jvoidType(), [jni.JValueFloat(f)]);
   }
 
-  static final _id_getPivotX =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getPivotX", r"()F");
+  static final _id_getPivotX = _class.instanceMethodId(
+    r"getPivotX",
+    r"()F",
+  );
 
   /// from: public float getPivotX()
   double getPivotX() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getPivotX, jni.JniCallType.floatType, []).float;
+    return _id_getPivotX(this, const jni.jfloatType(), []);
   }
 
-  static final _id_setPivotX =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"setPivotX", r"(F)V");
+  static final _id_setPivotX = _class.instanceMethodId(
+    r"setPivotX",
+    r"(F)V",
+  );
 
   /// from: public void setPivotX(float f)
   void setPivotX(
     double f,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setPivotX,
-        jni.JniCallType.voidType, [jni.JValueFloat(f)]).check();
+    _id_setPivotX(this, const jni.jvoidType(), [jni.JValueFloat(f)]);
   }
 
-  static final _id_getPivotY =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getPivotY", r"()F");
+  static final _id_getPivotY = _class.instanceMethodId(
+    r"getPivotY",
+    r"()F",
+  );
 
   /// from: public float getPivotY()
   double getPivotY() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getPivotY, jni.JniCallType.floatType, []).float;
+    return _id_getPivotY(this, const jni.jfloatType(), []);
   }
 
-  static final _id_setPivotY =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"setPivotY", r"(F)V");
+  static final _id_setPivotY = _class.instanceMethodId(
+    r"setPivotY",
+    r"(F)V",
+  );
 
   /// from: public void setPivotY(float f)
   void setPivotY(
     double f,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setPivotY,
-        jni.JniCallType.voidType, [jni.JValueFloat(f)]).check();
+    _id_setPivotY(this, const jni.jvoidType(), [jni.JValueFloat(f)]);
   }
 
-  static final _id_isPivotSet =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"isPivotSet", r"()Z");
+  static final _id_isPivotSet = _class.instanceMethodId(
+    r"isPivotSet",
+    r"()Z",
+  );
 
   /// from: public boolean isPivotSet()
   bool isPivotSet() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_isPivotSet, jni.JniCallType.booleanType, []).boolean;
+    return _id_isPivotSet(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_resetPivot =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"resetPivot", r"()V");
+  static final _id_resetPivot = _class.instanceMethodId(
+    r"resetPivot",
+    r"()V",
+  );
 
   /// from: public void resetPivot()
   void resetPivot() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_resetPivot, jni.JniCallType.voidType, []).check();
+    _id_resetPivot(this, const jni.jvoidType(), []);
   }
 
-  static final _id_getAlpha =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getAlpha", r"()F");
+  static final _id_getAlpha = _class.instanceMethodId(
+    r"getAlpha",
+    r"()F",
+  );
 
   /// from: public float getAlpha()
   double getAlpha() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getAlpha, jni.JniCallType.floatType, []).float;
+    return _id_getAlpha(this, const jni.jfloatType(), []);
   }
 
-  static final _id_forceHasOverlappingRendering = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"forceHasOverlappingRendering", r"(Z)V");
+  static final _id_forceHasOverlappingRendering = _class.instanceMethodId(
+    r"forceHasOverlappingRendering",
+    r"(Z)V",
+  );
 
   /// from: public void forceHasOverlappingRendering(boolean z)
   void forceHasOverlappingRendering(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_forceHasOverlappingRendering,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_forceHasOverlappingRendering(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_getHasOverlappingRendering = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getHasOverlappingRendering", r"()Z");
+  static final _id_getHasOverlappingRendering = _class.instanceMethodId(
+    r"getHasOverlappingRendering",
+    r"()Z",
+  );
 
   /// from: public final boolean getHasOverlappingRendering()
   bool getHasOverlappingRendering() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getHasOverlappingRendering,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_getHasOverlappingRendering(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_hasOverlappingRendering = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"hasOverlappingRendering", r"()Z");
+  static final _id_hasOverlappingRendering = _class.instanceMethodId(
+    r"hasOverlappingRendering",
+    r"()Z",
+  );
 
   /// from: public boolean hasOverlappingRendering()
   bool hasOverlappingRendering() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_hasOverlappingRendering, jni.JniCallType.booleanType, []).boolean;
+    return _id_hasOverlappingRendering(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setAlpha =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"setAlpha", r"(F)V");
+  static final _id_setAlpha = _class.instanceMethodId(
+    r"setAlpha",
+    r"(F)V",
+  );
 
   /// from: public void setAlpha(float f)
   void setAlpha(
     double f,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setAlpha,
-        jni.JniCallType.voidType, [jni.JValueFloat(f)]).check();
+    _id_setAlpha(this, const jni.jvoidType(), [jni.JValueFloat(f)]);
   }
 
-  static final _id_setTransitionAlpha = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setTransitionAlpha", r"(F)V");
+  static final _id_setTransitionAlpha = _class.instanceMethodId(
+    r"setTransitionAlpha",
+    r"(F)V",
+  );
 
   /// from: public void setTransitionAlpha(float f)
   void setTransitionAlpha(
     double f,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setTransitionAlpha,
-        jni.JniCallType.voidType,
-        [jni.JValueFloat(f)]).check();
+    _id_setTransitionAlpha(this, const jni.jvoidType(), [jni.JValueFloat(f)]);
   }
 
-  static final _id_getTransitionAlpha = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getTransitionAlpha", r"()F");
+  static final _id_getTransitionAlpha = _class.instanceMethodId(
+    r"getTransitionAlpha",
+    r"()F",
+  );
 
   /// from: public float getTransitionAlpha()
   double getTransitionAlpha() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getTransitionAlpha, jni.JniCallType.floatType, []).float;
+    return _id_getTransitionAlpha(this, const jni.jfloatType(), []);
   }
 
-  static final _id_setForceDarkAllowed = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setForceDarkAllowed", r"(Z)V");
+  static final _id_setForceDarkAllowed = _class.instanceMethodId(
+    r"setForceDarkAllowed",
+    r"(Z)V",
+  );
 
   /// from: public void setForceDarkAllowed(boolean z)
   void setForceDarkAllowed(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_setForceDarkAllowed, jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_setForceDarkAllowed(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isForceDarkAllowed = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isForceDarkAllowed", r"()Z");
+  static final _id_isForceDarkAllowed = _class.instanceMethodId(
+    r"isForceDarkAllowed",
+    r"()Z",
+  );
 
   /// from: public boolean isForceDarkAllowed()
   bool isForceDarkAllowed() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isForceDarkAllowed, jni.JniCallType.booleanType, []).boolean;
+    return _id_isForceDarkAllowed(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_getTop =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getTop", r"()I");
+  static final _id_getTop = _class.instanceMethodId(
+    r"getTop",
+    r"()I",
+  );
 
   /// from: public final int getTop()
   int getTop() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getTop, jni.JniCallType.intType, []).integer;
+    return _id_getTop(this, const jni.jintType(), []);
   }
 
-  static final _id_setTop =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"setTop", r"(I)V");
+  static final _id_setTop = _class.instanceMethodId(
+    r"setTop",
+    r"(I)V",
+  );
 
   /// from: public final void setTop(int i)
   void setTop(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setTop,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_setTop(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getBottom =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getBottom", r"()I");
+  static final _id_getBottom = _class.instanceMethodId(
+    r"getBottom",
+    r"()I",
+  );
 
   /// from: public final int getBottom()
   int getBottom() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getBottom, jni.JniCallType.intType, []).integer;
+    return _id_getBottom(this, const jni.jintType(), []);
   }
 
-  static final _id_isDirty =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"isDirty", r"()Z");
+  static final _id_isDirty = _class.instanceMethodId(
+    r"isDirty",
+    r"()Z",
+  );
 
   /// from: public boolean isDirty()
   bool isDirty() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_isDirty, jni.JniCallType.booleanType, []).boolean;
+    return _id_isDirty(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setBottom =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"setBottom", r"(I)V");
+  static final _id_setBottom = _class.instanceMethodId(
+    r"setBottom",
+    r"(I)V",
+  );
 
   /// from: public final void setBottom(int i)
   void setBottom(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setBottom,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_setBottom(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getLeft =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getLeft", r"()I");
+  static final _id_getLeft = _class.instanceMethodId(
+    r"getLeft",
+    r"()I",
+  );
 
   /// from: public final int getLeft()
   int getLeft() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getLeft, jni.JniCallType.intType, []).integer;
+    return _id_getLeft(this, const jni.jintType(), []);
   }
 
-  static final _id_setLeft =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"setLeft", r"(I)V");
+  static final _id_setLeft = _class.instanceMethodId(
+    r"setLeft",
+    r"(I)V",
+  );
 
   /// from: public final void setLeft(int i)
   void setLeft(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setLeft,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_setLeft(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getRight =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getRight", r"()I");
+  static final _id_getRight = _class.instanceMethodId(
+    r"getRight",
+    r"()I",
+  );
 
   /// from: public final int getRight()
   int getRight() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getRight, jni.JniCallType.intType, []).integer;
+    return _id_getRight(this, const jni.jintType(), []);
   }
 
-  static final _id_setRight =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"setRight", r"(I)V");
+  static final _id_setRight = _class.instanceMethodId(
+    r"setRight",
+    r"(I)V",
+  );
 
   /// from: public final void setRight(int i)
   void setRight(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setRight,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_setRight(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getX =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getX", r"()F");
+  static final _id_getX = _class.instanceMethodId(
+    r"getX",
+    r"()F",
+  );
 
   /// from: public float getX()
   double getX() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getX, jni.JniCallType.floatType, []).float;
+    return _id_getX(this, const jni.jfloatType(), []);
   }
 
-  static final _id_setX =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"setX", r"(F)V");
+  static final _id_setX = _class.instanceMethodId(
+    r"setX",
+    r"(F)V",
+  );
 
   /// from: public void setX(float f)
   void setX(
     double f,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setX,
-        jni.JniCallType.voidType, [jni.JValueFloat(f)]).check();
+    _id_setX(this, const jni.jvoidType(), [jni.JValueFloat(f)]);
   }
 
-  static final _id_getY =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getY", r"()F");
+  static final _id_getY = _class.instanceMethodId(
+    r"getY",
+    r"()F",
+  );
 
   /// from: public float getY()
   double getY() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getY, jni.JniCallType.floatType, []).float;
+    return _id_getY(this, const jni.jfloatType(), []);
   }
 
-  static final _id_setY =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"setY", r"(F)V");
+  static final _id_setY = _class.instanceMethodId(
+    r"setY",
+    r"(F)V",
+  );
 
   /// from: public void setY(float f)
   void setY(
     double f,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setY,
-        jni.JniCallType.voidType, [jni.JValueFloat(f)]).check();
+    _id_setY(this, const jni.jvoidType(), [jni.JValueFloat(f)]);
   }
 
-  static final _id_getZ =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getZ", r"()F");
+  static final _id_getZ = _class.instanceMethodId(
+    r"getZ",
+    r"()F",
+  );
 
   /// from: public float getZ()
   double getZ() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getZ, jni.JniCallType.floatType, []).float;
+    return _id_getZ(this, const jni.jfloatType(), []);
   }
 
-  static final _id_setZ =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"setZ", r"(F)V");
+  static final _id_setZ = _class.instanceMethodId(
+    r"setZ",
+    r"(F)V",
+  );
 
   /// from: public void setZ(float f)
   void setZ(
     double f,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setZ,
-        jni.JniCallType.voidType, [jni.JValueFloat(f)]).check();
+    _id_setZ(this, const jni.jvoidType(), [jni.JValueFloat(f)]);
   }
 
-  static final _id_getElevation = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getElevation", r"()F");
+  static final _id_getElevation = _class.instanceMethodId(
+    r"getElevation",
+    r"()F",
+  );
 
   /// from: public float getElevation()
   double getElevation() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getElevation, jni.JniCallType.floatType, []).float;
+    return _id_getElevation(this, const jni.jfloatType(), []);
   }
 
-  static final _id_setElevation = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setElevation", r"(F)V");
+  static final _id_setElevation = _class.instanceMethodId(
+    r"setElevation",
+    r"(F)V",
+  );
 
   /// from: public void setElevation(float f)
   void setElevation(
     double f,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setElevation,
-        jni.JniCallType.voidType, [jni.JValueFloat(f)]).check();
+    _id_setElevation(this, const jni.jvoidType(), [jni.JValueFloat(f)]);
   }
 
-  static final _id_getTranslationX = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getTranslationX", r"()F");
+  static final _id_getTranslationX = _class.instanceMethodId(
+    r"getTranslationX",
+    r"()F",
+  );
 
   /// from: public float getTranslationX()
   double getTranslationX() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getTranslationX, jni.JniCallType.floatType, []).float;
+    return _id_getTranslationX(this, const jni.jfloatType(), []);
   }
 
-  static final _id_setTranslationX = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setTranslationX", r"(F)V");
+  static final _id_setTranslationX = _class.instanceMethodId(
+    r"setTranslationX",
+    r"(F)V",
+  );
 
   /// from: public void setTranslationX(float f)
   void setTranslationX(
     double f,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setTranslationX,
-        jni.JniCallType.voidType, [jni.JValueFloat(f)]).check();
+    _id_setTranslationX(this, const jni.jvoidType(), [jni.JValueFloat(f)]);
   }
 
-  static final _id_getTranslationY = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getTranslationY", r"()F");
+  static final _id_getTranslationY = _class.instanceMethodId(
+    r"getTranslationY",
+    r"()F",
+  );
 
   /// from: public float getTranslationY()
   double getTranslationY() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getTranslationY, jni.JniCallType.floatType, []).float;
+    return _id_getTranslationY(this, const jni.jfloatType(), []);
   }
 
-  static final _id_setTranslationY = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setTranslationY", r"(F)V");
+  static final _id_setTranslationY = _class.instanceMethodId(
+    r"setTranslationY",
+    r"(F)V",
+  );
 
   /// from: public void setTranslationY(float f)
   void setTranslationY(
     double f,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setTranslationY,
-        jni.JniCallType.voidType, [jni.JValueFloat(f)]).check();
+    _id_setTranslationY(this, const jni.jvoidType(), [jni.JValueFloat(f)]);
   }
 
-  static final _id_getTranslationZ = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getTranslationZ", r"()F");
+  static final _id_getTranslationZ = _class.instanceMethodId(
+    r"getTranslationZ",
+    r"()F",
+  );
 
   /// from: public float getTranslationZ()
   double getTranslationZ() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getTranslationZ, jni.JniCallType.floatType, []).float;
+    return _id_getTranslationZ(this, const jni.jfloatType(), []);
   }
 
-  static final _id_setTranslationZ = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setTranslationZ", r"(F)V");
+  static final _id_setTranslationZ = _class.instanceMethodId(
+    r"setTranslationZ",
+    r"(F)V",
+  );
 
   /// from: public void setTranslationZ(float f)
   void setTranslationZ(
     double f,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setTranslationZ,
-        jni.JniCallType.voidType, [jni.JValueFloat(f)]).check();
+    _id_setTranslationZ(this, const jni.jvoidType(), [jni.JValueFloat(f)]);
   }
 
-  static final _id_setAnimationMatrix = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"setAnimationMatrix", r"(Landroid/graphics/Matrix;)V");
+  static final _id_setAnimationMatrix = _class.instanceMethodId(
+    r"setAnimationMatrix",
+    r"(Landroid/graphics/Matrix;)V",
+  );
 
   /// from: public void setAnimationMatrix(android.graphics.Matrix matrix)
   void setAnimationMatrix(
     jni.JObject matrix,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setAnimationMatrix,
-        jni.JniCallType.voidType,
-        [matrix.reference]).check();
+    _id_setAnimationMatrix(
+        this, const jni.jvoidType(), [matrix.reference.pointer]);
   }
 
-  static final _id_getAnimationMatrix = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getAnimationMatrix", r"()Landroid/graphics/Matrix;");
+  static final _id_getAnimationMatrix = _class.instanceMethodId(
+    r"getAnimationMatrix",
+    r"()Landroid/graphics/Matrix;",
+  );
 
   /// from: public android.graphics.Matrix getAnimationMatrix()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getAnimationMatrix() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getAnimationMatrix,
-        jni.JniCallType.objectType, []).object);
+    return _id_getAnimationMatrix(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getStateListAnimator = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getStateListAnimator",
-      r"()Landroid/animation/StateListAnimator;");
+  static final _id_getStateListAnimator = _class.instanceMethodId(
+    r"getStateListAnimator",
+    r"()Landroid/animation/StateListAnimator;",
+  );
 
   /// from: public android.animation.StateListAnimator getStateListAnimator()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getStateListAnimator() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getStateListAnimator,
-        jni.JniCallType.objectType, []).object);
+    return _id_getStateListAnimator(this, const jni.JObjectType(), []);
   }
 
-  static final _id_setStateListAnimator = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setStateListAnimator",
-      r"(Landroid/animation/StateListAnimator;)V");
+  static final _id_setStateListAnimator = _class.instanceMethodId(
+    r"setStateListAnimator",
+    r"(Landroid/animation/StateListAnimator;)V",
+  );
 
   /// from: public void setStateListAnimator(android.animation.StateListAnimator stateListAnimator)
   void setStateListAnimator(
     jni.JObject stateListAnimator,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setStateListAnimator,
-        jni.JniCallType.voidType,
-        [stateListAnimator.reference]).check();
+    _id_setStateListAnimator(
+        this, const jni.jvoidType(), [stateListAnimator.reference.pointer]);
   }
 
-  static final _id_getClipToOutline = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getClipToOutline", r"()Z");
+  static final _id_getClipToOutline = _class.instanceMethodId(
+    r"getClipToOutline",
+    r"()Z",
+  );
 
   /// from: public final boolean getClipToOutline()
   bool getClipToOutline() {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_getClipToOutline,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_getClipToOutline(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setClipToOutline = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setClipToOutline", r"(Z)V");
+  static final _id_setClipToOutline = _class.instanceMethodId(
+    r"setClipToOutline",
+    r"(Z)V",
+  );
 
   /// from: public void setClipToOutline(boolean z)
   void setClipToOutline(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setClipToOutline,
-        jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_setClipToOutline(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_setOutlineProvider = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setOutlineProvider",
-      r"(Landroid/view/ViewOutlineProvider;)V");
+  static final _id_setOutlineProvider = _class.instanceMethodId(
+    r"setOutlineProvider",
+    r"(Landroid/view/ViewOutlineProvider;)V",
+  );
 
   /// from: public void setOutlineProvider(android.view.ViewOutlineProvider viewOutlineProvider)
   void setOutlineProvider(
     jni.JObject viewOutlineProvider,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setOutlineProvider,
-        jni.JniCallType.voidType,
-        [viewOutlineProvider.reference]).check();
+    _id_setOutlineProvider(
+        this, const jni.jvoidType(), [viewOutlineProvider.reference.pointer]);
   }
 
-  static final _id_getOutlineProvider = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getOutlineProvider",
-      r"()Landroid/view/ViewOutlineProvider;");
+  static final _id_getOutlineProvider = _class.instanceMethodId(
+    r"getOutlineProvider",
+    r"()Landroid/view/ViewOutlineProvider;",
+  );
 
   /// from: public android.view.ViewOutlineProvider getOutlineProvider()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getOutlineProvider() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getOutlineProvider,
-        jni.JniCallType.objectType, []).object);
+    return _id_getOutlineProvider(this, const jni.JObjectType(), []);
   }
 
-  static final _id_invalidateOutline = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"invalidateOutline", r"()V");
+  static final _id_invalidateOutline = _class.instanceMethodId(
+    r"invalidateOutline",
+    r"()V",
+  );
 
   /// from: public void invalidateOutline()
   void invalidateOutline() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_invalidateOutline, jni.JniCallType.voidType, []).check();
+    _id_invalidateOutline(this, const jni.jvoidType(), []);
   }
 
-  static final _id_setOutlineSpotShadowColor = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setOutlineSpotShadowColor", r"(I)V");
+  static final _id_setOutlineSpotShadowColor = _class.instanceMethodId(
+    r"setOutlineSpotShadowColor",
+    r"(I)V",
+  );
 
   /// from: public void setOutlineSpotShadowColor(int i)
   void setOutlineSpotShadowColor(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setOutlineSpotShadowColor,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setOutlineSpotShadowColor(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getOutlineSpotShadowColor = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getOutlineSpotShadowColor", r"()I");
+  static final _id_getOutlineSpotShadowColor = _class.instanceMethodId(
+    r"getOutlineSpotShadowColor",
+    r"()I",
+  );
 
   /// from: public int getOutlineSpotShadowColor()
   int getOutlineSpotShadowColor() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getOutlineSpotShadowColor, jni.JniCallType.intType, []).integer;
+    return _id_getOutlineSpotShadowColor(this, const jni.jintType(), []);
   }
 
-  static final _id_setOutlineAmbientShadowColor = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"setOutlineAmbientShadowColor", r"(I)V");
+  static final _id_setOutlineAmbientShadowColor = _class.instanceMethodId(
+    r"setOutlineAmbientShadowColor",
+    r"(I)V",
+  );
 
   /// from: public void setOutlineAmbientShadowColor(int i)
   void setOutlineAmbientShadowColor(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setOutlineAmbientShadowColor,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setOutlineAmbientShadowColor(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getOutlineAmbientShadowColor = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getOutlineAmbientShadowColor", r"()I");
+  static final _id_getOutlineAmbientShadowColor = _class.instanceMethodId(
+    r"getOutlineAmbientShadowColor",
+    r"()I",
+  );
 
   /// from: public int getOutlineAmbientShadowColor()
   int getOutlineAmbientShadowColor() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getOutlineAmbientShadowColor, jni.JniCallType.intType, []).integer;
+    return _id_getOutlineAmbientShadowColor(this, const jni.jintType(), []);
   }
 
-  static final _id_getHitRect = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getHitRect", r"(Landroid/graphics/Rect;)V");
+  static final _id_getHitRect = _class.instanceMethodId(
+    r"getHitRect",
+    r"(Landroid/graphics/Rect;)V",
+  );
 
   /// from: public void getHitRect(android.graphics.Rect rect)
   void getHitRect(
     jni.JObject rect,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_getHitRect,
-        jni.JniCallType.voidType, [rect.reference]).check();
+    _id_getHitRect(this, const jni.jvoidType(), [rect.reference.pointer]);
   }
 
-  static final _id_getFocusedRect = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getFocusedRect", r"(Landroid/graphics/Rect;)V");
+  static final _id_getFocusedRect = _class.instanceMethodId(
+    r"getFocusedRect",
+    r"(Landroid/graphics/Rect;)V",
+  );
 
   /// from: public void getFocusedRect(android.graphics.Rect rect)
   void getFocusedRect(
     jni.JObject rect,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_getFocusedRect,
-        jni.JniCallType.voidType, [rect.reference]).check();
+    _id_getFocusedRect(this, const jni.jvoidType(), [rect.reference.pointer]);
   }
 
-  static final _id_getGlobalVisibleRect = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getGlobalVisibleRect",
-      r"(Landroid/graphics/Rect;Landroid/graphics/Point;)Z");
+  static final _id_getGlobalVisibleRect = _class.instanceMethodId(
+    r"getGlobalVisibleRect",
+    r"(Landroid/graphics/Rect;Landroid/graphics/Point;)Z",
+  );
 
   /// from: public boolean getGlobalVisibleRect(android.graphics.Rect rect, android.graphics.Point point)
   bool getGlobalVisibleRect(
     jni.JObject rect,
     jni.JObject point,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getGlobalVisibleRect,
-        jni.JniCallType.booleanType,
-        [rect.reference, point.reference]).boolean;
+    return _id_getGlobalVisibleRect(this, const jni.jbooleanType(),
+        [rect.reference.pointer, point.reference.pointer]);
   }
 
-  static final _id_getGlobalVisibleRect1 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getGlobalVisibleRect", r"(Landroid/graphics/Rect;)Z");
+  static final _id_getGlobalVisibleRect1 = _class.instanceMethodId(
+    r"getGlobalVisibleRect",
+    r"(Landroid/graphics/Rect;)Z",
+  );
 
   /// from: public final boolean getGlobalVisibleRect(android.graphics.Rect rect)
   bool getGlobalVisibleRect1(
     jni.JObject rect,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getGlobalVisibleRect1,
-        jni.JniCallType.booleanType,
-        [rect.reference]).boolean;
+    return _id_getGlobalVisibleRect1(
+        this, const jni.jbooleanType(), [rect.reference.pointer]);
   }
 
-  static final _id_getLocalVisibleRect = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getLocalVisibleRect", r"(Landroid/graphics/Rect;)Z");
+  static final _id_getLocalVisibleRect = _class.instanceMethodId(
+    r"getLocalVisibleRect",
+    r"(Landroid/graphics/Rect;)Z",
+  );
 
   /// from: public final boolean getLocalVisibleRect(android.graphics.Rect rect)
   bool getLocalVisibleRect(
     jni.JObject rect,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getLocalVisibleRect,
-        jni.JniCallType.booleanType,
-        [rect.reference]).boolean;
+    return _id_getLocalVisibleRect(
+        this, const jni.jbooleanType(), [rect.reference.pointer]);
   }
 
-  static final _id_offsetTopAndBottom = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"offsetTopAndBottom", r"(I)V");
+  static final _id_offsetTopAndBottom = _class.instanceMethodId(
+    r"offsetTopAndBottom",
+    r"(I)V",
+  );
 
   /// from: public void offsetTopAndBottom(int i)
   void offsetTopAndBottom(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_offsetTopAndBottom,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_offsetTopAndBottom(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_offsetLeftAndRight = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"offsetLeftAndRight", r"(I)V");
+  static final _id_offsetLeftAndRight = _class.instanceMethodId(
+    r"offsetLeftAndRight",
+    r"(I)V",
+  );
 
   /// from: public void offsetLeftAndRight(int i)
   void offsetLeftAndRight(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_offsetLeftAndRight,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_offsetLeftAndRight(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getLayoutParams = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getLayoutParams",
-      r"()Landroid/view/ViewGroup$LayoutParams;");
+  static final _id_getLayoutParams = _class.instanceMethodId(
+    r"getLayoutParams",
+    r"()Landroid/view/ViewGroup$LayoutParams;",
+  );
 
   /// from: public android.view.ViewGroup$LayoutParams getLayoutParams()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getLayoutParams() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getLayoutParams, jni.JniCallType.objectType, []).object);
+    return _id_getLayoutParams(this, const jni.JObjectType(), []);
   }
 
-  static final _id_setLayoutParams = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setLayoutParams",
-      r"(Landroid/view/ViewGroup$LayoutParams;)V");
+  static final _id_setLayoutParams = _class.instanceMethodId(
+    r"setLayoutParams",
+    r"(Landroid/view/ViewGroup$LayoutParams;)V",
+  );
 
   /// from: public void setLayoutParams(android.view.ViewGroup$LayoutParams layoutParams)
   void setLayoutParams(
     jni.JObject layoutParams,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setLayoutParams,
-        jni.JniCallType.voidType, [layoutParams.reference]).check();
+    _id_setLayoutParams(
+        this, const jni.jvoidType(), [layoutParams.reference.pointer]);
   }
 
-  static final _id_scrollTo =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"scrollTo", r"(II)V");
+  static final _id_scrollTo = _class.instanceMethodId(
+    r"scrollTo",
+    r"(II)V",
+  );
 
   /// from: public void scrollTo(int i, int i1)
   void scrollTo(
     int i,
     int i1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_scrollTo,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i), jni.JValueInt(i1)]).check();
+    _id_scrollTo(
+        this, const jni.jvoidType(), [jni.JValueInt(i), jni.JValueInt(i1)]);
   }
 
-  static final _id_scrollBy =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"scrollBy", r"(II)V");
+  static final _id_scrollBy = _class.instanceMethodId(
+    r"scrollBy",
+    r"(II)V",
+  );
 
   /// from: public void scrollBy(int i, int i1)
   void scrollBy(
     int i,
     int i1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_scrollBy,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i), jni.JValueInt(i1)]).check();
+    _id_scrollBy(
+        this, const jni.jvoidType(), [jni.JValueInt(i), jni.JValueInt(i1)]);
   }
 
-  static final _id_awakenScrollBars = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"awakenScrollBars", r"()Z");
+  static final _id_awakenScrollBars = _class.instanceMethodId(
+    r"awakenScrollBars",
+    r"()Z",
+  );
 
   /// from: protected boolean awakenScrollBars()
   bool awakenScrollBars() {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_awakenScrollBars,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_awakenScrollBars(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_awakenScrollBars1 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"awakenScrollBars", r"(I)Z");
+  static final _id_awakenScrollBars1 = _class.instanceMethodId(
+    r"awakenScrollBars",
+    r"(I)Z",
+  );
 
   /// from: protected boolean awakenScrollBars(int i)
   bool awakenScrollBars1(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_awakenScrollBars1,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i)]).boolean;
+    return _id_awakenScrollBars1(
+        this, const jni.jbooleanType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_awakenScrollBars2 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"awakenScrollBars", r"(IZ)Z");
+  static final _id_awakenScrollBars2 = _class.instanceMethodId(
+    r"awakenScrollBars",
+    r"(IZ)Z",
+  );
 
   /// from: protected boolean awakenScrollBars(int i, boolean z)
   bool awakenScrollBars2(
     int i,
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_awakenScrollBars2,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i), z ? 1 : 0]).boolean;
+    return _id_awakenScrollBars2(
+        this, const jni.jbooleanType(), [jni.JValueInt(i), z ? 1 : 0]);
   }
 
-  static final _id_invalidate = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"invalidate", r"(Landroid/graphics/Rect;)V");
+  static final _id_invalidate = _class.instanceMethodId(
+    r"invalidate",
+    r"(Landroid/graphics/Rect;)V",
+  );
 
   /// from: public void invalidate(android.graphics.Rect rect)
   void invalidate(
     jni.JObject rect,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_invalidate,
-        jni.JniCallType.voidType, [rect.reference]).check();
+    _id_invalidate(this, const jni.jvoidType(), [rect.reference.pointer]);
   }
 
-  static final _id_invalidate1 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"invalidate", r"(IIII)V");
+  static final _id_invalidate1 = _class.instanceMethodId(
+    r"invalidate",
+    r"(IIII)V",
+  );
 
   /// from: public void invalidate(int i, int i1, int i2, int i3)
   void invalidate1(
@@ -14049,114 +13539,126 @@ class View extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_invalidate1, jni.JniCallType.voidType, [
+    _id_invalidate1(this, const jni.jvoidType(), [
       jni.JValueInt(i),
       jni.JValueInt(i1),
       jni.JValueInt(i2),
       jni.JValueInt(i3)
-    ]).check();
+    ]);
   }
 
-  static final _id_invalidate2 =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"invalidate", r"()V");
+  static final _id_invalidate2 = _class.instanceMethodId(
+    r"invalidate",
+    r"()V",
+  );
 
   /// from: public void invalidate()
   void invalidate2() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_invalidate2, jni.JniCallType.voidType, []).check();
+    _id_invalidate2(this, const jni.jvoidType(), []);
   }
 
-  static final _id_isOpaque =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"isOpaque", r"()Z");
+  static final _id_isOpaque = _class.instanceMethodId(
+    r"isOpaque",
+    r"()Z",
+  );
 
   /// from: public boolean isOpaque()
   bool isOpaque() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_isOpaque, jni.JniCallType.booleanType, []).boolean;
+    return _id_isOpaque(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_getHandler = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getHandler", r"()Landroid/os/Handler;");
+  static final _id_getHandler = _class.instanceMethodId(
+    r"getHandler",
+    r"()Landroid/os/Handler;",
+  );
 
   /// from: public android.os.Handler getHandler()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getHandler() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getHandler, jni.JniCallType.objectType, []).object);
+    return _id_getHandler(this, const jni.JObjectType(), []);
   }
 
-  static final _id_post = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"post", r"(Ljava/lang/Runnable;)Z");
+  static final _id_post = _class.instanceMethodId(
+    r"post",
+    r"(Ljava/lang/Runnable;)Z",
+  );
 
   /// from: public boolean post(java.lang.Runnable runnable)
   bool post(
     jni.JObject runnable,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_post,
-        jni.JniCallType.booleanType, [runnable.reference]).boolean;
+    return _id_post(
+        this, const jni.jbooleanType(), [runnable.reference.pointer]);
   }
 
-  static final _id_postDelayed = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"postDelayed", r"(Ljava/lang/Runnable;J)Z");
+  static final _id_postDelayed = _class.instanceMethodId(
+    r"postDelayed",
+    r"(Ljava/lang/Runnable;J)Z",
+  );
 
   /// from: public boolean postDelayed(java.lang.Runnable runnable, long j)
   bool postDelayed(
     jni.JObject runnable,
     int j,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_postDelayed,
-        jni.JniCallType.booleanType, [runnable.reference, j]).boolean;
+    return _id_postDelayed(
+        this, const jni.jbooleanType(), [runnable.reference.pointer, j]);
   }
 
-  static final _id_postOnAnimation = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"postOnAnimation", r"(Ljava/lang/Runnable;)V");
+  static final _id_postOnAnimation = _class.instanceMethodId(
+    r"postOnAnimation",
+    r"(Ljava/lang/Runnable;)V",
+  );
 
   /// from: public void postOnAnimation(java.lang.Runnable runnable)
   void postOnAnimation(
     jni.JObject runnable,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_postOnAnimation,
-        jni.JniCallType.voidType, [runnable.reference]).check();
+    _id_postOnAnimation(
+        this, const jni.jvoidType(), [runnable.reference.pointer]);
   }
 
-  static final _id_postOnAnimationDelayed = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"postOnAnimationDelayed", r"(Ljava/lang/Runnable;J)V");
+  static final _id_postOnAnimationDelayed = _class.instanceMethodId(
+    r"postOnAnimationDelayed",
+    r"(Ljava/lang/Runnable;J)V",
+  );
 
   /// from: public void postOnAnimationDelayed(java.lang.Runnable runnable, long j)
   void postOnAnimationDelayed(
     jni.JObject runnable,
     int j,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_postOnAnimationDelayed,
-        jni.JniCallType.voidType,
-        [runnable.reference, j]).check();
+    _id_postOnAnimationDelayed(
+        this, const jni.jvoidType(), [runnable.reference.pointer, j]);
   }
 
-  static final _id_removeCallbacks = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"removeCallbacks", r"(Ljava/lang/Runnable;)Z");
+  static final _id_removeCallbacks = _class.instanceMethodId(
+    r"removeCallbacks",
+    r"(Ljava/lang/Runnable;)Z",
+  );
 
   /// from: public boolean removeCallbacks(java.lang.Runnable runnable)
   bool removeCallbacks(
     jni.JObject runnable,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_removeCallbacks,
-        jni.JniCallType.booleanType, [runnable.reference]).boolean;
+    return _id_removeCallbacks(
+        this, const jni.jbooleanType(), [runnable.reference.pointer]);
   }
 
-  static final _id_postInvalidate = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"postInvalidate", r"()V");
+  static final _id_postInvalidate = _class.instanceMethodId(
+    r"postInvalidate",
+    r"()V",
+  );
 
   /// from: public void postInvalidate()
   void postInvalidate() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_postInvalidate, jni.JniCallType.voidType, []).check();
+    _id_postInvalidate(this, const jni.jvoidType(), []);
   }
 
-  static final _id_postInvalidate1 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"postInvalidate", r"(IIII)V");
+  static final _id_postInvalidate1 = _class.instanceMethodId(
+    r"postInvalidate",
+    r"(IIII)V",
+  );
 
   /// from: public void postInvalidate(int i, int i1, int i2, int i3)
   void postInvalidate1(
@@ -14165,28 +13667,30 @@ class View extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_postInvalidate1, jni.JniCallType.voidType, [
+    _id_postInvalidate1(this, const jni.jvoidType(), [
       jni.JValueInt(i),
       jni.JValueInt(i1),
       jni.JValueInt(i2),
       jni.JValueInt(i3)
-    ]).check();
+    ]);
   }
 
-  static final _id_postInvalidateDelayed = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"postInvalidateDelayed", r"(J)V");
+  static final _id_postInvalidateDelayed = _class.instanceMethodId(
+    r"postInvalidateDelayed",
+    r"(J)V",
+  );
 
   /// from: public void postInvalidateDelayed(long j)
   void postInvalidateDelayed(
     int j,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_postInvalidateDelayed, jni.JniCallType.voidType, [j]).check();
+    _id_postInvalidateDelayed(this, const jni.jvoidType(), [j]);
   }
 
-  static final _id_postInvalidateDelayed1 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"postInvalidateDelayed", r"(JIIII)V");
+  static final _id_postInvalidateDelayed1 = _class.instanceMethodId(
+    r"postInvalidateDelayed",
+    r"(JIIII)V",
+  );
 
   /// from: public void postInvalidateDelayed(long j, int i, int i1, int i2, int i3)
   void postInvalidateDelayed1(
@@ -14196,27 +13700,29 @@ class View extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_postInvalidateDelayed1, jni.JniCallType.voidType, [
+    _id_postInvalidateDelayed1(this, const jni.jvoidType(), [
       j,
       jni.JValueInt(i),
       jni.JValueInt(i1),
       jni.JValueInt(i2),
       jni.JValueInt(i3)
-    ]).check();
+    ]);
   }
 
-  static final _id_postInvalidateOnAnimation = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"postInvalidateOnAnimation", r"()V");
+  static final _id_postInvalidateOnAnimation = _class.instanceMethodId(
+    r"postInvalidateOnAnimation",
+    r"()V",
+  );
 
   /// from: public void postInvalidateOnAnimation()
   void postInvalidateOnAnimation() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_postInvalidateOnAnimation, jni.JniCallType.voidType, []).check();
+    _id_postInvalidateOnAnimation(this, const jni.jvoidType(), []);
   }
 
-  static final _id_postInvalidateOnAnimation1 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"postInvalidateOnAnimation", r"(IIII)V");
+  static final _id_postInvalidateOnAnimation1 = _class.instanceMethodId(
+    r"postInvalidateOnAnimation",
+    r"(IIII)V",
+  );
 
   /// from: public void postInvalidateOnAnimation(int i, int i1, int i2, int i3)
   void postInvalidateOnAnimation1(
@@ -14225,942 +13731,939 @@ class View extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_postInvalidateOnAnimation1, jni.JniCallType.voidType, [
+    _id_postInvalidateOnAnimation1(this, const jni.jvoidType(), [
       jni.JValueInt(i),
       jni.JValueInt(i1),
       jni.JValueInt(i2),
       jni.JValueInt(i3)
-    ]).check();
+    ]);
   }
 
-  static final _id_computeScroll = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"computeScroll", r"()V");
+  static final _id_computeScroll = _class.instanceMethodId(
+    r"computeScroll",
+    r"()V",
+  );
 
   /// from: public void computeScroll()
   void computeScroll() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_computeScroll, jni.JniCallType.voidType, []).check();
+    _id_computeScroll(this, const jni.jvoidType(), []);
   }
 
-  static final _id_isHorizontalFadingEdgeEnabled = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"isHorizontalFadingEdgeEnabled", r"()Z");
+  static final _id_isHorizontalFadingEdgeEnabled = _class.instanceMethodId(
+    r"isHorizontalFadingEdgeEnabled",
+    r"()Z",
+  );
 
   /// from: public boolean isHorizontalFadingEdgeEnabled()
   bool isHorizontalFadingEdgeEnabled() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_isHorizontalFadingEdgeEnabled,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_isHorizontalFadingEdgeEnabled(
+        this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setHorizontalFadingEdgeEnabled = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"setHorizontalFadingEdgeEnabled", r"(Z)V");
+  static final _id_setHorizontalFadingEdgeEnabled = _class.instanceMethodId(
+    r"setHorizontalFadingEdgeEnabled",
+    r"(Z)V",
+  );
 
   /// from: public void setHorizontalFadingEdgeEnabled(boolean z)
   void setHorizontalFadingEdgeEnabled(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setHorizontalFadingEdgeEnabled,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setHorizontalFadingEdgeEnabled(
+        this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isVerticalFadingEdgeEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isVerticalFadingEdgeEnabled", r"()Z");
+  static final _id_isVerticalFadingEdgeEnabled = _class.instanceMethodId(
+    r"isVerticalFadingEdgeEnabled",
+    r"()Z",
+  );
 
   /// from: public boolean isVerticalFadingEdgeEnabled()
   bool isVerticalFadingEdgeEnabled() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_isVerticalFadingEdgeEnabled,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_isVerticalFadingEdgeEnabled(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setVerticalFadingEdgeEnabled = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"setVerticalFadingEdgeEnabled", r"(Z)V");
+  static final _id_setVerticalFadingEdgeEnabled = _class.instanceMethodId(
+    r"setVerticalFadingEdgeEnabled",
+    r"(Z)V",
+  );
 
   /// from: public void setVerticalFadingEdgeEnabled(boolean z)
   void setVerticalFadingEdgeEnabled(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setVerticalFadingEdgeEnabled,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setVerticalFadingEdgeEnabled(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_getTopFadingEdgeStrength = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getTopFadingEdgeStrength", r"()F");
+  static final _id_getTopFadingEdgeStrength = _class.instanceMethodId(
+    r"getTopFadingEdgeStrength",
+    r"()F",
+  );
 
   /// from: protected float getTopFadingEdgeStrength()
   double getTopFadingEdgeStrength() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getTopFadingEdgeStrength, jni.JniCallType.floatType, []).float;
+    return _id_getTopFadingEdgeStrength(this, const jni.jfloatType(), []);
   }
 
-  static final _id_getBottomFadingEdgeStrength = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getBottomFadingEdgeStrength", r"()F");
+  static final _id_getBottomFadingEdgeStrength = _class.instanceMethodId(
+    r"getBottomFadingEdgeStrength",
+    r"()F",
+  );
 
   /// from: protected float getBottomFadingEdgeStrength()
   double getBottomFadingEdgeStrength() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getBottomFadingEdgeStrength, jni.JniCallType.floatType, []).float;
+    return _id_getBottomFadingEdgeStrength(this, const jni.jfloatType(), []);
   }
 
-  static final _id_getLeftFadingEdgeStrength = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getLeftFadingEdgeStrength", r"()F");
+  static final _id_getLeftFadingEdgeStrength = _class.instanceMethodId(
+    r"getLeftFadingEdgeStrength",
+    r"()F",
+  );
 
   /// from: protected float getLeftFadingEdgeStrength()
   double getLeftFadingEdgeStrength() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getLeftFadingEdgeStrength, jni.JniCallType.floatType, []).float;
+    return _id_getLeftFadingEdgeStrength(this, const jni.jfloatType(), []);
   }
 
-  static final _id_getRightFadingEdgeStrength = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getRightFadingEdgeStrength", r"()F");
+  static final _id_getRightFadingEdgeStrength = _class.instanceMethodId(
+    r"getRightFadingEdgeStrength",
+    r"()F",
+  );
 
   /// from: protected float getRightFadingEdgeStrength()
   double getRightFadingEdgeStrength() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getRightFadingEdgeStrength, jni.JniCallType.floatType, []).float;
+    return _id_getRightFadingEdgeStrength(this, const jni.jfloatType(), []);
   }
 
-  static final _id_isHorizontalScrollBarEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isHorizontalScrollBarEnabled", r"()Z");
+  static final _id_isHorizontalScrollBarEnabled = _class.instanceMethodId(
+    r"isHorizontalScrollBarEnabled",
+    r"()Z",
+  );
 
   /// from: public boolean isHorizontalScrollBarEnabled()
   bool isHorizontalScrollBarEnabled() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_isHorizontalScrollBarEnabled,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_isHorizontalScrollBarEnabled(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setHorizontalScrollBarEnabled = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"setHorizontalScrollBarEnabled", r"(Z)V");
+  static final _id_setHorizontalScrollBarEnabled = _class.instanceMethodId(
+    r"setHorizontalScrollBarEnabled",
+    r"(Z)V",
+  );
 
   /// from: public void setHorizontalScrollBarEnabled(boolean z)
   void setHorizontalScrollBarEnabled(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setHorizontalScrollBarEnabled,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setHorizontalScrollBarEnabled(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isVerticalScrollBarEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isVerticalScrollBarEnabled", r"()Z");
+  static final _id_isVerticalScrollBarEnabled = _class.instanceMethodId(
+    r"isVerticalScrollBarEnabled",
+    r"()Z",
+  );
 
   /// from: public boolean isVerticalScrollBarEnabled()
   bool isVerticalScrollBarEnabled() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_isVerticalScrollBarEnabled,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_isVerticalScrollBarEnabled(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setVerticalScrollBarEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setVerticalScrollBarEnabled", r"(Z)V");
+  static final _id_setVerticalScrollBarEnabled = _class.instanceMethodId(
+    r"setVerticalScrollBarEnabled",
+    r"(Z)V",
+  );
 
   /// from: public void setVerticalScrollBarEnabled(boolean z)
   void setVerticalScrollBarEnabled(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setVerticalScrollBarEnabled,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setVerticalScrollBarEnabled(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_setScrollbarFadingEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setScrollbarFadingEnabled", r"(Z)V");
+  static final _id_setScrollbarFadingEnabled = _class.instanceMethodId(
+    r"setScrollbarFadingEnabled",
+    r"(Z)V",
+  );
 
   /// from: public void setScrollbarFadingEnabled(boolean z)
   void setScrollbarFadingEnabled(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setScrollbarFadingEnabled,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setScrollbarFadingEnabled(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isScrollbarFadingEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isScrollbarFadingEnabled", r"()Z");
+  static final _id_isScrollbarFadingEnabled = _class.instanceMethodId(
+    r"isScrollbarFadingEnabled",
+    r"()Z",
+  );
 
   /// from: public boolean isScrollbarFadingEnabled()
   bool isScrollbarFadingEnabled() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isScrollbarFadingEnabled, jni.JniCallType.booleanType, []).boolean;
+    return _id_isScrollbarFadingEnabled(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_getScrollBarDefaultDelayBeforeFade = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"getScrollBarDefaultDelayBeforeFade", r"()I");
+  static final _id_getScrollBarDefaultDelayBeforeFade = _class.instanceMethodId(
+    r"getScrollBarDefaultDelayBeforeFade",
+    r"()I",
+  );
 
   /// from: public int getScrollBarDefaultDelayBeforeFade()
   int getScrollBarDefaultDelayBeforeFade() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getScrollBarDefaultDelayBeforeFade,
-        jni.JniCallType.intType, []).integer;
+    return _id_getScrollBarDefaultDelayBeforeFade(
+        this, const jni.jintType(), []);
   }
 
-  static final _id_setScrollBarDefaultDelayBeforeFade = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"setScrollBarDefaultDelayBeforeFade", r"(I)V");
+  static final _id_setScrollBarDefaultDelayBeforeFade = _class.instanceMethodId(
+    r"setScrollBarDefaultDelayBeforeFade",
+    r"(I)V",
+  );
 
   /// from: public void setScrollBarDefaultDelayBeforeFade(int i)
   void setScrollBarDefaultDelayBeforeFade(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setScrollBarDefaultDelayBeforeFade,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setScrollBarDefaultDelayBeforeFade(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getScrollBarFadeDuration = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getScrollBarFadeDuration", r"()I");
+  static final _id_getScrollBarFadeDuration = _class.instanceMethodId(
+    r"getScrollBarFadeDuration",
+    r"()I",
+  );
 
   /// from: public int getScrollBarFadeDuration()
   int getScrollBarFadeDuration() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getScrollBarFadeDuration, jni.JniCallType.intType, []).integer;
+    return _id_getScrollBarFadeDuration(this, const jni.jintType(), []);
   }
 
-  static final _id_setScrollBarFadeDuration = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setScrollBarFadeDuration", r"(I)V");
+  static final _id_setScrollBarFadeDuration = _class.instanceMethodId(
+    r"setScrollBarFadeDuration",
+    r"(I)V",
+  );
 
   /// from: public void setScrollBarFadeDuration(int i)
   void setScrollBarFadeDuration(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setScrollBarFadeDuration,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setScrollBarFadeDuration(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getScrollBarSize = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getScrollBarSize", r"()I");
+  static final _id_getScrollBarSize = _class.instanceMethodId(
+    r"getScrollBarSize",
+    r"()I",
+  );
 
   /// from: public int getScrollBarSize()
   int getScrollBarSize() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getScrollBarSize, jni.JniCallType.intType, []).integer;
+    return _id_getScrollBarSize(this, const jni.jintType(), []);
   }
 
-  static final _id_setScrollBarSize = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setScrollBarSize", r"(I)V");
+  static final _id_setScrollBarSize = _class.instanceMethodId(
+    r"setScrollBarSize",
+    r"(I)V",
+  );
 
   /// from: public void setScrollBarSize(int i)
   void setScrollBarSize(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setScrollBarSize,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_setScrollBarSize(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_setScrollBarStyle = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setScrollBarStyle", r"(I)V");
+  static final _id_setScrollBarStyle = _class.instanceMethodId(
+    r"setScrollBarStyle",
+    r"(I)V",
+  );
 
   /// from: public void setScrollBarStyle(int i)
   void setScrollBarStyle(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setScrollBarStyle,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setScrollBarStyle(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getScrollBarStyle = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getScrollBarStyle", r"()I");
+  static final _id_getScrollBarStyle = _class.instanceMethodId(
+    r"getScrollBarStyle",
+    r"()I",
+  );
 
   /// from: public int getScrollBarStyle()
   int getScrollBarStyle() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getScrollBarStyle, jni.JniCallType.intType, []).integer;
+    return _id_getScrollBarStyle(this, const jni.jintType(), []);
   }
 
-  static final _id_computeHorizontalScrollRange = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"computeHorizontalScrollRange", r"()I");
+  static final _id_computeHorizontalScrollRange = _class.instanceMethodId(
+    r"computeHorizontalScrollRange",
+    r"()I",
+  );
 
   /// from: protected int computeHorizontalScrollRange()
   int computeHorizontalScrollRange() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_computeHorizontalScrollRange, jni.JniCallType.intType, []).integer;
+    return _id_computeHorizontalScrollRange(this, const jni.jintType(), []);
   }
 
-  static final _id_computeHorizontalScrollOffset = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"computeHorizontalScrollOffset", r"()I");
+  static final _id_computeHorizontalScrollOffset = _class.instanceMethodId(
+    r"computeHorizontalScrollOffset",
+    r"()I",
+  );
 
   /// from: protected int computeHorizontalScrollOffset()
   int computeHorizontalScrollOffset() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_computeHorizontalScrollOffset, jni.JniCallType.intType, []).integer;
+    return _id_computeHorizontalScrollOffset(this, const jni.jintType(), []);
   }
 
-  static final _id_computeHorizontalScrollExtent = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"computeHorizontalScrollExtent", r"()I");
+  static final _id_computeHorizontalScrollExtent = _class.instanceMethodId(
+    r"computeHorizontalScrollExtent",
+    r"()I",
+  );
 
   /// from: protected int computeHorizontalScrollExtent()
   int computeHorizontalScrollExtent() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_computeHorizontalScrollExtent, jni.JniCallType.intType, []).integer;
+    return _id_computeHorizontalScrollExtent(this, const jni.jintType(), []);
   }
 
-  static final _id_computeVerticalScrollRange = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"computeVerticalScrollRange", r"()I");
+  static final _id_computeVerticalScrollRange = _class.instanceMethodId(
+    r"computeVerticalScrollRange",
+    r"()I",
+  );
 
   /// from: protected int computeVerticalScrollRange()
   int computeVerticalScrollRange() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_computeVerticalScrollRange, jni.JniCallType.intType, []).integer;
+    return _id_computeVerticalScrollRange(this, const jni.jintType(), []);
   }
 
-  static final _id_computeVerticalScrollOffset = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"computeVerticalScrollOffset", r"()I");
+  static final _id_computeVerticalScrollOffset = _class.instanceMethodId(
+    r"computeVerticalScrollOffset",
+    r"()I",
+  );
 
   /// from: protected int computeVerticalScrollOffset()
   int computeVerticalScrollOffset() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_computeVerticalScrollOffset, jni.JniCallType.intType, []).integer;
+    return _id_computeVerticalScrollOffset(this, const jni.jintType(), []);
   }
 
-  static final _id_computeVerticalScrollExtent = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"computeVerticalScrollExtent", r"()I");
+  static final _id_computeVerticalScrollExtent = _class.instanceMethodId(
+    r"computeVerticalScrollExtent",
+    r"()I",
+  );
 
   /// from: protected int computeVerticalScrollExtent()
   int computeVerticalScrollExtent() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_computeVerticalScrollExtent, jni.JniCallType.intType, []).integer;
+    return _id_computeVerticalScrollExtent(this, const jni.jintType(), []);
   }
 
-  static final _id_canScrollHorizontally = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"canScrollHorizontally", r"(I)Z");
+  static final _id_canScrollHorizontally = _class.instanceMethodId(
+    r"canScrollHorizontally",
+    r"(I)Z",
+  );
 
   /// from: public boolean canScrollHorizontally(int i)
   bool canScrollHorizontally(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_canScrollHorizontally,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i)]).boolean;
+    return _id_canScrollHorizontally(
+        this, const jni.jbooleanType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_canScrollVertically = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"canScrollVertically", r"(I)Z");
+  static final _id_canScrollVertically = _class.instanceMethodId(
+    r"canScrollVertically",
+    r"(I)Z",
+  );
 
   /// from: public boolean canScrollVertically(int i)
   bool canScrollVertically(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_canScrollVertically,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i)]).boolean;
+    return _id_canScrollVertically(
+        this, const jni.jbooleanType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_onDrawScrollBars = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onDrawScrollBars", r"(Landroid/graphics/Canvas;)V");
+  static final _id_onDrawScrollBars = _class.instanceMethodId(
+    r"onDrawScrollBars",
+    r"(Landroid/graphics/Canvas;)V",
+  );
 
   /// from: protected final void onDrawScrollBars(android.graphics.Canvas canvas)
   void onDrawScrollBars(
     jni.JObject canvas,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onDrawScrollBars,
-        jni.JniCallType.voidType, [canvas.reference]).check();
+    _id_onDrawScrollBars(
+        this, const jni.jvoidType(), [canvas.reference.pointer]);
   }
 
-  static final _id_onDraw = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onDraw", r"(Landroid/graphics/Canvas;)V");
+  static final _id_onDraw = _class.instanceMethodId(
+    r"onDraw",
+    r"(Landroid/graphics/Canvas;)V",
+  );
 
   /// from: protected void onDraw(android.graphics.Canvas canvas)
   void onDraw(
     jni.JObject canvas,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onDraw,
-        jni.JniCallType.voidType, [canvas.reference]).check();
+    _id_onDraw(this, const jni.jvoidType(), [canvas.reference.pointer]);
   }
 
-  static final _id_onAttachedToWindow = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onAttachedToWindow", r"()V");
+  static final _id_onAttachedToWindow = _class.instanceMethodId(
+    r"onAttachedToWindow",
+    r"()V",
+  );
 
   /// from: protected void onAttachedToWindow()
   void onAttachedToWindow() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_onAttachedToWindow, jni.JniCallType.voidType, []).check();
+    _id_onAttachedToWindow(this, const jni.jvoidType(), []);
   }
 
-  static final _id_onScreenStateChanged = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onScreenStateChanged", r"(I)V");
+  static final _id_onScreenStateChanged = _class.instanceMethodId(
+    r"onScreenStateChanged",
+    r"(I)V",
+  );
 
   /// from: public void onScreenStateChanged(int i)
   void onScreenStateChanged(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onScreenStateChanged,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_onScreenStateChanged(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_onRtlPropertiesChanged = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onRtlPropertiesChanged", r"(I)V");
+  static final _id_onRtlPropertiesChanged = _class.instanceMethodId(
+    r"onRtlPropertiesChanged",
+    r"(I)V",
+  );
 
   /// from: public void onRtlPropertiesChanged(int i)
   void onRtlPropertiesChanged(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onRtlPropertiesChanged,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_onRtlPropertiesChanged(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_canResolveLayoutDirection = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"canResolveLayoutDirection", r"()Z");
+  static final _id_canResolveLayoutDirection = _class.instanceMethodId(
+    r"canResolveLayoutDirection",
+    r"()Z",
+  );
 
   /// from: public boolean canResolveLayoutDirection()
   bool canResolveLayoutDirection() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_canResolveLayoutDirection, jni.JniCallType.booleanType, []).boolean;
+    return _id_canResolveLayoutDirection(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_isLayoutDirectionResolved = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isLayoutDirectionResolved", r"()Z");
+  static final _id_isLayoutDirectionResolved = _class.instanceMethodId(
+    r"isLayoutDirectionResolved",
+    r"()Z",
+  );
 
   /// from: public boolean isLayoutDirectionResolved()
   bool isLayoutDirectionResolved() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isLayoutDirectionResolved, jni.JniCallType.booleanType, []).boolean;
+    return _id_isLayoutDirectionResolved(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_onDetachedFromWindow = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onDetachedFromWindow", r"()V");
+  static final _id_onDetachedFromWindow = _class.instanceMethodId(
+    r"onDetachedFromWindow",
+    r"()V",
+  );
 
   /// from: protected void onDetachedFromWindow()
   void onDetachedFromWindow() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_onDetachedFromWindow, jni.JniCallType.voidType, []).check();
+    _id_onDetachedFromWindow(this, const jni.jvoidType(), []);
   }
 
-  static final _id_getWindowAttachCount = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getWindowAttachCount", r"()I");
+  static final _id_getWindowAttachCount = _class.instanceMethodId(
+    r"getWindowAttachCount",
+    r"()I",
+  );
 
   /// from: protected int getWindowAttachCount()
   int getWindowAttachCount() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getWindowAttachCount, jni.JniCallType.intType, []).integer;
+    return _id_getWindowAttachCount(this, const jni.jintType(), []);
   }
 
-  static final _id_getWindowToken = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getWindowToken", r"()Landroid/os/IBinder;");
+  static final _id_getWindowToken = _class.instanceMethodId(
+    r"getWindowToken",
+    r"()Landroid/os/IBinder;",
+  );
 
   /// from: public android.os.IBinder getWindowToken()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getWindowToken() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getWindowToken, jni.JniCallType.objectType, []).object);
+    return _id_getWindowToken(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getWindowId = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getWindowId", r"()Landroid/view/WindowId;");
+  static final _id_getWindowId = _class.instanceMethodId(
+    r"getWindowId",
+    r"()Landroid/view/WindowId;",
+  );
 
   /// from: public android.view.WindowId getWindowId()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getWindowId() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getWindowId, jni.JniCallType.objectType, []).object);
+    return _id_getWindowId(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getApplicationWindowToken = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getApplicationWindowToken",
-      r"()Landroid/os/IBinder;");
+  static final _id_getApplicationWindowToken = _class.instanceMethodId(
+    r"getApplicationWindowToken",
+    r"()Landroid/os/IBinder;",
+  );
 
   /// from: public android.os.IBinder getApplicationWindowToken()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getApplicationWindowToken() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getApplicationWindowToken,
-        jni.JniCallType.objectType, []).object);
+    return _id_getApplicationWindowToken(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getDisplay = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getDisplay", r"()Landroid/view/Display;");
+  static final _id_getDisplay = _class.instanceMethodId(
+    r"getDisplay",
+    r"()Landroid/view/Display;",
+  );
 
   /// from: public android.view.Display getDisplay()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getDisplay() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getDisplay, jni.JniCallType.objectType, []).object);
+    return _id_getDisplay(this, const jni.JObjectType(), []);
   }
 
-  static final _id_cancelPendingInputEvents = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"cancelPendingInputEvents", r"()V");
+  static final _id_cancelPendingInputEvents = _class.instanceMethodId(
+    r"cancelPendingInputEvents",
+    r"()V",
+  );
 
   /// from: public final void cancelPendingInputEvents()
   void cancelPendingInputEvents() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_cancelPendingInputEvents, jni.JniCallType.voidType, []).check();
+    _id_cancelPendingInputEvents(this, const jni.jvoidType(), []);
   }
 
-  static final _id_onCancelPendingInputEvents = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onCancelPendingInputEvents", r"()V");
+  static final _id_onCancelPendingInputEvents = _class.instanceMethodId(
+    r"onCancelPendingInputEvents",
+    r"()V",
+  );
 
   /// from: public void onCancelPendingInputEvents()
   void onCancelPendingInputEvents() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_onCancelPendingInputEvents, jni.JniCallType.voidType, []).check();
+    _id_onCancelPendingInputEvents(this, const jni.jvoidType(), []);
   }
 
-  static final _id_saveHierarchyState = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"saveHierarchyState",
-      r"(Landroid/util/SparseArray;)V");
+  static final _id_saveHierarchyState = _class.instanceMethodId(
+    r"saveHierarchyState",
+    r"(Landroid/util/SparseArray;)V",
+  );
 
   /// from: public void saveHierarchyState(android.util.SparseArray sparseArray)
   void saveHierarchyState(
     jni.JObject sparseArray,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_saveHierarchyState,
-        jni.JniCallType.voidType,
-        [sparseArray.reference]).check();
+    _id_saveHierarchyState(
+        this, const jni.jvoidType(), [sparseArray.reference.pointer]);
   }
 
-  static final _id_dispatchSaveInstanceState = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"dispatchSaveInstanceState",
-      r"(Landroid/util/SparseArray;)V");
+  static final _id_dispatchSaveInstanceState = _class.instanceMethodId(
+    r"dispatchSaveInstanceState",
+    r"(Landroid/util/SparseArray;)V",
+  );
 
   /// from: protected void dispatchSaveInstanceState(android.util.SparseArray sparseArray)
   void dispatchSaveInstanceState(
     jni.JObject sparseArray,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchSaveInstanceState,
-        jni.JniCallType.voidType,
-        [sparseArray.reference]).check();
+    _id_dispatchSaveInstanceState(
+        this, const jni.jvoidType(), [sparseArray.reference.pointer]);
   }
 
-  static final _id_onSaveInstanceState = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onSaveInstanceState", r"()Landroid/os/Parcelable;");
+  static final _id_onSaveInstanceState = _class.instanceMethodId(
+    r"onSaveInstanceState",
+    r"()Landroid/os/Parcelable;",
+  );
 
   /// from: protected android.os.Parcelable onSaveInstanceState()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject onSaveInstanceState() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onSaveInstanceState,
-        jni.JniCallType.objectType, []).object);
+    return _id_onSaveInstanceState(this, const jni.JObjectType(), []);
   }
 
-  static final _id_restoreHierarchyState = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"restoreHierarchyState",
-      r"(Landroid/util/SparseArray;)V");
+  static final _id_restoreHierarchyState = _class.instanceMethodId(
+    r"restoreHierarchyState",
+    r"(Landroid/util/SparseArray;)V",
+  );
 
   /// from: public void restoreHierarchyState(android.util.SparseArray sparseArray)
   void restoreHierarchyState(
     jni.JObject sparseArray,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_restoreHierarchyState,
-        jni.JniCallType.voidType,
-        [sparseArray.reference]).check();
+    _id_restoreHierarchyState(
+        this, const jni.jvoidType(), [sparseArray.reference.pointer]);
   }
 
-  static final _id_dispatchRestoreInstanceState = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchRestoreInstanceState",
-          r"(Landroid/util/SparseArray;)V");
+  static final _id_dispatchRestoreInstanceState = _class.instanceMethodId(
+    r"dispatchRestoreInstanceState",
+    r"(Landroid/util/SparseArray;)V",
+  );
 
   /// from: protected void dispatchRestoreInstanceState(android.util.SparseArray sparseArray)
   void dispatchRestoreInstanceState(
     jni.JObject sparseArray,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchRestoreInstanceState,
-        jni.JniCallType.voidType,
-        [sparseArray.reference]).check();
+    _id_dispatchRestoreInstanceState(
+        this, const jni.jvoidType(), [sparseArray.reference.pointer]);
   }
 
-  static final _id_onRestoreInstanceState = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onRestoreInstanceState",
-      r"(Landroid/os/Parcelable;)V");
+  static final _id_onRestoreInstanceState = _class.instanceMethodId(
+    r"onRestoreInstanceState",
+    r"(Landroid/os/Parcelable;)V",
+  );
 
   /// from: protected void onRestoreInstanceState(android.os.Parcelable parcelable)
   void onRestoreInstanceState(
     jni.JObject parcelable,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onRestoreInstanceState,
-        jni.JniCallType.voidType,
-        [parcelable.reference]).check();
+    _id_onRestoreInstanceState(
+        this, const jni.jvoidType(), [parcelable.reference.pointer]);
   }
 
-  static final _id_getDrawingTime = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getDrawingTime", r"()J");
+  static final _id_getDrawingTime = _class.instanceMethodId(
+    r"getDrawingTime",
+    r"()J",
+  );
 
   /// from: public long getDrawingTime()
   int getDrawingTime() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getDrawingTime, jni.JniCallType.longType, []).long;
+    return _id_getDrawingTime(this, const jni.jlongType(), []);
   }
 
-  static final _id_setDuplicateParentStateEnabled = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"setDuplicateParentStateEnabled", r"(Z)V");
+  static final _id_setDuplicateParentStateEnabled = _class.instanceMethodId(
+    r"setDuplicateParentStateEnabled",
+    r"(Z)V",
+  );
 
   /// from: public void setDuplicateParentStateEnabled(boolean z)
   void setDuplicateParentStateEnabled(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setDuplicateParentStateEnabled,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setDuplicateParentStateEnabled(
+        this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isDuplicateParentStateEnabled = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"isDuplicateParentStateEnabled", r"()Z");
+  static final _id_isDuplicateParentStateEnabled = _class.instanceMethodId(
+    r"isDuplicateParentStateEnabled",
+    r"()Z",
+  );
 
   /// from: public boolean isDuplicateParentStateEnabled()
   bool isDuplicateParentStateEnabled() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_isDuplicateParentStateEnabled,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_isDuplicateParentStateEnabled(
+        this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setLayerType = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"setLayerType", r"(ILandroid/graphics/Paint;)V");
+  static final _id_setLayerType = _class.instanceMethodId(
+    r"setLayerType",
+    r"(ILandroid/graphics/Paint;)V",
+  );
 
   /// from: public void setLayerType(int i, android.graphics.Paint paint)
   void setLayerType(
     int i,
     jni.JObject paint,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setLayerType,
-        jni.JniCallType.voidType, [jni.JValueInt(i), paint.reference]).check();
+    _id_setLayerType(this, const jni.jvoidType(),
+        [jni.JValueInt(i), paint.reference.pointer]);
   }
 
-  static final _id_setRenderEffect = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setRenderEffect",
-      r"(Landroid/graphics/RenderEffect;)V");
+  static final _id_setRenderEffect = _class.instanceMethodId(
+    r"setRenderEffect",
+    r"(Landroid/graphics/RenderEffect;)V",
+  );
 
   /// from: public void setRenderEffect(android.graphics.RenderEffect renderEffect)
   void setRenderEffect(
     jni.JObject renderEffect,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setRenderEffect,
-        jni.JniCallType.voidType, [renderEffect.reference]).check();
+    _id_setRenderEffect(
+        this, const jni.jvoidType(), [renderEffect.reference.pointer]);
   }
 
-  static final _id_setLayerPaint = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"setLayerPaint", r"(Landroid/graphics/Paint;)V");
+  static final _id_setLayerPaint = _class.instanceMethodId(
+    r"setLayerPaint",
+    r"(Landroid/graphics/Paint;)V",
+  );
 
   /// from: public void setLayerPaint(android.graphics.Paint paint)
   void setLayerPaint(
     jni.JObject paint,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setLayerPaint,
-        jni.JniCallType.voidType, [paint.reference]).check();
+    _id_setLayerPaint(this, const jni.jvoidType(), [paint.reference.pointer]);
   }
 
-  static final _id_getLayerType = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getLayerType", r"()I");
+  static final _id_getLayerType = _class.instanceMethodId(
+    r"getLayerType",
+    r"()I",
+  );
 
   /// from: public int getLayerType()
   int getLayerType() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getLayerType, jni.JniCallType.intType, []).integer;
+    return _id_getLayerType(this, const jni.jintType(), []);
   }
 
-  static final _id_buildLayer =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"buildLayer", r"()V");
+  static final _id_buildLayer = _class.instanceMethodId(
+    r"buildLayer",
+    r"()V",
+  );
 
   /// from: public void buildLayer()
   void buildLayer() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_buildLayer, jni.JniCallType.voidType, []).check();
+    _id_buildLayer(this, const jni.jvoidType(), []);
   }
 
-  static final _id_setDrawingCacheEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setDrawingCacheEnabled", r"(Z)V");
+  static final _id_setDrawingCacheEnabled = _class.instanceMethodId(
+    r"setDrawingCacheEnabled",
+    r"(Z)V",
+  );
 
   /// from: public void setDrawingCacheEnabled(boolean z)
   void setDrawingCacheEnabled(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setDrawingCacheEnabled,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setDrawingCacheEnabled(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isDrawingCacheEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isDrawingCacheEnabled", r"()Z");
+  static final _id_isDrawingCacheEnabled = _class.instanceMethodId(
+    r"isDrawingCacheEnabled",
+    r"()Z",
+  );
 
   /// from: public boolean isDrawingCacheEnabled()
   bool isDrawingCacheEnabled() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isDrawingCacheEnabled, jni.JniCallType.booleanType, []).boolean;
+    return _id_isDrawingCacheEnabled(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_getDrawingCache = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getDrawingCache", r"()Landroid/graphics/Bitmap;");
+  static final _id_getDrawingCache = _class.instanceMethodId(
+    r"getDrawingCache",
+    r"()Landroid/graphics/Bitmap;",
+  );
 
   /// from: public android.graphics.Bitmap getDrawingCache()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getDrawingCache() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getDrawingCache, jni.JniCallType.objectType, []).object);
+    return _id_getDrawingCache(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getDrawingCache1 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getDrawingCache", r"(Z)Landroid/graphics/Bitmap;");
+  static final _id_getDrawingCache1 = _class.instanceMethodId(
+    r"getDrawingCache",
+    r"(Z)Landroid/graphics/Bitmap;",
+  );
 
   /// from: public android.graphics.Bitmap getDrawingCache(boolean z)
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getDrawingCache1(
     bool z,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getDrawingCache1,
-        jni.JniCallType.objectType,
-        [z ? 1 : 0]).object);
+    return _id_getDrawingCache1(this, const jni.JObjectType(), [z ? 1 : 0]);
   }
 
-  static final _id_destroyDrawingCache = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"destroyDrawingCache", r"()V");
+  static final _id_destroyDrawingCache = _class.instanceMethodId(
+    r"destroyDrawingCache",
+    r"()V",
+  );
 
   /// from: public void destroyDrawingCache()
   void destroyDrawingCache() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_destroyDrawingCache, jni.JniCallType.voidType, []).check();
+    _id_destroyDrawingCache(this, const jni.jvoidType(), []);
   }
 
-  static final _id_setDrawingCacheBackgroundColor = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"setDrawingCacheBackgroundColor", r"(I)V");
+  static final _id_setDrawingCacheBackgroundColor = _class.instanceMethodId(
+    r"setDrawingCacheBackgroundColor",
+    r"(I)V",
+  );
 
   /// from: public void setDrawingCacheBackgroundColor(int i)
   void setDrawingCacheBackgroundColor(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setDrawingCacheBackgroundColor,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setDrawingCacheBackgroundColor(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getDrawingCacheBackgroundColor = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"getDrawingCacheBackgroundColor", r"()I");
+  static final _id_getDrawingCacheBackgroundColor = _class.instanceMethodId(
+    r"getDrawingCacheBackgroundColor",
+    r"()I",
+  );
 
   /// from: public int getDrawingCacheBackgroundColor()
   int getDrawingCacheBackgroundColor() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getDrawingCacheBackgroundColor,
-        jni.JniCallType.intType, []).integer;
+    return _id_getDrawingCacheBackgroundColor(this, const jni.jintType(), []);
   }
 
-  static final _id_buildDrawingCache = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"buildDrawingCache", r"()V");
+  static final _id_buildDrawingCache = _class.instanceMethodId(
+    r"buildDrawingCache",
+    r"()V",
+  );
 
   /// from: public void buildDrawingCache()
   void buildDrawingCache() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_buildDrawingCache, jni.JniCallType.voidType, []).check();
+    _id_buildDrawingCache(this, const jni.jvoidType(), []);
   }
 
-  static final _id_buildDrawingCache1 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"buildDrawingCache", r"(Z)V");
+  static final _id_buildDrawingCache1 = _class.instanceMethodId(
+    r"buildDrawingCache",
+    r"(Z)V",
+  );
 
   /// from: public void buildDrawingCache(boolean z)
   void buildDrawingCache1(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_buildDrawingCache1, jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_buildDrawingCache1(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isInEditMode = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isInEditMode", r"()Z");
+  static final _id_isInEditMode = _class.instanceMethodId(
+    r"isInEditMode",
+    r"()Z",
+  );
 
   /// from: public boolean isInEditMode()
   bool isInEditMode() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_isInEditMode, jni.JniCallType.booleanType, []).boolean;
+    return _id_isInEditMode(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_isPaddingOffsetRequired = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isPaddingOffsetRequired", r"()Z");
+  static final _id_isPaddingOffsetRequired = _class.instanceMethodId(
+    r"isPaddingOffsetRequired",
+    r"()Z",
+  );
 
   /// from: protected boolean isPaddingOffsetRequired()
   bool isPaddingOffsetRequired() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isPaddingOffsetRequired, jni.JniCallType.booleanType, []).boolean;
+    return _id_isPaddingOffsetRequired(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_getLeftPaddingOffset = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getLeftPaddingOffset", r"()I");
+  static final _id_getLeftPaddingOffset = _class.instanceMethodId(
+    r"getLeftPaddingOffset",
+    r"()I",
+  );
 
   /// from: protected int getLeftPaddingOffset()
   int getLeftPaddingOffset() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getLeftPaddingOffset, jni.JniCallType.intType, []).integer;
+    return _id_getLeftPaddingOffset(this, const jni.jintType(), []);
   }
 
-  static final _id_getRightPaddingOffset = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getRightPaddingOffset", r"()I");
+  static final _id_getRightPaddingOffset = _class.instanceMethodId(
+    r"getRightPaddingOffset",
+    r"()I",
+  );
 
   /// from: protected int getRightPaddingOffset()
   int getRightPaddingOffset() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getRightPaddingOffset, jni.JniCallType.intType, []).integer;
+    return _id_getRightPaddingOffset(this, const jni.jintType(), []);
   }
 
-  static final _id_getTopPaddingOffset = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getTopPaddingOffset", r"()I");
+  static final _id_getTopPaddingOffset = _class.instanceMethodId(
+    r"getTopPaddingOffset",
+    r"()I",
+  );
 
   /// from: protected int getTopPaddingOffset()
   int getTopPaddingOffset() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getTopPaddingOffset, jni.JniCallType.intType, []).integer;
+    return _id_getTopPaddingOffset(this, const jni.jintType(), []);
   }
 
-  static final _id_getBottomPaddingOffset = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getBottomPaddingOffset", r"()I");
+  static final _id_getBottomPaddingOffset = _class.instanceMethodId(
+    r"getBottomPaddingOffset",
+    r"()I",
+  );
 
   /// from: protected int getBottomPaddingOffset()
   int getBottomPaddingOffset() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getBottomPaddingOffset, jni.JniCallType.intType, []).integer;
+    return _id_getBottomPaddingOffset(this, const jni.jintType(), []);
   }
 
-  static final _id_isHardwareAccelerated = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isHardwareAccelerated", r"()Z");
+  static final _id_isHardwareAccelerated = _class.instanceMethodId(
+    r"isHardwareAccelerated",
+    r"()Z",
+  );
 
   /// from: public boolean isHardwareAccelerated()
   bool isHardwareAccelerated() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isHardwareAccelerated, jni.JniCallType.booleanType, []).boolean;
+    return _id_isHardwareAccelerated(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setClipBounds = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"setClipBounds", r"(Landroid/graphics/Rect;)V");
+  static final _id_setClipBounds = _class.instanceMethodId(
+    r"setClipBounds",
+    r"(Landroid/graphics/Rect;)V",
+  );
 
   /// from: public void setClipBounds(android.graphics.Rect rect)
   void setClipBounds(
     jni.JObject rect,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setClipBounds,
-        jni.JniCallType.voidType, [rect.reference]).check();
+    _id_setClipBounds(this, const jni.jvoidType(), [rect.reference.pointer]);
   }
 
-  static final _id_getClipBounds = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getClipBounds", r"()Landroid/graphics/Rect;");
+  static final _id_getClipBounds = _class.instanceMethodId(
+    r"getClipBounds",
+    r"()Landroid/graphics/Rect;",
+  );
 
   /// from: public android.graphics.Rect getClipBounds()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getClipBounds() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getClipBounds, jni.JniCallType.objectType, []).object);
+    return _id_getClipBounds(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getClipBounds1 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getClipBounds", r"(Landroid/graphics/Rect;)Z");
+  static final _id_getClipBounds1 = _class.instanceMethodId(
+    r"getClipBounds",
+    r"(Landroid/graphics/Rect;)Z",
+  );
 
   /// from: public boolean getClipBounds(android.graphics.Rect rect)
   bool getClipBounds1(
     jni.JObject rect,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_getClipBounds1,
-        jni.JniCallType.booleanType, [rect.reference]).boolean;
+    return _id_getClipBounds1(
+        this, const jni.jbooleanType(), [rect.reference.pointer]);
   }
 
-  static final _id_draw = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"draw", r"(Landroid/graphics/Canvas;)V");
+  static final _id_draw = _class.instanceMethodId(
+    r"draw",
+    r"(Landroid/graphics/Canvas;)V",
+  );
 
   /// from: public void draw(android.graphics.Canvas canvas)
   void draw(
     jni.JObject canvas,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_draw,
-        jni.JniCallType.voidType, [canvas.reference]).check();
+    _id_draw(this, const jni.jvoidType(), [canvas.reference.pointer]);
   }
 
-  static final _id_getOverlay = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getOverlay", r"()Landroid/view/ViewOverlay;");
+  static final _id_getOverlay = _class.instanceMethodId(
+    r"getOverlay",
+    r"()Landroid/view/ViewOverlay;",
+  );
 
   /// from: public android.view.ViewOverlay getOverlay()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getOverlay() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getOverlay, jni.JniCallType.objectType, []).object);
+    return _id_getOverlay(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getSolidColor = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getSolidColor", r"()I");
+  static final _id_getSolidColor = _class.instanceMethodId(
+    r"getSolidColor",
+    r"()I",
+  );
 
   /// from: public int getSolidColor()
   int getSolidColor() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getSolidColor, jni.JniCallType.intType, []).integer;
+    return _id_getSolidColor(this, const jni.jintType(), []);
   }
 
-  static final _id_isLayoutRequested = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isLayoutRequested", r"()Z");
+  static final _id_isLayoutRequested = _class.instanceMethodId(
+    r"isLayoutRequested",
+    r"()Z",
+  );
 
   /// from: public boolean isLayoutRequested()
   bool isLayoutRequested() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isLayoutRequested, jni.JniCallType.booleanType, []).boolean;
+    return _id_isLayoutRequested(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_layout =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"layout", r"(IIII)V");
+  static final _id_layout = _class.instanceMethodId(
+    r"layout",
+    r"(IIII)V",
+  );
 
   /// from: public void layout(int i, int i1, int i2, int i3)
   void layout(
@@ -15169,17 +14672,18 @@ class View extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_layout, jni.JniCallType.voidType, [
+    _id_layout(this, const jni.jvoidType(), [
       jni.JValueInt(i),
       jni.JValueInt(i1),
       jni.JValueInt(i2),
       jni.JValueInt(i3)
-    ]).check();
+    ]);
   }
 
-  static final _id_onLayout = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onLayout", r"(ZIIII)V");
+  static final _id_onLayout = _class.instanceMethodId(
+    r"onLayout",
+    r"(ZIIII)V",
+  );
 
   /// from: protected void onLayout(boolean z, int i, int i1, int i2, int i3)
   void onLayout(
@@ -15189,18 +14693,19 @@ class View extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return jni.Jni.accessors
-        .callMethodWithArgs(reference, _id_onLayout, jni.JniCallType.voidType, [
+    _id_onLayout(this, const jni.jvoidType(), [
       z ? 1 : 0,
       jni.JValueInt(i),
       jni.JValueInt(i1),
       jni.JValueInt(i2),
       jni.JValueInt(i3)
-    ]).check();
+    ]);
   }
 
-  static final _id_setLeftTopRightBottom = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setLeftTopRightBottom", r"(IIII)V");
+  static final _id_setLeftTopRightBottom = _class.instanceMethodId(
+    r"setLeftTopRightBottom",
+    r"(IIII)V",
+  );
 
   /// from: public final void setLeftTopRightBottom(int i, int i1, int i2, int i3)
   void setLeftTopRightBottom(
@@ -15209,54 +14714,52 @@ class View extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_setLeftTopRightBottom, jni.JniCallType.voidType, [
+    _id_setLeftTopRightBottom(this, const jni.jvoidType(), [
       jni.JValueInt(i),
       jni.JValueInt(i1),
       jni.JValueInt(i2),
       jni.JValueInt(i3)
-    ]).check();
+    ]);
   }
 
-  static final _id_onFinishInflate = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onFinishInflate", r"()V");
+  static final _id_onFinishInflate = _class.instanceMethodId(
+    r"onFinishInflate",
+    r"()V",
+  );
 
   /// from: protected void onFinishInflate()
   void onFinishInflate() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_onFinishInflate, jni.JniCallType.voidType, []).check();
+    _id_onFinishInflate(this, const jni.jvoidType(), []);
   }
 
-  static final _id_getResources = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getResources", r"()Landroid/content/res/Resources;");
+  static final _id_getResources = _class.instanceMethodId(
+    r"getResources",
+    r"()Landroid/content/res/Resources;",
+  );
 
   /// from: public android.content.res.Resources getResources()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getResources() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getResources, jni.JniCallType.objectType, []).object);
+    return _id_getResources(this, const jni.JObjectType(), []);
   }
 
-  static final _id_invalidateDrawable = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"invalidateDrawable",
-      r"(Landroid/graphics/drawable/Drawable;)V");
+  static final _id_invalidateDrawable = _class.instanceMethodId(
+    r"invalidateDrawable",
+    r"(Landroid/graphics/drawable/Drawable;)V",
+  );
 
   /// from: public void invalidateDrawable(android.graphics.drawable.Drawable drawable)
   void invalidateDrawable(
     jni.JObject drawable,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_invalidateDrawable,
-        jni.JniCallType.voidType,
-        [drawable.reference]).check();
+    _id_invalidateDrawable(
+        this, const jni.jvoidType(), [drawable.reference.pointer]);
   }
 
-  static final _id_scheduleDrawable = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"scheduleDrawable",
-      r"(Landroid/graphics/drawable/Drawable;Ljava/lang/Runnable;J)V");
+  static final _id_scheduleDrawable = _class.instanceMethodId(
+    r"scheduleDrawable",
+    r"(Landroid/graphics/drawable/Drawable;Ljava/lang/Runnable;J)V",
+  );
 
   /// from: public void scheduleDrawable(android.graphics.drawable.Drawable drawable, java.lang.Runnable runnable, long j)
   void scheduleDrawable(
@@ -15264,134 +14767,127 @@ class View extends jni.JObject {
     jni.JObject runnable,
     int j,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_scheduleDrawable,
-        jni.JniCallType.voidType,
-        [drawable.reference, runnable.reference, j]).check();
+    _id_scheduleDrawable(this, const jni.jvoidType(),
+        [drawable.reference.pointer, runnable.reference.pointer, j]);
   }
 
-  static final _id_unscheduleDrawable = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"unscheduleDrawable",
-      r"(Landroid/graphics/drawable/Drawable;Ljava/lang/Runnable;)V");
+  static final _id_unscheduleDrawable = _class.instanceMethodId(
+    r"unscheduleDrawable",
+    r"(Landroid/graphics/drawable/Drawable;Ljava/lang/Runnable;)V",
+  );
 
   /// from: public void unscheduleDrawable(android.graphics.drawable.Drawable drawable, java.lang.Runnable runnable)
   void unscheduleDrawable(
     jni.JObject drawable,
     jni.JObject runnable,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_unscheduleDrawable,
-        jni.JniCallType.voidType,
-        [drawable.reference, runnable.reference]).check();
+    _id_unscheduleDrawable(this, const jni.jvoidType(),
+        [drawable.reference.pointer, runnable.reference.pointer]);
   }
 
-  static final _id_unscheduleDrawable1 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"unscheduleDrawable",
-      r"(Landroid/graphics/drawable/Drawable;)V");
+  static final _id_unscheduleDrawable1 = _class.instanceMethodId(
+    r"unscheduleDrawable",
+    r"(Landroid/graphics/drawable/Drawable;)V",
+  );
 
   /// from: public void unscheduleDrawable(android.graphics.drawable.Drawable drawable)
   void unscheduleDrawable1(
     jni.JObject drawable,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_unscheduleDrawable1,
-        jni.JniCallType.voidType,
-        [drawable.reference]).check();
+    _id_unscheduleDrawable1(
+        this, const jni.jvoidType(), [drawable.reference.pointer]);
   }
 
-  static final _id_verifyDrawable = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"verifyDrawable",
-      r"(Landroid/graphics/drawable/Drawable;)Z");
+  static final _id_verifyDrawable = _class.instanceMethodId(
+    r"verifyDrawable",
+    r"(Landroid/graphics/drawable/Drawable;)Z",
+  );
 
   /// from: protected boolean verifyDrawable(android.graphics.drawable.Drawable drawable)
   bool verifyDrawable(
     jni.JObject drawable,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_verifyDrawable,
-        jni.JniCallType.booleanType, [drawable.reference]).boolean;
+    return _id_verifyDrawable(
+        this, const jni.jbooleanType(), [drawable.reference.pointer]);
   }
 
-  static final _id_drawableStateChanged = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"drawableStateChanged", r"()V");
+  static final _id_drawableStateChanged = _class.instanceMethodId(
+    r"drawableStateChanged",
+    r"()V",
+  );
 
   /// from: protected void drawableStateChanged()
   void drawableStateChanged() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_drawableStateChanged, jni.JniCallType.voidType, []).check();
+    _id_drawableStateChanged(this, const jni.jvoidType(), []);
   }
 
-  static final _id_drawableHotspotChanged = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"drawableHotspotChanged", r"(FF)V");
+  static final _id_drawableHotspotChanged = _class.instanceMethodId(
+    r"drawableHotspotChanged",
+    r"(FF)V",
+  );
 
   /// from: public void drawableHotspotChanged(float f, float f1)
   void drawableHotspotChanged(
     double f,
     double f1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_drawableHotspotChanged,
-        jni.JniCallType.voidType,
-        [jni.JValueFloat(f), jni.JValueFloat(f1)]).check();
+    _id_drawableHotspotChanged(
+        this, const jni.jvoidType(), [jni.JValueFloat(f), jni.JValueFloat(f1)]);
   }
 
-  static final _id_dispatchDrawableHotspotChanged = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"dispatchDrawableHotspotChanged", r"(FF)V");
+  static final _id_dispatchDrawableHotspotChanged = _class.instanceMethodId(
+    r"dispatchDrawableHotspotChanged",
+    r"(FF)V",
+  );
 
   /// from: public void dispatchDrawableHotspotChanged(float f, float f1)
   void dispatchDrawableHotspotChanged(
     double f,
     double f1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchDrawableHotspotChanged,
-        jni.JniCallType.voidType,
-        [jni.JValueFloat(f), jni.JValueFloat(f1)]).check();
+    _id_dispatchDrawableHotspotChanged(
+        this, const jni.jvoidType(), [jni.JValueFloat(f), jni.JValueFloat(f1)]);
   }
 
-  static final _id_refreshDrawableState = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"refreshDrawableState", r"()V");
+  static final _id_refreshDrawableState = _class.instanceMethodId(
+    r"refreshDrawableState",
+    r"()V",
+  );
 
   /// from: public void refreshDrawableState()
   void refreshDrawableState() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_refreshDrawableState, jni.JniCallType.voidType, []).check();
+    _id_refreshDrawableState(this, const jni.jvoidType(), []);
   }
 
-  static final _id_getDrawableState = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getDrawableState", r"()[I");
+  static final _id_getDrawableState = _class.instanceMethodId(
+    r"getDrawableState",
+    r"()[I",
+  );
 
   /// from: public final int[] getDrawableState()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JArray<jni.jint> getDrawableState() {
-    return const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-        .callMethodWithArgs(reference, _id_getDrawableState,
-            jni.JniCallType.objectType, []).object);
+    return _id_getDrawableState(this, const jni.JArrayType(jni.jintType()), []);
   }
 
-  static final _id_onCreateDrawableState = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onCreateDrawableState", r"(I)[I");
+  static final _id_onCreateDrawableState = _class.instanceMethodId(
+    r"onCreateDrawableState",
+    r"(I)[I",
+  );
 
   /// from: protected int[] onCreateDrawableState(int i)
   /// The returned object must be released after use, by calling the [release] method.
   jni.JArray<jni.jint> onCreateDrawableState(
     int i,
   ) {
-    return const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-        .callMethodWithArgs(reference, _id_onCreateDrawableState,
-            jni.JniCallType.objectType, [jni.JValueInt(i)]).object);
+    return _id_onCreateDrawableState(
+        this, const jni.JArrayType(jni.jintType()), [jni.JValueInt(i)]);
   }
 
-  static final _id_mergeDrawableStates = jni.Jni.accessors.getStaticMethodIDOf(
-      _class.reference, r"mergeDrawableStates", r"([I[I)[I");
+  static final _id_mergeDrawableStates = _class.staticMethodId(
+    r"mergeDrawableStates",
+    r"([I[I)[I",
+  );
 
   /// from: static protected int[] mergeDrawableStates(int[] is, int[] is1)
   /// The returned object must be released after use, by calling the [release] method.
@@ -15399,330 +14895,288 @@ class View extends jni.JObject {
     jni.JArray<jni.jint> is0,
     jni.JArray<jni.jint> is1,
   ) {
-    return const jni.JArrayType(jni.jintType()).fromRef(jni.Jni.accessors
-        .callStaticMethodWithArgs(_class.reference, _id_mergeDrawableStates,
-            jni.JniCallType.objectType, [is0.reference, is1.reference]).object);
+    return _id_mergeDrawableStates(_class, const jni.JArrayType(jni.jintType()),
+        [is0.reference.pointer, is1.reference.pointer]);
   }
 
-  static final _id_jumpDrawablesToCurrentState = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"jumpDrawablesToCurrentState", r"()V");
+  static final _id_jumpDrawablesToCurrentState = _class.instanceMethodId(
+    r"jumpDrawablesToCurrentState",
+    r"()V",
+  );
 
   /// from: public void jumpDrawablesToCurrentState()
   void jumpDrawablesToCurrentState() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_jumpDrawablesToCurrentState, jni.JniCallType.voidType, []).check();
+    _id_jumpDrawablesToCurrentState(this, const jni.jvoidType(), []);
   }
 
-  static final _id_setBackgroundColor = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setBackgroundColor", r"(I)V");
+  static final _id_setBackgroundColor = _class.instanceMethodId(
+    r"setBackgroundColor",
+    r"(I)V",
+  );
 
   /// from: public void setBackgroundColor(int i)
   void setBackgroundColor(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setBackgroundColor,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setBackgroundColor(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_setBackgroundResource = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setBackgroundResource", r"(I)V");
+  static final _id_setBackgroundResource = _class.instanceMethodId(
+    r"setBackgroundResource",
+    r"(I)V",
+  );
 
   /// from: public void setBackgroundResource(int i)
   void setBackgroundResource(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setBackgroundResource,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setBackgroundResource(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_setBackground = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setBackground",
-      r"(Landroid/graphics/drawable/Drawable;)V");
+  static final _id_setBackground = _class.instanceMethodId(
+    r"setBackground",
+    r"(Landroid/graphics/drawable/Drawable;)V",
+  );
 
   /// from: public void setBackground(android.graphics.drawable.Drawable drawable)
   void setBackground(
     jni.JObject drawable,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setBackground,
-        jni.JniCallType.voidType, [drawable.reference]).check();
+    _id_setBackground(
+        this, const jni.jvoidType(), [drawable.reference.pointer]);
   }
 
-  static final _id_setBackgroundDrawable = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setBackgroundDrawable",
-      r"(Landroid/graphics/drawable/Drawable;)V");
+  static final _id_setBackgroundDrawable = _class.instanceMethodId(
+    r"setBackgroundDrawable",
+    r"(Landroid/graphics/drawable/Drawable;)V",
+  );
 
   /// from: public void setBackgroundDrawable(android.graphics.drawable.Drawable drawable)
   void setBackgroundDrawable(
     jni.JObject drawable,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setBackgroundDrawable,
-        jni.JniCallType.voidType,
-        [drawable.reference]).check();
+    _id_setBackgroundDrawable(
+        this, const jni.jvoidType(), [drawable.reference.pointer]);
   }
 
-  static final _id_getBackground = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getBackground",
-      r"()Landroid/graphics/drawable/Drawable;");
+  static final _id_getBackground = _class.instanceMethodId(
+    r"getBackground",
+    r"()Landroid/graphics/drawable/Drawable;",
+  );
 
   /// from: public android.graphics.drawable.Drawable getBackground()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getBackground() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getBackground, jni.JniCallType.objectType, []).object);
+    return _id_getBackground(this, const jni.JObjectType(), []);
   }
 
-  static final _id_setBackgroundTintList = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setBackgroundTintList",
-      r"(Landroid/content/res/ColorStateList;)V");
+  static final _id_setBackgroundTintList = _class.instanceMethodId(
+    r"setBackgroundTintList",
+    r"(Landroid/content/res/ColorStateList;)V",
+  );
 
   /// from: public void setBackgroundTintList(android.content.res.ColorStateList colorStateList)
   void setBackgroundTintList(
     jni.JObject colorStateList,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setBackgroundTintList,
-        jni.JniCallType.voidType,
-        [colorStateList.reference]).check();
+    _id_setBackgroundTintList(
+        this, const jni.jvoidType(), [colorStateList.reference.pointer]);
   }
 
-  static final _id_getBackgroundTintList = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getBackgroundTintList",
-      r"()Landroid/content/res/ColorStateList;");
+  static final _id_getBackgroundTintList = _class.instanceMethodId(
+    r"getBackgroundTintList",
+    r"()Landroid/content/res/ColorStateList;",
+  );
 
   /// from: public android.content.res.ColorStateList getBackgroundTintList()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getBackgroundTintList() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getBackgroundTintList,
-        jni.JniCallType.objectType, []).object);
+    return _id_getBackgroundTintList(this, const jni.JObjectType(), []);
   }
 
-  static final _id_setBackgroundTintMode = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setBackgroundTintMode",
-      r"(Landroid/graphics/PorterDuff$Mode;)V");
+  static final _id_setBackgroundTintMode = _class.instanceMethodId(
+    r"setBackgroundTintMode",
+    r"(Landroid/graphics/PorterDuff$Mode;)V",
+  );
 
   /// from: public void setBackgroundTintMode(android.graphics.PorterDuff$Mode mode)
   void setBackgroundTintMode(
     jni.JObject mode,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setBackgroundTintMode,
-        jni.JniCallType.voidType,
-        [mode.reference]).check();
+    _id_setBackgroundTintMode(
+        this, const jni.jvoidType(), [mode.reference.pointer]);
   }
 
-  static final _id_setBackgroundTintBlendMode = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setBackgroundTintBlendMode",
-      r"(Landroid/graphics/BlendMode;)V");
+  static final _id_setBackgroundTintBlendMode = _class.instanceMethodId(
+    r"setBackgroundTintBlendMode",
+    r"(Landroid/graphics/BlendMode;)V",
+  );
 
   /// from: public void setBackgroundTintBlendMode(android.graphics.BlendMode blendMode)
   void setBackgroundTintBlendMode(
     jni.JObject blendMode,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setBackgroundTintBlendMode,
-        jni.JniCallType.voidType,
-        [blendMode.reference]).check();
+    _id_setBackgroundTintBlendMode(
+        this, const jni.jvoidType(), [blendMode.reference.pointer]);
   }
 
-  static final _id_getBackgroundTintMode = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getBackgroundTintMode",
-      r"()Landroid/graphics/PorterDuff$Mode;");
+  static final _id_getBackgroundTintMode = _class.instanceMethodId(
+    r"getBackgroundTintMode",
+    r"()Landroid/graphics/PorterDuff$Mode;",
+  );
 
   /// from: public android.graphics.PorterDuff$Mode getBackgroundTintMode()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getBackgroundTintMode() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getBackgroundTintMode,
-        jni.JniCallType.objectType, []).object);
+    return _id_getBackgroundTintMode(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getBackgroundTintBlendMode = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getBackgroundTintBlendMode",
-      r"()Landroid/graphics/BlendMode;");
+  static final _id_getBackgroundTintBlendMode = _class.instanceMethodId(
+    r"getBackgroundTintBlendMode",
+    r"()Landroid/graphics/BlendMode;",
+  );
 
   /// from: public android.graphics.BlendMode getBackgroundTintBlendMode()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getBackgroundTintBlendMode() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getBackgroundTintBlendMode,
-        jni.JniCallType.objectType, []).object);
+    return _id_getBackgroundTintBlendMode(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getForeground = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getForeground",
-      r"()Landroid/graphics/drawable/Drawable;");
+  static final _id_getForeground = _class.instanceMethodId(
+    r"getForeground",
+    r"()Landroid/graphics/drawable/Drawable;",
+  );
 
   /// from: public android.graphics.drawable.Drawable getForeground()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getForeground() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getForeground, jni.JniCallType.objectType, []).object);
+    return _id_getForeground(this, const jni.JObjectType(), []);
   }
 
-  static final _id_setForeground = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setForeground",
-      r"(Landroid/graphics/drawable/Drawable;)V");
+  static final _id_setForeground = _class.instanceMethodId(
+    r"setForeground",
+    r"(Landroid/graphics/drawable/Drawable;)V",
+  );
 
   /// from: public void setForeground(android.graphics.drawable.Drawable drawable)
   void setForeground(
     jni.JObject drawable,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setForeground,
-        jni.JniCallType.voidType, [drawable.reference]).check();
+    _id_setForeground(
+        this, const jni.jvoidType(), [drawable.reference.pointer]);
   }
 
-  static final _id_getForegroundGravity = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getForegroundGravity", r"()I");
+  static final _id_getForegroundGravity = _class.instanceMethodId(
+    r"getForegroundGravity",
+    r"()I",
+  );
 
   /// from: public int getForegroundGravity()
   int getForegroundGravity() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getForegroundGravity, jni.JniCallType.intType, []).integer;
+    return _id_getForegroundGravity(this, const jni.jintType(), []);
   }
 
-  static final _id_setForegroundGravity = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setForegroundGravity", r"(I)V");
+  static final _id_setForegroundGravity = _class.instanceMethodId(
+    r"setForegroundGravity",
+    r"(I)V",
+  );
 
   /// from: public void setForegroundGravity(int i)
   void setForegroundGravity(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setForegroundGravity,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setForegroundGravity(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_setForegroundTintList = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setForegroundTintList",
-      r"(Landroid/content/res/ColorStateList;)V");
+  static final _id_setForegroundTintList = _class.instanceMethodId(
+    r"setForegroundTintList",
+    r"(Landroid/content/res/ColorStateList;)V",
+  );
 
   /// from: public void setForegroundTintList(android.content.res.ColorStateList colorStateList)
   void setForegroundTintList(
     jni.JObject colorStateList,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setForegroundTintList,
-        jni.JniCallType.voidType,
-        [colorStateList.reference]).check();
+    _id_setForegroundTintList(
+        this, const jni.jvoidType(), [colorStateList.reference.pointer]);
   }
 
-  static final _id_getForegroundTintList = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getForegroundTintList",
-      r"()Landroid/content/res/ColorStateList;");
+  static final _id_getForegroundTintList = _class.instanceMethodId(
+    r"getForegroundTintList",
+    r"()Landroid/content/res/ColorStateList;",
+  );
 
   /// from: public android.content.res.ColorStateList getForegroundTintList()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getForegroundTintList() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getForegroundTintList,
-        jni.JniCallType.objectType, []).object);
+    return _id_getForegroundTintList(this, const jni.JObjectType(), []);
   }
 
-  static final _id_setForegroundTintMode = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setForegroundTintMode",
-      r"(Landroid/graphics/PorterDuff$Mode;)V");
+  static final _id_setForegroundTintMode = _class.instanceMethodId(
+    r"setForegroundTintMode",
+    r"(Landroid/graphics/PorterDuff$Mode;)V",
+  );
 
   /// from: public void setForegroundTintMode(android.graphics.PorterDuff$Mode mode)
   void setForegroundTintMode(
     jni.JObject mode,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setForegroundTintMode,
-        jni.JniCallType.voidType,
-        [mode.reference]).check();
+    _id_setForegroundTintMode(
+        this, const jni.jvoidType(), [mode.reference.pointer]);
   }
 
-  static final _id_setForegroundTintBlendMode = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setForegroundTintBlendMode",
-      r"(Landroid/graphics/BlendMode;)V");
+  static final _id_setForegroundTintBlendMode = _class.instanceMethodId(
+    r"setForegroundTintBlendMode",
+    r"(Landroid/graphics/BlendMode;)V",
+  );
 
   /// from: public void setForegroundTintBlendMode(android.graphics.BlendMode blendMode)
   void setForegroundTintBlendMode(
     jni.JObject blendMode,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setForegroundTintBlendMode,
-        jni.JniCallType.voidType,
-        [blendMode.reference]).check();
+    _id_setForegroundTintBlendMode(
+        this, const jni.jvoidType(), [blendMode.reference.pointer]);
   }
 
-  static final _id_getForegroundTintMode = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getForegroundTintMode",
-      r"()Landroid/graphics/PorterDuff$Mode;");
+  static final _id_getForegroundTintMode = _class.instanceMethodId(
+    r"getForegroundTintMode",
+    r"()Landroid/graphics/PorterDuff$Mode;",
+  );
 
   /// from: public android.graphics.PorterDuff$Mode getForegroundTintMode()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getForegroundTintMode() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getForegroundTintMode,
-        jni.JniCallType.objectType, []).object);
+    return _id_getForegroundTintMode(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getForegroundTintBlendMode = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getForegroundTintBlendMode",
-      r"()Landroid/graphics/BlendMode;");
+  static final _id_getForegroundTintBlendMode = _class.instanceMethodId(
+    r"getForegroundTintBlendMode",
+    r"()Landroid/graphics/BlendMode;",
+  );
 
   /// from: public android.graphics.BlendMode getForegroundTintBlendMode()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getForegroundTintBlendMode() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getForegroundTintBlendMode,
-        jni.JniCallType.objectType, []).object);
+    return _id_getForegroundTintBlendMode(this, const jni.JObjectType(), []);
   }
 
-  static final _id_onDrawForeground = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onDrawForeground", r"(Landroid/graphics/Canvas;)V");
+  static final _id_onDrawForeground = _class.instanceMethodId(
+    r"onDrawForeground",
+    r"(Landroid/graphics/Canvas;)V",
+  );
 
   /// from: public void onDrawForeground(android.graphics.Canvas canvas)
   void onDrawForeground(
     jni.JObject canvas,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onDrawForeground,
-        jni.JniCallType.voidType, [canvas.reference]).check();
+    _id_onDrawForeground(
+        this, const jni.jvoidType(), [canvas.reference.pointer]);
   }
 
-  static final _id_setPadding = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setPadding", r"(IIII)V");
+  static final _id_setPadding = _class.instanceMethodId(
+    r"setPadding",
+    r"(IIII)V",
+  );
 
   /// from: public void setPadding(int i, int i1, int i2, int i3)
   void setPadding(
@@ -15731,17 +15185,18 @@ class View extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_setPadding, jni.JniCallType.voidType, [
+    _id_setPadding(this, const jni.jvoidType(), [
       jni.JValueInt(i),
       jni.JValueInt(i1),
       jni.JValueInt(i2),
       jni.JValueInt(i3)
-    ]).check();
+    ]);
   }
 
-  static final _id_setPaddingRelative = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setPaddingRelative", r"(IIII)V");
+  static final _id_setPaddingRelative = _class.instanceMethodId(
+    r"setPaddingRelative",
+    r"(IIII)V",
+  );
 
   /// from: public void setPaddingRelative(int i, int i1, int i2, int i3)
   void setPaddingRelative(
@@ -15750,238 +15205,240 @@ class View extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_setPaddingRelative, jni.JniCallType.voidType, [
+    _id_setPaddingRelative(this, const jni.jvoidType(), [
       jni.JValueInt(i),
       jni.JValueInt(i1),
       jni.JValueInt(i2),
       jni.JValueInt(i3)
-    ]).check();
+    ]);
   }
 
-  static final _id_getSourceLayoutResId = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getSourceLayoutResId", r"()I");
+  static final _id_getSourceLayoutResId = _class.instanceMethodId(
+    r"getSourceLayoutResId",
+    r"()I",
+  );
 
   /// from: public int getSourceLayoutResId()
   int getSourceLayoutResId() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getSourceLayoutResId, jni.JniCallType.intType, []).integer;
+    return _id_getSourceLayoutResId(this, const jni.jintType(), []);
   }
 
-  static final _id_getPaddingTop = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getPaddingTop", r"()I");
+  static final _id_getPaddingTop = _class.instanceMethodId(
+    r"getPaddingTop",
+    r"()I",
+  );
 
   /// from: public int getPaddingTop()
   int getPaddingTop() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getPaddingTop, jni.JniCallType.intType, []).integer;
+    return _id_getPaddingTop(this, const jni.jintType(), []);
   }
 
-  static final _id_getPaddingBottom = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getPaddingBottom", r"()I");
+  static final _id_getPaddingBottom = _class.instanceMethodId(
+    r"getPaddingBottom",
+    r"()I",
+  );
 
   /// from: public int getPaddingBottom()
   int getPaddingBottom() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getPaddingBottom, jni.JniCallType.intType, []).integer;
+    return _id_getPaddingBottom(this, const jni.jintType(), []);
   }
 
-  static final _id_getPaddingLeft = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getPaddingLeft", r"()I");
+  static final _id_getPaddingLeft = _class.instanceMethodId(
+    r"getPaddingLeft",
+    r"()I",
+  );
 
   /// from: public int getPaddingLeft()
   int getPaddingLeft() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getPaddingLeft, jni.JniCallType.intType, []).integer;
+    return _id_getPaddingLeft(this, const jni.jintType(), []);
   }
 
-  static final _id_getPaddingStart = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getPaddingStart", r"()I");
+  static final _id_getPaddingStart = _class.instanceMethodId(
+    r"getPaddingStart",
+    r"()I",
+  );
 
   /// from: public int getPaddingStart()
   int getPaddingStart() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getPaddingStart, jni.JniCallType.intType, []).integer;
+    return _id_getPaddingStart(this, const jni.jintType(), []);
   }
 
-  static final _id_getPaddingRight = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getPaddingRight", r"()I");
+  static final _id_getPaddingRight = _class.instanceMethodId(
+    r"getPaddingRight",
+    r"()I",
+  );
 
   /// from: public int getPaddingRight()
   int getPaddingRight() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getPaddingRight, jni.JniCallType.intType, []).integer;
+    return _id_getPaddingRight(this, const jni.jintType(), []);
   }
 
-  static final _id_getPaddingEnd = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getPaddingEnd", r"()I");
+  static final _id_getPaddingEnd = _class.instanceMethodId(
+    r"getPaddingEnd",
+    r"()I",
+  );
 
   /// from: public int getPaddingEnd()
   int getPaddingEnd() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getPaddingEnd, jni.JniCallType.intType, []).integer;
+    return _id_getPaddingEnd(this, const jni.jintType(), []);
   }
 
-  static final _id_isPaddingRelative = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isPaddingRelative", r"()Z");
+  static final _id_isPaddingRelative = _class.instanceMethodId(
+    r"isPaddingRelative",
+    r"()Z",
+  );
 
   /// from: public boolean isPaddingRelative()
   bool isPaddingRelative() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isPaddingRelative, jni.JniCallType.booleanType, []).boolean;
+    return _id_isPaddingRelative(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setSelected = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setSelected", r"(Z)V");
+  static final _id_setSelected = _class.instanceMethodId(
+    r"setSelected",
+    r"(Z)V",
+  );
 
   /// from: public void setSelected(boolean z)
   void setSelected(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setSelected,
-        jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_setSelected(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_dispatchSetSelected = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchSetSelected", r"(Z)V");
+  static final _id_dispatchSetSelected = _class.instanceMethodId(
+    r"dispatchSetSelected",
+    r"(Z)V",
+  );
 
   /// from: protected void dispatchSetSelected(boolean z)
   void dispatchSetSelected(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_dispatchSetSelected, jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_dispatchSetSelected(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isSelected =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"isSelected", r"()Z");
+  static final _id_isSelected = _class.instanceMethodId(
+    r"isSelected",
+    r"()Z",
+  );
 
   /// from: public boolean isSelected()
   bool isSelected() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_isSelected, jni.JniCallType.booleanType, []).boolean;
+    return _id_isSelected(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setActivated = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setActivated", r"(Z)V");
+  static final _id_setActivated = _class.instanceMethodId(
+    r"setActivated",
+    r"(Z)V",
+  );
 
   /// from: public void setActivated(boolean z)
   void setActivated(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setActivated,
-        jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_setActivated(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_dispatchSetActivated = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchSetActivated", r"(Z)V");
+  static final _id_dispatchSetActivated = _class.instanceMethodId(
+    r"dispatchSetActivated",
+    r"(Z)V",
+  );
 
   /// from: protected void dispatchSetActivated(boolean z)
   void dispatchSetActivated(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchSetActivated,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_dispatchSetActivated(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isActivated =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"isActivated", r"()Z");
+  static final _id_isActivated = _class.instanceMethodId(
+    r"isActivated",
+    r"()Z",
+  );
 
   /// from: public boolean isActivated()
   bool isActivated() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_isActivated, jni.JniCallType.booleanType, []).boolean;
+    return _id_isActivated(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_getViewTreeObserver = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getViewTreeObserver",
-      r"()Landroid/view/ViewTreeObserver;");
+  static final _id_getViewTreeObserver = _class.instanceMethodId(
+    r"getViewTreeObserver",
+    r"()Landroid/view/ViewTreeObserver;",
+  );
 
   /// from: public android.view.ViewTreeObserver getViewTreeObserver()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getViewTreeObserver() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getViewTreeObserver,
-        jni.JniCallType.objectType, []).object);
+    return _id_getViewTreeObserver(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getRootView = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getRootView", r"()Landroid/view/View;");
+  static final _id_getRootView = _class.instanceMethodId(
+    r"getRootView",
+    r"()Landroid/view/View;",
+  );
 
   /// from: public android.view.View getRootView()
   /// The returned object must be released after use, by calling the [release] method.
   View getRootView() {
-    return const $ViewType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getRootView, jni.JniCallType.objectType, []).object);
+    return _id_getRootView(this, const $ViewType(), []);
   }
 
-  static final _id_transformMatrixToGlobal = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"transformMatrixToGlobal",
-      r"(Landroid/graphics/Matrix;)V");
+  static final _id_transformMatrixToGlobal = _class.instanceMethodId(
+    r"transformMatrixToGlobal",
+    r"(Landroid/graphics/Matrix;)V",
+  );
 
   /// from: public void transformMatrixToGlobal(android.graphics.Matrix matrix)
   void transformMatrixToGlobal(
     jni.JObject matrix,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_transformMatrixToGlobal,
-        jni.JniCallType.voidType,
-        [matrix.reference]).check();
+    _id_transformMatrixToGlobal(
+        this, const jni.jvoidType(), [matrix.reference.pointer]);
   }
 
-  static final _id_transformMatrixToLocal = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"transformMatrixToLocal",
-      r"(Landroid/graphics/Matrix;)V");
+  static final _id_transformMatrixToLocal = _class.instanceMethodId(
+    r"transformMatrixToLocal",
+    r"(Landroid/graphics/Matrix;)V",
+  );
 
   /// from: public void transformMatrixToLocal(android.graphics.Matrix matrix)
   void transformMatrixToLocal(
     jni.JObject matrix,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_transformMatrixToLocal,
-        jni.JniCallType.voidType,
-        [matrix.reference]).check();
+    _id_transformMatrixToLocal(
+        this, const jni.jvoidType(), [matrix.reference.pointer]);
   }
 
-  static final _id_getLocationOnScreen = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getLocationOnScreen", r"([I)V");
+  static final _id_getLocationOnScreen = _class.instanceMethodId(
+    r"getLocationOnScreen",
+    r"([I)V",
+  );
 
   /// from: public void getLocationOnScreen(int[] is)
   void getLocationOnScreen(
     jni.JArray<jni.jint> is0,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getLocationOnScreen,
-        jni.JniCallType.voidType,
-        [is0.reference]).check();
+    _id_getLocationOnScreen(
+        this, const jni.jvoidType(), [is0.reference.pointer]);
   }
 
-  static final _id_getLocationInWindow = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getLocationInWindow", r"([I)V");
+  static final _id_getLocationInWindow = _class.instanceMethodId(
+    r"getLocationInWindow",
+    r"([I)V",
+  );
 
   /// from: public void getLocationInWindow(int[] is)
   void getLocationInWindow(
     jni.JArray<jni.jint> is0,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getLocationInWindow,
-        jni.JniCallType.voidType,
-        [is0.reference]).check();
+    _id_getLocationInWindow(
+        this, const jni.jvoidType(), [is0.reference.pointer]);
   }
 
-  static final _id_findViewById = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"findViewById", r"(I)Landroid/view/View;");
+  static final _id_findViewById = _class.instanceMethodId(
+    r"findViewById",
+    r"(I)Landroid/view/View;",
+  );
 
   /// from: public final T findViewById(int i)
   /// The returned object must be released after use, by calling the [release] method.
@@ -15989,15 +15446,13 @@ class View extends jni.JObject {
     int i, {
     required jni.JObjType<$T> T,
   }) {
-    return T.fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_findViewById,
-        jni.JniCallType.objectType,
-        [jni.JValueInt(i)]).object);
+    return _id_findViewById(this, T, [jni.JValueInt(i)]);
   }
 
-  static final _id_requireViewById = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"requireViewById", r"(I)Landroid/view/View;");
+  static final _id_requireViewById = _class.instanceMethodId(
+    r"requireViewById",
+    r"(I)Landroid/view/View;",
+  );
 
   /// from: public final T requireViewById(int i)
   /// The returned object must be released after use, by calling the [release] method.
@@ -16005,17 +15460,13 @@ class View extends jni.JObject {
     int i, {
     required jni.JObjType<$T> T,
   }) {
-    return T.fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_requireViewById,
-        jni.JniCallType.objectType,
-        [jni.JValueInt(i)]).object);
+    return _id_requireViewById(this, T, [jni.JValueInt(i)]);
   }
 
-  static final _id_findViewWithTag = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"findViewWithTag",
-      r"(Ljava/lang/Object;)Landroid/view/View;");
+  static final _id_findViewWithTag = _class.instanceMethodId(
+    r"findViewWithTag",
+    r"(Ljava/lang/Object;)Landroid/view/View;",
+  );
 
   /// from: public final T findViewWithTag(java.lang.Object object)
   /// The returned object must be released after use, by calling the [release] method.
@@ -16023,204 +15474,205 @@ class View extends jni.JObject {
     jni.JObject object, {
     required jni.JObjType<$T> T,
   }) {
-    return T.fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_findViewWithTag,
-        jni.JniCallType.objectType,
-        [object.reference]).object);
+    return _id_findViewWithTag(this, T, [object.reference.pointer]);
   }
 
-  static final _id_setId =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"setId", r"(I)V");
+  static final _id_setId = _class.instanceMethodId(
+    r"setId",
+    r"(I)V",
+  );
 
   /// from: public void setId(int i)
   void setId(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setId,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_setId(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getId =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getId", r"()I");
+  static final _id_getId = _class.instanceMethodId(
+    r"getId",
+    r"()I",
+  );
 
   /// from: public int getId()
   int getId() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getId, jni.JniCallType.intType, []).integer;
+    return _id_getId(this, const jni.jintType(), []);
   }
 
-  static final _id_getUniqueDrawingId = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getUniqueDrawingId", r"()J");
+  static final _id_getUniqueDrawingId = _class.instanceMethodId(
+    r"getUniqueDrawingId",
+    r"()J",
+  );
 
   /// from: public long getUniqueDrawingId()
   int getUniqueDrawingId() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getUniqueDrawingId, jni.JniCallType.longType, []).long;
+    return _id_getUniqueDrawingId(this, const jni.jlongType(), []);
   }
 
-  static final _id_getTag = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getTag", r"()Ljava/lang/Object;");
+  static final _id_getTag = _class.instanceMethodId(
+    r"getTag",
+    r"()Ljava/lang/Object;",
+  );
 
   /// from: public java.lang.Object getTag()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getTag() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getTag, jni.JniCallType.objectType, []).object);
+    return _id_getTag(this, const jni.JObjectType(), []);
   }
 
-  static final _id_setTag = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setTag", r"(Ljava/lang/Object;)V");
+  static final _id_setTag = _class.instanceMethodId(
+    r"setTag",
+    r"(Ljava/lang/Object;)V",
+  );
 
   /// from: public void setTag(java.lang.Object object)
   void setTag(
     jni.JObject object,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setTag,
-        jni.JniCallType.voidType, [object.reference]).check();
+    _id_setTag(this, const jni.jvoidType(), [object.reference.pointer]);
   }
 
-  static final _id_getTag1 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getTag", r"(I)Ljava/lang/Object;");
+  static final _id_getTag1 = _class.instanceMethodId(
+    r"getTag",
+    r"(I)Ljava/lang/Object;",
+  );
 
   /// from: public java.lang.Object getTag(int i)
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getTag1(
     int i,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getTag1,
-        jni.JniCallType.objectType,
-        [jni.JValueInt(i)]).object);
+    return _id_getTag1(this, const jni.JObjectType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_setTag1 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setTag", r"(ILjava/lang/Object;)V");
+  static final _id_setTag1 = _class.instanceMethodId(
+    r"setTag",
+    r"(ILjava/lang/Object;)V",
+  );
 
   /// from: public void setTag(int i, java.lang.Object object)
   void setTag1(
     int i,
     jni.JObject object,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setTag1,
-        jni.JniCallType.voidType, [jni.JValueInt(i), object.reference]).check();
+    _id_setTag1(this, const jni.jvoidType(),
+        [jni.JValueInt(i), object.reference.pointer]);
   }
 
-  static final _id_getBaseline =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getBaseline", r"()I");
+  static final _id_getBaseline = _class.instanceMethodId(
+    r"getBaseline",
+    r"()I",
+  );
 
   /// from: public int getBaseline()
   int getBaseline() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getBaseline, jni.JniCallType.intType, []).integer;
+    return _id_getBaseline(this, const jni.jintType(), []);
   }
 
-  static final _id_isInLayout =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"isInLayout", r"()Z");
+  static final _id_isInLayout = _class.instanceMethodId(
+    r"isInLayout",
+    r"()Z",
+  );
 
   /// from: public boolean isInLayout()
   bool isInLayout() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_isInLayout, jni.JniCallType.booleanType, []).boolean;
+    return _id_isInLayout(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_requestLayout = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"requestLayout", r"()V");
+  static final _id_requestLayout = _class.instanceMethodId(
+    r"requestLayout",
+    r"()V",
+  );
 
   /// from: public void requestLayout()
   void requestLayout() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_requestLayout, jni.JniCallType.voidType, []).check();
+    _id_requestLayout(this, const jni.jvoidType(), []);
   }
 
-  static final _id_forceLayout =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"forceLayout", r"()V");
+  static final _id_forceLayout = _class.instanceMethodId(
+    r"forceLayout",
+    r"()V",
+  );
 
   /// from: public void forceLayout()
   void forceLayout() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_forceLayout, jni.JniCallType.voidType, []).check();
+    _id_forceLayout(this, const jni.jvoidType(), []);
   }
 
-  static final _id_measure =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"measure", r"(II)V");
+  static final _id_measure = _class.instanceMethodId(
+    r"measure",
+    r"(II)V",
+  );
 
   /// from: public final void measure(int i, int i1)
   void measure(
     int i,
     int i1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_measure,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i), jni.JValueInt(i1)]).check();
+    _id_measure(
+        this, const jni.jvoidType(), [jni.JValueInt(i), jni.JValueInt(i1)]);
   }
 
-  static final _id_onMeasure =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"onMeasure", r"(II)V");
+  static final _id_onMeasure = _class.instanceMethodId(
+    r"onMeasure",
+    r"(II)V",
+  );
 
   /// from: protected void onMeasure(int i, int i1)
   void onMeasure(
     int i,
     int i1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onMeasure,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i), jni.JValueInt(i1)]).check();
+    _id_onMeasure(
+        this, const jni.jvoidType(), [jni.JValueInt(i), jni.JValueInt(i1)]);
   }
 
-  static final _id_setMeasuredDimension = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setMeasuredDimension", r"(II)V");
+  static final _id_setMeasuredDimension = _class.instanceMethodId(
+    r"setMeasuredDimension",
+    r"(II)V",
+  );
 
   /// from: protected final void setMeasuredDimension(int i, int i1)
   void setMeasuredDimension(
     int i,
     int i1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setMeasuredDimension,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i), jni.JValueInt(i1)]).check();
+    _id_setMeasuredDimension(
+        this, const jni.jvoidType(), [jni.JValueInt(i), jni.JValueInt(i1)]);
   }
 
-  static final _id_combineMeasuredStates = jni.Jni.accessors
-      .getStaticMethodIDOf(
-          _class.reference, r"combineMeasuredStates", r"(II)I");
+  static final _id_combineMeasuredStates = _class.staticMethodId(
+    r"combineMeasuredStates",
+    r"(II)I",
+  );
 
   /// from: static public int combineMeasuredStates(int i, int i1)
   static int combineMeasuredStates(
     int i,
     int i1,
   ) {
-    return jni.Jni.accessors.callStaticMethodWithArgs(
-        _class.reference,
-        _id_combineMeasuredStates,
-        jni.JniCallType.intType,
-        [jni.JValueInt(i), jni.JValueInt(i1)]).integer;
+    return _id_combineMeasuredStates(
+        _class, const jni.jintType(), [jni.JValueInt(i), jni.JValueInt(i1)]);
   }
 
-  static final _id_resolveSize = jni.Jni.accessors
-      .getStaticMethodIDOf(_class.reference, r"resolveSize", r"(II)I");
+  static final _id_resolveSize = _class.staticMethodId(
+    r"resolveSize",
+    r"(II)I",
+  );
 
   /// from: static public int resolveSize(int i, int i1)
   static int resolveSize(
     int i,
     int i1,
   ) {
-    return jni.Jni.accessors.callStaticMethodWithArgs(
-        _class.reference,
-        _id_resolveSize,
-        jni.JniCallType.intType,
-        [jni.JValueInt(i), jni.JValueInt(i1)]).integer;
+    return _id_resolveSize(
+        _class, const jni.jintType(), [jni.JValueInt(i), jni.JValueInt(i1)]);
   }
 
-  static final _id_resolveSizeAndState = jni.Jni.accessors
-      .getStaticMethodIDOf(_class.reference, r"resolveSizeAndState", r"(III)I");
+  static final _id_resolveSizeAndState = _class.staticMethodId(
+    r"resolveSizeAndState",
+    r"(III)I",
+  );
 
   /// from: static public int resolveSizeAndState(int i, int i1, int i2)
   static int resolveSizeAndState(
@@ -16228,314 +15680,309 @@ class View extends jni.JObject {
     int i1,
     int i2,
   ) {
-    return jni.Jni.accessors.callStaticMethodWithArgs(
-        _class.reference,
-        _id_resolveSizeAndState,
-        jni.JniCallType.intType,
-        [jni.JValueInt(i), jni.JValueInt(i1), jni.JValueInt(i2)]).integer;
+    return _id_resolveSizeAndState(_class, const jni.jintType(),
+        [jni.JValueInt(i), jni.JValueInt(i1), jni.JValueInt(i2)]);
   }
 
-  static final _id_getDefaultSize = jni.Jni.accessors
-      .getStaticMethodIDOf(_class.reference, r"getDefaultSize", r"(II)I");
+  static final _id_getDefaultSize = _class.staticMethodId(
+    r"getDefaultSize",
+    r"(II)I",
+  );
 
   /// from: static public int getDefaultSize(int i, int i1)
   static int getDefaultSize(
     int i,
     int i1,
   ) {
-    return jni.Jni.accessors.callStaticMethodWithArgs(
-        _class.reference,
-        _id_getDefaultSize,
-        jni.JniCallType.intType,
-        [jni.JValueInt(i), jni.JValueInt(i1)]).integer;
+    return _id_getDefaultSize(
+        _class, const jni.jintType(), [jni.JValueInt(i), jni.JValueInt(i1)]);
   }
 
-  static final _id_getSuggestedMinimumHeight = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getSuggestedMinimumHeight", r"()I");
+  static final _id_getSuggestedMinimumHeight = _class.instanceMethodId(
+    r"getSuggestedMinimumHeight",
+    r"()I",
+  );
 
   /// from: protected int getSuggestedMinimumHeight()
   int getSuggestedMinimumHeight() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getSuggestedMinimumHeight, jni.JniCallType.intType, []).integer;
+    return _id_getSuggestedMinimumHeight(this, const jni.jintType(), []);
   }
 
-  static final _id_getSuggestedMinimumWidth = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getSuggestedMinimumWidth", r"()I");
+  static final _id_getSuggestedMinimumWidth = _class.instanceMethodId(
+    r"getSuggestedMinimumWidth",
+    r"()I",
+  );
 
   /// from: protected int getSuggestedMinimumWidth()
   int getSuggestedMinimumWidth() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getSuggestedMinimumWidth, jni.JniCallType.intType, []).integer;
+    return _id_getSuggestedMinimumWidth(this, const jni.jintType(), []);
   }
 
-  static final _id_getMinimumHeight = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getMinimumHeight", r"()I");
+  static final _id_getMinimumHeight = _class.instanceMethodId(
+    r"getMinimumHeight",
+    r"()I",
+  );
 
   /// from: public int getMinimumHeight()
   int getMinimumHeight() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getMinimumHeight, jni.JniCallType.intType, []).integer;
+    return _id_getMinimumHeight(this, const jni.jintType(), []);
   }
 
-  static final _id_setMinimumHeight = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setMinimumHeight", r"(I)V");
+  static final _id_setMinimumHeight = _class.instanceMethodId(
+    r"setMinimumHeight",
+    r"(I)V",
+  );
 
   /// from: public void setMinimumHeight(int i)
   void setMinimumHeight(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setMinimumHeight,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_setMinimumHeight(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getMinimumWidth = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getMinimumWidth", r"()I");
+  static final _id_getMinimumWidth = _class.instanceMethodId(
+    r"getMinimumWidth",
+    r"()I",
+  );
 
   /// from: public int getMinimumWidth()
   int getMinimumWidth() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getMinimumWidth, jni.JniCallType.intType, []).integer;
+    return _id_getMinimumWidth(this, const jni.jintType(), []);
   }
 
-  static final _id_setMinimumWidth = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setMinimumWidth", r"(I)V");
+  static final _id_setMinimumWidth = _class.instanceMethodId(
+    r"setMinimumWidth",
+    r"(I)V",
+  );
 
   /// from: public void setMinimumWidth(int i)
   void setMinimumWidth(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setMinimumWidth,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_setMinimumWidth(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getAnimation = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getAnimation",
-      r"()Landroid/view/animation/Animation;");
+  static final _id_getAnimation = _class.instanceMethodId(
+    r"getAnimation",
+    r"()Landroid/view/animation/Animation;",
+  );
 
   /// from: public android.view.animation.Animation getAnimation()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getAnimation() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getAnimation, jni.JniCallType.objectType, []).object);
+    return _id_getAnimation(this, const jni.JObjectType(), []);
   }
 
-  static final _id_startAnimation = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"startAnimation",
-      r"(Landroid/view/animation/Animation;)V");
+  static final _id_startAnimation = _class.instanceMethodId(
+    r"startAnimation",
+    r"(Landroid/view/animation/Animation;)V",
+  );
 
   /// from: public void startAnimation(android.view.animation.Animation animation)
   void startAnimation(
     jni.JObject animation,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_startAnimation,
-        jni.JniCallType.voidType, [animation.reference]).check();
+    _id_startAnimation(
+        this, const jni.jvoidType(), [animation.reference.pointer]);
   }
 
-  static final _id_clearAnimation = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"clearAnimation", r"()V");
+  static final _id_clearAnimation = _class.instanceMethodId(
+    r"clearAnimation",
+    r"()V",
+  );
 
   /// from: public void clearAnimation()
   void clearAnimation() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_clearAnimation, jni.JniCallType.voidType, []).check();
+    _id_clearAnimation(this, const jni.jvoidType(), []);
   }
 
-  static final _id_setAnimation = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setAnimation",
-      r"(Landroid/view/animation/Animation;)V");
+  static final _id_setAnimation = _class.instanceMethodId(
+    r"setAnimation",
+    r"(Landroid/view/animation/Animation;)V",
+  );
 
   /// from: public void setAnimation(android.view.animation.Animation animation)
   void setAnimation(
     jni.JObject animation,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setAnimation,
-        jni.JniCallType.voidType, [animation.reference]).check();
+    _id_setAnimation(
+        this, const jni.jvoidType(), [animation.reference.pointer]);
   }
 
-  static final _id_onAnimationStart = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onAnimationStart", r"()V");
+  static final _id_onAnimationStart = _class.instanceMethodId(
+    r"onAnimationStart",
+    r"()V",
+  );
 
   /// from: protected void onAnimationStart()
   void onAnimationStart() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_onAnimationStart, jni.JniCallType.voidType, []).check();
+    _id_onAnimationStart(this, const jni.jvoidType(), []);
   }
 
-  static final _id_onAnimationEnd = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onAnimationEnd", r"()V");
+  static final _id_onAnimationEnd = _class.instanceMethodId(
+    r"onAnimationEnd",
+    r"()V",
+  );
 
   /// from: protected void onAnimationEnd()
   void onAnimationEnd() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_onAnimationEnd, jni.JniCallType.voidType, []).check();
+    _id_onAnimationEnd(this, const jni.jvoidType(), []);
   }
 
-  static final _id_onSetAlpha =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"onSetAlpha", r"(I)Z");
+  static final _id_onSetAlpha = _class.instanceMethodId(
+    r"onSetAlpha",
+    r"(I)Z",
+  );
 
   /// from: protected boolean onSetAlpha(int i)
   bool onSetAlpha(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onSetAlpha,
-        jni.JniCallType.booleanType, [jni.JValueInt(i)]).boolean;
+    return _id_onSetAlpha(this, const jni.jbooleanType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_gatherTransparentRegion = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"gatherTransparentRegion",
-      r"(Landroid/graphics/Region;)Z");
+  static final _id_gatherTransparentRegion = _class.instanceMethodId(
+    r"gatherTransparentRegion",
+    r"(Landroid/graphics/Region;)Z",
+  );
 
   /// from: public boolean gatherTransparentRegion(android.graphics.Region region)
   bool gatherTransparentRegion(
     jni.JObject region,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_gatherTransparentRegion,
-        jni.JniCallType.booleanType,
-        [region.reference]).boolean;
+    return _id_gatherTransparentRegion(
+        this, const jni.jbooleanType(), [region.reference.pointer]);
   }
 
-  static final _id_playSoundEffect = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"playSoundEffect", r"(I)V");
+  static final _id_playSoundEffect = _class.instanceMethodId(
+    r"playSoundEffect",
+    r"(I)V",
+  );
 
   /// from: public void playSoundEffect(int i)
   void playSoundEffect(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_playSoundEffect,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_playSoundEffect(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_performHapticFeedback = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"performHapticFeedback", r"(I)Z");
+  static final _id_performHapticFeedback = _class.instanceMethodId(
+    r"performHapticFeedback",
+    r"(I)Z",
+  );
 
   /// from: public boolean performHapticFeedback(int i)
   bool performHapticFeedback(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_performHapticFeedback,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i)]).boolean;
+    return _id_performHapticFeedback(
+        this, const jni.jbooleanType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_performHapticFeedback1 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"performHapticFeedback", r"(II)Z");
+  static final _id_performHapticFeedback1 = _class.instanceMethodId(
+    r"performHapticFeedback",
+    r"(II)Z",
+  );
 
   /// from: public boolean performHapticFeedback(int i, int i1)
   bool performHapticFeedback1(
     int i,
     int i1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_performHapticFeedback1,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i), jni.JValueInt(i1)]).boolean;
+    return _id_performHapticFeedback1(
+        this, const jni.jbooleanType(), [jni.JValueInt(i), jni.JValueInt(i1)]);
   }
 
-  static final _id_setSystemUiVisibility = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setSystemUiVisibility", r"(I)V");
+  static final _id_setSystemUiVisibility = _class.instanceMethodId(
+    r"setSystemUiVisibility",
+    r"(I)V",
+  );
 
   /// from: public void setSystemUiVisibility(int i)
   void setSystemUiVisibility(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setSystemUiVisibility,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setSystemUiVisibility(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getSystemUiVisibility = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getSystemUiVisibility", r"()I");
+  static final _id_getSystemUiVisibility = _class.instanceMethodId(
+    r"getSystemUiVisibility",
+    r"()I",
+  );
 
   /// from: public int getSystemUiVisibility()
   int getSystemUiVisibility() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getSystemUiVisibility, jni.JniCallType.intType, []).integer;
+    return _id_getSystemUiVisibility(this, const jni.jintType(), []);
   }
 
-  static final _id_getWindowSystemUiVisibility = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getWindowSystemUiVisibility", r"()I");
+  static final _id_getWindowSystemUiVisibility = _class.instanceMethodId(
+    r"getWindowSystemUiVisibility",
+    r"()I",
+  );
 
   /// from: public int getWindowSystemUiVisibility()
   int getWindowSystemUiVisibility() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getWindowSystemUiVisibility, jni.JniCallType.intType, []).integer;
+    return _id_getWindowSystemUiVisibility(this, const jni.jintType(), []);
   }
 
-  static final _id_onWindowSystemUiVisibilityChanged = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"onWindowSystemUiVisibilityChanged", r"(I)V");
+  static final _id_onWindowSystemUiVisibilityChanged = _class.instanceMethodId(
+    r"onWindowSystemUiVisibilityChanged",
+    r"(I)V",
+  );
 
   /// from: public void onWindowSystemUiVisibilityChanged(int i)
   void onWindowSystemUiVisibilityChanged(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onWindowSystemUiVisibilityChanged,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_onWindowSystemUiVisibilityChanged(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_dispatchWindowSystemUiVisiblityChanged = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"dispatchWindowSystemUiVisiblityChanged", r"(I)V");
+  static final _id_dispatchWindowSystemUiVisiblityChanged =
+      _class.instanceMethodId(
+    r"dispatchWindowSystemUiVisiblityChanged",
+    r"(I)V",
+  );
 
   /// from: public void dispatchWindowSystemUiVisiblityChanged(int i)
   void dispatchWindowSystemUiVisiblityChanged(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchWindowSystemUiVisiblityChanged,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_dispatchWindowSystemUiVisiblityChanged(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_setOnSystemUiVisibilityChangeListener = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setOnSystemUiVisibilityChangeListener",
-          r"(Landroid/view/View$OnSystemUiVisibilityChangeListener;)V");
+  static final _id_setOnSystemUiVisibilityChangeListener =
+      _class.instanceMethodId(
+    r"setOnSystemUiVisibilityChangeListener",
+    r"(Landroid/view/View$OnSystemUiVisibilityChangeListener;)V",
+  );
 
   /// from: public void setOnSystemUiVisibilityChangeListener(android.view.View$OnSystemUiVisibilityChangeListener onSystemUiVisibilityChangeListener)
   void setOnSystemUiVisibilityChangeListener(
     View_OnSystemUiVisibilityChangeListener onSystemUiVisibilityChangeListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setOnSystemUiVisibilityChangeListener,
-        jni.JniCallType.voidType,
-        [onSystemUiVisibilityChangeListener.reference]).check();
+    _id_setOnSystemUiVisibilityChangeListener(this, const jni.jvoidType(),
+        [onSystemUiVisibilityChangeListener.reference.pointer]);
   }
 
-  static final _id_dispatchSystemUiVisibilityChanged = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"dispatchSystemUiVisibilityChanged", r"(I)V");
+  static final _id_dispatchSystemUiVisibilityChanged = _class.instanceMethodId(
+    r"dispatchSystemUiVisibilityChanged",
+    r"(I)V",
+  );
 
   /// from: public void dispatchSystemUiVisibilityChanged(int i)
   void dispatchSystemUiVisibilityChanged(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchSystemUiVisibilityChanged,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_dispatchSystemUiVisibilityChanged(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_startDrag = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"startDrag",
-      r"(Landroid/content/ClipData;Landroid/view/View$DragShadowBuilder;Ljava/lang/Object;I)Z");
+  static final _id_startDrag = _class.instanceMethodId(
+    r"startDrag",
+    r"(Landroid/content/ClipData;Landroid/view/View$DragShadowBuilder;Ljava/lang/Object;I)Z",
+  );
 
   /// from: public final boolean startDrag(android.content.ClipData clipData, android.view.View$DragShadowBuilder dragShadowBuilder, java.lang.Object object, int i)
   bool startDrag(
@@ -16544,19 +15991,18 @@ class View extends jni.JObject {
     jni.JObject object,
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_startDrag, jni.JniCallType.booleanType, [
-      clipData.reference,
-      dragShadowBuilder.reference,
-      object.reference,
+    return _id_startDrag(this, const jni.jbooleanType(), [
+      clipData.reference.pointer,
+      dragShadowBuilder.reference.pointer,
+      object.reference.pointer,
       jni.JValueInt(i)
-    ]).boolean;
+    ]);
   }
 
-  static final _id_startDragAndDrop = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"startDragAndDrop",
-      r"(Landroid/content/ClipData;Landroid/view/View$DragShadowBuilder;Ljava/lang/Object;I)Z");
+  static final _id_startDragAndDrop = _class.instanceMethodId(
+    r"startDragAndDrop",
+    r"(Landroid/content/ClipData;Landroid/view/View$DragShadowBuilder;Ljava/lang/Object;I)Z",
+  );
 
   /// from: public final boolean startDragAndDrop(android.content.ClipData clipData, android.view.View$DragShadowBuilder dragShadowBuilder, java.lang.Object object, int i)
   bool startDragAndDrop(
@@ -16565,66 +16011,67 @@ class View extends jni.JObject {
     jni.JObject object,
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_startDragAndDrop, jni.JniCallType.booleanType, [
-      clipData.reference,
-      dragShadowBuilder.reference,
-      object.reference,
+    return _id_startDragAndDrop(this, const jni.jbooleanType(), [
+      clipData.reference.pointer,
+      dragShadowBuilder.reference.pointer,
+      object.reference.pointer,
       jni.JValueInt(i)
-    ]).boolean;
+    ]);
   }
 
-  static final _id_cancelDragAndDrop = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"cancelDragAndDrop", r"()V");
+  static final _id_cancelDragAndDrop = _class.instanceMethodId(
+    r"cancelDragAndDrop",
+    r"()V",
+  );
 
   /// from: public final void cancelDragAndDrop()
   void cancelDragAndDrop() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_cancelDragAndDrop, jni.JniCallType.voidType, []).check();
+    _id_cancelDragAndDrop(this, const jni.jvoidType(), []);
   }
 
-  static final _id_updateDragShadow = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"updateDragShadow",
-      r"(Landroid/view/View$DragShadowBuilder;)V");
+  static final _id_updateDragShadow = _class.instanceMethodId(
+    r"updateDragShadow",
+    r"(Landroid/view/View$DragShadowBuilder;)V",
+  );
 
   /// from: public final void updateDragShadow(android.view.View$DragShadowBuilder dragShadowBuilder)
   void updateDragShadow(
     View_DragShadowBuilder dragShadowBuilder,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_updateDragShadow,
-        jni.JniCallType.voidType, [dragShadowBuilder.reference]).check();
+    _id_updateDragShadow(
+        this, const jni.jvoidType(), [dragShadowBuilder.reference.pointer]);
   }
 
-  static final _id_onDragEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onDragEvent", r"(Landroid/view/DragEvent;)Z");
+  static final _id_onDragEvent = _class.instanceMethodId(
+    r"onDragEvent",
+    r"(Landroid/view/DragEvent;)Z",
+  );
 
   /// from: public boolean onDragEvent(android.view.DragEvent dragEvent)
   bool onDragEvent(
     jni.JObject dragEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onDragEvent,
-        jni.JniCallType.booleanType, [dragEvent.reference]).boolean;
+    return _id_onDragEvent(
+        this, const jni.jbooleanType(), [dragEvent.reference.pointer]);
   }
 
-  static final _id_dispatchDragEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"dispatchDragEvent", r"(Landroid/view/DragEvent;)Z");
+  static final _id_dispatchDragEvent = _class.instanceMethodId(
+    r"dispatchDragEvent",
+    r"(Landroid/view/DragEvent;)Z",
+  );
 
   /// from: public boolean dispatchDragEvent(android.view.DragEvent dragEvent)
   bool dispatchDragEvent(
     jni.JObject dragEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchDragEvent,
-        jni.JniCallType.booleanType,
-        [dragEvent.reference]).boolean;
+    return _id_dispatchDragEvent(
+        this, const jni.jbooleanType(), [dragEvent.reference.pointer]);
   }
 
-  static final _id_inflate = jni.Jni.accessors.getStaticMethodIDOf(
-      _class.reference,
-      r"inflate",
-      r"(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;");
+  static final _id_inflate = _class.staticMethodId(
+    r"inflate",
+    r"(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;",
+  );
 
   /// from: static public android.view.View inflate(android.content.Context context, int i, android.view.ViewGroup viewGroup)
   /// The returned object must be released after use, by calling the [release] method.
@@ -16633,15 +16080,17 @@ class View extends jni.JObject {
     int i,
     jni.JObject viewGroup,
   ) {
-    return const $ViewType().fromRef(jni.Jni.accessors.callStaticMethodWithArgs(
-        _class.reference,
-        _id_inflate,
-        jni.JniCallType.objectType,
-        [context.reference, jni.JValueInt(i), viewGroup.reference]).object);
+    return _id_inflate(_class, const $ViewType(), [
+      context.reference.pointer,
+      jni.JValueInt(i),
+      viewGroup.reference.pointer
+    ]);
   }
 
-  static final _id_overScrollBy = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"overScrollBy", r"(IIIIIIIIZ)Z");
+  static final _id_overScrollBy = _class.instanceMethodId(
+    r"overScrollBy",
+    r"(IIIIIIIIZ)Z",
+  );
 
   /// from: protected boolean overScrollBy(int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7, boolean z)
   bool overScrollBy(
@@ -16655,8 +16104,7 @@ class View extends jni.JObject {
     int i7,
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_overScrollBy, jni.JniCallType.booleanType, [
+    return _id_overScrollBy(this, const jni.jbooleanType(), [
       jni.JValueInt(i),
       jni.JValueInt(i1),
       jni.JValueInt(i2),
@@ -16666,11 +16114,13 @@ class View extends jni.JObject {
       jni.JValueInt(i6),
       jni.JValueInt(i7),
       z ? 1 : 0
-    ]).boolean;
+    ]);
   }
 
-  static final _id_onOverScrolled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onOverScrolled", r"(IIZZ)V");
+  static final _id_onOverScrolled = _class.instanceMethodId(
+    r"onOverScrolled",
+    r"(IIZZ)V",
+  );
 
   /// from: protected void onOverScrolled(int i, int i1, boolean z, boolean z1)
   void onOverScrolled(
@@ -16679,93 +16129,91 @@ class View extends jni.JObject {
     bool z,
     bool z1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onOverScrolled,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i), jni.JValueInt(i1), z ? 1 : 0, z1 ? 1 : 0]).check();
+    _id_onOverScrolled(this, const jni.jvoidType(),
+        [jni.JValueInt(i), jni.JValueInt(i1), z ? 1 : 0, z1 ? 1 : 0]);
   }
 
-  static final _id_getOverScrollMode = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getOverScrollMode", r"()I");
+  static final _id_getOverScrollMode = _class.instanceMethodId(
+    r"getOverScrollMode",
+    r"()I",
+  );
 
   /// from: public int getOverScrollMode()
   int getOverScrollMode() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getOverScrollMode, jni.JniCallType.intType, []).integer;
+    return _id_getOverScrollMode(this, const jni.jintType(), []);
   }
 
-  static final _id_setOverScrollMode = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setOverScrollMode", r"(I)V");
+  static final _id_setOverScrollMode = _class.instanceMethodId(
+    r"setOverScrollMode",
+    r"(I)V",
+  );
 
   /// from: public void setOverScrollMode(int i)
   void setOverScrollMode(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setOverScrollMode,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setOverScrollMode(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_setNestedScrollingEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setNestedScrollingEnabled", r"(Z)V");
+  static final _id_setNestedScrollingEnabled = _class.instanceMethodId(
+    r"setNestedScrollingEnabled",
+    r"(Z)V",
+  );
 
   /// from: public void setNestedScrollingEnabled(boolean z)
   void setNestedScrollingEnabled(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setNestedScrollingEnabled,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setNestedScrollingEnabled(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isNestedScrollingEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isNestedScrollingEnabled", r"()Z");
+  static final _id_isNestedScrollingEnabled = _class.instanceMethodId(
+    r"isNestedScrollingEnabled",
+    r"()Z",
+  );
 
   /// from: public boolean isNestedScrollingEnabled()
   bool isNestedScrollingEnabled() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isNestedScrollingEnabled, jni.JniCallType.booleanType, []).boolean;
+    return _id_isNestedScrollingEnabled(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_startNestedScroll = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"startNestedScroll", r"(I)Z");
+  static final _id_startNestedScroll = _class.instanceMethodId(
+    r"startNestedScroll",
+    r"(I)Z",
+  );
 
   /// from: public boolean startNestedScroll(int i)
   bool startNestedScroll(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_startNestedScroll,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i)]).boolean;
+    return _id_startNestedScroll(
+        this, const jni.jbooleanType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_stopNestedScroll = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"stopNestedScroll", r"()V");
+  static final _id_stopNestedScroll = _class.instanceMethodId(
+    r"stopNestedScroll",
+    r"()V",
+  );
 
   /// from: public void stopNestedScroll()
   void stopNestedScroll() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_stopNestedScroll, jni.JniCallType.voidType, []).check();
+    _id_stopNestedScroll(this, const jni.jvoidType(), []);
   }
 
-  static final _id_hasNestedScrollingParent = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"hasNestedScrollingParent", r"()Z");
+  static final _id_hasNestedScrollingParent = _class.instanceMethodId(
+    r"hasNestedScrollingParent",
+    r"()Z",
+  );
 
   /// from: public boolean hasNestedScrollingParent()
   bool hasNestedScrollingParent() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_hasNestedScrollingParent, jni.JniCallType.booleanType, []).boolean;
+    return _id_hasNestedScrollingParent(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_dispatchNestedScroll = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchNestedScroll", r"(IIII[I)Z");
+  static final _id_dispatchNestedScroll = _class.instanceMethodId(
+    r"dispatchNestedScroll",
+    r"(IIII[I)Z",
+  );
 
   /// from: public boolean dispatchNestedScroll(int i, int i1, int i2, int i3, int[] is)
   bool dispatchNestedScroll(
@@ -16775,18 +16223,19 @@ class View extends jni.JObject {
     int i3,
     jni.JArray<jni.jint> is0,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_dispatchNestedScroll, jni.JniCallType.booleanType, [
+    return _id_dispatchNestedScroll(this, const jni.jbooleanType(), [
       jni.JValueInt(i),
       jni.JValueInt(i1),
       jni.JValueInt(i2),
       jni.JValueInt(i3),
-      is0.reference
-    ]).boolean;
+      is0.reference.pointer
+    ]);
   }
 
-  static final _id_dispatchNestedPreScroll = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"dispatchNestedPreScroll", r"(II[I[I)Z");
+  static final _id_dispatchNestedPreScroll = _class.instanceMethodId(
+    r"dispatchNestedPreScroll",
+    r"(II[I[I)Z",
+  );
 
   /// from: public boolean dispatchNestedPreScroll(int i, int i1, int[] is, int[] is1)
   bool dispatchNestedPreScroll(
@@ -16795,17 +16244,18 @@ class View extends jni.JObject {
     jni.JArray<jni.jint> is0,
     jni.JArray<jni.jint> is1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_dispatchNestedPreScroll, jni.JniCallType.booleanType, [
+    return _id_dispatchNestedPreScroll(this, const jni.jbooleanType(), [
       jni.JValueInt(i),
       jni.JValueInt(i1),
-      is0.reference,
-      is1.reference
-    ]).boolean;
+      is0.reference.pointer,
+      is1.reference.pointer
+    ]);
   }
 
-  static final _id_dispatchNestedFling = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchNestedFling", r"(FFZ)Z");
+  static final _id_dispatchNestedFling = _class.instanceMethodId(
+    r"dispatchNestedFling",
+    r"(FFZ)Z",
+  );
 
   /// from: public boolean dispatchNestedFling(float f, float f1, boolean z)
   bool dispatchNestedFling(
@@ -16813,117 +16263,122 @@ class View extends jni.JObject {
     double f1,
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchNestedFling,
-        jni.JniCallType.booleanType,
-        [jni.JValueFloat(f), jni.JValueFloat(f1), z ? 1 : 0]).boolean;
+    return _id_dispatchNestedFling(this, const jni.jbooleanType(),
+        [jni.JValueFloat(f), jni.JValueFloat(f1), z ? 1 : 0]);
   }
 
-  static final _id_dispatchNestedPreFling = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchNestedPreFling", r"(FF)Z");
+  static final _id_dispatchNestedPreFling = _class.instanceMethodId(
+    r"dispatchNestedPreFling",
+    r"(FF)Z",
+  );
 
   /// from: public boolean dispatchNestedPreFling(float f, float f1)
   bool dispatchNestedPreFling(
     double f,
     double f1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchNestedPreFling,
-        jni.JniCallType.booleanType,
-        [jni.JValueFloat(f), jni.JValueFloat(f1)]).boolean;
+    return _id_dispatchNestedPreFling(this, const jni.jbooleanType(),
+        [jni.JValueFloat(f), jni.JValueFloat(f1)]);
   }
 
-  static final _id_setTextDirection = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setTextDirection", r"(I)V");
+  static final _id_setTextDirection = _class.instanceMethodId(
+    r"setTextDirection",
+    r"(I)V",
+  );
 
   /// from: public void setTextDirection(int i)
   void setTextDirection(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setTextDirection,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_setTextDirection(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getTextDirection = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getTextDirection", r"()I");
+  static final _id_getTextDirection = _class.instanceMethodId(
+    r"getTextDirection",
+    r"()I",
+  );
 
   /// from: public int getTextDirection()
   int getTextDirection() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getTextDirection, jni.JniCallType.intType, []).integer;
+    return _id_getTextDirection(this, const jni.jintType(), []);
   }
 
-  static final _id_canResolveTextDirection = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"canResolveTextDirection", r"()Z");
+  static final _id_canResolveTextDirection = _class.instanceMethodId(
+    r"canResolveTextDirection",
+    r"()Z",
+  );
 
   /// from: public boolean canResolveTextDirection()
   bool canResolveTextDirection() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_canResolveTextDirection, jni.JniCallType.booleanType, []).boolean;
+    return _id_canResolveTextDirection(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_isTextDirectionResolved = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isTextDirectionResolved", r"()Z");
+  static final _id_isTextDirectionResolved = _class.instanceMethodId(
+    r"isTextDirectionResolved",
+    r"()Z",
+  );
 
   /// from: public boolean isTextDirectionResolved()
   bool isTextDirectionResolved() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isTextDirectionResolved, jni.JniCallType.booleanType, []).boolean;
+    return _id_isTextDirectionResolved(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setTextAlignment = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setTextAlignment", r"(I)V");
+  static final _id_setTextAlignment = _class.instanceMethodId(
+    r"setTextAlignment",
+    r"(I)V",
+  );
 
   /// from: public void setTextAlignment(int i)
   void setTextAlignment(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setTextAlignment,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_setTextAlignment(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_getTextAlignment = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getTextAlignment", r"()I");
+  static final _id_getTextAlignment = _class.instanceMethodId(
+    r"getTextAlignment",
+    r"()I",
+  );
 
   /// from: public int getTextAlignment()
   int getTextAlignment() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getTextAlignment, jni.JniCallType.intType, []).integer;
+    return _id_getTextAlignment(this, const jni.jintType(), []);
   }
 
-  static final _id_canResolveTextAlignment = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"canResolveTextAlignment", r"()Z");
+  static final _id_canResolveTextAlignment = _class.instanceMethodId(
+    r"canResolveTextAlignment",
+    r"()Z",
+  );
 
   /// from: public boolean canResolveTextAlignment()
   bool canResolveTextAlignment() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_canResolveTextAlignment, jni.JniCallType.booleanType, []).boolean;
+    return _id_canResolveTextAlignment(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_isTextAlignmentResolved = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isTextAlignmentResolved", r"()Z");
+  static final _id_isTextAlignmentResolved = _class.instanceMethodId(
+    r"isTextAlignmentResolved",
+    r"()Z",
+  );
 
   /// from: public boolean isTextAlignmentResolved()
   bool isTextAlignmentResolved() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isTextAlignmentResolved, jni.JniCallType.booleanType, []).boolean;
+    return _id_isTextAlignmentResolved(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_generateViewId = jni.Jni.accessors
-      .getStaticMethodIDOf(_class.reference, r"generateViewId", r"()I");
+  static final _id_generateViewId = _class.staticMethodId(
+    r"generateViewId",
+    r"()I",
+  );
 
   /// from: static public int generateViewId()
   static int generateViewId() {
-    return jni.Jni.accessors.callStaticMethodWithArgs(_class.reference,
-        _id_generateViewId, jni.JniCallType.intType, []).integer;
+    return _id_generateViewId(_class, const jni.jintType(), []);
   }
 
-  static final _id_onResolvePointerIcon = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onResolvePointerIcon",
-      r"(Landroid/view/MotionEvent;I)Landroid/view/PointerIcon;");
+  static final _id_onResolvePointerIcon = _class.instanceMethodId(
+    r"onResolvePointerIcon",
+    r"(Landroid/view/MotionEvent;I)Landroid/view/PointerIcon;",
+  );
 
   /// from: public android.view.PointerIcon onResolvePointerIcon(android.view.MotionEvent motionEvent, int i)
   /// The returned object must be released after use, by calling the [release] method.
@@ -16931,200 +16386,188 @@ class View extends jni.JObject {
     jni.JObject motionEvent,
     int i,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onResolvePointerIcon,
-        jni.JniCallType.objectType,
-        [motionEvent.reference, jni.JValueInt(i)]).object);
+    return _id_onResolvePointerIcon(this, const jni.JObjectType(),
+        [motionEvent.reference.pointer, jni.JValueInt(i)]);
   }
 
-  static final _id_setPointerIcon = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"setPointerIcon", r"(Landroid/view/PointerIcon;)V");
+  static final _id_setPointerIcon = _class.instanceMethodId(
+    r"setPointerIcon",
+    r"(Landroid/view/PointerIcon;)V",
+  );
 
   /// from: public void setPointerIcon(android.view.PointerIcon pointerIcon)
   void setPointerIcon(
     jni.JObject pointerIcon,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setPointerIcon,
-        jni.JniCallType.voidType, [pointerIcon.reference]).check();
+    _id_setPointerIcon(
+        this, const jni.jvoidType(), [pointerIcon.reference.pointer]);
   }
 
-  static final _id_getPointerIcon = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getPointerIcon", r"()Landroid/view/PointerIcon;");
+  static final _id_getPointerIcon = _class.instanceMethodId(
+    r"getPointerIcon",
+    r"()Landroid/view/PointerIcon;",
+  );
 
   /// from: public android.view.PointerIcon getPointerIcon()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getPointerIcon() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getPointerIcon, jni.JniCallType.objectType, []).object);
+    return _id_getPointerIcon(this, const jni.JObjectType(), []);
   }
 
-  static final _id_hasPointerCapture = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"hasPointerCapture", r"()Z");
+  static final _id_hasPointerCapture = _class.instanceMethodId(
+    r"hasPointerCapture",
+    r"()Z",
+  );
 
   /// from: public boolean hasPointerCapture()
   bool hasPointerCapture() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_hasPointerCapture, jni.JniCallType.booleanType, []).boolean;
+    return _id_hasPointerCapture(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_requestPointerCapture = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"requestPointerCapture", r"()V");
+  static final _id_requestPointerCapture = _class.instanceMethodId(
+    r"requestPointerCapture",
+    r"()V",
+  );
 
   /// from: public void requestPointerCapture()
   void requestPointerCapture() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_requestPointerCapture, jni.JniCallType.voidType, []).check();
+    _id_requestPointerCapture(this, const jni.jvoidType(), []);
   }
 
-  static final _id_releasePointerCapture = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"releasePointerCapture", r"()V");
+  static final _id_releasePointerCapture = _class.instanceMethodId(
+    r"releasePointerCapture",
+    r"()V",
+  );
 
   /// from: public void releasePointerCapture()
   void releasePointerCapture() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_releasePointerCapture, jni.JniCallType.voidType, []).check();
+    _id_releasePointerCapture(this, const jni.jvoidType(), []);
   }
 
-  static final _id_onPointerCaptureChange = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onPointerCaptureChange", r"(Z)V");
+  static final _id_onPointerCaptureChange = _class.instanceMethodId(
+    r"onPointerCaptureChange",
+    r"(Z)V",
+  );
 
   /// from: public void onPointerCaptureChange(boolean z)
   void onPointerCaptureChange(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onPointerCaptureChange,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_onPointerCaptureChange(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_dispatchPointerCaptureChanged = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"dispatchPointerCaptureChanged", r"(Z)V");
+  static final _id_dispatchPointerCaptureChanged = _class.instanceMethodId(
+    r"dispatchPointerCaptureChanged",
+    r"(Z)V",
+  );
 
   /// from: public void dispatchPointerCaptureChanged(boolean z)
   void dispatchPointerCaptureChanged(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchPointerCaptureChanged,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_dispatchPointerCaptureChanged(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_onCapturedPointerEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onCapturedPointerEvent",
-      r"(Landroid/view/MotionEvent;)Z");
+  static final _id_onCapturedPointerEvent = _class.instanceMethodId(
+    r"onCapturedPointerEvent",
+    r"(Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: public boolean onCapturedPointerEvent(android.view.MotionEvent motionEvent)
   bool onCapturedPointerEvent(
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onCapturedPointerEvent,
-        jni.JniCallType.booleanType,
-        [motionEvent.reference]).boolean;
+    return _id_onCapturedPointerEvent(
+        this, const jni.jbooleanType(), [motionEvent.reference.pointer]);
   }
 
-  static final _id_setOnCapturedPointerListener = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setOnCapturedPointerListener",
-          r"(Landroid/view/View$OnCapturedPointerListener;)V");
+  static final _id_setOnCapturedPointerListener = _class.instanceMethodId(
+    r"setOnCapturedPointerListener",
+    r"(Landroid/view/View$OnCapturedPointerListener;)V",
+  );
 
   /// from: public void setOnCapturedPointerListener(android.view.View$OnCapturedPointerListener onCapturedPointerListener)
   void setOnCapturedPointerListener(
     View_OnCapturedPointerListener onCapturedPointerListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setOnCapturedPointerListener,
-        jni.JniCallType.voidType,
-        [onCapturedPointerListener.reference]).check();
+    _id_setOnCapturedPointerListener(this, const jni.jvoidType(),
+        [onCapturedPointerListener.reference.pointer]);
   }
 
-  static final _id_animate = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"animate", r"()Landroid/view/ViewPropertyAnimator;");
+  static final _id_animate = _class.instanceMethodId(
+    r"animate",
+    r"()Landroid/view/ViewPropertyAnimator;",
+  );
 
   /// from: public android.view.ViewPropertyAnimator animate()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject animate() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_animate, jni.JniCallType.objectType, []).object);
+    return _id_animate(this, const jni.JObjectType(), []);
   }
 
-  static final _id_setTransitionName = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"setTransitionName", r"(Ljava/lang/String;)V");
+  static final _id_setTransitionName = _class.instanceMethodId(
+    r"setTransitionName",
+    r"(Ljava/lang/String;)V",
+  );
 
   /// from: public final void setTransitionName(java.lang.String string)
   void setTransitionName(
     jni.JString string,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setTransitionName,
-        jni.JniCallType.voidType,
-        [string.reference]).check();
+    _id_setTransitionName(
+        this, const jni.jvoidType(), [string.reference.pointer]);
   }
 
-  static final _id_getTransitionName = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getTransitionName", r"()Ljava/lang/String;");
+  static final _id_getTransitionName = _class.instanceMethodId(
+    r"getTransitionName",
+    r"()Ljava/lang/String;",
+  );
 
   /// from: public java.lang.String getTransitionName()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getTransitionName() {
-    return const jni.JStringType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getTransitionName,
-        jni.JniCallType.objectType, []).object);
+    return _id_getTransitionName(this, const jni.JStringType(), []);
   }
 
-  static final _id_getScrollCaptureHint = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getScrollCaptureHint", r"()I");
+  static final _id_getScrollCaptureHint = _class.instanceMethodId(
+    r"getScrollCaptureHint",
+    r"()I",
+  );
 
   /// from: public int getScrollCaptureHint()
   int getScrollCaptureHint() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getScrollCaptureHint, jni.JniCallType.intType, []).integer;
+    return _id_getScrollCaptureHint(this, const jni.jintType(), []);
   }
 
-  static final _id_setScrollCaptureHint = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setScrollCaptureHint", r"(I)V");
+  static final _id_setScrollCaptureHint = _class.instanceMethodId(
+    r"setScrollCaptureHint",
+    r"(I)V",
+  );
 
   /// from: public void setScrollCaptureHint(int i)
   void setScrollCaptureHint(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setScrollCaptureHint,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setScrollCaptureHint(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_setScrollCaptureCallback = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setScrollCaptureCallback",
-      r"(Landroid/view/ScrollCaptureCallback;)V");
+  static final _id_setScrollCaptureCallback = _class.instanceMethodId(
+    r"setScrollCaptureCallback",
+    r"(Landroid/view/ScrollCaptureCallback;)V",
+  );
 
   /// from: public final void setScrollCaptureCallback(android.view.ScrollCaptureCallback scrollCaptureCallback)
   void setScrollCaptureCallback(
     jni.JObject scrollCaptureCallback,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setScrollCaptureCallback,
-        jni.JniCallType.voidType,
-        [scrollCaptureCallback.reference]).check();
+    _id_setScrollCaptureCallback(
+        this, const jni.jvoidType(), [scrollCaptureCallback.reference.pointer]);
   }
 
-  static final _id_dispatchScrollCaptureSearch = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"dispatchScrollCaptureSearch",
-      r"(Landroid/graphics/Rect;Landroid/graphics/Point;Ljava/util/function/Consumer;)V");
+  static final _id_dispatchScrollCaptureSearch = _class.instanceMethodId(
+    r"dispatchScrollCaptureSearch",
+    r"(Landroid/graphics/Rect;Landroid/graphics/Point;Ljava/util/function/Consumer;)V",
+  );
 
   /// from: public void dispatchScrollCaptureSearch(android.graphics.Rect rect, android.graphics.Point point, java.util.function.Consumer consumer)
   void dispatchScrollCaptureSearch(
@@ -17132,17 +16575,17 @@ class View extends jni.JObject {
     jni.JObject point,
     jni.JObject consumer,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_dispatchScrollCaptureSearch,
-        jni.JniCallType.voidType,
-        [rect.reference, point.reference, consumer.reference]).check();
+    _id_dispatchScrollCaptureSearch(this, const jni.jvoidType(), [
+      rect.reference.pointer,
+      point.reference.pointer,
+      consumer.reference.pointer
+    ]);
   }
 
-  static final _id_onScrollCaptureSearch = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onScrollCaptureSearch",
-      r"(Landroid/graphics/Rect;Landroid/graphics/Point;Ljava/util/function/Consumer;)V");
+  static final _id_onScrollCaptureSearch = _class.instanceMethodId(
+    r"onScrollCaptureSearch",
+    r"(Landroid/graphics/Rect;Landroid/graphics/Point;Ljava/util/function/Consumer;)V",
+  );
 
   /// from: public void onScrollCaptureSearch(android.graphics.Rect rect, android.graphics.Point point, java.util.function.Consumer consumer)
   void onScrollCaptureSearch(
@@ -17150,128 +16593,126 @@ class View extends jni.JObject {
     jni.JObject point,
     jni.JObject consumer,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onScrollCaptureSearch,
-        jni.JniCallType.voidType,
-        [rect.reference, point.reference, consumer.reference]).check();
+    _id_onScrollCaptureSearch(this, const jni.jvoidType(), [
+      rect.reference.pointer,
+      point.reference.pointer,
+      consumer.reference.pointer
+    ]);
   }
 
-  static final _id_setTooltipText = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"setTooltipText", r"(Ljava/lang/CharSequence;)V");
+  static final _id_setTooltipText = _class.instanceMethodId(
+    r"setTooltipText",
+    r"(Ljava/lang/CharSequence;)V",
+  );
 
   /// from: public void setTooltipText(java.lang.CharSequence charSequence)
   void setTooltipText(
     jni.JObject charSequence,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setTooltipText,
-        jni.JniCallType.voidType, [charSequence.reference]).check();
+    _id_setTooltipText(
+        this, const jni.jvoidType(), [charSequence.reference.pointer]);
   }
 
-  static final _id_getTooltipText = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getTooltipText", r"()Ljava/lang/CharSequence;");
+  static final _id_getTooltipText = _class.instanceMethodId(
+    r"getTooltipText",
+    r"()Ljava/lang/CharSequence;",
+  );
 
   /// from: public java.lang.CharSequence getTooltipText()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getTooltipText() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getTooltipText, jni.JniCallType.objectType, []).object);
+    return _id_getTooltipText(this, const jni.JObjectType(), []);
   }
 
-  static final _id_addOnUnhandledKeyEventListener = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"addOnUnhandledKeyEventListener",
-          r"(Landroid/view/View$OnUnhandledKeyEventListener;)V");
+  static final _id_addOnUnhandledKeyEventListener = _class.instanceMethodId(
+    r"addOnUnhandledKeyEventListener",
+    r"(Landroid/view/View$OnUnhandledKeyEventListener;)V",
+  );
 
   /// from: public void addOnUnhandledKeyEventListener(android.view.View$OnUnhandledKeyEventListener onUnhandledKeyEventListener)
   void addOnUnhandledKeyEventListener(
     View_OnUnhandledKeyEventListener onUnhandledKeyEventListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_addOnUnhandledKeyEventListener,
-        jni.JniCallType.voidType,
-        [onUnhandledKeyEventListener.reference]).check();
+    _id_addOnUnhandledKeyEventListener(this, const jni.jvoidType(),
+        [onUnhandledKeyEventListener.reference.pointer]);
   }
 
-  static final _id_removeOnUnhandledKeyEventListener = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"removeOnUnhandledKeyEventListener",
-          r"(Landroid/view/View$OnUnhandledKeyEventListener;)V");
+  static final _id_removeOnUnhandledKeyEventListener = _class.instanceMethodId(
+    r"removeOnUnhandledKeyEventListener",
+    r"(Landroid/view/View$OnUnhandledKeyEventListener;)V",
+  );
 
   /// from: public void removeOnUnhandledKeyEventListener(android.view.View$OnUnhandledKeyEventListener onUnhandledKeyEventListener)
   void removeOnUnhandledKeyEventListener(
     View_OnUnhandledKeyEventListener onUnhandledKeyEventListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_removeOnUnhandledKeyEventListener,
-        jni.JniCallType.voidType,
-        [onUnhandledKeyEventListener.reference]).check();
+    _id_removeOnUnhandledKeyEventListener(this, const jni.jvoidType(),
+        [onUnhandledKeyEventListener.reference.pointer]);
   }
 
-  static final _id_setIsCredential = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setIsCredential", r"(Z)V");
+  static final _id_setIsCredential = _class.instanceMethodId(
+    r"setIsCredential",
+    r"(Z)V",
+  );
 
   /// from: public void setIsCredential(boolean z)
   void setIsCredential(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setIsCredential,
-        jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_setIsCredential(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isCredential = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isCredential", r"()Z");
+  static final _id_isCredential = _class.instanceMethodId(
+    r"isCredential",
+    r"()Z",
+  );
 
   /// from: public boolean isCredential()
   bool isCredential() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_isCredential, jni.JniCallType.booleanType, []).boolean;
+    return _id_isCredential(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setAutoHandwritingEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setAutoHandwritingEnabled", r"(Z)V");
+  static final _id_setAutoHandwritingEnabled = _class.instanceMethodId(
+    r"setAutoHandwritingEnabled",
+    r"(Z)V",
+  );
 
   /// from: public void setAutoHandwritingEnabled(boolean z)
   void setAutoHandwritingEnabled(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setAutoHandwritingEnabled,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setAutoHandwritingEnabled(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_isAutoHandwritingEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isAutoHandwritingEnabled", r"()Z");
+  static final _id_isAutoHandwritingEnabled = _class.instanceMethodId(
+    r"isAutoHandwritingEnabled",
+    r"()Z",
+  );
 
   /// from: public boolean isAutoHandwritingEnabled()
   bool isAutoHandwritingEnabled() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isAutoHandwritingEnabled, jni.JniCallType.booleanType, []).boolean;
+    return _id_isAutoHandwritingEnabled(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_onCreateViewTranslationRequest = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onCreateViewTranslationRequest",
-          r"([ILjava/util/function/Consumer;)V");
+  static final _id_onCreateViewTranslationRequest = _class.instanceMethodId(
+    r"onCreateViewTranslationRequest",
+    r"([ILjava/util/function/Consumer;)V",
+  );
 
   /// from: public void onCreateViewTranslationRequest(java.lang.Object[] is, java.util.function.Consumer consumer)
   void onCreateViewTranslationRequest(
     jni.JArray<jni.jint> is0,
     jni.JObject consumer,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onCreateViewTranslationRequest,
-        jni.JniCallType.voidType,
-        [is0.reference, consumer.reference]).check();
+    _id_onCreateViewTranslationRequest(this, const jni.jvoidType(),
+        [is0.reference.pointer, consumer.reference.pointer]);
   }
 
-  static final _id_onCreateVirtualViewTranslationRequests = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference,
-          r"onCreateVirtualViewTranslationRequests",
-          r"([J[ILjava/util/function/Consumer;)V");
+  static final _id_onCreateVirtualViewTranslationRequests =
+      _class.instanceMethodId(
+    r"onCreateVirtualViewTranslationRequests",
+    r"([J[ILjava/util/function/Consumer;)V",
+  );
 
   /// from: public void onCreateVirtualViewTranslationRequests(java.lang.Object[] js, java.lang.Object[] is, java.util.function.Consumer consumer)
   void onCreateVirtualViewTranslationRequests(
@@ -17279,86 +16720,78 @@ class View extends jni.JObject {
     jni.JArray<jni.jint> is0,
     jni.JObject consumer,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onCreateVirtualViewTranslationRequests,
-        jni.JniCallType.voidType,
-        [js.reference, is0.reference, consumer.reference]).check();
+    _id_onCreateVirtualViewTranslationRequests(this, const jni.jvoidType(), [
+      js.reference.pointer,
+      is0.reference.pointer,
+      consumer.reference.pointer
+    ]);
   }
 
-  static final _id_setViewTranslationCallback = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setViewTranslationCallback",
-      r"(Landroid/view/translation/ViewTranslationCallback;)V");
+  static final _id_setViewTranslationCallback = _class.instanceMethodId(
+    r"setViewTranslationCallback",
+    r"(Landroid/view/translation/ViewTranslationCallback;)V",
+  );
 
   /// from: public void setViewTranslationCallback(android.view.translation.ViewTranslationCallback viewTranslationCallback)
   void setViewTranslationCallback(
     jni.JObject viewTranslationCallback,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setViewTranslationCallback,
-        jni.JniCallType.voidType,
-        [viewTranslationCallback.reference]).check();
+    _id_setViewTranslationCallback(this, const jni.jvoidType(),
+        [viewTranslationCallback.reference.pointer]);
   }
 
-  static final _id_clearViewTranslationCallback = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"clearViewTranslationCallback", r"()V");
+  static final _id_clearViewTranslationCallback = _class.instanceMethodId(
+    r"clearViewTranslationCallback",
+    r"()V",
+  );
 
   /// from: public void clearViewTranslationCallback()
   void clearViewTranslationCallback() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_clearViewTranslationCallback, jni.JniCallType.voidType, []).check();
+    _id_clearViewTranslationCallback(this, const jni.jvoidType(), []);
   }
 
-  static final _id_getViewTranslationResponse = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getViewTranslationResponse",
-      r"()Landroid/view/translation/ViewTranslationResponse;");
+  static final _id_getViewTranslationResponse = _class.instanceMethodId(
+    r"getViewTranslationResponse",
+    r"()Landroid/view/translation/ViewTranslationResponse;",
+  );
 
   /// from: public android.view.translation.ViewTranslationResponse getViewTranslationResponse()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getViewTranslationResponse() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getViewTranslationResponse,
-        jni.JniCallType.objectType, []).object);
+    return _id_getViewTranslationResponse(this, const jni.JObjectType(), []);
   }
 
-  static final _id_onViewTranslationResponse = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onViewTranslationResponse",
-      r"(Landroid/view/translation/ViewTranslationResponse;)V");
+  static final _id_onViewTranslationResponse = _class.instanceMethodId(
+    r"onViewTranslationResponse",
+    r"(Landroid/view/translation/ViewTranslationResponse;)V",
+  );
 
   /// from: public void onViewTranslationResponse(android.view.translation.ViewTranslationResponse viewTranslationResponse)
   void onViewTranslationResponse(
     jni.JObject viewTranslationResponse,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onViewTranslationResponse,
-        jni.JniCallType.voidType,
-        [viewTranslationResponse.reference]).check();
+    _id_onViewTranslationResponse(this, const jni.jvoidType(),
+        [viewTranslationResponse.reference.pointer]);
   }
 
-  static final _id_onVirtualViewTranslationResponses = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onVirtualViewTranslationResponses",
-          r"(Landroid/util/LongSparseArray;)V");
+  static final _id_onVirtualViewTranslationResponses = _class.instanceMethodId(
+    r"onVirtualViewTranslationResponses",
+    r"(Landroid/util/LongSparseArray;)V",
+  );
 
   /// from: public void onVirtualViewTranslationResponses(android.util.LongSparseArray longSparseArray)
   void onVirtualViewTranslationResponses(
     jni.JObject longSparseArray,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onVirtualViewTranslationResponses,
-        jni.JniCallType.voidType,
-        [longSparseArray.reference]).check();
+    _id_onVirtualViewTranslationResponses(
+        this, const jni.jvoidType(), [longSparseArray.reference.pointer]);
   }
 
-  static final _id_dispatchCreateViewTranslationRequest = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchCreateViewTranslationRequest",
-          r"(Ljava/util/Map;[ILandroid/view/translation/TranslationCapability;Ljava/util/List;)V");
+  static final _id_dispatchCreateViewTranslationRequest =
+      _class.instanceMethodId(
+    r"dispatchCreateViewTranslationRequest",
+    r"(Ljava/util/Map;[ILandroid/view/translation/TranslationCapability;Ljava/util/List;)V",
+  );
 
   /// from: public void dispatchCreateViewTranslationRequest(java.util.Map map, java.lang.Object[] is, android.view.translation.TranslationCapability translationCapability, java.util.List list)
   void dispatchCreateViewTranslationRequest(
@@ -17367,19 +16800,18 @@ class View extends jni.JObject {
     jni.JObject translationCapability,
     jni.JList<jni.JObject> list,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_dispatchCreateViewTranslationRequest, jni.JniCallType.voidType, [
-      map.reference,
-      is0.reference,
-      translationCapability.reference,
-      list.reference
-    ]).check();
+    _id_dispatchCreateViewTranslationRequest(this, const jni.jvoidType(), [
+      map.reference.pointer,
+      is0.reference.pointer,
+      translationCapability.reference.pointer,
+      list.reference.pointer
+    ]);
   }
 
-  static final _id_generateDisplayHash = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"generateDisplayHash",
-      r"(Ljava/lang/String;Landroid/graphics/Rect;Ljava/util/concurrent/Executor;Landroid/view/displayhash/DisplayHashResultCallback;)V");
+  static final _id_generateDisplayHash = _class.instanceMethodId(
+    r"generateDisplayHash",
+    r"(Ljava/lang/String;Landroid/graphics/Rect;Ljava/util/concurrent/Executor;Landroid/view/displayhash/DisplayHashResultCallback;)V",
+  );
 
   /// from: public void generateDisplayHash(java.lang.String string, android.graphics.Rect rect, java.util.concurrent.Executor executor, android.view.displayhash.DisplayHashResultCallback displayHashResultCallback)
   void generateDisplayHash(
@@ -17388,27 +16820,23 @@ class View extends jni.JObject {
     jni.JObject executor,
     jni.JObject displayHashResultCallback,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_generateDisplayHash, jni.JniCallType.voidType, [
-      string.reference,
-      rect.reference,
-      executor.reference,
-      displayHashResultCallback.reference
-    ]).check();
+    _id_generateDisplayHash(this, const jni.jvoidType(), [
+      string.reference.pointer,
+      rect.reference.pointer,
+      executor.reference.pointer,
+      displayHashResultCallback.reference.pointer
+    ]);
   }
 
-  static final _id_getRootSurfaceControl = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getRootSurfaceControl",
-      r"()Landroid/view/AttachedSurfaceControl;");
+  static final _id_getRootSurfaceControl = _class.instanceMethodId(
+    r"getRootSurfaceControl",
+    r"()Landroid/view/AttachedSurfaceControl;",
+  );
 
   /// from: public android.view.AttachedSurfaceControl getRootSurfaceControl()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getRootSurfaceControl() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getRootSurfaceControl,
-        jni.JniCallType.objectType, []).object);
+    return _id_getRootSurfaceControl(this, const jni.JObjectType(), []);
   }
 }
 
@@ -17419,7 +16847,7 @@ final class $ViewType extends jni.JObjType<View> {
   String get signature => r"Landroid/view/View;";
 
   @override
-  View fromRef(jni.JObjectPtr ref) => View.fromRef(ref);
+  View fromReference(jni.JReference reference) => View.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -17441,17 +16869,19 @@ class WebView_FindListener extends jni.JObject {
   @override
   late final jni.JObjType<WebView_FindListener> $type = type;
 
-  WebView_FindListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  WebView_FindListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/webkit/WebView$FindListener");
+      jni.JClass.forName(r"android/webkit/WebView$FindListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $WebView_FindListenerType();
-  static final _id_onFindResultReceived = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onFindResultReceived", r"(IIZ)V");
+  static final _id_onFindResultReceived = _class.instanceMethodId(
+    r"onFindResultReceived",
+    r"(IIZ)V",
+  );
 
   /// from: public abstract void onFindResultReceived(int i, int i1, boolean z)
   void onFindResultReceived(
@@ -17459,11 +16889,8 @@ class WebView_FindListener extends jni.JObject {
     int i1,
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onFindResultReceived,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i), jni.JValueInt(i1), z ? 1 : 0]).check();
+    _id_onFindResultReceived(this, const jni.jvoidType(),
+        [jni.JValueInt(i), jni.JValueInt(i1), z ? 1 : 0]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -17522,7 +16949,7 @@ class WebView_FindListener extends jni.JObject {
     $WebView_FindListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = WebView_FindListener.fromRef(
+    final $x = WebView_FindListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"android.webkit.WebView$FindListener",
         $p,
@@ -17545,7 +16972,7 @@ class WebView_FindListener extends jni.JObject {
   }
 }
 
-abstract class $WebView_FindListenerImpl {
+abstract interface class $WebView_FindListenerImpl {
   factory $WebView_FindListenerImpl({
     required void Function(int i, int i1, bool z) onFindResultReceived,
   }) = _$WebView_FindListenerImpl;
@@ -17573,8 +17000,8 @@ final class $WebView_FindListenerType
   String get signature => r"Landroid/webkit/WebView$FindListener;";
 
   @override
-  WebView_FindListener fromRef(jni.JObjectPtr ref) =>
-      WebView_FindListener.fromRef(ref);
+  WebView_FindListener fromReference(jni.JReference reference) =>
+      WebView_FindListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -17597,12 +17024,12 @@ class WebView_HitTestResult extends jni.JObject {
   @override
   late final jni.JObjType<WebView_HitTestResult> $type = type;
 
-  WebView_HitTestResult.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  WebView_HitTestResult.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/webkit/WebView$HitTestResult");
+      jni.JClass.forName(r"android/webkit/WebView$HitTestResult");
 
   /// The type which includes information such as the signature of this class.
   static const type = $WebView_HitTestResultType();
@@ -17636,24 +17063,25 @@ class WebView_HitTestResult extends jni.JObject {
 
   /// from: static public final int UNKNOWN_TYPE
   static const UNKNOWN_TYPE = 0;
-
-  static final _id_getType =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getType", r"()I");
+  static final _id_getType = _class.instanceMethodId(
+    r"getType",
+    r"()I",
+  );
 
   /// from: public int getType()
   int getType() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getType, jni.JniCallType.intType, []).integer;
+    return _id_getType(this, const jni.jintType(), []);
   }
 
-  static final _id_getExtra = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getExtra", r"()Ljava/lang/String;");
+  static final _id_getExtra = _class.instanceMethodId(
+    r"getExtra",
+    r"()Ljava/lang/String;",
+  );
 
   /// from: public java.lang.String getExtra()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getExtra() {
-    return const jni.JStringType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getExtra, jni.JniCallType.objectType, []).object);
+    return _id_getExtra(this, const jni.JStringType(), []);
   }
 }
 
@@ -17665,8 +17093,8 @@ final class $WebView_HitTestResultType
   String get signature => r"Landroid/webkit/WebView$HitTestResult;";
 
   @override
-  WebView_HitTestResult fromRef(jni.JObjectPtr ref) =>
-      WebView_HitTestResult.fromRef(ref);
+  WebView_HitTestResult fromReference(jni.JReference reference) =>
+      WebView_HitTestResult.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -17689,30 +17117,27 @@ class WebView_PictureListener extends jni.JObject {
   @override
   late final jni.JObjType<WebView_PictureListener> $type = type;
 
-  WebView_PictureListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  WebView_PictureListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/webkit/WebView$PictureListener");
+      jni.JClass.forName(r"android/webkit/WebView$PictureListener");
 
   /// The type which includes information such as the signature of this class.
   static const type = $WebView_PictureListenerType();
-  static final _id_onNewPicture = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onNewPicture",
-      r"(Landroid/webkit/WebView;Landroid/graphics/Picture;)V");
+  static final _id_onNewPicture = _class.instanceMethodId(
+    r"onNewPicture",
+    r"(Landroid/webkit/WebView;Landroid/graphics/Picture;)V",
+  );
 
   /// from: public abstract void onNewPicture(android.webkit.WebView webView, android.graphics.Picture picture)
   void onNewPicture(
     WebView webView,
     jni.JObject picture,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onNewPicture,
-        jni.JniCallType.voidType,
-        [webView.reference, picture.reference]).check();
+    _id_onNewPicture(this, const jni.jvoidType(),
+        [webView.reference.pointer, picture.reference.pointer]);
   }
 
   /// Maps a specific port to the implemented interface.
@@ -17765,7 +17190,7 @@ class WebView_PictureListener extends jni.JObject {
     $WebView_PictureListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = WebView_PictureListener.fromRef(
+    final $x = WebView_PictureListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"android.webkit.WebView$PictureListener",
         $p,
@@ -17788,7 +17213,7 @@ class WebView_PictureListener extends jni.JObject {
   }
 }
 
-abstract class $WebView_PictureListenerImpl {
+abstract interface class $WebView_PictureListenerImpl {
   factory $WebView_PictureListenerImpl({
     required void Function(WebView webView, jni.JObject picture) onNewPicture,
   }) = _$WebView_PictureListenerImpl;
@@ -17816,8 +17241,8 @@ final class $WebView_PictureListenerType
   String get signature => r"Landroid/webkit/WebView$PictureListener;";
 
   @override
-  WebView_PictureListener fromRef(jni.JObjectPtr ref) =>
-      WebView_PictureListener.fromRef(ref);
+  WebView_PictureListener fromReference(jni.JReference reference) =>
+      WebView_PictureListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -17840,34 +17265,36 @@ class WebView_VisualStateCallback extends jni.JObject {
   @override
   late final jni.JObjType<WebView_VisualStateCallback> $type = type;
 
-  WebView_VisualStateCallback.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  WebView_VisualStateCallback.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/webkit/WebView$VisualStateCallback");
+      jni.JClass.forName(r"android/webkit/WebView$VisualStateCallback");
 
   /// The type which includes information such as the signature of this class.
   static const type = $WebView_VisualStateCallbackType();
-  static final _id_new0 =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"<init>", r"()V");
+  static final _id_new0 = _class.constructorId(
+    r"()V",
+  );
 
   /// from: public void <init>()
   /// The returned object must be released after use, by calling the [release] method.
   factory WebView_VisualStateCallback() {
-    return WebView_VisualStateCallback.fromRef(jni.Jni.accessors
-        .newObjectWithArgs(_class.reference, _id_new0, []).object);
+    return WebView_VisualStateCallback.fromReference(
+        _id_new0(_class, referenceType, []));
   }
 
-  static final _id_onComplete =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"onComplete", r"(J)V");
+  static final _id_onComplete = _class.instanceMethodId(
+    r"onComplete",
+    r"(J)V",
+  );
 
   /// from: public abstract void onComplete(long j)
   void onComplete(
     int j,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_onComplete, jni.JniCallType.voidType, [j]).check();
+    _id_onComplete(this, const jni.jvoidType(), [j]);
   }
 }
 
@@ -17879,8 +17306,8 @@ final class $WebView_VisualStateCallbackType
   String get signature => r"Landroid/webkit/WebView$VisualStateCallback;";
 
   @override
-  WebView_VisualStateCallback fromRef(jni.JObjectPtr ref) =>
-      WebView_VisualStateCallback.fromRef(ref);
+  WebView_VisualStateCallback fromReference(jni.JReference reference) =>
+      WebView_VisualStateCallback.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -17903,46 +17330,49 @@ class WebView_WebViewTransport extends jni.JObject {
   @override
   late final jni.JObjType<WebView_WebViewTransport> $type = type;
 
-  WebView_WebViewTransport.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  WebView_WebViewTransport.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   static final _class =
-      jni.Jni.findJClass(r"android/webkit/WebView$WebViewTransport");
+      jni.JClass.forName(r"android/webkit/WebView$WebViewTransport");
 
   /// The type which includes information such as the signature of this class.
   static const type = $WebView_WebViewTransportType();
-  static final _id_new0 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"<init>", r"(Landroid/webkit/WebView;)V");
+  static final _id_new0 = _class.constructorId(
+    r"(Landroid/webkit/WebView;)V",
+  );
 
   /// from: public void <init>(android.webkit.WebView webView)
   /// The returned object must be released after use, by calling the [release] method.
   factory WebView_WebViewTransport(
     WebView webView,
   ) {
-    return WebView_WebViewTransport.fromRef(jni.Jni.accessors.newObjectWithArgs(
-        _class.reference, _id_new0, [webView.reference]).object);
+    return WebView_WebViewTransport.fromReference(
+        _id_new0(_class, referenceType, [webView.reference.pointer]));
   }
 
-  static final _id_setWebView = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"setWebView", r"(Landroid/webkit/WebView;)V");
+  static final _id_setWebView = _class.instanceMethodId(
+    r"setWebView",
+    r"(Landroid/webkit/WebView;)V",
+  );
 
   /// from: public void setWebView(android.webkit.WebView webView)
   void setWebView(
     WebView webView,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setWebView,
-        jni.JniCallType.voidType, [webView.reference]).check();
+    _id_setWebView(this, const jni.jvoidType(), [webView.reference.pointer]);
   }
 
-  static final _id_getWebView = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getWebView", r"()Landroid/webkit/WebView;");
+  static final _id_getWebView = _class.instanceMethodId(
+    r"getWebView",
+    r"()Landroid/webkit/WebView;",
+  );
 
   /// from: public android.webkit.WebView getWebView()
   /// The returned object must be released after use, by calling the [release] method.
   WebView getWebView() {
-    return const $WebViewType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getWebView, jni.JniCallType.objectType, []).object);
+    return _id_getWebView(this, const $WebViewType(), []);
   }
 }
 
@@ -17954,8 +17384,8 @@ final class $WebView_WebViewTransportType
   String get signature => r"Landroid/webkit/WebView$WebViewTransport;";
 
   @override
-  WebView_WebViewTransport fromRef(jni.JObjectPtr ref) =>
-      WebView_WebViewTransport.fromRef(ref);
+  WebView_WebViewTransport fromReference(jni.JReference reference) =>
+      WebView_WebViewTransport.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -17978,11 +17408,11 @@ class WebView extends jni.JObject {
   @override
   late final jni.JObjType<WebView> $type = type;
 
-  WebView.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  WebView.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
-  static final _class = jni.Jni.findJClass(r"android/webkit/WebView");
+  static final _class = jni.JClass.forName(r"android/webkit/WebView");
 
   /// The type which includes information such as the signature of this class.
   static const type = $WebViewType();
@@ -17995,30 +17425,52 @@ class WebView extends jni.JObject {
 
   /// from: static public final int RENDERER_PRIORITY_WAIVED
   static const RENDERER_PRIORITY_WAIVED = 0;
+  static final _id_SCHEME_GEO = _class.staticFieldId(
+    r"SCHEME_GEO",
+    r"Ljava/lang/String;",
+  );
 
   /// from: static public final java.lang.String SCHEME_GEO
-  static const SCHEME_GEO = r"""geo:0,0?q=""";
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JString get SCHEME_GEO =>
+      _id_SCHEME_GEO.get(_class, const jni.JStringType());
+
+  static final _id_SCHEME_MAILTO = _class.staticFieldId(
+    r"SCHEME_MAILTO",
+    r"Ljava/lang/String;",
+  );
 
   /// from: static public final java.lang.String SCHEME_MAILTO
-  static const SCHEME_MAILTO = r"""mailto:""";
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JString get SCHEME_MAILTO =>
+      _id_SCHEME_MAILTO.get(_class, const jni.JStringType());
+
+  static final _id_SCHEME_TEL = _class.staticFieldId(
+    r"SCHEME_TEL",
+    r"Ljava/lang/String;",
+  );
 
   /// from: static public final java.lang.String SCHEME_TEL
-  static const SCHEME_TEL = r"""tel:""";
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni.JString get SCHEME_TEL =>
+      _id_SCHEME_TEL.get(_class, const jni.JStringType());
 
-  static final _id_new0 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"<init>", r"(Landroid/content/Context;)V");
+  static final _id_new0 = _class.constructorId(
+    r"(Landroid/content/Context;)V",
+  );
 
   /// from: public void <init>(android.content.Context context)
   /// The returned object must be released after use, by calling the [release] method.
   factory WebView(
     jni.JObject context,
   ) {
-    return WebView.fromRef(jni.Jni.accessors.newObjectWithArgs(
-        _class.reference, _id_new0, [context.reference]).object);
+    return WebView.fromReference(
+        _id_new0(_class, referenceType, [context.reference.pointer]));
   }
 
-  static final _id_new1 = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"<init>", r"(Landroid/content/Context;Landroid/util/AttributeSet;)V");
+  static final _id_new1 = _class.constructorId(
+    r"(Landroid/content/Context;Landroid/util/AttributeSet;)V",
+  );
 
   /// from: public void <init>(android.content.Context context, android.util.AttributeSet attributeSet)
   /// The returned object must be released after use, by calling the [release] method.
@@ -18026,12 +17478,13 @@ class WebView extends jni.JObject {
     jni.JObject context,
     jni.JObject attributeSet,
   ) {
-    return WebView.fromRef(jni.Jni.accessors.newObjectWithArgs(_class.reference,
-        _id_new1, [context.reference, attributeSet.reference]).object);
+    return WebView.fromReference(_id_new1(_class, referenceType,
+        [context.reference.pointer, attributeSet.reference.pointer]));
   }
 
-  static final _id_new2 = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"<init>", r"(Landroid/content/Context;Landroid/util/AttributeSet;I)V");
+  static final _id_new2 = _class.constructorId(
+    r"(Landroid/content/Context;Landroid/util/AttributeSet;I)V",
+  );
 
   /// from: public void <init>(android.content.Context context, android.util.AttributeSet attributeSet, int i)
   /// The returned object must be released after use, by calling the [release] method.
@@ -18040,14 +17493,16 @@ class WebView extends jni.JObject {
     jni.JObject attributeSet,
     int i,
   ) {
-    return WebView.fromRef(jni.Jni.accessors.newObjectWithArgs(
-        _class.reference,
-        _id_new2,
-        [context.reference, attributeSet.reference, jni.JValueInt(i)]).object);
+    return WebView.fromReference(_id_new2(_class, referenceType, [
+      context.reference.pointer,
+      attributeSet.reference.pointer,
+      jni.JValueInt(i)
+    ]));
   }
 
-  static final _id_new3 = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"<init>", r"(Landroid/content/Context;Landroid/util/AttributeSet;II)V");
+  static final _id_new3 = _class.constructorId(
+    r"(Landroid/content/Context;Landroid/util/AttributeSet;II)V",
+  );
 
   /// from: public void <init>(android.content.Context context, android.util.AttributeSet attributeSet, int i, int i1)
   /// The returned object must be released after use, by calling the [release] method.
@@ -18057,17 +17512,17 @@ class WebView extends jni.JObject {
     int i,
     int i1,
   ) {
-    return WebView.fromRef(jni.Jni.accessors.newObjectWithArgs(
-        _class.reference, _id_new3, [
-      context.reference,
-      attributeSet.reference,
+    return WebView.fromReference(_id_new3(_class, referenceType, [
+      context.reference.pointer,
+      attributeSet.reference.pointer,
       jni.JValueInt(i),
       jni.JValueInt(i1)
-    ]).object);
+    ]));
   }
 
-  static final _id_new4 = jni.Jni.accessors.getMethodIDOf(_class.reference,
-      r"<init>", r"(Landroid/content/Context;Landroid/util/AttributeSet;IZ)V");
+  static final _id_new4 = _class.constructorId(
+    r"(Landroid/content/Context;Landroid/util/AttributeSet;IZ)V",
+  );
 
   /// from: public void <init>(android.content.Context context, android.util.AttributeSet attributeSet, int i, boolean z)
   /// The returned object must be released after use, by calling the [release] method.
@@ -18077,93 +17532,86 @@ class WebView extends jni.JObject {
     int i,
     bool z,
   ) {
-    return WebView.fromRef(jni.Jni.accessors.newObjectWithArgs(
-        _class.reference, _id_new4, [
-      context.reference,
-      attributeSet.reference,
+    return WebView.fromReference(_id_new4(_class, referenceType, [
+      context.reference.pointer,
+      attributeSet.reference.pointer,
       jni.JValueInt(i),
       z ? 1 : 0
-    ]).object);
+    ]));
   }
 
-  static final _id_setHorizontalScrollbarOverlay = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"setHorizontalScrollbarOverlay", r"(Z)V");
+  static final _id_setHorizontalScrollbarOverlay = _class.instanceMethodId(
+    r"setHorizontalScrollbarOverlay",
+    r"(Z)V",
+  );
 
   /// from: public void setHorizontalScrollbarOverlay(boolean z)
   void setHorizontalScrollbarOverlay(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setHorizontalScrollbarOverlay,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setHorizontalScrollbarOverlay(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_setVerticalScrollbarOverlay = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setVerticalScrollbarOverlay", r"(Z)V");
+  static final _id_setVerticalScrollbarOverlay = _class.instanceMethodId(
+    r"setVerticalScrollbarOverlay",
+    r"(Z)V",
+  );
 
   /// from: public void setVerticalScrollbarOverlay(boolean z)
   void setVerticalScrollbarOverlay(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setVerticalScrollbarOverlay,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setVerticalScrollbarOverlay(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_overlayHorizontalScrollbar = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"overlayHorizontalScrollbar", r"()Z");
+  static final _id_overlayHorizontalScrollbar = _class.instanceMethodId(
+    r"overlayHorizontalScrollbar",
+    r"()Z",
+  );
 
   /// from: public boolean overlayHorizontalScrollbar()
   bool overlayHorizontalScrollbar() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_overlayHorizontalScrollbar,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_overlayHorizontalScrollbar(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_overlayVerticalScrollbar = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"overlayVerticalScrollbar", r"()Z");
+  static final _id_overlayVerticalScrollbar = _class.instanceMethodId(
+    r"overlayVerticalScrollbar",
+    r"()Z",
+  );
 
   /// from: public boolean overlayVerticalScrollbar()
   bool overlayVerticalScrollbar() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_overlayVerticalScrollbar, jni.JniCallType.booleanType, []).boolean;
+    return _id_overlayVerticalScrollbar(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_getCertificate = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getCertificate",
-      r"()Landroid/net/http/SslCertificate;");
+  static final _id_getCertificate = _class.instanceMethodId(
+    r"getCertificate",
+    r"()Landroid/net/http/SslCertificate;",
+  );
 
   /// from: public android.net.http.SslCertificate getCertificate()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getCertificate() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getCertificate, jni.JniCallType.objectType, []).object);
+    return _id_getCertificate(this, const jni.JObjectType(), []);
   }
 
-  static final _id_setCertificate = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setCertificate",
-      r"(Landroid/net/http/SslCertificate;)V");
+  static final _id_setCertificate = _class.instanceMethodId(
+    r"setCertificate",
+    r"(Landroid/net/http/SslCertificate;)V",
+  );
 
   /// from: public void setCertificate(android.net.http.SslCertificate sslCertificate)
   void setCertificate(
     jni.JObject sslCertificate,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setCertificate,
-        jni.JniCallType.voidType, [sslCertificate.reference]).check();
+    _id_setCertificate(
+        this, const jni.jvoidType(), [sslCertificate.reference.pointer]);
   }
 
-  static final _id_savePassword = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"savePassword",
-      r"(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V");
+  static final _id_savePassword = _class.instanceMethodId(
+    r"savePassword",
+    r"(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V",
+  );
 
   /// from: public void savePassword(java.lang.String string, java.lang.String string1, java.lang.String string2)
   void savePassword(
@@ -18171,17 +17619,17 @@ class WebView extends jni.JObject {
     jni.JString string1,
     jni.JString string2,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_savePassword,
-        jni.JniCallType.voidType,
-        [string.reference, string1.reference, string2.reference]).check();
+    _id_savePassword(this, const jni.jvoidType(), [
+      string.reference.pointer,
+      string1.reference.pointer,
+      string2.reference.pointer
+    ]);
   }
 
-  static final _id_setHttpAuthUsernamePassword = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setHttpAuthUsernamePassword",
-      r"(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V");
+  static final _id_setHttpAuthUsernamePassword = _class.instanceMethodId(
+    r"setHttpAuthUsernamePassword",
+    r"(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V",
+  );
 
   /// from: public void setHttpAuthUsernamePassword(java.lang.String string, java.lang.String string1, java.lang.String string2, java.lang.String string3)
   void setHttpAuthUsernamePassword(
@@ -18190,18 +17638,18 @@ class WebView extends jni.JObject {
     jni.JString string2,
     jni.JString string3,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_setHttpAuthUsernamePassword, jni.JniCallType.voidType, [
-      string.reference,
-      string1.reference,
-      string2.reference,
-      string3.reference
-    ]).check();
+    _id_setHttpAuthUsernamePassword(this, const jni.jvoidType(), [
+      string.reference.pointer,
+      string1.reference.pointer,
+      string2.reference.pointer,
+      string3.reference.pointer
+    ]);
   }
 
-  static final _id_getHttpAuthUsernamePassword = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getHttpAuthUsernamePassword",
-          r"(Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/String;");
+  static final _id_getHttpAuthUsernamePassword = _class.instanceMethodId(
+    r"getHttpAuthUsernamePassword",
+    r"(Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/String;",
+  );
 
   /// from: public java.lang.String[] getHttpAuthUsernamePassword(java.lang.String string, java.lang.String string1)
   /// The returned object must be released after use, by calling the [release] method.
@@ -18209,107 +17657,106 @@ class WebView extends jni.JObject {
     jni.JString string,
     jni.JString string1,
   ) {
-    return const jni.JArrayType(jni.JStringType()).fromRef(jni.Jni.accessors
-        .callMethodWithArgs(
-            reference,
-            _id_getHttpAuthUsernamePassword,
-            jni.JniCallType.objectType,
-            [string.reference, string1.reference]).object);
+    return _id_getHttpAuthUsernamePassword(
+        this,
+        const jni.JArrayType(jni.JStringType()),
+        [string.reference.pointer, string1.reference.pointer]);
   }
 
-  static final _id_destroy =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"destroy", r"()V");
+  static final _id_destroy = _class.instanceMethodId(
+    r"destroy",
+    r"()V",
+  );
 
   /// from: public void destroy()
   void destroy() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_destroy, jni.JniCallType.voidType, []).check();
+    _id_destroy(this, const jni.jvoidType(), []);
   }
 
-  static final _id_setNetworkAvailable = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setNetworkAvailable", r"(Z)V");
+  static final _id_setNetworkAvailable = _class.instanceMethodId(
+    r"setNetworkAvailable",
+    r"(Z)V",
+  );
 
   /// from: public void setNetworkAvailable(boolean z)
   void setNetworkAvailable(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_setNetworkAvailable, jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_setNetworkAvailable(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_saveState = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"saveState",
-      r"(Landroid/os/Bundle;)Landroid/webkit/WebBackForwardList;");
+  static final _id_saveState = _class.instanceMethodId(
+    r"saveState",
+    r"(Landroid/os/Bundle;)Landroid/webkit/WebBackForwardList;",
+  );
 
   /// from: public android.webkit.WebBackForwardList saveState(android.os.Bundle bundle)
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject saveState(
     jni.JObject bundle,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_saveState,
-        jni.JniCallType.objectType,
-        [bundle.reference]).object);
+    return _id_saveState(
+        this, const jni.JObjectType(), [bundle.reference.pointer]);
   }
 
-  static final _id_restoreState = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"restoreState",
-      r"(Landroid/os/Bundle;)Landroid/webkit/WebBackForwardList;");
+  static final _id_restoreState = _class.instanceMethodId(
+    r"restoreState",
+    r"(Landroid/os/Bundle;)Landroid/webkit/WebBackForwardList;",
+  );
 
   /// from: public android.webkit.WebBackForwardList restoreState(android.os.Bundle bundle)
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject restoreState(
     jni.JObject bundle,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_restoreState,
-        jni.JniCallType.objectType,
-        [bundle.reference]).object);
+    return _id_restoreState(
+        this, const jni.JObjectType(), [bundle.reference.pointer]);
   }
 
-  static final _id_loadUrl = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"loadUrl", r"(Ljava/lang/String;Ljava/util/Map;)V");
+  static final _id_loadUrl = _class.instanceMethodId(
+    r"loadUrl",
+    r"(Ljava/lang/String;Ljava/util/Map;)V",
+  );
 
   /// from: public void loadUrl(java.lang.String string, java.util.Map map)
   void loadUrl(
     jni.JString string,
     jni.JMap<jni.JString, jni.JString> map,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_loadUrl,
-        jni.JniCallType.voidType, [string.reference, map.reference]).check();
+    _id_loadUrl(this, const jni.jvoidType(),
+        [string.reference.pointer, map.reference.pointer]);
   }
 
-  static final _id_loadUrl1 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"loadUrl", r"(Ljava/lang/String;)V");
+  static final _id_loadUrl1 = _class.instanceMethodId(
+    r"loadUrl",
+    r"(Ljava/lang/String;)V",
+  );
 
   /// from: public void loadUrl(java.lang.String string)
   void loadUrl1(
     jni.JString string,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_loadUrl1,
-        jni.JniCallType.voidType, [string.reference]).check();
+    _id_loadUrl1(this, const jni.jvoidType(), [string.reference.pointer]);
   }
 
-  static final _id_postUrl = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"postUrl", r"(Ljava/lang/String;[B)V");
+  static final _id_postUrl = _class.instanceMethodId(
+    r"postUrl",
+    r"(Ljava/lang/String;[B)V",
+  );
 
   /// from: public void postUrl(java.lang.String string, byte[] bs)
   void postUrl(
     jni.JString string,
     jni.JArray<jni.jbyte> bs,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_postUrl,
-        jni.JniCallType.voidType, [string.reference, bs.reference]).check();
+    _id_postUrl(this, const jni.jvoidType(),
+        [string.reference.pointer, bs.reference.pointer]);
   }
 
-  static final _id_loadData = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"loadData",
-      r"(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V");
+  static final _id_loadData = _class.instanceMethodId(
+    r"loadData",
+    r"(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V",
+  );
 
   /// from: public void loadData(java.lang.String string, java.lang.String string1, java.lang.String string2)
   void loadData(
@@ -18317,17 +17764,17 @@ class WebView extends jni.JObject {
     jni.JString string1,
     jni.JString string2,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_loadData,
-        jni.JniCallType.voidType,
-        [string.reference, string1.reference, string2.reference]).check();
+    _id_loadData(this, const jni.jvoidType(), [
+      string.reference.pointer,
+      string1.reference.pointer,
+      string2.reference.pointer
+    ]);
   }
 
-  static final _id_loadDataWithBaseURL = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"loadDataWithBaseURL",
-      r"(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V");
+  static final _id_loadDataWithBaseURL = _class.instanceMethodId(
+    r"loadDataWithBaseURL",
+    r"(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V",
+  );
 
   /// from: public void loadDataWithBaseURL(java.lang.String string, java.lang.String string1, java.lang.String string2, java.lang.String string3, java.lang.String string4)
   void loadDataWithBaseURL(
@@ -18337,48 +17784,45 @@ class WebView extends jni.JObject {
     jni.JString string3,
     jni.JString string4,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_loadDataWithBaseURL, jni.JniCallType.voidType, [
-      string.reference,
-      string1.reference,
-      string2.reference,
-      string3.reference,
-      string4.reference
-    ]).check();
+    _id_loadDataWithBaseURL(this, const jni.jvoidType(), [
+      string.reference.pointer,
+      string1.reference.pointer,
+      string2.reference.pointer,
+      string3.reference.pointer,
+      string4.reference.pointer
+    ]);
   }
 
-  static final _id_evaluateJavascript = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"evaluateJavascript",
-      r"(Ljava/lang/String;Landroid/webkit/ValueCallback;)V");
+  static final _id_evaluateJavascript = _class.instanceMethodId(
+    r"evaluateJavascript",
+    r"(Ljava/lang/String;Landroid/webkit/ValueCallback;)V",
+  );
 
   /// from: public void evaluateJavascript(java.lang.String string, android.webkit.ValueCallback valueCallback)
   void evaluateJavascript(
     jni.JString string,
     jni.JObject valueCallback,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_evaluateJavascript,
-        jni.JniCallType.voidType,
-        [string.reference, valueCallback.reference]).check();
+    _id_evaluateJavascript(this, const jni.jvoidType(),
+        [string.reference.pointer, valueCallback.reference.pointer]);
   }
 
-  static final _id_saveWebArchive = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"saveWebArchive", r"(Ljava/lang/String;)V");
+  static final _id_saveWebArchive = _class.instanceMethodId(
+    r"saveWebArchive",
+    r"(Ljava/lang/String;)V",
+  );
 
   /// from: public void saveWebArchive(java.lang.String string)
   void saveWebArchive(
     jni.JString string,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_saveWebArchive,
-        jni.JniCallType.voidType, [string.reference]).check();
+    _id_saveWebArchive(this, const jni.jvoidType(), [string.reference.pointer]);
   }
 
-  static final _id_saveWebArchive1 = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"saveWebArchive",
-      r"(Ljava/lang/String;ZLandroid/webkit/ValueCallback;)V");
+  static final _id_saveWebArchive1 = _class.instanceMethodId(
+    r"saveWebArchive",
+    r"(Ljava/lang/String;ZLandroid/webkit/ValueCallback;)V",
+  );
 
   /// from: public void saveWebArchive(java.lang.String string, boolean z, android.webkit.ValueCallback valueCallback)
   void saveWebArchive1(
@@ -18386,1237 +17830,1206 @@ class WebView extends jni.JObject {
     bool z,
     jni.JObject valueCallback,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_saveWebArchive1,
-        jni.JniCallType.voidType,
-        [string.reference, z ? 1 : 0, valueCallback.reference]).check();
+    _id_saveWebArchive1(this, const jni.jvoidType(),
+        [string.reference.pointer, z ? 1 : 0, valueCallback.reference.pointer]);
   }
 
-  static final _id_stopLoading =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"stopLoading", r"()V");
+  static final _id_stopLoading = _class.instanceMethodId(
+    r"stopLoading",
+    r"()V",
+  );
 
   /// from: public void stopLoading()
   void stopLoading() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_stopLoading, jni.JniCallType.voidType, []).check();
+    _id_stopLoading(this, const jni.jvoidType(), []);
   }
 
-  static final _id_reload =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"reload", r"()V");
+  static final _id_reload = _class.instanceMethodId(
+    r"reload",
+    r"()V",
+  );
 
   /// from: public void reload()
   void reload() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_reload, jni.JniCallType.voidType, []).check();
+    _id_reload(this, const jni.jvoidType(), []);
   }
 
-  static final _id_canGoBack =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"canGoBack", r"()Z");
+  static final _id_canGoBack = _class.instanceMethodId(
+    r"canGoBack",
+    r"()Z",
+  );
 
   /// from: public boolean canGoBack()
   bool canGoBack() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_canGoBack, jni.JniCallType.booleanType, []).boolean;
+    return _id_canGoBack(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_goBack =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"goBack", r"()V");
+  static final _id_goBack = _class.instanceMethodId(
+    r"goBack",
+    r"()V",
+  );
 
   /// from: public void goBack()
   void goBack() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_goBack, jni.JniCallType.voidType, []).check();
+    _id_goBack(this, const jni.jvoidType(), []);
   }
 
-  static final _id_canGoForward = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"canGoForward", r"()Z");
+  static final _id_canGoForward = _class.instanceMethodId(
+    r"canGoForward",
+    r"()Z",
+  );
 
   /// from: public boolean canGoForward()
   bool canGoForward() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_canGoForward, jni.JniCallType.booleanType, []).boolean;
+    return _id_canGoForward(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_goForward =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"goForward", r"()V");
+  static final _id_goForward = _class.instanceMethodId(
+    r"goForward",
+    r"()V",
+  );
 
   /// from: public void goForward()
   void goForward() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_goForward, jni.JniCallType.voidType, []).check();
+    _id_goForward(this, const jni.jvoidType(), []);
   }
 
-  static final _id_canGoBackOrForward = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"canGoBackOrForward", r"(I)Z");
+  static final _id_canGoBackOrForward = _class.instanceMethodId(
+    r"canGoBackOrForward",
+    r"(I)Z",
+  );
 
   /// from: public boolean canGoBackOrForward(int i)
   bool canGoBackOrForward(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_canGoBackOrForward,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i)]).boolean;
+    return _id_canGoBackOrForward(
+        this, const jni.jbooleanType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_goBackOrForward = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"goBackOrForward", r"(I)V");
+  static final _id_goBackOrForward = _class.instanceMethodId(
+    r"goBackOrForward",
+    r"(I)V",
+  );
 
   /// from: public void goBackOrForward(int i)
   void goBackOrForward(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_goBackOrForward,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_goBackOrForward(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_isPrivateBrowsingEnabled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isPrivateBrowsingEnabled", r"()Z");
+  static final _id_isPrivateBrowsingEnabled = _class.instanceMethodId(
+    r"isPrivateBrowsingEnabled",
+    r"()Z",
+  );
 
   /// from: public boolean isPrivateBrowsingEnabled()
   bool isPrivateBrowsingEnabled() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_isPrivateBrowsingEnabled, jni.JniCallType.booleanType, []).boolean;
+    return _id_isPrivateBrowsingEnabled(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_pageUp =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"pageUp", r"(Z)Z");
+  static final _id_pageUp = _class.instanceMethodId(
+    r"pageUp",
+    r"(Z)Z",
+  );
 
   /// from: public boolean pageUp(boolean z)
   bool pageUp(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_pageUp,
-        jni.JniCallType.booleanType, [z ? 1 : 0]).boolean;
+    return _id_pageUp(this, const jni.jbooleanType(), [z ? 1 : 0]);
   }
 
-  static final _id_pageDown =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"pageDown", r"(Z)Z");
+  static final _id_pageDown = _class.instanceMethodId(
+    r"pageDown",
+    r"(Z)Z",
+  );
 
   /// from: public boolean pageDown(boolean z)
   bool pageDown(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_pageDown,
-        jni.JniCallType.booleanType, [z ? 1 : 0]).boolean;
+    return _id_pageDown(this, const jni.jbooleanType(), [z ? 1 : 0]);
   }
 
-  static final _id_postVisualStateCallback = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"postVisualStateCallback",
-      r"(JLandroid/webkit/WebView$VisualStateCallback;)V");
+  static final _id_postVisualStateCallback = _class.instanceMethodId(
+    r"postVisualStateCallback",
+    r"(JLandroid/webkit/WebView$VisualStateCallback;)V",
+  );
 
   /// from: public void postVisualStateCallback(long j, android.webkit.WebView$VisualStateCallback visualStateCallback)
   void postVisualStateCallback(
     int j,
     WebView_VisualStateCallback visualStateCallback,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_postVisualStateCallback,
-        jni.JniCallType.voidType,
-        [j, visualStateCallback.reference]).check();
+    _id_postVisualStateCallback(this, const jni.jvoidType(),
+        [j, visualStateCallback.reference.pointer]);
   }
 
-  static final _id_clearView =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"clearView", r"()V");
+  static final _id_clearView = _class.instanceMethodId(
+    r"clearView",
+    r"()V",
+  );
 
   /// from: public void clearView()
   void clearView() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_clearView, jni.JniCallType.voidType, []).check();
+    _id_clearView(this, const jni.jvoidType(), []);
   }
 
-  static final _id_capturePicture = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"capturePicture", r"()Landroid/graphics/Picture;");
+  static final _id_capturePicture = _class.instanceMethodId(
+    r"capturePicture",
+    r"()Landroid/graphics/Picture;",
+  );
 
   /// from: public android.graphics.Picture capturePicture()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject capturePicture() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_capturePicture, jni.JniCallType.objectType, []).object);
+    return _id_capturePicture(this, const jni.JObjectType(), []);
   }
 
-  static final _id_createPrintDocumentAdapter = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"createPrintDocumentAdapter",
-      r"()Landroid/print/PrintDocumentAdapter;");
+  static final _id_createPrintDocumentAdapter = _class.instanceMethodId(
+    r"createPrintDocumentAdapter",
+    r"()Landroid/print/PrintDocumentAdapter;",
+  );
 
   /// from: public android.print.PrintDocumentAdapter createPrintDocumentAdapter()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject createPrintDocumentAdapter() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_createPrintDocumentAdapter,
-        jni.JniCallType.objectType, []).object);
+    return _id_createPrintDocumentAdapter(this, const jni.JObjectType(), []);
   }
 
-  static final _id_createPrintDocumentAdapter1 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"createPrintDocumentAdapter",
-          r"(Ljava/lang/String;)Landroid/print/PrintDocumentAdapter;");
+  static final _id_createPrintDocumentAdapter1 = _class.instanceMethodId(
+    r"createPrintDocumentAdapter",
+    r"(Ljava/lang/String;)Landroid/print/PrintDocumentAdapter;",
+  );
 
   /// from: public android.print.PrintDocumentAdapter createPrintDocumentAdapter(java.lang.String string)
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject createPrintDocumentAdapter1(
     jni.JString string,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_createPrintDocumentAdapter1,
-        jni.JniCallType.objectType,
-        [string.reference]).object);
+    return _id_createPrintDocumentAdapter1(
+        this, const jni.JObjectType(), [string.reference.pointer]);
   }
 
-  static final _id_getScale =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getScale", r"()F");
+  static final _id_getScale = _class.instanceMethodId(
+    r"getScale",
+    r"()F",
+  );
 
   /// from: public float getScale()
   double getScale() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getScale, jni.JniCallType.floatType, []).float;
+    return _id_getScale(this, const jni.jfloatType(), []);
   }
 
-  static final _id_setInitialScale = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setInitialScale", r"(I)V");
+  static final _id_setInitialScale = _class.instanceMethodId(
+    r"setInitialScale",
+    r"(I)V",
+  );
 
   /// from: public void setInitialScale(int i)
   void setInitialScale(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setInitialScale,
-        jni.JniCallType.voidType, [jni.JValueInt(i)]).check();
+    _id_setInitialScale(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_invokeZoomPicker = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"invokeZoomPicker", r"()V");
+  static final _id_invokeZoomPicker = _class.instanceMethodId(
+    r"invokeZoomPicker",
+    r"()V",
+  );
 
   /// from: public void invokeZoomPicker()
   void invokeZoomPicker() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_invokeZoomPicker, jni.JniCallType.voidType, []).check();
+    _id_invokeZoomPicker(this, const jni.jvoidType(), []);
   }
 
-  static final _id_getHitTestResult = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getHitTestResult",
-      r"()Landroid/webkit/WebView$HitTestResult;");
+  static final _id_getHitTestResult = _class.instanceMethodId(
+    r"getHitTestResult",
+    r"()Landroid/webkit/WebView$HitTestResult;",
+  );
 
   /// from: public android.webkit.WebView$HitTestResult getHitTestResult()
   /// The returned object must be released after use, by calling the [release] method.
   WebView_HitTestResult getHitTestResult() {
-    return const $WebView_HitTestResultType().fromRef(jni.Jni.accessors
-        .callMethodWithArgs(reference, _id_getHitTestResult,
-            jni.JniCallType.objectType, []).object);
+    return _id_getHitTestResult(this, const $WebView_HitTestResultType(), []);
   }
 
-  static final _id_requestFocusNodeHref = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"requestFocusNodeHref", r"(Landroid/os/Message;)V");
+  static final _id_requestFocusNodeHref = _class.instanceMethodId(
+    r"requestFocusNodeHref",
+    r"(Landroid/os/Message;)V",
+  );
 
   /// from: public void requestFocusNodeHref(android.os.Message message)
   void requestFocusNodeHref(
     jni.JObject message,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_requestFocusNodeHref,
-        jni.JniCallType.voidType,
-        [message.reference]).check();
+    _id_requestFocusNodeHref(
+        this, const jni.jvoidType(), [message.reference.pointer]);
   }
 
-  static final _id_requestImageRef = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"requestImageRef", r"(Landroid/os/Message;)V");
+  static final _id_requestImageRef = _class.instanceMethodId(
+    r"requestImageRef",
+    r"(Landroid/os/Message;)V",
+  );
 
   /// from: public void requestImageRef(android.os.Message message)
   void requestImageRef(
     jni.JObject message,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_requestImageRef,
-        jni.JniCallType.voidType, [message.reference]).check();
+    _id_requestImageRef(
+        this, const jni.jvoidType(), [message.reference.pointer]);
   }
 
-  static final _id_getUrl = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getUrl", r"()Ljava/lang/String;");
+  static final _id_getUrl = _class.instanceMethodId(
+    r"getUrl",
+    r"()Ljava/lang/String;",
+  );
 
   /// from: public java.lang.String getUrl()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getUrl() {
-    return const jni.JStringType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getUrl, jni.JniCallType.objectType, []).object);
+    return _id_getUrl(this, const jni.JStringType(), []);
   }
 
-  static final _id_getOriginalUrl = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getOriginalUrl", r"()Ljava/lang/String;");
+  static final _id_getOriginalUrl = _class.instanceMethodId(
+    r"getOriginalUrl",
+    r"()Ljava/lang/String;",
+  );
 
   /// from: public java.lang.String getOriginalUrl()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getOriginalUrl() {
-    return const jni.JStringType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getOriginalUrl, jni.JniCallType.objectType, []).object);
+    return _id_getOriginalUrl(this, const jni.JStringType(), []);
   }
 
-  static final _id_getTitle = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getTitle", r"()Ljava/lang/String;");
+  static final _id_getTitle = _class.instanceMethodId(
+    r"getTitle",
+    r"()Ljava/lang/String;",
+  );
 
   /// from: public java.lang.String getTitle()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getTitle() {
-    return const jni.JStringType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getTitle, jni.JniCallType.objectType, []).object);
+    return _id_getTitle(this, const jni.JStringType(), []);
   }
 
-  static final _id_getFavicon = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getFavicon", r"()Landroid/graphics/Bitmap;");
+  static final _id_getFavicon = _class.instanceMethodId(
+    r"getFavicon",
+    r"()Landroid/graphics/Bitmap;",
+  );
 
   /// from: public android.graphics.Bitmap getFavicon()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getFavicon() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getFavicon, jni.JniCallType.objectType, []).object);
+    return _id_getFavicon(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getProgress =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"getProgress", r"()I");
+  static final _id_getProgress = _class.instanceMethodId(
+    r"getProgress",
+    r"()I",
+  );
 
   /// from: public int getProgress()
   int getProgress() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getProgress, jni.JniCallType.intType, []).integer;
+    return _id_getProgress(this, const jni.jintType(), []);
   }
 
-  static final _id_getContentHeight = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getContentHeight", r"()I");
+  static final _id_getContentHeight = _class.instanceMethodId(
+    r"getContentHeight",
+    r"()I",
+  );
 
   /// from: public int getContentHeight()
   int getContentHeight() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getContentHeight, jni.JniCallType.intType, []).integer;
+    return _id_getContentHeight(this, const jni.jintType(), []);
   }
 
-  static final _id_pauseTimers =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"pauseTimers", r"()V");
+  static final _id_pauseTimers = _class.instanceMethodId(
+    r"pauseTimers",
+    r"()V",
+  );
 
   /// from: public void pauseTimers()
   void pauseTimers() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_pauseTimers, jni.JniCallType.voidType, []).check();
+    _id_pauseTimers(this, const jni.jvoidType(), []);
   }
 
-  static final _id_resumeTimers = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"resumeTimers", r"()V");
+  static final _id_resumeTimers = _class.instanceMethodId(
+    r"resumeTimers",
+    r"()V",
+  );
 
   /// from: public void resumeTimers()
   void resumeTimers() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_resumeTimers, jni.JniCallType.voidType, []).check();
+    _id_resumeTimers(this, const jni.jvoidType(), []);
   }
 
-  static final _id_onPause =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"onPause", r"()V");
+  static final _id_onPause = _class.instanceMethodId(
+    r"onPause",
+    r"()V",
+  );
 
   /// from: public void onPause()
   void onPause() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_onPause, jni.JniCallType.voidType, []).check();
+    _id_onPause(this, const jni.jvoidType(), []);
   }
 
-  static final _id_onResume =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"onResume", r"()V");
+  static final _id_onResume = _class.instanceMethodId(
+    r"onResume",
+    r"()V",
+  );
 
   /// from: public void onResume()
   void onResume() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_onResume, jni.JniCallType.voidType, []).check();
+    _id_onResume(this, const jni.jvoidType(), []);
   }
 
-  static final _id_freeMemory =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"freeMemory", r"()V");
+  static final _id_freeMemory = _class.instanceMethodId(
+    r"freeMemory",
+    r"()V",
+  );
 
   /// from: public void freeMemory()
   void freeMemory() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_freeMemory, jni.JniCallType.voidType, []).check();
+    _id_freeMemory(this, const jni.jvoidType(), []);
   }
 
-  static final _id_clearCache =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"clearCache", r"(Z)V");
+  static final _id_clearCache = _class.instanceMethodId(
+    r"clearCache",
+    r"(Z)V",
+  );
 
   /// from: public void clearCache(boolean z)
   void clearCache(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_clearCache,
-        jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_clearCache(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_clearFormData = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"clearFormData", r"()V");
+  static final _id_clearFormData = _class.instanceMethodId(
+    r"clearFormData",
+    r"()V",
+  );
 
   /// from: public void clearFormData()
   void clearFormData() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_clearFormData, jni.JniCallType.voidType, []).check();
+    _id_clearFormData(this, const jni.jvoidType(), []);
   }
 
-  static final _id_clearHistory = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"clearHistory", r"()V");
+  static final _id_clearHistory = _class.instanceMethodId(
+    r"clearHistory",
+    r"()V",
+  );
 
   /// from: public void clearHistory()
   void clearHistory() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_clearHistory, jni.JniCallType.voidType, []).check();
+    _id_clearHistory(this, const jni.jvoidType(), []);
   }
 
-  static final _id_clearSslPreferences = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"clearSslPreferences", r"()V");
+  static final _id_clearSslPreferences = _class.instanceMethodId(
+    r"clearSslPreferences",
+    r"()V",
+  );
 
   /// from: public void clearSslPreferences()
   void clearSslPreferences() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_clearSslPreferences, jni.JniCallType.voidType, []).check();
+    _id_clearSslPreferences(this, const jni.jvoidType(), []);
   }
 
-  static final _id_clearClientCertPreferences = jni.Jni.accessors
-      .getStaticMethodIDOf(_class.reference, r"clearClientCertPreferences",
-          r"(Ljava/lang/Runnable;)V");
+  static final _id_clearClientCertPreferences = _class.staticMethodId(
+    r"clearClientCertPreferences",
+    r"(Ljava/lang/Runnable;)V",
+  );
 
   /// from: static public void clearClientCertPreferences(java.lang.Runnable runnable)
   static void clearClientCertPreferences(
     jni.JObject runnable,
   ) {
-    return jni.Jni.accessors.callStaticMethodWithArgs(
-        _class.reference,
-        _id_clearClientCertPreferences,
-        jni.JniCallType.voidType,
-        [runnable.reference]).check();
+    _id_clearClientCertPreferences(
+        _class, const jni.jvoidType(), [runnable.reference.pointer]);
   }
 
-  static final _id_startSafeBrowsing = jni.Jni.accessors.getStaticMethodIDOf(
-      _class.reference,
-      r"startSafeBrowsing",
-      r"(Landroid/content/Context;Landroid/webkit/ValueCallback;)V");
+  static final _id_startSafeBrowsing = _class.staticMethodId(
+    r"startSafeBrowsing",
+    r"(Landroid/content/Context;Landroid/webkit/ValueCallback;)V",
+  );
 
   /// from: static public void startSafeBrowsing(android.content.Context context, android.webkit.ValueCallback valueCallback)
   static void startSafeBrowsing(
     jni.JObject context,
     jni.JObject valueCallback,
   ) {
-    return jni.Jni.accessors.callStaticMethodWithArgs(
-        _class.reference,
-        _id_startSafeBrowsing,
-        jni.JniCallType.voidType,
-        [context.reference, valueCallback.reference]).check();
+    _id_startSafeBrowsing(_class, const jni.jvoidType(),
+        [context.reference.pointer, valueCallback.reference.pointer]);
   }
 
-  static final _id_setSafeBrowsingWhitelist = jni.Jni.accessors
-      .getStaticMethodIDOf(_class.reference, r"setSafeBrowsingWhitelist",
-          r"(Ljava/util/List;Landroid/webkit/ValueCallback;)V");
+  static final _id_setSafeBrowsingWhitelist = _class.staticMethodId(
+    r"setSafeBrowsingWhitelist",
+    r"(Ljava/util/List;Landroid/webkit/ValueCallback;)V",
+  );
 
   /// from: static public void setSafeBrowsingWhitelist(java.util.List list, android.webkit.ValueCallback valueCallback)
   static void setSafeBrowsingWhitelist(
     jni.JList<jni.JString> list,
     jni.JObject valueCallback,
   ) {
-    return jni.Jni.accessors.callStaticMethodWithArgs(
-        _class.reference,
-        _id_setSafeBrowsingWhitelist,
-        jni.JniCallType.voidType,
-        [list.reference, valueCallback.reference]).check();
+    _id_setSafeBrowsingWhitelist(_class, const jni.jvoidType(),
+        [list.reference.pointer, valueCallback.reference.pointer]);
   }
 
-  static final _id_getSafeBrowsingPrivacyPolicyUrl = jni.Jni.accessors
-      .getStaticMethodIDOf(_class.reference, r"getSafeBrowsingPrivacyPolicyUrl",
-          r"()Landroid/net/Uri;");
+  static final _id_getSafeBrowsingPrivacyPolicyUrl = _class.staticMethodId(
+    r"getSafeBrowsingPrivacyPolicyUrl",
+    r"()Landroid/net/Uri;",
+  );
 
   /// from: static public android.net.Uri getSafeBrowsingPrivacyPolicyUrl()
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JObject getSafeBrowsingPrivacyPolicyUrl() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors
-        .callStaticMethodWithArgs(
-            _class.reference,
-            _id_getSafeBrowsingPrivacyPolicyUrl,
-            jni.JniCallType.objectType, []).object);
+    return _id_getSafeBrowsingPrivacyPolicyUrl(
+        _class, const jni.JObjectType(), []);
   }
 
-  static final _id_copyBackForwardList = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"copyBackForwardList",
-      r"()Landroid/webkit/WebBackForwardList;");
+  static final _id_copyBackForwardList = _class.instanceMethodId(
+    r"copyBackForwardList",
+    r"()Landroid/webkit/WebBackForwardList;",
+  );
 
   /// from: public android.webkit.WebBackForwardList copyBackForwardList()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject copyBackForwardList() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_copyBackForwardList,
-        jni.JniCallType.objectType, []).object);
+    return _id_copyBackForwardList(this, const jni.JObjectType(), []);
   }
 
-  static final _id_setFindListener = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setFindListener",
-      r"(Landroid/webkit/WebView$FindListener;)V");
+  static final _id_setFindListener = _class.instanceMethodId(
+    r"setFindListener",
+    r"(Landroid/webkit/WebView$FindListener;)V",
+  );
 
   /// from: public void setFindListener(android.webkit.WebView$FindListener findListener)
   void setFindListener(
     WebView_FindListener findListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setFindListener,
-        jni.JniCallType.voidType, [findListener.reference]).check();
+    _id_setFindListener(
+        this, const jni.jvoidType(), [findListener.reference.pointer]);
   }
 
-  static final _id_findNext =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"findNext", r"(Z)V");
+  static final _id_findNext = _class.instanceMethodId(
+    r"findNext",
+    r"(Z)V",
+  );
 
   /// from: public void findNext(boolean z)
   void findNext(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_findNext, jni.JniCallType.voidType, [z ? 1 : 0]).check();
+    _id_findNext(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_findAll = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"findAll", r"(Ljava/lang/String;)I");
+  static final _id_findAll = _class.instanceMethodId(
+    r"findAll",
+    r"(Ljava/lang/String;)I",
+  );
 
   /// from: public int findAll(java.lang.String string)
   int findAll(
     jni.JString string,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_findAll,
-        jni.JniCallType.intType, [string.reference]).integer;
+    return _id_findAll(this, const jni.jintType(), [string.reference.pointer]);
   }
 
-  static final _id_findAllAsync = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"findAllAsync", r"(Ljava/lang/String;)V");
+  static final _id_findAllAsync = _class.instanceMethodId(
+    r"findAllAsync",
+    r"(Ljava/lang/String;)V",
+  );
 
   /// from: public void findAllAsync(java.lang.String string)
   void findAllAsync(
     jni.JString string,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_findAllAsync,
-        jni.JniCallType.voidType, [string.reference]).check();
+    _id_findAllAsync(this, const jni.jvoidType(), [string.reference.pointer]);
   }
 
-  static final _id_showFindDialog = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"showFindDialog", r"(Ljava/lang/String;Z)Z");
+  static final _id_showFindDialog = _class.instanceMethodId(
+    r"showFindDialog",
+    r"(Ljava/lang/String;Z)Z",
+  );
 
   /// from: public boolean showFindDialog(java.lang.String string, boolean z)
   bool showFindDialog(
     jni.JString string,
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_showFindDialog,
-        jni.JniCallType.booleanType, [string.reference, z ? 1 : 0]).boolean;
+    return _id_showFindDialog(
+        this, const jni.jbooleanType(), [string.reference.pointer, z ? 1 : 0]);
   }
 
-  static final _id_findAddress = jni.Jni.accessors.getStaticMethodIDOf(
-      _class.reference,
-      r"findAddress",
-      r"(Ljava/lang/String;)Ljava/lang/String;");
+  static final _id_findAddress = _class.staticMethodId(
+    r"findAddress",
+    r"(Ljava/lang/String;)Ljava/lang/String;",
+  );
 
   /// from: static public java.lang.String findAddress(java.lang.String string)
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString findAddress(
     jni.JString string,
   ) {
-    return const jni.JStringType().fromRef(jni.Jni.accessors
-        .callStaticMethodWithArgs(_class.reference, _id_findAddress,
-            jni.JniCallType.objectType, [string.reference]).object);
+    return _id_findAddress(
+        _class, const jni.JStringType(), [string.reference.pointer]);
   }
 
-  static final _id_enableSlowWholeDocumentDraw = jni.Jni.accessors
-      .getStaticMethodIDOf(
-          _class.reference, r"enableSlowWholeDocumentDraw", r"()V");
+  static final _id_enableSlowWholeDocumentDraw = _class.staticMethodId(
+    r"enableSlowWholeDocumentDraw",
+    r"()V",
+  );
 
   /// from: static public void enableSlowWholeDocumentDraw()
   static void enableSlowWholeDocumentDraw() {
-    return jni.Jni.accessors.callStaticMethodWithArgs(_class.reference,
-        _id_enableSlowWholeDocumentDraw, jni.JniCallType.voidType, []).check();
+    _id_enableSlowWholeDocumentDraw(_class, const jni.jvoidType(), []);
   }
 
-  static final _id_clearMatches = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"clearMatches", r"()V");
+  static final _id_clearMatches = _class.instanceMethodId(
+    r"clearMatches",
+    r"()V",
+  );
 
   /// from: public void clearMatches()
   void clearMatches() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_clearMatches, jni.JniCallType.voidType, []).check();
+    _id_clearMatches(this, const jni.jvoidType(), []);
   }
 
-  static final _id_documentHasImages = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"documentHasImages", r"(Landroid/os/Message;)V");
+  static final _id_documentHasImages = _class.instanceMethodId(
+    r"documentHasImages",
+    r"(Landroid/os/Message;)V",
+  );
 
   /// from: public void documentHasImages(android.os.Message message)
   void documentHasImages(
     jni.JObject message,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_documentHasImages,
-        jni.JniCallType.voidType,
-        [message.reference]).check();
+    _id_documentHasImages(
+        this, const jni.jvoidType(), [message.reference.pointer]);
   }
 
-  static final _id_setWebViewClient = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setWebViewClient",
-      r"(Landroid/webkit/WebViewClient;)V");
+  static final _id_setWebViewClient = _class.instanceMethodId(
+    r"setWebViewClient",
+    r"(Landroid/webkit/WebViewClient;)V",
+  );
 
   /// from: public void setWebViewClient(android.webkit.WebViewClient webViewClient)
   void setWebViewClient(
     jni.JObject webViewClient,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setWebViewClient,
-        jni.JniCallType.voidType, [webViewClient.reference]).check();
+    _id_setWebViewClient(
+        this, const jni.jvoidType(), [webViewClient.reference.pointer]);
   }
 
-  static final _id_getWebViewClient = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getWebViewClient",
-      r"()Landroid/webkit/WebViewClient;");
+  static final _id_getWebViewClient = _class.instanceMethodId(
+    r"getWebViewClient",
+    r"()Landroid/webkit/WebViewClient;",
+  );
 
   /// from: public android.webkit.WebViewClient getWebViewClient()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getWebViewClient() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getWebViewClient,
-        jni.JniCallType.objectType, []).object);
+    return _id_getWebViewClient(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getWebViewRenderProcess = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getWebViewRenderProcess",
-      r"()Landroid/webkit/WebViewRenderProcess;");
+  static final _id_getWebViewRenderProcess = _class.instanceMethodId(
+    r"getWebViewRenderProcess",
+    r"()Landroid/webkit/WebViewRenderProcess;",
+  );
 
   /// from: public android.webkit.WebViewRenderProcess getWebViewRenderProcess()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getWebViewRenderProcess() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getWebViewRenderProcess,
-        jni.JniCallType.objectType, []).object);
+    return _id_getWebViewRenderProcess(this, const jni.JObjectType(), []);
   }
 
-  static final _id_setWebViewRenderProcessClient = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setWebViewRenderProcessClient",
-      r"(Ljava/util/concurrent/Executor;Landroid/webkit/WebViewRenderProcessClient;)V");
+  static final _id_setWebViewRenderProcessClient = _class.instanceMethodId(
+    r"setWebViewRenderProcessClient",
+    r"(Ljava/util/concurrent/Executor;Landroid/webkit/WebViewRenderProcessClient;)V",
+  );
 
   /// from: public void setWebViewRenderProcessClient(java.util.concurrent.Executor executor, android.webkit.WebViewRenderProcessClient webViewRenderProcessClient)
   void setWebViewRenderProcessClient(
     jni.JObject executor,
     jni.JObject webViewRenderProcessClient,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setWebViewRenderProcessClient,
-        jni.JniCallType.voidType,
-        [executor.reference, webViewRenderProcessClient.reference]).check();
+    _id_setWebViewRenderProcessClient(this, const jni.jvoidType(), [
+      executor.reference.pointer,
+      webViewRenderProcessClient.reference.pointer
+    ]);
   }
 
-  static final _id_setWebViewRenderProcessClient1 = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setWebViewRenderProcessClient",
-          r"(Landroid/webkit/WebViewRenderProcessClient;)V");
+  static final _id_setWebViewRenderProcessClient1 = _class.instanceMethodId(
+    r"setWebViewRenderProcessClient",
+    r"(Landroid/webkit/WebViewRenderProcessClient;)V",
+  );
 
   /// from: public void setWebViewRenderProcessClient(android.webkit.WebViewRenderProcessClient webViewRenderProcessClient)
   void setWebViewRenderProcessClient1(
     jni.JObject webViewRenderProcessClient,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setWebViewRenderProcessClient1,
-        jni.JniCallType.voidType,
-        [webViewRenderProcessClient.reference]).check();
+    _id_setWebViewRenderProcessClient1(this, const jni.jvoidType(),
+        [webViewRenderProcessClient.reference.pointer]);
   }
 
-  static final _id_getWebViewRenderProcessClient = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getWebViewRenderProcessClient",
-          r"()Landroid/webkit/WebViewRenderProcessClient;");
+  static final _id_getWebViewRenderProcessClient = _class.instanceMethodId(
+    r"getWebViewRenderProcessClient",
+    r"()Landroid/webkit/WebViewRenderProcessClient;",
+  );
 
   /// from: public android.webkit.WebViewRenderProcessClient getWebViewRenderProcessClient()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getWebViewRenderProcessClient() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getWebViewRenderProcessClient,
-        jni.JniCallType.objectType, []).object);
+    return _id_getWebViewRenderProcessClient(this, const jni.JObjectType(), []);
   }
 
-  static final _id_setDownloadListener = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setDownloadListener",
-      r"(Landroid/webkit/DownloadListener;)V");
+  static final _id_setDownloadListener = _class.instanceMethodId(
+    r"setDownloadListener",
+    r"(Landroid/webkit/DownloadListener;)V",
+  );
 
   /// from: public void setDownloadListener(android.webkit.DownloadListener downloadListener)
   void setDownloadListener(
     jni.JObject downloadListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setDownloadListener,
-        jni.JniCallType.voidType,
-        [downloadListener.reference]).check();
+    _id_setDownloadListener(
+        this, const jni.jvoidType(), [downloadListener.reference.pointer]);
   }
 
-  static final _id_setWebChromeClient = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setWebChromeClient",
-      r"(Landroid/webkit/WebChromeClient;)V");
+  static final _id_setWebChromeClient = _class.instanceMethodId(
+    r"setWebChromeClient",
+    r"(Landroid/webkit/WebChromeClient;)V",
+  );
 
   /// from: public void setWebChromeClient(android.webkit.WebChromeClient webChromeClient)
   void setWebChromeClient(
     jni.JObject webChromeClient,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setWebChromeClient,
-        jni.JniCallType.voidType,
-        [webChromeClient.reference]).check();
+    _id_setWebChromeClient(
+        this, const jni.jvoidType(), [webChromeClient.reference.pointer]);
   }
 
-  static final _id_getWebChromeClient = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getWebChromeClient",
-      r"()Landroid/webkit/WebChromeClient;");
+  static final _id_getWebChromeClient = _class.instanceMethodId(
+    r"getWebChromeClient",
+    r"()Landroid/webkit/WebChromeClient;",
+  );
 
   /// from: public android.webkit.WebChromeClient getWebChromeClient()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getWebChromeClient() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getWebChromeClient,
-        jni.JniCallType.objectType, []).object);
+    return _id_getWebChromeClient(this, const jni.JObjectType(), []);
   }
 
-  static final _id_setPictureListener = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setPictureListener",
-      r"(Landroid/webkit/WebView$PictureListener;)V");
+  static final _id_setPictureListener = _class.instanceMethodId(
+    r"setPictureListener",
+    r"(Landroid/webkit/WebView$PictureListener;)V",
+  );
 
   /// from: public void setPictureListener(android.webkit.WebView$PictureListener pictureListener)
   void setPictureListener(
     WebView_PictureListener pictureListener,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setPictureListener,
-        jni.JniCallType.voidType,
-        [pictureListener.reference]).check();
+    _id_setPictureListener(
+        this, const jni.jvoidType(), [pictureListener.reference.pointer]);
   }
 
-  static final _id_addJavascriptInterface = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"addJavascriptInterface",
-      r"(Ljava/lang/Object;Ljava/lang/String;)V");
+  static final _id_addJavascriptInterface = _class.instanceMethodId(
+    r"addJavascriptInterface",
+    r"(Ljava/lang/Object;Ljava/lang/String;)V",
+  );
 
   /// from: public void addJavascriptInterface(java.lang.Object object, java.lang.String string)
   void addJavascriptInterface(
     jni.JObject object,
     jni.JString string,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_addJavascriptInterface,
-        jni.JniCallType.voidType,
-        [object.reference, string.reference]).check();
+    _id_addJavascriptInterface(this, const jni.jvoidType(),
+        [object.reference.pointer, string.reference.pointer]);
   }
 
-  static final _id_removeJavascriptInterface = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"removeJavascriptInterface", r"(Ljava/lang/String;)V");
+  static final _id_removeJavascriptInterface = _class.instanceMethodId(
+    r"removeJavascriptInterface",
+    r"(Ljava/lang/String;)V",
+  );
 
   /// from: public void removeJavascriptInterface(java.lang.String string)
   void removeJavascriptInterface(
     jni.JString string,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_removeJavascriptInterface,
-        jni.JniCallType.voidType,
-        [string.reference]).check();
+    _id_removeJavascriptInterface(
+        this, const jni.jvoidType(), [string.reference.pointer]);
   }
 
-  static final _id_createWebMessageChannel = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"createWebMessageChannel",
-      r"()[Landroid/webkit/WebMessagePort;");
+  static final _id_createWebMessageChannel = _class.instanceMethodId(
+    r"createWebMessageChannel",
+    r"()[Landroid/webkit/WebMessagePort;",
+  );
 
   /// from: public android.webkit.WebMessagePort[] createWebMessageChannel()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JArray<jni.JObject> createWebMessageChannel() {
-    return const jni.JArrayType(jni.JObjectType()).fromRef(jni.Jni.accessors
-        .callMethodWithArgs(reference, _id_createWebMessageChannel,
-            jni.JniCallType.objectType, []).object);
+    return _id_createWebMessageChannel(
+        this, const jni.JArrayType(jni.JObjectType()), []);
   }
 
-  static final _id_postWebMessage = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"postWebMessage",
-      r"(Landroid/webkit/WebMessage;Landroid/net/Uri;)V");
+  static final _id_postWebMessage = _class.instanceMethodId(
+    r"postWebMessage",
+    r"(Landroid/webkit/WebMessage;Landroid/net/Uri;)V",
+  );
 
   /// from: public void postWebMessage(android.webkit.WebMessage webMessage, android.net.Uri uri)
   void postWebMessage(
     jni.JObject webMessage,
     jni.JObject uri,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_postWebMessage,
-        jni.JniCallType.voidType,
-        [webMessage.reference, uri.reference]).check();
+    _id_postWebMessage(this, const jni.jvoidType(),
+        [webMessage.reference.pointer, uri.reference.pointer]);
   }
 
-  static final _id_getSettings = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getSettings", r"()Landroid/webkit/WebSettings;");
+  static final _id_getSettings = _class.instanceMethodId(
+    r"getSettings",
+    r"()Landroid/webkit/WebSettings;",
+  );
 
   /// from: public android.webkit.WebSettings getSettings()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getSettings() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getSettings, jni.JniCallType.objectType, []).object);
+    return _id_getSettings(this, const jni.JObjectType(), []);
   }
 
-  static final _id_setWebContentsDebuggingEnabled = jni.Jni.accessors
-      .getStaticMethodIDOf(
-          _class.reference, r"setWebContentsDebuggingEnabled", r"(Z)V");
+  static final _id_setWebContentsDebuggingEnabled = _class.staticMethodId(
+    r"setWebContentsDebuggingEnabled",
+    r"(Z)V",
+  );
 
   /// from: static public void setWebContentsDebuggingEnabled(boolean z)
   static void setWebContentsDebuggingEnabled(
     bool z,
   ) {
-    return jni.Jni.accessors.callStaticMethodWithArgs(
-        _class.reference,
-        _id_setWebContentsDebuggingEnabled,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setWebContentsDebuggingEnabled(
+        _class, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_setDataDirectorySuffix = jni.Jni.accessors
-      .getStaticMethodIDOf(_class.reference, r"setDataDirectorySuffix",
-          r"(Ljava/lang/String;)V");
+  static final _id_setDataDirectorySuffix = _class.staticMethodId(
+    r"setDataDirectorySuffix",
+    r"(Ljava/lang/String;)V",
+  );
 
   /// from: static public void setDataDirectorySuffix(java.lang.String string)
   static void setDataDirectorySuffix(
     jni.JString string,
   ) {
-    return jni.Jni.accessors.callStaticMethodWithArgs(
-        _class.reference,
-        _id_setDataDirectorySuffix,
-        jni.JniCallType.voidType,
-        [string.reference]).check();
+    _id_setDataDirectorySuffix(
+        _class, const jni.jvoidType(), [string.reference.pointer]);
   }
 
-  static final _id_disableWebView = jni.Jni.accessors
-      .getStaticMethodIDOf(_class.reference, r"disableWebView", r"()V");
+  static final _id_disableWebView = _class.staticMethodId(
+    r"disableWebView",
+    r"()V",
+  );
 
   /// from: static public void disableWebView()
   static void disableWebView() {
-    return jni.Jni.accessors.callStaticMethodWithArgs(_class.reference,
-        _id_disableWebView, jni.JniCallType.voidType, []).check();
+    _id_disableWebView(_class, const jni.jvoidType(), []);
   }
 
-  static final _id_onChildViewAdded = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onChildViewAdded",
-      r"(Landroid/view/View;Landroid/view/View;)V");
+  static final _id_onChildViewAdded = _class.instanceMethodId(
+    r"onChildViewAdded",
+    r"(Landroid/view/View;Landroid/view/View;)V",
+  );
 
   /// from: public void onChildViewAdded(android.view.View view, android.view.View view1)
   void onChildViewAdded(
     View view,
     View view1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onChildViewAdded,
-        jni.JniCallType.voidType, [view.reference, view1.reference]).check();
+    _id_onChildViewAdded(this, const jni.jvoidType(),
+        [view.reference.pointer, view1.reference.pointer]);
   }
 
-  static final _id_onChildViewRemoved = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onChildViewRemoved",
-      r"(Landroid/view/View;Landroid/view/View;)V");
+  static final _id_onChildViewRemoved = _class.instanceMethodId(
+    r"onChildViewRemoved",
+    r"(Landroid/view/View;Landroid/view/View;)V",
+  );
 
   /// from: public void onChildViewRemoved(android.view.View view, android.view.View view1)
   void onChildViewRemoved(
     View view,
     View view1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onChildViewRemoved,
-        jni.JniCallType.voidType,
-        [view.reference, view1.reference]).check();
+    _id_onChildViewRemoved(this, const jni.jvoidType(),
+        [view.reference.pointer, view1.reference.pointer]);
   }
 
-  static final _id_onGlobalFocusChanged = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onGlobalFocusChanged",
-      r"(Landroid/view/View;Landroid/view/View;)V");
+  static final _id_onGlobalFocusChanged = _class.instanceMethodId(
+    r"onGlobalFocusChanged",
+    r"(Landroid/view/View;Landroid/view/View;)V",
+  );
 
   /// from: public void onGlobalFocusChanged(android.view.View view, android.view.View view1)
   void onGlobalFocusChanged(
     View view,
     View view1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onGlobalFocusChanged,
-        jni.JniCallType.voidType,
-        [view.reference, view1.reference]).check();
+    _id_onGlobalFocusChanged(this, const jni.jvoidType(),
+        [view.reference.pointer, view1.reference.pointer]);
   }
 
-  static final _id_setMapTrackballToArrowKeys = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setMapTrackballToArrowKeys", r"(Z)V");
+  static final _id_setMapTrackballToArrowKeys = _class.instanceMethodId(
+    r"setMapTrackballToArrowKeys",
+    r"(Z)V",
+  );
 
   /// from: public void setMapTrackballToArrowKeys(boolean z)
   void setMapTrackballToArrowKeys(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setMapTrackballToArrowKeys,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_setMapTrackballToArrowKeys(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_flingScroll = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"flingScroll", r"(II)V");
+  static final _id_flingScroll = _class.instanceMethodId(
+    r"flingScroll",
+    r"(II)V",
+  );
 
   /// from: public void flingScroll(int i, int i1)
   void flingScroll(
     int i,
     int i1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_flingScroll,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i), jni.JValueInt(i1)]).check();
+    _id_flingScroll(
+        this, const jni.jvoidType(), [jni.JValueInt(i), jni.JValueInt(i1)]);
   }
 
-  static final _id_canZoomIn =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"canZoomIn", r"()Z");
+  static final _id_canZoomIn = _class.instanceMethodId(
+    r"canZoomIn",
+    r"()Z",
+  );
 
   /// from: public boolean canZoomIn()
   bool canZoomIn() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_canZoomIn, jni.JniCallType.booleanType, []).boolean;
+    return _id_canZoomIn(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_canZoomOut =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"canZoomOut", r"()Z");
+  static final _id_canZoomOut = _class.instanceMethodId(
+    r"canZoomOut",
+    r"()Z",
+  );
 
   /// from: public boolean canZoomOut()
   bool canZoomOut() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_canZoomOut, jni.JniCallType.booleanType, []).boolean;
+    return _id_canZoomOut(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_zoomBy =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"zoomBy", r"(F)V");
+  static final _id_zoomBy = _class.instanceMethodId(
+    r"zoomBy",
+    r"(F)V",
+  );
 
   /// from: public void zoomBy(float f)
   void zoomBy(
     double f,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_zoomBy,
-        jni.JniCallType.voidType, [jni.JValueFloat(f)]).check();
+    _id_zoomBy(this, const jni.jvoidType(), [jni.JValueFloat(f)]);
   }
 
-  static final _id_zoomIn =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"zoomIn", r"()Z");
+  static final _id_zoomIn = _class.instanceMethodId(
+    r"zoomIn",
+    r"()Z",
+  );
 
   /// from: public boolean zoomIn()
   bool zoomIn() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_zoomIn, jni.JniCallType.booleanType, []).boolean;
+    return _id_zoomIn(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_zoomOut =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"zoomOut", r"()Z");
+  static final _id_zoomOut = _class.instanceMethodId(
+    r"zoomOut",
+    r"()Z",
+  );
 
   /// from: public boolean zoomOut()
   bool zoomOut() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_zoomOut, jni.JniCallType.booleanType, []).boolean;
+    return _id_zoomOut(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setRendererPriorityPolicy = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setRendererPriorityPolicy", r"(IZ)V");
+  static final _id_setRendererPriorityPolicy = _class.instanceMethodId(
+    r"setRendererPriorityPolicy",
+    r"(IZ)V",
+  );
 
   /// from: public void setRendererPriorityPolicy(int i, boolean z)
   void setRendererPriorityPolicy(
     int i,
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setRendererPriorityPolicy,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i), z ? 1 : 0]).check();
+    _id_setRendererPriorityPolicy(
+        this, const jni.jvoidType(), [jni.JValueInt(i), z ? 1 : 0]);
   }
 
-  static final _id_getRendererRequestedPriority = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getRendererRequestedPriority", r"()I");
+  static final _id_getRendererRequestedPriority = _class.instanceMethodId(
+    r"getRendererRequestedPriority",
+    r"()I",
+  );
 
   /// from: public int getRendererRequestedPriority()
   int getRendererRequestedPriority() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_getRendererRequestedPriority, jni.JniCallType.intType, []).integer;
+    return _id_getRendererRequestedPriority(this, const jni.jintType(), []);
   }
 
-  static final _id_getRendererPriorityWaivedWhenNotVisible = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"getRendererPriorityWaivedWhenNotVisible", r"()Z");
+  static final _id_getRendererPriorityWaivedWhenNotVisible =
+      _class.instanceMethodId(
+    r"getRendererPriorityWaivedWhenNotVisible",
+    r"()Z",
+  );
 
   /// from: public boolean getRendererPriorityWaivedWhenNotVisible()
   bool getRendererPriorityWaivedWhenNotVisible() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getRendererPriorityWaivedWhenNotVisible,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_getRendererPriorityWaivedWhenNotVisible(
+        this, const jni.jbooleanType(), []);
   }
 
-  static final _id_setTextClassifier = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setTextClassifier",
-      r"(Landroid/view/textclassifier/TextClassifier;)V");
+  static final _id_setTextClassifier = _class.instanceMethodId(
+    r"setTextClassifier",
+    r"(Landroid/view/textclassifier/TextClassifier;)V",
+  );
 
   /// from: public void setTextClassifier(android.view.textclassifier.TextClassifier textClassifier)
   void setTextClassifier(
     jni.JObject textClassifier,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setTextClassifier,
-        jni.JniCallType.voidType,
-        [textClassifier.reference]).check();
+    _id_setTextClassifier(
+        this, const jni.jvoidType(), [textClassifier.reference.pointer]);
   }
 
-  static final _id_getTextClassifier = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getTextClassifier",
-      r"()Landroid/view/textclassifier/TextClassifier;");
+  static final _id_getTextClassifier = _class.instanceMethodId(
+    r"getTextClassifier",
+    r"()Landroid/view/textclassifier/TextClassifier;",
+  );
 
   /// from: public android.view.textclassifier.TextClassifier getTextClassifier()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getTextClassifier() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getTextClassifier,
-        jni.JniCallType.objectType, []).object);
+    return _id_getTextClassifier(this, const jni.JObjectType(), []);
   }
 
-  static final _id_getWebViewClassLoader = jni.Jni.accessors
-      .getStaticMethodIDOf(_class.reference, r"getWebViewClassLoader",
-          r"()Ljava/lang/ClassLoader;");
+  static final _id_getWebViewClassLoader = _class.staticMethodId(
+    r"getWebViewClassLoader",
+    r"()Ljava/lang/ClassLoader;",
+  );
 
   /// from: static public java.lang.ClassLoader getWebViewClassLoader()
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JObject getWebViewClassLoader() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors
-        .callStaticMethodWithArgs(_class.reference, _id_getWebViewClassLoader,
-            jni.JniCallType.objectType, []).object);
+    return _id_getWebViewClassLoader(_class, const jni.JObjectType(), []);
   }
 
-  static final _id_getWebViewLooper = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getWebViewLooper", r"()Landroid/os/Looper;");
+  static final _id_getWebViewLooper = _class.instanceMethodId(
+    r"getWebViewLooper",
+    r"()Landroid/os/Looper;",
+  );
 
   /// from: public android.os.Looper getWebViewLooper()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getWebViewLooper() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getWebViewLooper,
-        jni.JniCallType.objectType, []).object);
+    return _id_getWebViewLooper(this, const jni.JObjectType(), []);
   }
 
-  static final _id_onAttachedToWindow = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onAttachedToWindow", r"()V");
+  static final _id_onAttachedToWindow = _class.instanceMethodId(
+    r"onAttachedToWindow",
+    r"()V",
+  );
 
   /// from: protected void onAttachedToWindow()
   void onAttachedToWindow() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_onAttachedToWindow, jni.JniCallType.voidType, []).check();
+    _id_onAttachedToWindow(this, const jni.jvoidType(), []);
   }
 
-  static final _id_setLayoutParams = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"setLayoutParams",
-      r"(Landroid/view/ViewGroup$LayoutParams;)V");
+  static final _id_setLayoutParams = _class.instanceMethodId(
+    r"setLayoutParams",
+    r"(Landroid/view/ViewGroup$LayoutParams;)V",
+  );
 
   /// from: public void setLayoutParams(android.view.ViewGroup$LayoutParams layoutParams)
   void setLayoutParams(
     jni.JObject layoutParams,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setLayoutParams,
-        jni.JniCallType.voidType, [layoutParams.reference]).check();
+    _id_setLayoutParams(
+        this, const jni.jvoidType(), [layoutParams.reference.pointer]);
   }
 
-  static final _id_setOverScrollMode = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setOverScrollMode", r"(I)V");
+  static final _id_setOverScrollMode = _class.instanceMethodId(
+    r"setOverScrollMode",
+    r"(I)V",
+  );
 
   /// from: public void setOverScrollMode(int i)
   void setOverScrollMode(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setOverScrollMode,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setOverScrollMode(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_setScrollBarStyle = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setScrollBarStyle", r"(I)V");
+  static final _id_setScrollBarStyle = _class.instanceMethodId(
+    r"setScrollBarStyle",
+    r"(I)V",
+  );
 
   /// from: public void setScrollBarStyle(int i)
   void setScrollBarStyle(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setScrollBarStyle,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setScrollBarStyle(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_computeHorizontalScrollRange = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"computeHorizontalScrollRange", r"()I");
+  static final _id_computeHorizontalScrollRange = _class.instanceMethodId(
+    r"computeHorizontalScrollRange",
+    r"()I",
+  );
 
   /// from: protected int computeHorizontalScrollRange()
   int computeHorizontalScrollRange() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_computeHorizontalScrollRange, jni.JniCallType.intType, []).integer;
+    return _id_computeHorizontalScrollRange(this, const jni.jintType(), []);
   }
 
-  static final _id_computeHorizontalScrollOffset = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference, r"computeHorizontalScrollOffset", r"()I");
+  static final _id_computeHorizontalScrollOffset = _class.instanceMethodId(
+    r"computeHorizontalScrollOffset",
+    r"()I",
+  );
 
   /// from: protected int computeHorizontalScrollOffset()
   int computeHorizontalScrollOffset() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_computeHorizontalScrollOffset, jni.JniCallType.intType, []).integer;
+    return _id_computeHorizontalScrollOffset(this, const jni.jintType(), []);
   }
 
-  static final _id_computeVerticalScrollRange = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"computeVerticalScrollRange", r"()I");
+  static final _id_computeVerticalScrollRange = _class.instanceMethodId(
+    r"computeVerticalScrollRange",
+    r"()I",
+  );
 
   /// from: protected int computeVerticalScrollRange()
   int computeVerticalScrollRange() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_computeVerticalScrollRange, jni.JniCallType.intType, []).integer;
+    return _id_computeVerticalScrollRange(this, const jni.jintType(), []);
   }
 
-  static final _id_computeVerticalScrollOffset = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"computeVerticalScrollOffset", r"()I");
+  static final _id_computeVerticalScrollOffset = _class.instanceMethodId(
+    r"computeVerticalScrollOffset",
+    r"()I",
+  );
 
   /// from: protected int computeVerticalScrollOffset()
   int computeVerticalScrollOffset() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_computeVerticalScrollOffset, jni.JniCallType.intType, []).integer;
+    return _id_computeVerticalScrollOffset(this, const jni.jintType(), []);
   }
 
-  static final _id_computeVerticalScrollExtent = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"computeVerticalScrollExtent", r"()I");
+  static final _id_computeVerticalScrollExtent = _class.instanceMethodId(
+    r"computeVerticalScrollExtent",
+    r"()I",
+  );
 
   /// from: protected int computeVerticalScrollExtent()
   int computeVerticalScrollExtent() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_computeVerticalScrollExtent, jni.JniCallType.intType, []).integer;
+    return _id_computeVerticalScrollExtent(this, const jni.jintType(), []);
   }
 
-  static final _id_computeScroll = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"computeScroll", r"()V");
+  static final _id_computeScroll = _class.instanceMethodId(
+    r"computeScroll",
+    r"()V",
+  );
 
   /// from: public void computeScroll()
   void computeScroll() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_computeScroll, jni.JniCallType.voidType, []).check();
+    _id_computeScroll(this, const jni.jvoidType(), []);
   }
 
-  static final _id_onHoverEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onHoverEvent", r"(Landroid/view/MotionEvent;)Z");
+  static final _id_onHoverEvent = _class.instanceMethodId(
+    r"onHoverEvent",
+    r"(Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: public boolean onHoverEvent(android.view.MotionEvent motionEvent)
   bool onHoverEvent(
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onHoverEvent,
-        jni.JniCallType.booleanType, [motionEvent.reference]).boolean;
+    return _id_onHoverEvent(
+        this, const jni.jbooleanType(), [motionEvent.reference.pointer]);
   }
 
-  static final _id_onTouchEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onTouchEvent", r"(Landroid/view/MotionEvent;)Z");
+  static final _id_onTouchEvent = _class.instanceMethodId(
+    r"onTouchEvent",
+    r"(Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: public boolean onTouchEvent(android.view.MotionEvent motionEvent)
   bool onTouchEvent(
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onTouchEvent,
-        jni.JniCallType.booleanType, [motionEvent.reference]).boolean;
+    return _id_onTouchEvent(
+        this, const jni.jbooleanType(), [motionEvent.reference.pointer]);
   }
 
-  static final _id_onGenericMotionEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onGenericMotionEvent",
-      r"(Landroid/view/MotionEvent;)Z");
+  static final _id_onGenericMotionEvent = _class.instanceMethodId(
+    r"onGenericMotionEvent",
+    r"(Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: public boolean onGenericMotionEvent(android.view.MotionEvent motionEvent)
   bool onGenericMotionEvent(
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onGenericMotionEvent,
-        jni.JniCallType.booleanType,
-        [motionEvent.reference]).boolean;
+    return _id_onGenericMotionEvent(
+        this, const jni.jbooleanType(), [motionEvent.reference.pointer]);
   }
 
-  static final _id_onTrackballEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onTrackballEvent", r"(Landroid/view/MotionEvent;)Z");
+  static final _id_onTrackballEvent = _class.instanceMethodId(
+    r"onTrackballEvent",
+    r"(Landroid/view/MotionEvent;)Z",
+  );
 
   /// from: public boolean onTrackballEvent(android.view.MotionEvent motionEvent)
   bool onTrackballEvent(
     jni.JObject motionEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onTrackballEvent,
-        jni.JniCallType.booleanType, [motionEvent.reference]).boolean;
+    return _id_onTrackballEvent(
+        this, const jni.jbooleanType(), [motionEvent.reference.pointer]);
   }
 
-  static final _id_onKeyDown = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onKeyDown", r"(ILandroid/view/KeyEvent;)Z");
+  static final _id_onKeyDown = _class.instanceMethodId(
+    r"onKeyDown",
+    r"(ILandroid/view/KeyEvent;)Z",
+  );
 
   /// from: public boolean onKeyDown(int i, android.view.KeyEvent keyEvent)
   bool onKeyDown(
     int i,
     jni.JObject keyEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onKeyDown,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i), keyEvent.reference]).boolean;
+    return _id_onKeyDown(this, const jni.jbooleanType(),
+        [jni.JValueInt(i), keyEvent.reference.pointer]);
   }
 
-  static final _id_onKeyUp = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onKeyUp", r"(ILandroid/view/KeyEvent;)Z");
+  static final _id_onKeyUp = _class.instanceMethodId(
+    r"onKeyUp",
+    r"(ILandroid/view/KeyEvent;)Z",
+  );
 
   /// from: public boolean onKeyUp(int i, android.view.KeyEvent keyEvent)
   bool onKeyUp(
     int i,
     jni.JObject keyEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onKeyUp,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i), keyEvent.reference]).boolean;
+    return _id_onKeyUp(this, const jni.jbooleanType(),
+        [jni.JValueInt(i), keyEvent.reference.pointer]);
   }
 
-  static final _id_onKeyMultiple = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onKeyMultiple", r"(IILandroid/view/KeyEvent;)Z");
+  static final _id_onKeyMultiple = _class.instanceMethodId(
+    r"onKeyMultiple",
+    r"(IILandroid/view/KeyEvent;)Z",
+  );
 
   /// from: public boolean onKeyMultiple(int i, int i1, android.view.KeyEvent keyEvent)
   bool onKeyMultiple(
@@ -19624,129 +19037,113 @@ class WebView extends jni.JObject {
     int i1,
     jni.JObject keyEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onKeyMultiple,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i), jni.JValueInt(i1), keyEvent.reference]).boolean;
+    return _id_onKeyMultiple(this, const jni.jbooleanType(),
+        [jni.JValueInt(i), jni.JValueInt(i1), keyEvent.reference.pointer]);
   }
 
-  static final _id_getAccessibilityNodeProvider = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"getAccessibilityNodeProvider",
-          r"()Landroid/view/accessibility/AccessibilityNodeProvider;");
+  static final _id_getAccessibilityNodeProvider = _class.instanceMethodId(
+    r"getAccessibilityNodeProvider",
+    r"()Landroid/view/accessibility/AccessibilityNodeProvider;",
+  );
 
   /// from: public android.view.accessibility.AccessibilityNodeProvider getAccessibilityNodeProvider()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getAccessibilityNodeProvider() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getAccessibilityNodeProvider,
-        jni.JniCallType.objectType, []).object);
+    return _id_getAccessibilityNodeProvider(this, const jni.JObjectType(), []);
   }
 
-  static final _id_shouldDelayChildPressedState = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"shouldDelayChildPressedState", r"()Z");
+  static final _id_shouldDelayChildPressedState = _class.instanceMethodId(
+    r"shouldDelayChildPressedState",
+    r"()Z",
+  );
 
   /// from: public boolean shouldDelayChildPressedState()
   bool shouldDelayChildPressedState() {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_shouldDelayChildPressedState,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_shouldDelayChildPressedState(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_getAccessibilityClassName = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"getAccessibilityClassName",
-      r"()Ljava/lang/CharSequence;");
+  static final _id_getAccessibilityClassName = _class.instanceMethodId(
+    r"getAccessibilityClassName",
+    r"()Ljava/lang/CharSequence;",
+  );
 
   /// from: public java.lang.CharSequence getAccessibilityClassName()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getAccessibilityClassName() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_getAccessibilityClassName,
-        jni.JniCallType.objectType, []).object);
+    return _id_getAccessibilityClassName(this, const jni.JObjectType(), []);
   }
 
-  static final _id_onProvideVirtualStructure = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onProvideVirtualStructure",
-      r"(Landroid/view/ViewStructure;)V");
+  static final _id_onProvideVirtualStructure = _class.instanceMethodId(
+    r"onProvideVirtualStructure",
+    r"(Landroid/view/ViewStructure;)V",
+  );
 
   /// from: public void onProvideVirtualStructure(android.view.ViewStructure viewStructure)
   void onProvideVirtualStructure(
     jni.JObject viewStructure,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onProvideVirtualStructure,
-        jni.JniCallType.voidType,
-        [viewStructure.reference]).check();
+    _id_onProvideVirtualStructure(
+        this, const jni.jvoidType(), [viewStructure.reference.pointer]);
   }
 
-  static final _id_onProvideAutofillVirtualStructure = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onProvideAutofillVirtualStructure",
-          r"(Landroid/view/ViewStructure;I)V");
+  static final _id_onProvideAutofillVirtualStructure = _class.instanceMethodId(
+    r"onProvideAutofillVirtualStructure",
+    r"(Landroid/view/ViewStructure;I)V",
+  );
 
   /// from: public void onProvideAutofillVirtualStructure(android.view.ViewStructure viewStructure, int i)
   void onProvideAutofillVirtualStructure(
     jni.JObject viewStructure,
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onProvideAutofillVirtualStructure,
-        jni.JniCallType.voidType,
-        [viewStructure.reference, jni.JValueInt(i)]).check();
+    _id_onProvideAutofillVirtualStructure(this, const jni.jvoidType(),
+        [viewStructure.reference.pointer, jni.JValueInt(i)]);
   }
 
-  static final _id_onProvideContentCaptureStructure = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onProvideContentCaptureStructure",
-          r"(Landroid/view/ViewStructure;I)V");
+  static final _id_onProvideContentCaptureStructure = _class.instanceMethodId(
+    r"onProvideContentCaptureStructure",
+    r"(Landroid/view/ViewStructure;I)V",
+  );
 
   /// from: public void onProvideContentCaptureStructure(android.view.ViewStructure viewStructure, int i)
   void onProvideContentCaptureStructure(
     jni.JObject viewStructure,
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onProvideContentCaptureStructure,
-        jni.JniCallType.voidType,
-        [viewStructure.reference, jni.JValueInt(i)]).check();
+    _id_onProvideContentCaptureStructure(this, const jni.jvoidType(),
+        [viewStructure.reference.pointer, jni.JValueInt(i)]);
   }
 
-  static final _id_autofill = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"autofill", r"(Landroid/util/SparseArray;)V");
+  static final _id_autofill = _class.instanceMethodId(
+    r"autofill",
+    r"(Landroid/util/SparseArray;)V",
+  );
 
   /// from: public void autofill(android.util.SparseArray sparseArray)
   void autofill(
     jni.JObject sparseArray,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_autofill,
-        jni.JniCallType.voidType, [sparseArray.reference]).check();
+    _id_autofill(this, const jni.jvoidType(), [sparseArray.reference.pointer]);
   }
 
-  static final _id_isVisibleToUserForAutofill = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"isVisibleToUserForAutofill", r"(I)Z");
+  static final _id_isVisibleToUserForAutofill = _class.instanceMethodId(
+    r"isVisibleToUserForAutofill",
+    r"(I)Z",
+  );
 
   /// from: public boolean isVisibleToUserForAutofill(int i)
   bool isVisibleToUserForAutofill(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_isVisibleToUserForAutofill,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i)]).boolean;
+    return _id_isVisibleToUserForAutofill(
+        this, const jni.jbooleanType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_onCreateVirtualViewTranslationRequests = jni.Jni.accessors
-      .getMethodIDOf(
-          _class.reference,
-          r"onCreateVirtualViewTranslationRequests",
-          r"([J[ILjava/util/function/Consumer;)V");
+  static final _id_onCreateVirtualViewTranslationRequests =
+      _class.instanceMethodId(
+    r"onCreateVirtualViewTranslationRequests",
+    r"([J[ILjava/util/function/Consumer;)V",
+  );
 
   /// from: public void onCreateVirtualViewTranslationRequests(java.lang.Object[] js, java.lang.Object[] is, java.util.function.Consumer consumer)
   void onCreateVirtualViewTranslationRequests(
@@ -19754,16 +19151,18 @@ class WebView extends jni.JObject {
     jni.JArray<jni.jint> is0,
     jni.JObject consumer,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onCreateVirtualViewTranslationRequests,
-        jni.JniCallType.voidType,
-        [js.reference, is0.reference, consumer.reference]).check();
+    _id_onCreateVirtualViewTranslationRequests(this, const jni.jvoidType(), [
+      js.reference.pointer,
+      is0.reference.pointer,
+      consumer.reference.pointer
+    ]);
   }
 
-  static final _id_dispatchCreateViewTranslationRequest = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"dispatchCreateViewTranslationRequest",
-          r"(Ljava/util/Map;[ILandroid/view/translation/TranslationCapability;Ljava/util/List;)V");
+  static final _id_dispatchCreateViewTranslationRequest =
+      _class.instanceMethodId(
+    r"dispatchCreateViewTranslationRequest",
+    r"(Ljava/util/Map;[ILandroid/view/translation/TranslationCapability;Ljava/util/List;)V",
+  );
 
   /// from: public void dispatchCreateViewTranslationRequest(java.util.Map map, java.lang.Object[] is, android.view.translation.TranslationCapability translationCapability, java.util.List list)
   void dispatchCreateViewTranslationRequest(
@@ -19772,32 +19171,31 @@ class WebView extends jni.JObject {
     jni.JObject translationCapability,
     jni.JList<jni.JObject> list,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_dispatchCreateViewTranslationRequest, jni.JniCallType.voidType, [
-      map.reference,
-      is0.reference,
-      translationCapability.reference,
-      list.reference
-    ]).check();
+    _id_dispatchCreateViewTranslationRequest(this, const jni.jvoidType(), [
+      map.reference.pointer,
+      is0.reference.pointer,
+      translationCapability.reference.pointer,
+      list.reference.pointer
+    ]);
   }
 
-  static final _id_onVirtualViewTranslationResponses = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onVirtualViewTranslationResponses",
-          r"(Landroid/util/LongSparseArray;)V");
+  static final _id_onVirtualViewTranslationResponses = _class.instanceMethodId(
+    r"onVirtualViewTranslationResponses",
+    r"(Landroid/util/LongSparseArray;)V",
+  );
 
   /// from: public void onVirtualViewTranslationResponses(android.util.LongSparseArray longSparseArray)
   void onVirtualViewTranslationResponses(
     jni.JObject longSparseArray,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onVirtualViewTranslationResponses,
-        jni.JniCallType.voidType,
-        [longSparseArray.reference]).check();
+    _id_onVirtualViewTranslationResponses(
+        this, const jni.jvoidType(), [longSparseArray.reference.pointer]);
   }
 
-  static final _id_onOverScrolled = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onOverScrolled", r"(IIZZ)V");
+  static final _id_onOverScrolled = _class.instanceMethodId(
+    r"onOverScrolled",
+    r"(IIZZ)V",
+  );
 
   /// from: protected void onOverScrolled(int i, int i1, boolean z, boolean z1)
   void onOverScrolled(
@@ -19806,122 +19204,115 @@ class WebView extends jni.JObject {
     bool z,
     bool z1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onOverScrolled,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i), jni.JValueInt(i1), z ? 1 : 0, z1 ? 1 : 0]).check();
+    _id_onOverScrolled(this, const jni.jvoidType(),
+        [jni.JValueInt(i), jni.JValueInt(i1), z ? 1 : 0, z1 ? 1 : 0]);
   }
 
-  static final _id_onWindowVisibilityChanged = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onWindowVisibilityChanged", r"(I)V");
+  static final _id_onWindowVisibilityChanged = _class.instanceMethodId(
+    r"onWindowVisibilityChanged",
+    r"(I)V",
+  );
 
   /// from: protected void onWindowVisibilityChanged(int i)
   void onWindowVisibilityChanged(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onWindowVisibilityChanged,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_onWindowVisibilityChanged(
+        this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_onDraw = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onDraw", r"(Landroid/graphics/Canvas;)V");
+  static final _id_onDraw = _class.instanceMethodId(
+    r"onDraw",
+    r"(Landroid/graphics/Canvas;)V",
+  );
 
   /// from: protected void onDraw(android.graphics.Canvas canvas)
   void onDraw(
     jni.JObject canvas,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onDraw,
-        jni.JniCallType.voidType, [canvas.reference]).check();
+    _id_onDraw(this, const jni.jvoidType(), [canvas.reference.pointer]);
   }
 
-  static final _id_performLongClick = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"performLongClick", r"()Z");
+  static final _id_performLongClick = _class.instanceMethodId(
+    r"performLongClick",
+    r"()Z",
+  );
 
   /// from: public boolean performLongClick()
   bool performLongClick() {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_performLongClick,
-        jni.JniCallType.booleanType, []).boolean;
+    return _id_performLongClick(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_onConfigurationChanged = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onConfigurationChanged",
-      r"(Landroid/content/res/Configuration;)V");
+  static final _id_onConfigurationChanged = _class.instanceMethodId(
+    r"onConfigurationChanged",
+    r"(Landroid/content/res/Configuration;)V",
+  );
 
   /// from: protected void onConfigurationChanged(android.content.res.Configuration configuration)
   void onConfigurationChanged(
     jni.JObject configuration,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onConfigurationChanged,
-        jni.JniCallType.voidType,
-        [configuration.reference]).check();
+    _id_onConfigurationChanged(
+        this, const jni.jvoidType(), [configuration.reference.pointer]);
   }
 
-  static final _id_onCreateInputConnection = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onCreateInputConnection",
-      r"(Landroid/view/inputmethod/EditorInfo;)Landroid/view/inputmethod/InputConnection;");
+  static final _id_onCreateInputConnection = _class.instanceMethodId(
+    r"onCreateInputConnection",
+    r"(Landroid/view/inputmethod/EditorInfo;)Landroid/view/inputmethod/InputConnection;",
+  );
 
   /// from: public android.view.inputmethod.InputConnection onCreateInputConnection(android.view.inputmethod.EditorInfo editorInfo)
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject onCreateInputConnection(
     jni.JObject editorInfo,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onCreateInputConnection,
-        jni.JniCallType.objectType,
-        [editorInfo.reference]).object);
+    return _id_onCreateInputConnection(
+        this, const jni.JObjectType(), [editorInfo.reference.pointer]);
   }
 
-  static final _id_onDragEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onDragEvent", r"(Landroid/view/DragEvent;)Z");
+  static final _id_onDragEvent = _class.instanceMethodId(
+    r"onDragEvent",
+    r"(Landroid/view/DragEvent;)Z",
+  );
 
   /// from: public boolean onDragEvent(android.view.DragEvent dragEvent)
   bool onDragEvent(
     jni.JObject dragEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_onDragEvent,
-        jni.JniCallType.booleanType, [dragEvent.reference]).boolean;
+    return _id_onDragEvent(
+        this, const jni.jbooleanType(), [dragEvent.reference.pointer]);
   }
 
-  static final _id_onVisibilityChanged = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onVisibilityChanged", r"(Landroid/view/View;I)V");
+  static final _id_onVisibilityChanged = _class.instanceMethodId(
+    r"onVisibilityChanged",
+    r"(Landroid/view/View;I)V",
+  );
 
   /// from: protected void onVisibilityChanged(android.view.View view, int i)
   void onVisibilityChanged(
     View view,
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onVisibilityChanged,
-        jni.JniCallType.voidType,
-        [view.reference, jni.JValueInt(i)]).check();
+    _id_onVisibilityChanged(this, const jni.jvoidType(),
+        [view.reference.pointer, jni.JValueInt(i)]);
   }
 
-  static final _id_onWindowFocusChanged = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onWindowFocusChanged", r"(Z)V");
+  static final _id_onWindowFocusChanged = _class.instanceMethodId(
+    r"onWindowFocusChanged",
+    r"(Z)V",
+  );
 
   /// from: public void onWindowFocusChanged(boolean z)
   void onWindowFocusChanged(
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onWindowFocusChanged,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0]).check();
+    _id_onWindowFocusChanged(this, const jni.jvoidType(), [z ? 1 : 0]);
   }
 
-  static final _id_onFocusChanged = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"onFocusChanged", r"(ZILandroid/graphics/Rect;)V");
+  static final _id_onFocusChanged = _class.instanceMethodId(
+    r"onFocusChanged",
+    r"(ZILandroid/graphics/Rect;)V",
+  );
 
   /// from: protected void onFocusChanged(boolean z, int i, android.graphics.Rect rect)
   void onFocusChanged(
@@ -19929,15 +19320,14 @@ class WebView extends jni.JObject {
     int i,
     jni.JObject rect,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onFocusChanged,
-        jni.JniCallType.voidType,
-        [z ? 1 : 0, jni.JValueInt(i), rect.reference]).check();
+    _id_onFocusChanged(this, const jni.jvoidType(),
+        [z ? 1 : 0, jni.JValueInt(i), rect.reference.pointer]);
   }
 
-  static final _id_onSizeChanged = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onSizeChanged", r"(IIII)V");
+  static final _id_onSizeChanged = _class.instanceMethodId(
+    r"onSizeChanged",
+    r"(IIII)V",
+  );
 
   /// from: protected void onSizeChanged(int i, int i1, int i2, int i3)
   void onSizeChanged(
@@ -19946,17 +19336,18 @@ class WebView extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_onSizeChanged, jni.JniCallType.voidType, [
+    _id_onSizeChanged(this, const jni.jvoidType(), [
       jni.JValueInt(i),
       jni.JValueInt(i1),
       jni.JValueInt(i2),
       jni.JValueInt(i3)
-    ]).check();
+    ]);
   }
 
-  static final _id_onScrollChanged = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onScrollChanged", r"(IIII)V");
+  static final _id_onScrollChanged = _class.instanceMethodId(
+    r"onScrollChanged",
+    r"(IIII)V",
+  );
 
   /// from: protected void onScrollChanged(int i, int i1, int i2, int i3)
   void onScrollChanged(
@@ -19965,59 +19356,59 @@ class WebView extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_onScrollChanged, jni.JniCallType.voidType, [
+    _id_onScrollChanged(this, const jni.jvoidType(), [
       jni.JValueInt(i),
       jni.JValueInt(i1),
       jni.JValueInt(i2),
       jni.JValueInt(i3)
-    ]).check();
+    ]);
   }
 
-  static final _id_dispatchKeyEvent = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"dispatchKeyEvent", r"(Landroid/view/KeyEvent;)Z");
+  static final _id_dispatchKeyEvent = _class.instanceMethodId(
+    r"dispatchKeyEvent",
+    r"(Landroid/view/KeyEvent;)Z",
+  );
 
   /// from: public boolean dispatchKeyEvent(android.view.KeyEvent keyEvent)
   bool dispatchKeyEvent(
     jni.JObject keyEvent,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_dispatchKeyEvent,
-        jni.JniCallType.booleanType, [keyEvent.reference]).boolean;
+    return _id_dispatchKeyEvent(
+        this, const jni.jbooleanType(), [keyEvent.reference.pointer]);
   }
 
-  static final _id_requestFocus = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"requestFocus", r"(ILandroid/graphics/Rect;)Z");
+  static final _id_requestFocus = _class.instanceMethodId(
+    r"requestFocus",
+    r"(ILandroid/graphics/Rect;)Z",
+  );
 
   /// from: public boolean requestFocus(int i, android.graphics.Rect rect)
   bool requestFocus(
     int i,
     jni.JObject rect,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_requestFocus,
-        jni.JniCallType.booleanType,
-        [jni.JValueInt(i), rect.reference]).boolean;
+    return _id_requestFocus(this, const jni.jbooleanType(),
+        [jni.JValueInt(i), rect.reference.pointer]);
   }
 
-  static final _id_onMeasure =
-      jni.Jni.accessors.getMethodIDOf(_class.reference, r"onMeasure", r"(II)V");
+  static final _id_onMeasure = _class.instanceMethodId(
+    r"onMeasure",
+    r"(II)V",
+  );
 
   /// from: protected void onMeasure(int i, int i1)
   void onMeasure(
     int i,
     int i1,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onMeasure,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i), jni.JValueInt(i1)]).check();
+    _id_onMeasure(
+        this, const jni.jvoidType(), [jni.JValueInt(i), jni.JValueInt(i1)]);
   }
 
-  static final _id_requestChildRectangleOnScreen = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"requestChildRectangleOnScreen",
-          r"(Landroid/view/View;Landroid/graphics/Rect;Z)Z");
+  static final _id_requestChildRectangleOnScreen = _class.instanceMethodId(
+    r"requestChildRectangleOnScreen",
+    r"(Landroid/view/View;Landroid/graphics/Rect;Z)Z",
+  );
 
   /// from: public boolean requestChildRectangleOnScreen(android.view.View view, android.graphics.Rect rect, boolean z)
   bool requestChildRectangleOnScreen(
@@ -20025,126 +19416,123 @@ class WebView extends jni.JObject {
     jni.JObject rect,
     bool z,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_requestChildRectangleOnScreen,
-        jni.JniCallType.booleanType,
-        [view.reference, rect.reference, z ? 1 : 0]).boolean;
+    return _id_requestChildRectangleOnScreen(this, const jni.jbooleanType(),
+        [view.reference.pointer, rect.reference.pointer, z ? 1 : 0]);
   }
 
-  static final _id_setBackgroundColor = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"setBackgroundColor", r"(I)V");
+  static final _id_setBackgroundColor = _class.instanceMethodId(
+    r"setBackgroundColor",
+    r"(I)V",
+  );
 
   /// from: public void setBackgroundColor(int i)
   void setBackgroundColor(
     int i,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_setBackgroundColor,
-        jni.JniCallType.voidType,
-        [jni.JValueInt(i)]).check();
+    _id_setBackgroundColor(this, const jni.jvoidType(), [jni.JValueInt(i)]);
   }
 
-  static final _id_setLayerType = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"setLayerType", r"(ILandroid/graphics/Paint;)V");
+  static final _id_setLayerType = _class.instanceMethodId(
+    r"setLayerType",
+    r"(ILandroid/graphics/Paint;)V",
+  );
 
   /// from: public void setLayerType(int i, android.graphics.Paint paint)
   void setLayerType(
     int i,
     jni.JObject paint,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_setLayerType,
-        jni.JniCallType.voidType, [jni.JValueInt(i), paint.reference]).check();
+    _id_setLayerType(this, const jni.jvoidType(),
+        [jni.JValueInt(i), paint.reference.pointer]);
   }
 
-  static final _id_dispatchDraw = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"dispatchDraw", r"(Landroid/graphics/Canvas;)V");
+  static final _id_dispatchDraw = _class.instanceMethodId(
+    r"dispatchDraw",
+    r"(Landroid/graphics/Canvas;)V",
+  );
 
   /// from: protected void dispatchDraw(android.graphics.Canvas canvas)
   void dispatchDraw(
     jni.JObject canvas,
   ) {
-    return jni.Jni.accessors.callMethodWithArgs(reference, _id_dispatchDraw,
-        jni.JniCallType.voidType, [canvas.reference]).check();
+    _id_dispatchDraw(this, const jni.jvoidType(), [canvas.reference.pointer]);
   }
 
-  static final _id_onStartTemporaryDetach = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onStartTemporaryDetach", r"()V");
+  static final _id_onStartTemporaryDetach = _class.instanceMethodId(
+    r"onStartTemporaryDetach",
+    r"()V",
+  );
 
   /// from: public void onStartTemporaryDetach()
   void onStartTemporaryDetach() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_onStartTemporaryDetach, jni.JniCallType.voidType, []).check();
+    _id_onStartTemporaryDetach(this, const jni.jvoidType(), []);
   }
 
-  static final _id_onFinishTemporaryDetach = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onFinishTemporaryDetach", r"()V");
+  static final _id_onFinishTemporaryDetach = _class.instanceMethodId(
+    r"onFinishTemporaryDetach",
+    r"()V",
+  );
 
   /// from: public void onFinishTemporaryDetach()
   void onFinishTemporaryDetach() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_onFinishTemporaryDetach, jni.JniCallType.voidType, []).check();
+    _id_onFinishTemporaryDetach(this, const jni.jvoidType(), []);
   }
 
-  static final _id_getHandler = jni.Jni.accessors.getMethodIDOf(
-      _class.reference, r"getHandler", r"()Landroid/os/Handler;");
+  static final _id_getHandler = _class.instanceMethodId(
+    r"getHandler",
+    r"()Landroid/os/Handler;",
+  );
 
   /// from: public android.os.Handler getHandler()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getHandler() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_getHandler, jni.JniCallType.objectType, []).object);
+    return _id_getHandler(this, const jni.JObjectType(), []);
   }
 
-  static final _id_findFocus = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"findFocus", r"()Landroid/view/View;");
+  static final _id_findFocus = _class.instanceMethodId(
+    r"findFocus",
+    r"()Landroid/view/View;",
+  );
 
   /// from: public android.view.View findFocus()
   /// The returned object must be released after use, by calling the [release] method.
   View findFocus() {
-    return const $ViewType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference, _id_findFocus, jni.JniCallType.objectType, []).object);
+    return _id_findFocus(this, const $ViewType(), []);
   }
 
-  static final _id_getCurrentWebViewPackage = jni.Jni.accessors
-      .getStaticMethodIDOf(_class.reference, r"getCurrentWebViewPackage",
-          r"()Landroid/content/pm/PackageInfo;");
+  static final _id_getCurrentWebViewPackage = _class.staticMethodId(
+    r"getCurrentWebViewPackage",
+    r"()Landroid/content/pm/PackageInfo;",
+  );
 
   /// from: static public android.content.pm.PackageInfo getCurrentWebViewPackage()
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JObject getCurrentWebViewPackage() {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors
-        .callStaticMethodWithArgs(
-            _class.reference,
-            _id_getCurrentWebViewPackage,
-            jni.JniCallType.objectType, []).object);
+    return _id_getCurrentWebViewPackage(_class, const jni.JObjectType(), []);
   }
 
-  static final _id_onCheckIsTextEditor = jni.Jni.accessors
-      .getMethodIDOf(_class.reference, r"onCheckIsTextEditor", r"()Z");
+  static final _id_onCheckIsTextEditor = _class.instanceMethodId(
+    r"onCheckIsTextEditor",
+    r"()Z",
+  );
 
   /// from: public boolean onCheckIsTextEditor()
   bool onCheckIsTextEditor() {
-    return jni.Jni.accessors.callMethodWithArgs(reference,
-        _id_onCheckIsTextEditor, jni.JniCallType.booleanType, []).boolean;
+    return _id_onCheckIsTextEditor(this, const jni.jbooleanType(), []);
   }
 
-  static final _id_onApplyWindowInsets = jni.Jni.accessors.getMethodIDOf(
-      _class.reference,
-      r"onApplyWindowInsets",
-      r"(Landroid/view/WindowInsets;)Landroid/view/WindowInsets;");
+  static final _id_onApplyWindowInsets = _class.instanceMethodId(
+    r"onApplyWindowInsets",
+    r"(Landroid/view/WindowInsets;)Landroid/view/WindowInsets;",
+  );
 
   /// from: public android.view.WindowInsets onApplyWindowInsets(android.view.WindowInsets windowInsets)
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject onApplyWindowInsets(
     jni.JObject windowInsets,
   ) {
-    return const jni.JObjectType().fromRef(jni.Jni.accessors.callMethodWithArgs(
-        reference,
-        _id_onApplyWindowInsets,
-        jni.JniCallType.objectType,
-        [windowInsets.reference]).object);
+    return _id_onApplyWindowInsets(
+        this, const jni.JObjectType(), [windowInsets.reference.pointer]);
   }
 }
 
@@ -20155,7 +19543,8 @@ final class $WebViewType extends jni.JObjType<WebView> {
   String get signature => r"Landroid/webkit/WebView;";
 
   @override
-  WebView fromRef(jni.JObjectPtr ref) => WebView.fromRef(ref);
+  WebView fromReference(jni.JReference reference) =>
+      WebView.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();

@@ -17,24 +17,13 @@ class NativeViewFactory(private val messenger: BinaryMessenger) :
         id: Int,
         args: Any?
     ): PlatformView {
-        return NativeView(
-            context,
-            messenger,
-            id,
-            args
-        )
+        return NativeView((args as Number).toLong())
     }
 }
 
-class NativeView internal constructor(private val context: Context, messenger: BinaryMessenger, id: Int, args: Any?) :
+class NativeView internal constructor(private val address: Long) :
     PlatformView {
-    private val webView: WebView = WebView(context)
-    private val methodChannel: MethodChannel
-
-    init {
-        methodChannel = MethodChannel(messenger, "WebView/$id")
-        methodChannel.invokeMethod("address", JniUtils.globalReferenceAddressOf(webView))
-    }
+    private val webView: WebView = JniUtils.fromReferenceAddress(address) as WebView
 
     override fun getView(): View {
         return webView
