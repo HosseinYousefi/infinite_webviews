@@ -8,8 +8,5 @@ output:
     path: lib/generated.dart
     structure: single_file
 
-enable_experiment:
-  - interface_implementation
-
 classes:
   - 'android.webkit.WebView'

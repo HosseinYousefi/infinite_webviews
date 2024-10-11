@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:jni/jni.dart';
+
 import 'generated.dart';
 
 const viewTypeId = 'plugins.flutter.io/webview';
@@ -106,6 +108,7 @@ class _CounterWebViewState extends State<CounterWebView> {
                   Center(
                     child: AndroidView(
                       viewType: viewTypeId,
+                      // ignore: invalid_use_of_internal_member
                       creationParams: view.reference.pointer.address,
                       creationParamsCodec: const StandardMessageCodec(),
                     ),
