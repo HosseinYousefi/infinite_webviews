@@ -5,7 +5,6 @@ import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.PluginRegistry.Registrar
-import io.flutter.plugin.platform.PlatformViewFactory
 import io.flutter.plugin.platform.PlatformViewRegistry
 
 class NativePlugin: FlutterPlugin, ActivityAware {
@@ -26,24 +25,14 @@ class NativePlugin: FlutterPlugin, ActivityAware {
         setUp(binding.binaryMessenger, binding.platformViewRegistry)
     }
 
-    override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-//        TODO("Not yet implemented")
-    }
+    override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {}
 
-    override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-//        TODO("Not yet implemented")
-    }
+    override fun onAttachedToActivity(binding: ActivityPluginBinding) {}
 
-    override fun onDetachedFromActivityForConfigChanges() {
-//        TODO("Not yet implemented")
-    }
+    override fun onDetachedFromActivityForConfigChanges() {}
 
-    override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
-//        TODO("Not yet implemented")
-    }
+    override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {}
 
-    override fun onDetachedFromActivity() {
-//        TODO("Not yet implemented")
-    }
+    override fun onDetachedFromActivity() {}
 
 }

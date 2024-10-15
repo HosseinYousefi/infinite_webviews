@@ -6,7 +6,6 @@ import android.webkit.WebView
 import io.flutter.plugin.platform.PlatformView
 import com.github.dart_lang.jni.JniUtils
 import io.flutter.plugin.common.BinaryMessenger
-import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.StandardMessageCodec
 import io.flutter.plugin.platform.PlatformViewFactory
 
