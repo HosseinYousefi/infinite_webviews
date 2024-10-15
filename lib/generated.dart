@@ -642,15 +642,15 @@ class WebView_WebViewTransport extends _$jni.JObject {
           _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
               _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
-  /// from: `public void <init>(android.webkit.WebView webView)`
+  /// from: `public void <init>(android.webkit.WebView synthetic)`
   /// The returned object must be released after use, by calling the [release] method.
   factory WebView_WebViewTransport(
-    WebView webView,
+    WebView synthetic,
   ) {
     return WebView_WebViewTransport.fromReference(_new$(
             _class.reference.pointer,
             _id_new$ as _$jni.JMethodIDPtr,
-            webView.reference.pointer)
+            synthetic.reference.pointer)
         .reference);
   }
 
@@ -4870,6 +4870,37 @@ class WebView extends _$jni.JObject {
             reference.pointer,
             _id_onApplyWindowInsets as _$jni.JMethodIDPtr,
             windowInsets.reference.pointer)
+        .object(const _$jni.JObjectType());
+  }
+
+  static final _id_onResolvePointerIcon = _class.instanceMethodId(
+    r'onResolvePointerIcon',
+    r'(Landroid/view/MotionEvent;I)Landroid/view/PointerIcon;',
+  );
+
+  static final _onResolvePointerIcon = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni
+                          .VarArgs<(_$jni.Pointer<_$jni.Void>, _$jni.Int32)>)>>(
+          'globalEnv_CallObjectMethod')
+      .asFunction<
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>, int)>();
+
+  /// from: `public android.view.PointerIcon onResolvePointerIcon(android.view.MotionEvent motionEvent, int i)`
+  /// The returned object must be released after use, by calling the [release] method.
+  _$jni.JObject onResolvePointerIcon(
+    _$jni.JObject motionEvent,
+    int i,
+  ) {
+    return _onResolvePointerIcon(
+            reference.pointer,
+            _id_onResolvePointerIcon as _$jni.JMethodIDPtr,
+            motionEvent.reference.pointer,
+            i)
         .object(const _$jni.JObjectType());
   }
 }
